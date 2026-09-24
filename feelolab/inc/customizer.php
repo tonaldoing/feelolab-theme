@@ -59,7 +59,7 @@ add_action(
 			)
 		);
 		$choices = wp_list_pluck( feelolab_font_stacks(), 'label' );
-		feelolab_customizer_select( $wp_customize, 'feelolab_font_pair', __( 'Combinación tipográfica', 'feelolab' ), 'feelolab_type', $choices, 'sistema', __( 'Fuentes del sistema: no se descarga nada y el texto aparece al instante.', 'feelolab' ) );
+		feelolab_customizer_select( $wp_customize, 'feelolab_font_pair', __( 'Combinación tipográfica', 'feelolab' ), 'feelolab_type', $choices, 'sistema', __( 'Las de sistema no descargan nada. Las "Web" se sirven desde el propio sitio, con métricas ajustadas para que el texto no salte al cargar.', 'feelolab' ) );
 		feelolab_customizer_select(
 			$wp_customize,
 			'feelolab_font_size',

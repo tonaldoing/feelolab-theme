@@ -1,4 +1,4 @@
-## Feelolab: starter WordPress de Feelo
+## Guía de desarrollo: Feelolab
 
 Tema clásico (`feelolab/`) + plugin compañero (`feelolab-core/`). WordPress 6.8+ (probado en 7.0), PHP 8.1+, ACF **free**.
 
@@ -29,3 +29,11 @@ Tema clásico (`feelolab/`) + plugin compañero (`feelolab-core/`). WordPress 6.
 - `composer lint` (WPCS) tiene que pasar limpio.
 - `npm run dev` + `npm run a11y` (pa11y, 0 errores). Si tocás plantillas, correr también Lighthouse mobile.
 - Textos de UI en español rioplatense, con text domain `feelolab` (tema) o `feelolab-core` (plugin).
+
+### Publicar una versión (llega a todos los sitios)
+1. Anotar los cambios en `CHANGELOG.md` bajo `## X.Y.Z — fecha`.
+2. Subir la versión en los cuatro lugares: `feelolab/style.css` (Version), `FEELOLAB_VERSION` en `feelolab/functions.php`, y el header Version y `FEELO_CORE_VERSION` en `feelolab-core/feelolab-core.php`. Tema y plugin van siempre con la misma versión.
+3. Commit, `git tag vX.Y.Z`, `git push origin main --tags`.
+4. `.github/workflows/release.yml` verifica que las versiones coincidan con el tag, arma los zips y publica el Release. Los sitios lo ven en hasta 12 horas, o al instante con "Buscar de nuevo" en Actualizaciones.
+- Nunca renombrar la carpeta `feelolab`: los theme_mods de cada sitio están guardados con ese nombre.
+- Cambios que rompen datos guardados (claves de opciones, metas, slugs de CPT) necesitan una migración, nunca un rename silencioso.

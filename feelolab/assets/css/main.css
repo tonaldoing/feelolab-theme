@@ -382,6 +382,18 @@ hr { border: 0; border-top: 1px solid var(--c-border); margin: 2rem 0; }
 .specs th, .specs td { text-align: left; padding: .6rem .5rem; border-bottom: 1px solid var(--c-border); vertical-align: top; }
 .specs th { font-weight: 600; width: 45%; }
 
+/* ---------- Galería ---------- */
+.gallery__main { margin: 0; }
+.gallery__main img { width: 100%; aspect-ratio: 1; object-fit: contain; background: var(--c-surface); border-radius: var(--radius); }
+.gallery__thumbs { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(4.5rem, 1fr)); gap: .5rem; margin: .75rem 0 0; padding: 0; }
+.gallery__thumb { display: block; border: 2px solid transparent; border-radius: calc(var(--radius) / 2); overflow: hidden; }
+.gallery__thumb img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.gallery__thumb:hover { border-color: var(--c-border); }
+.gallery__thumb[aria-current="true"] { border-color: var(--c-primary-text); }
+.gallery-grid { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; margin: 0; padding: 0; }
+@media (min-width: 768px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+.gallery-grid img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: var(--radius); }
+
 /* ---------- Persona ---------- */
 .person { display: grid; gap: 2rem; }
 @media (min-width: 768px) { .person { grid-template-columns: 18rem 1fr; gap: 3rem; align-items: start; } }

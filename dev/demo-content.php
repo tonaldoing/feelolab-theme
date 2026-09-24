@@ -41,7 +41,7 @@ function feelo_demo_post( string $type, string $title, string $content, array $m
 			'post_status'  => 'publish',
 			'post_title'   => $title,
 			'post_content' => $content,
-			'post_excerpt' => wp_trim_words( wp_strip_all_tags( $content ), 20 ),
+			'post_excerpt' => wp_trim_words( wp_strip_all_tags( str_replace( '<', ' <', $content ) ), 20 ),
 			'menu_order'   => $order,
 			'meta_input'   => $meta,
 		)
@@ -78,7 +78,30 @@ foreach ( array(
 	feelo_demo_post( 'feelo_testimonio', $t[0], '<p>' . $t[2] . '</p>', array( 'autor' => $t[0], 'cargo' => $t[1], 'estrellas' => $t[3] ), $i );
 }
 
-feelo_demo_post( 'feelo_producto', 'Guía de facturación electrónica', '<p>Manual paso a paso para facturar sin errores.</p>', array( 'precio' => '$ 12.000', 'precio_oferta' => '$ 9.900', 'sku' => 'GUIA-01', 'disponible' => 1, 'ficha_tecnica' => "Formato: PDF\nPáginas: 48\nActualizada: 2026", 'consulta_whatsapp' => 1 ) );
+/** Imagen demo: un PNG liso generado con GD, con su texto alternativo. */
+function feelo_demo_image( string $name, string $alt, int $w, int $h, array $rgb ): int {
+	require_once ABSPATH . 'wp-admin/includes/image.php';
+	$upload = wp_upload_dir();
+	$file   = trailingslashit( $upload['path'] ) . $name . '.png';
+	$img    = imagecreatetruecolor( $w, $h );
+	imagefill( $img, 0, 0, imagecolorallocate( $img, ...$rgb ) );
+	imagepng( $img, $file );
+	$id = wp_insert_attachment( array( 'post_mime_type' => 'image/png', 'post_title' => $alt, 'post_status' => 'inherit' ), $file );
+	wp_update_attachment_metadata( $id, wp_generate_attachment_metadata( $id, $file ) );
+	update_post_meta( $id, '_wp_attachment_image_alt', $alt );
+	return (int) $id;
+}
+
+$gallery = array(
+	feelo_demo_image( 'guia-2', 'Índice de la guía', 1200, 1200, array( 214, 222, 255 ) ),
+	feelo_demo_image( 'guia-3', 'Ejemplo de factura completa', 1200, 1200, array( 255, 228, 214 ) ),
+);
+$hero = feelo_demo_image( 'hero', 'Equipo del estudio trabajando', 1600, 900, array( 200, 210, 230 ) );
+set_theme_mod( 'feelolab_home_hero_image', $hero );
+
+$product = feelo_demo_post( 'feelo_producto', 'Guía de facturación electrónica', '<p>Manual paso a paso para facturar sin errores.</p>', array( 'precio' => '$ 12.000', 'precio_oferta' => '$ 9.900', 'sku' => 'GUIA-01', 'disponible' => 1, 'ficha_tecnica' => "Formato: PDF\nPáginas: 48\nActualizada: 2026", 'consulta_whatsapp' => 1 ) );
+set_post_thumbnail( $product, feelo_demo_image( 'guia-1', 'Tapa de la guía de facturación', 1200, 1200, array( 36, 71, 216 ) ) );
+update_post_meta( $product, '_feelo_gallery', $gallery );
 feelo_demo_post( 'feelo_sede', 'Sede Centro', '<p>A dos cuadras del Obelisco.</p>', array( 'direccion' => 'Av. Corrientes 1234', 'ciudad' => 'Buenos Aires', 'telefono' => '+54 11 4000-0000', 'horarios' => 'Lu-Vi 09:00-18:00' ) );
 feelo_demo_post( 'feelo_miembro', 'Carolina Díaz', '<p>Contadora pública (UBA) con 15 años de experiencia en pymes.</p>', array( 'cargo' => 'Socia fundadora' ) );
 feelo_demo_post( 'post', 'Cinco vencimientos que no te podés olvidar', '<p>Un repaso por las fechas clave del año fiscal.</p><h2>1. Ganancias</h2><p>Texto de ejemplo.</p>' );
@@ -101,6 +124,7 @@ if ( ! is_wp_error( $menu_id ) ) {
 }
 
 set_theme_mod( 'feelolab_header_cta_text', 'Pedí tu presupuesto' );
+set_theme_mod( 'feelolab_font_pair', 'fraunces' ); // La combinación más pesada (2 archivos): el peor caso para medir.
 set_theme_mod( 'feelolab_home_nosotros_text', "Somos un estudio de contadores que habla claro.\n\nAcompañamos a más de 200 pymes con atención personalizada." );
 set_theme_mod( 'feelolab_home_cifras_show', true );
 set_theme_mod( 'feelolab_home_cifras_value_2', '+200' );

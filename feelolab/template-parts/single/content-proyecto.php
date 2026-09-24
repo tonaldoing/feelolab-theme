@@ -24,7 +24,10 @@ get_template_part( 'template-parts/page-header', null, array( 'title' => esc_htm
 			<figure class="entry__hero"><?php the_post_thumbnail( 'feelolab-hero', array( 'loading' => 'eager', 'fetchpriority' => 'high' ) ); ?></figure>
 		<?php endif; ?>
 		<div class="split split--aside">
-			<div class="entry-content prose"><?php the_content(); ?></div>
+			<div>
+				<div class="entry-content prose"><?php the_content(); ?></div>
+				<?php get_template_part( 'template-parts/gallery-grid' ); ?>
+			</div>
 			<?php if ( $feelolab_facts || $feelolab_url ) : ?>
 				<aside class="sticky-box" aria-label="<?php esc_attr_e( 'Datos del proyecto', 'feelolab' ); ?>">
 					<dl class="facts">

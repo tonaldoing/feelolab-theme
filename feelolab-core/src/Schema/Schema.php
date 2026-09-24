@@ -207,11 +207,18 @@ final class Schema {
 			'@id'         => $url . '#main',
 			'name'        => wp_strip_all_tags( get_the_title( $post_id ) ),
 			'url'         => $url,
-			'description' => wp_strip_all_tags( get_the_excerpt( $post_id ) ),
+			'description' => feelo_plain_summary( get_post( $post_id ) ),
 		);
-		$image     = get_the_post_thumbnail_url( $post_id, 'large' );
-		if ( $image ) {
-			$base['image'] = $image;
+		// Destacada + galería: Google recomienda varias imágenes para productos.
+		$images = array_filter(
+			array_merge(
+				array( get_the_post_thumbnail_url( $post_id, 'large' ) ),
+				array_map( static fn( $id ) => wp_get_attachment_image_url( $id, 'large' ), feelo_gallery_ids( $post_id ) )
+			)
+		);
+		$images = array_values( array_unique( $images ) );
+		if ( $images ) {
+			$base['image'] = 1 === count( $images ) ? $images[0] : $images;
 		}
 		$base = self::filled( $base );
 
@@ -380,7 +387,7 @@ final class Schema {
 			$url         = home_url( '/' );
 		} elseif ( is_singular() ) {
 			$post_id     = get_queried_object_id();
-			$description = has_excerpt( $post_id ) ? get_the_excerpt( $post_id ) : wp_trim_words( wp_strip_all_tags( strip_shortcodes( get_post_field( 'post_content', $post_id ) ) ), 28, '…' );
+			$description = feelo_plain_summary( get_post( $post_id ) );
 			$image       = (string) get_the_post_thumbnail_url( $post_id, 'large' );
 			$type        = 'post' === get_post_type( $post_id ) ? 'article' : 'website';
 			$url         = (string) get_permalink( $post_id );

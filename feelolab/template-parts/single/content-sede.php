@@ -17,6 +17,7 @@ get_template_part( 'template-parts/page-header', null, array( 'title' => esc_htm
 					<figure class="entry__hero"><?php the_post_thumbnail( 'large', array( 'loading' => 'eager', 'fetchpriority' => 'high' ) ); ?></figure>
 				<?php endif; ?>
 				<div class="entry-content prose"><?php the_content(); ?></div>
+				<?php get_template_part( 'template-parts/gallery-grid' ); ?>
 			</div>
 			<div class="sticky-box">
 				<?php get_template_part( 'template-parts/cards/card', 'sede', array( 'heading' => 'h2' ) ); ?>

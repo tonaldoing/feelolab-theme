@@ -188,6 +188,11 @@ final class SiteSettings {
 						'label' => __( 'Google Tag Manager (GTM-XXXXXX)', 'feelolab-core' ),
 						'type'  => 'text',
 					),
+					'llms_txt_off'     => array(
+						'label' => __( 'Desactivar /llms.txt', 'feelolab-core' ),
+						'type'  => 'checkbox',
+						'help'  => __( 'El sitio publica en /llms.txt un resumen en texto del negocio y su contenido para asistentes con IA (ChatGPT, Perplexity, Gemini). Se arma solo con lo cargado.', 'feelolab-core' ),
+					),
 					'gsc_verificacion' => array(
 						'label' => __( 'Verificación de Search Console (content del meta)', 'feelolab-core' ),
 						'type'  => 'text',
@@ -296,6 +301,14 @@ final class SiteSettings {
 		<div class="wrap">
 			<h1><?php esc_html_e( 'Ajustes del sitio', 'feelolab-core' ); ?></h1>
 			<p><?php esc_html_e( 'Datos del negocio: se cargan una vez y aparecen en el header, el footer, la página de contacto y el schema para Google. Colores, logo y tipografía se editan en Apariencia → Personalizar.', 'feelolab-core' ); ?></p>
+
+			<p>
+				<strong><?php esc_html_e( 'Actualizaciones:', 'feelolab-core' ); ?></strong>
+				<?php
+				/* translators: %s: versión instalada */
+				echo esc_html( sprintf( __( 'versión %s.', 'feelolab-core' ), FEELO_CORE_VERSION ) . ' ' . \Feelo\Core\Updater::status() );
+				?>
+			</p>
 
 			<nav class="nav-tab-wrapper" aria-label="<?php esc_attr_e( 'Secciones de ajustes', 'feelolab-core' ); ?>">
 				<?php foreach ( $tabs as $key => $tab ) : ?>

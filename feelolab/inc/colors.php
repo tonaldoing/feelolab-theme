@@ -98,7 +98,12 @@ function feelolab_ensure_contrast( string $color, string $bg, float $ratio = 4.5
 	return feelolab_on_color( $bg );
 }
 
-/** @return array<string, array{label: string, body: string, heading: string}> */
+/**
+ * Combinaciones tipográficas. Las que tienen 'webfonts' cargan archivos de assets/fonts (ver inc/fonts.php);
+ * el resto usa fuentes del sistema y no descarga nada.
+ *
+ * @return array<string, array{label: string, body: string, heading: string, webfonts?: string[]}>
+ */
 function feelolab_font_stacks(): array {
 	// Stacks del sistema (modernfontstacks.com): cero requests, cero CLS por cambio de fuente.
 	$system    = 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
@@ -110,36 +115,60 @@ function feelolab_font_stacks(): array {
 	return apply_filters(
 		'feelolab_font_stacks',
 		array(
-			'sistema'    => array(
+			'sistema'       => array(
 				'label'   => __( 'Sistema (neutra, la más rápida)', 'feelolab' ),
 				'body'    => $system,
 				'heading' => $system,
 			),
-			'humanista'  => array(
+			'humanista'     => array(
 				'label'   => __( 'Humanista (cercana)', 'feelolab' ),
 				'body'    => $humanist,
 				'heading' => $humanist,
 			),
-			'geometrica' => array(
+			'geometrica'    => array(
 				'label'   => __( 'Geométrica (moderna)', 'feelolab' ),
 				'body'    => $system,
 				'heading' => $geometric,
 			),
-			'editorial'  => array(
+			'editorial'     => array(
 				'label'   => __( 'Editorial (títulos serif, texto sans)', 'feelolab' ),
 				'body'    => $system,
 				'heading' => $old_style,
 			),
-			'clasica'    => array(
+			'clasica'       => array(
 				'label'   => __( 'Clásica (todo serif)', 'feelolab' ),
 				'body'    => $serif,
 				'heading' => $old_style,
+			),
+			'inter'         => array(
+				'label'    => __( 'Web: Inter (moderna, muy legible) · 48 KB', 'feelolab' ),
+				'body'     => feelolab_web_font_stack( 'inter' ),
+				'heading'  => feelolab_web_font_stack( 'inter' ),
+				'webfonts' => array( 'inter' ),
+			),
+			'figtree'       => array(
+				'label'    => __( 'Web: Figtree (amable, geométrica) · 20 KB', 'feelolab' ),
+				'body'     => feelolab_web_font_stack( 'figtree' ),
+				'heading'  => feelolab_web_font_stack( 'figtree' ),
+				'webfonts' => array( 'figtree' ),
+			),
+			'fraunces'      => array(
+				'label'    => __( 'Web: Fraunces + Inter (títulos con carácter) · 85 KB', 'feelolab' ),
+				'body'     => feelolab_web_font_stack( 'inter' ),
+				'heading'  => feelolab_web_font_stack( 'fraunces' ),
+				'webfonts' => array( 'fraunces', 'inter' ),
+			),
+			'editorial-web' => array(
+				'label'    => __( 'Web: Source Serif + Figtree (editorial) · 71 KB', 'feelolab' ),
+				'body'     => feelolab_web_font_stack( 'figtree' ),
+				'heading'  => feelolab_web_font_stack( 'source-serif-4' ),
+				'webfonts' => array( 'source-serif-4', 'figtree' ),
 			),
 		)
 	);
 }
 
-/** Variables CSS de marca. Van inline en el <head>: son ~600 bytes y evitan un parpadeo de color. */
+/** Variables CSS de marca (y @font-face si hay web fonts). Inline en el <head>: ~600 bytes, evitan un parpadeo de color. */
 function feelolab_brand_css(): string {
 	$primary   = feelolab_color( 'primary' );
 	$secondary = feelolab_color( 'secondary' );
@@ -177,7 +206,7 @@ function feelolab_brand_css(): string {
 		'--fs-base'               => ( absint( get_theme_mod( 'feelolab_font_size', 17 ) ) / 16 ) . 'rem',
 	);
 
-	$css = ':root{';
+	$css = feelolab_font_face_css() . ':root{';
 	foreach ( $vars as $name => $value ) {
 		$css .= $name . ':' . $value . ';';
 	}

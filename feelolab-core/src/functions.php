@@ -150,6 +150,19 @@ function feelo_opening_hours( ?string $raw = null ): array {
 	return $out;
 }
 
+/**
+ * Resumen en texto plano de un contenido: el extracto si lo cargaron, si no las primeras palabras.
+ * A diferencia de get_the_excerpt(), deja un espacio entre bloques ("fiscal. Ganancias" y no
+ * "fiscal.Ganancias"): lo usan la meta description y /llms.txt.
+ */
+function feelo_plain_summary( \WP_Post $post, int $words = 28 ): string {
+	if ( has_excerpt( $post ) ) {
+		return trim( wp_strip_all_tags( $post->post_excerpt ) );
+	}
+	$html = preg_replace( '/<\/(p|h[1-6]|li|div|blockquote|figcaption)>|<br\s*\/?>/i', ' ', strip_shortcodes( $post->post_content ) );
+	return wp_trim_words( wp_strip_all_tags( excerpt_remove_blocks( $html ) ), $words, '…' );
+}
+
 /** ¿Hay un plugin de SEO que ya se ocupa de meta y schema? Entonces no duplicamos. */
 function feelo_seo_plugin_active(): bool {
 	$active = defined( 'WPSEO_VERSION' )           // Yoast.
@@ -158,6 +171,16 @@ function feelo_seo_plugin_active(): bool {
 		|| defined( 'SEOPRESS_VERSION' )           // SEOPress.
 		|| class_exists( 'The_SEO_Framework\\Load' );
 	return (bool) apply_filters( 'feelo_seo_plugin_active', $active );
+}
+
+/**
+ * IDs de la galería de un contenido (sin la imagen destacada).
+ *
+ * @return int[]
+ */
+function feelo_gallery_ids( ?int $post_id = null ): array {
+	$post_id = $post_id ?? get_the_ID();
+	return $post_id ? Feelo\Core\Gallery::ids( (int) $post_id ) : array();
 }
 
 /**

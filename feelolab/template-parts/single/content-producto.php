@@ -29,11 +29,7 @@ $feelolab_wa_url = ( '' === $feelolab_wa || $feelolab_wa ) && function_exists( '
 		<?php feelolab_breadcrumbs(); ?>
 		<div class="product">
 			<div class="product__media">
-				<?php
-				if ( has_post_thumbnail() ) {
-					the_post_thumbnail( 'large', array( 'loading' => 'eager', 'fetchpriority' => 'high' ) );
-				}
-				?>
+				<?php get_template_part( 'template-parts/gallery' ); ?>
 			</div>
 			<div class="product__summary">
 				<h1 class="product__title"><?php the_title(); ?></h1>

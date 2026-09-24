@@ -29,6 +29,9 @@ final class Plugin {
 		ContactForm::init();
 		Schema::init();
 		Frontend::init();
+		Gallery::init();
+		LlmsTxt::init();
+		Updater::init();
 
 		if ( is_admin() ) {
 			Admin::init();
