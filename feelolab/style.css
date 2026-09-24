@@ -1,0 +1,15 @@
+/*
+Theme Name:        Feelolab
+Author:            Feelo
+Description:       Tema base para sitios de clientes de Feelo. Clásico, liviano y accesible: sin jQuery ni frameworks, fuentes del sistema, home por secciones desde el Personalizador. Se complementa con el plugin Feelolab Core (servicios, productos, equipo, sedes, testimonios, FAQ, ajustes del negocio y schema).
+Version:           0.1.0
+Requires at least: 6.8
+Tested up to:      7.0
+Requires PHP:      8.1
+License:           GNU General Public License v2 or later
+License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:       feelolab
+Tags:              custom-logo, custom-menu, featured-images, accessibility-ready, translation-ready, editor-style
+*/
+
+/* Los estilos viven en assets/css/main.css. Este archivo solo declara el tema. */

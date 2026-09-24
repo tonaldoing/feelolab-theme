@@ -1,0 +1,14 @@
+{
+  "name": "feelolab",
+  "private": true,
+  "description": "Starter WordPress de Feelo. Scripts de desarrollo: WordPress local sin Docker (Playground) y chequeos de accesibilidad.",
+  "scripts": {
+    "dev": "wp-playground-cli server --blueprint=./blueprint.json --mount=./feelolab:/wordpress/wp-content/themes/feelolab --mount=./feelolab-core:/wordpress/wp-content/plugins/feelolab-core --mount=./dev:/wordpress/dev --port=9400",
+    "lint:php": "composer lint",
+    "a11y": "pa11y-ci --config .pa11yci.json"
+  },
+  "devDependencies": {
+    "@wp-playground/cli": "^3.0.0",
+    "pa11y-ci": "^3.1.0"
+  }
+}

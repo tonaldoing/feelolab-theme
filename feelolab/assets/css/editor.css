@@ -1,0 +1,28 @@
+/*
+ * Estilos del editor de bloques: tipografía, medida y botones iguales al sitio.
+ * Las variables de marca las inyecta inc/assets.php.
+ */
+.editor-styles-wrapper {
+	background: var(--c-bg);
+	color: var(--c-text);
+	font-family: var(--f-body);
+	font-size: var(--fs-base);
+	line-height: 1.6;
+}
+.editor-styles-wrapper h1,
+.editor-styles-wrapper h2,
+.editor-styles-wrapper h3,
+.editor-styles-wrapper h4 { font-family: var(--f-heading); line-height: 1.15; font-weight: 700; }
+.editor-styles-wrapper h1 { font-size: clamp(2rem, 1.4rem + 3vw, 3.25rem); }
+.editor-styles-wrapper h2 { font-size: clamp(1.6rem, 1.25rem + 1.6vw, 2.25rem); }
+.editor-styles-wrapper a { color: var(--c-primary-text); }
+.editor-styles-wrapper .wp-block-post-content,
+.editor-styles-wrapper .is-root-container { max-width: 68ch; margin-inline: auto; }
+.editor-styles-wrapper .wp-block-button__link {
+	background: var(--c-primary);
+	color: var(--c-on-primary);
+	border-radius: var(--radius);
+	font-weight: 700;
+	padding: .7rem 1.35rem;
+}
+.editor-styles-wrapper blockquote { border-left: 3px solid var(--c-primary); padding-left: 1.25rem; }

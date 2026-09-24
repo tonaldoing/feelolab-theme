@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  php:
+    name: PHP ${{ matrix.php }} · lint + WPCS
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['8.1', '8.3', '8.4']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: composer
+          coverage: none
+      - name: Sintaxis
+        run: find feelolab feelolab-core -name '*.php' -print0 | xargs -0 -n1 php -l
+      - name: Dependencias
+        run: composer install --no-interaction --no-progress
+      - name: WordPress Coding Standards
+        if: matrix.php == '8.3'
+        run: vendor/bin/phpcs
+
+  a11y:
+    name: Accesibilidad (pa11y + axe) en WordPress real
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci || npm install
+      - name: Levantar WordPress con Playground
+        run: |
+          npm run dev > playground.log 2>&1 &
+          for i in $(seq 1 120); do grep -q "Ready!" playground.log && break; sleep 3; done
+          cat playground.log
+      - name: pa11y-ci (WCAG 2 AA, runner axe)
+        run: npm run a11y

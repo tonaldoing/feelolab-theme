@@ -1,0 +1,28 @@
+{
+  "defaults": {
+    "standard": "WCAG2AA",
+    "runners": [
+      "axe"
+    ],
+    "timeout": 60000,
+    "headers": {
+      "Cookie": "playground_auto_login_already_happened=1"
+    },
+    "chromeLaunchConfig": {
+      "args": [
+        "--no-sandbox"
+      ]
+    }
+  },
+  "urls": [
+    "http://127.0.0.1:9400/",
+    "http://127.0.0.1:9400/servicios/",
+    "http://127.0.0.1:9400/servicios/liquidacion-de-impuestos/",
+    "http://127.0.0.1:9400/productos/guia-de-facturacion-electronica/",
+    "http://127.0.0.1:9400/contacto/",
+    "http://127.0.0.1:9400/sedes/sede-centro/",
+    "http://127.0.0.1:9400/equipo/carolina-diaz/",
+    "http://127.0.0.1:9400/cinco-vencimientos-que-no-te-podes-olvidar/",
+    "http://127.0.0.1:9400/no-existe/"
+  ]
+}
