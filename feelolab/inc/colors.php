@@ -2,36 +2,49 @@
 /**
  * Colores y tipografía de marca → variables CSS, con contraste AA garantizado.
  *
- * El cliente elige un color primario cualquiera. El tema calcula:
- * - --c-on-primary: blanco o casi negro, el que más contraste dé sobre el primario (botones).
- * - --c-primary-text: el primario oscurecido/aclarado hasta 4.5:1 sobre el fondo (links, volantas).
- * Así un amarillo de marca no deja texto ilegible. Es accesibilidad que no depende de que alguien se acuerde.
+ * Tres roles separados, porque un mismo color no sirve siempre para todo (un botón blanco con
+ * texto oscuro es válido, pero links blancos sobre fondo blanco no se leen):
+ * - Botones: fondo (el "primario", también color de marca) y texto. Texto vacío = automático
+ *   (blanco o casi negro, el que más contraste dé). Si el elegido no llega a 4.5:1, se usa el automático.
+ * - Links y acentos: vacío = el primario. Siempre se ajusta hasta 4.5:1 sobre el fondo.
+ * - Si el botón casi no se distingue del fondo (menos de 3:1), lleva un borde visible.
+ * Accesibilidad que no depende de que alguien se acuerde.
  *
  * @package Feelolab
  */
 
 defined( 'ABSPATH' ) || exit;
 
-/** @return array<string, array{label: string, default: string}> */
+/** @return array<string, array{label: string, default: string, description?: string}> */
 function feelolab_color_settings(): array {
 	return array(
-		'primary'   => array(
-			'label'   => __( 'Primario (botones, links, acentos)', 'feelolab' ),
+		'primary'     => array(
+			'label'   => __( 'Botones: fondo (color de marca)', 'feelolab' ),
 			'default' => '#2447d8',
 		),
-		'secondary' => array(
+		'button_text' => array(
+			'label'       => __( 'Botones: texto', 'feelolab' ),
+			'default'     => '',
+			'description' => __( 'Vacío = automático: blanco o negro, el que mejor se lea sobre el botón.', 'feelolab' ),
+		),
+		'link'        => array(
+			'label'       => __( 'Links y acentos', 'feelolab' ),
+			'default'     => '',
+			'description' => __( 'Links, volantas e íconos. Vacío = el color de los botones.', 'feelolab' ),
+		),
+		'secondary'   => array(
 			'label'   => __( 'Secundario (bloques oscuros, footer)', 'feelolab' ),
 			'default' => '#0f172a',
 		),
-		'bg'        => array(
+		'bg'          => array(
 			'label'   => __( 'Fondo', 'feelolab' ),
 			'default' => '#ffffff',
 		),
-		'surface'   => array(
+		'surface'     => array(
 			'label'   => __( 'Superficie (secciones alternas, tarjetas)', 'feelolab' ),
 			'default' => '#f4f4f5',
 		),
-		'text'      => array(
+		'text'        => array(
 			'label'   => __( 'Texto', 'feelolab' ),
 			'default' => '#1f2937',
 		),
@@ -42,6 +55,28 @@ function feelolab_color( string $key ): string {
 	$settings = feelolab_color_settings();
 	$value    = sanitize_hex_color( (string) get_theme_mod( 'feelolab_color_' . $key, $settings[ $key ]['default'] ) );
 	return $value ? $value : $settings[ $key ]['default'];
+}
+
+/**
+ * Color base de links y acentos: el elegido; si no hay, el del botón. Si el del botón es tan claro
+ * (o tan parecido al fondo) que ni oscurecido quedaría bien —menos de 3:1—, el secundario y, si ese
+ * tampoco se lee, el color del texto. Después siempre se ajusta a 4.5:1 sobre el fondo.
+ */
+function feelolab_link_base_color( string $primary, string $secondary, string $bg, string $text ): string {
+	$chosen = feelolab_color( 'link' );
+	if ( $chosen ) {
+		return $chosen;
+	}
+	if ( feelolab_contrast( $primary, $bg ) >= 3 ) {
+		return $primary;
+	}
+	return feelolab_contrast( $secondary, $bg ) >= 4.5 ? $secondary : $text;
+}
+
+/** Texto del botón: el elegido si se lee (4.5:1) sobre el fondo del botón; si no, el automático. */
+function feelolab_button_text_color( string $primary ): string {
+	$chosen = feelolab_color( 'button_text' );
+	return ( $chosen && feelolab_contrast( $chosen, $primary ) >= 4.5 ) ? $chosen : feelolab_on_color( $primary );
 }
 
 /** @return array{0: int, 1: int, 2: int} */
@@ -176,7 +211,17 @@ function feelolab_brand_css(): string {
 	$surface   = feelolab_color( 'surface' );
 	$text      = feelolab_ensure_contrast( feelolab_color( 'text' ), $bg, 7 );
 
-	$on_white = ( '#ffffff' === feelolab_on_color( $primary ) );
+	$on_primary = feelolab_button_text_color( $primary );
+	$link       = feelolab_link_base_color( $primary, $secondary, $bg, $text );
+
+	// Hover: se aleja del texto del botón (más contraste, nunca menos). Un botón muy claro se oscurece apenas.
+	$hover = feelolab_luminance( $on_primary ) > 0.4
+		? feelolab_shade( $primary, 0.18 )
+		: feelolab_shade( $primary, feelolab_luminance( $primary ) > 0.85 ? 0.08 : -0.18 );
+	$hover = feelolab_ensure_contrast( $hover, $on_primary );
+
+	// Botón que casi no se distingue del fondo (un botón blanco sobre blanco): borde a 3:1.
+	$btn_border = feelolab_contrast( $primary, $bg ) < 3 ? feelolab_ensure_contrast( $primary, $bg, 3 ) : 'transparent';
 
 	$fonts = feelolab_font_stacks();
 	$pair  = (string) get_theme_mod( 'feelolab_font_pair', 'sistema' );
@@ -184,14 +229,14 @@ function feelolab_brand_css(): string {
 
 	$vars = array(
 		'--c-primary'             => $primary,
-		// El hover se aleja del color del texto del botón: con texto blanco oscurece (más contraste, nunca menos).
-		'--c-primary-hover'       => feelolab_shade( $primary, $on_white ? 0.18 : -0.18 ),
-		'--c-on-primary'          => feelolab_on_color( $primary ),
-		'--c-primary-text'        => feelolab_ensure_contrast( $primary, $bg ),
-		'--c-primary-on-surface'  => feelolab_ensure_contrast( $primary, $surface ),
+		'--c-primary-hover'       => $hover,
+		'--c-on-primary'          => $on_primary,
+		'--c-btn-border'          => $btn_border,
+		'--c-primary-text'        => feelolab_ensure_contrast( $link, $bg ),
+		'--c-primary-on-surface'  => feelolab_ensure_contrast( $link, $surface ),
 		'--c-secondary'           => $secondary,
 		'--c-on-secondary'        => feelolab_on_color( $secondary ),
-		'--c-accent-on-secondary' => feelolab_ensure_contrast( $primary, $secondary ),
+		'--c-accent-on-secondary' => feelolab_ensure_contrast( $link, $secondary ),
 		'--c-bg'                  => $bg,
 		'--c-surface'             => $surface,
 		'--c-text'                => $text,
@@ -222,7 +267,7 @@ add_filter(
 	static function ( $theme_json ) {
 		$palette = array();
 		$names   = array(
-			'primary'   => __( 'Primario', 'feelolab' ),
+			'primary'   => __( 'Botones', 'feelolab' ),
 			'secondary' => __( 'Secundario', 'feelolab' ),
 			'surface'   => __( 'Superficie', 'feelolab' ),
 			'text'      => __( 'Texto', 'feelolab' ),

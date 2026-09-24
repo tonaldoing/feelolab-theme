@@ -138,7 +138,7 @@ hr { border: 0; border-top: 1px solid var(--c-border); margin: 2rem 0; }
 }
 .btn--primary,
 .wp-element-button,
-.wp-block-button__link { background: var(--c-primary); color: var(--c-on-primary); }
+.wp-block-button__link { background: var(--c-primary); color: var(--c-on-primary); border-color: var(--c-btn-border); }
 .btn--primary:hover,
 .wp-block-button__link:hover { background: var(--c-primary-hover); color: var(--c-on-primary); }
 .btn--secondary { background: transparent; color: var(--c-text); border-color: currentColor; }
@@ -268,8 +268,8 @@ hr { border: 0; border-top: 1px solid var(--c-border); margin: 2rem 0; }
 	overflow: hidden;
 	transition: border-color .15s, transform .15s;
 }
-.card:hover { border-color: var(--c-primary); }
-.card:focus-within { border-color: var(--c-primary); }
+.card:hover { border-color: var(--c-primary-text); }
+.card:focus-within { border-color: var(--c-primary-text); }
 .card__media img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
 .card__media--square img { aspect-ratio: 1; }
 .card__media { position: relative; background: var(--c-surface); }
@@ -299,7 +299,7 @@ hr { border: 0; border-top: 1px solid var(--c-border); margin: 2rem 0; }
 	background: var(--c-secondary); color: var(--c-on-secondary);
 	font-size: .8rem; font-weight: 700;
 }
-.badge--primary { background: var(--c-primary); color: var(--c-on-primary); }
+.badge--primary { background: var(--c-primary); color: var(--c-on-primary); box-shadow: 0 0 0 1px var(--c-btn-border); }
 
 .price { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem; font-weight: 700; font-size: 1.15rem; }
 .price del { color: var(--c-muted); font-weight: 400; font-size: .95em; }
@@ -322,7 +322,7 @@ hr { border: 0; border-top: 1px solid var(--c-border); margin: 2rem 0; }
 .prose h2 { margin-top: 2em; }
 .prose h3 { margin-top: 1.6em; }
 .prose img { border-radius: var(--radius); }
-.prose blockquote { border-left: 3px solid var(--c-primary); padding-left: 1.25rem; font-size: 1.15rem; }
+.prose blockquote { border-left: 3px solid var(--c-primary-text); padding-left: 1.25rem; font-size: 1.15rem; }
 .prose ul, .prose ol { padding-left: 1.25rem; }
 .prose li + li { margin-top: .35em; }
 .prose table { width: 100%; border-collapse: collapse; }
@@ -423,7 +423,7 @@ hr { border: 0; border-top: 1px solid var(--c-border); margin: 2rem 0; }
 @media (min-width: 768px) { .stats { grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); } }
 .stats__item { display: flex; flex-direction: column-reverse; }
 .stats__value { margin: 0; font-family: var(--f-heading); font-size: clamp(2.25rem, 1.8rem + 2vw, 3.5rem); font-weight: 800; line-height: 1; color: var(--c-accent-on-secondary); }
-.stats__label { margin-top: .5rem; opacity: .9; }
+.stats__label { margin-top: .5rem; }
 
 /* ---------- Logos ---------- */
 .logos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; align-items: center; }
@@ -450,7 +450,7 @@ hr { border: 0; border-top: 1px solid var(--c-border); margin: 2rem 0; }
 .cta-band { background: var(--c-secondary); color: var(--c-on-secondary); padding-block: clamp(2.5rem, 2rem + 3vw, 4rem); }
 .cta-band__inner { display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; align-items: center; justify-content: space-between; }
 .cta-band__title { margin: 0; }
-.cta-band__text { margin: .5rem 0 0; opacity: .9; max-width: 40rem; }
+.cta-band__text { margin: .5rem 0 0; max-width: 40rem; }
 
 /* ---------- Contacto ---------- */
 .contact-list { list-style: none; margin: 1.5rem 0; padding: 0; display: grid; gap: .85rem; }
@@ -467,7 +467,7 @@ hr { border: 0; border-top: 1px solid var(--c-border); margin: 2rem 0; }
 	border: 1px solid currentColor; border-radius: 50%;
 	color: inherit; opacity: .85;
 }
-.socials a:hover { opacity: 1; background: var(--c-primary); border-color: var(--c-primary); color: var(--c-on-primary); }
+.socials a:hover { opacity: 1; background: var(--c-primary); border-color: var(--c-primary); color: var(--c-on-primary); outline: 1px solid var(--c-btn-border); }
 .socials .icon { width: 1.2rem; height: 1.2rem; }
 
 /* ---------- Formularios (incluye el de Feelolab Core) ---------- */
@@ -486,7 +486,7 @@ label { display: block; font-weight: 600; margin-bottom: .35rem; }
 
 .feelo-form { display: grid; gap: 1.1rem; }
 .feelo-form__field--check { display: flex; gap: .6rem; align-items: flex-start; }
-.feelo-form__field--check input { width: 1.25rem; height: 1.25rem; margin-top: .2rem; flex-shrink: 0; accent-color: var(--c-primary); }
+.feelo-form__field--check input { width: 1.25rem; height: 1.25rem; margin-top: .2rem; flex-shrink: 0; accent-color: var(--c-primary-text); }
 .feelo-form__field--check label { font-weight: 400; margin: 0; }
 .feelo-form__optional { font-weight: 400; color: var(--c-muted); font-size: .9em; }
 .feelo-form__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
@@ -534,7 +534,7 @@ label { display: block; font-weight: 600; margin-bottom: .35rem; }
 }
 .site-footer__bottom p { margin: 0; }
 .legal-menu { display: flex; flex-wrap: wrap; gap: 1rem; }
-.site-footer__credit { opacity: .85; }
+.site-footer__credit { margin: 0; }
 
 /* ---------- WhatsApp flotante (lo imprime Feelolab Core) ---------- */
 .feelo-wa {

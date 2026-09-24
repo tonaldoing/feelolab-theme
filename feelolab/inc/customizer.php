@@ -26,7 +26,7 @@ add_action(
 			array(
 				'title'       => __( 'Colores', 'feelolab' ),
 				'panel'       => 'feelolab_brand',
-				'description' => __( 'El tema ajusta solo el color de texto sobre botones y el tono de los links para que siempre se lean bien (contraste WCAG AA). Si ves un aviso, el color se va a corregir automáticamente en el sitio.', 'feelolab' ),
+				'description' => __( 'Botones, texto de los botones y links se eligen por separado. Si una combinación no se lee bien (contraste WCAG AA), el tema la corrige sola y te avisa acá abajo.', 'feelolab' ),
 			)
 		);
 		foreach ( feelolab_color_settings() as $key => $color ) {
@@ -43,8 +43,9 @@ add_action(
 					$wp_customize,
 					'feelolab_color_' . $key,
 					array(
-						'label'   => $color['label'],
-						'section' => 'feelolab_colors',
+						'label'       => $color['label'],
+						'description' => $color['description'] ?? '',
+						'section'     => 'feelolab_colors',
 					)
 				)
 			);
@@ -185,9 +186,17 @@ add_action(
 			'feelolabContrast',
 			array(
 				/* translators: %s: relación de contraste, por ejemplo 3.2 */
-				'lowPrimary' => __( 'Poco contraste con el fondo (%s:1, mínimo 4.5:1). En links y textos el tema va a usar una versión más oscura de este color.', 'feelolab' ),
+				'btnBorder'    => __( 'El botón casi no se distingue del fondo de la página (%s:1). Se le agrega un borde para que se vea como botón.', 'feelolab' ),
 				/* translators: %s: relación de contraste, por ejemplo 3.2 */
-				'lowText'    => __( 'El texto tiene poco contraste con el fondo (%s:1). El tema lo va a oscurecer para que se lea.', 'feelolab' ),
+				'lowBtnText'   => __( 'Este texto no se lee bien sobre el fondo del botón (%s:1, mínimo 4.5:1). El sitio va a usar blanco o negro, el que mejor se lea.', 'feelolab' ),
+				/* translators: %s: relación de contraste, por ejemplo 3.2 */
+				'lowLink'      => __( 'Los links tendrían poco contraste con el fondo (%s:1, mínimo 4.5:1). El sitio va a usar una versión más oscura de este color.', 'feelolab' ),
+				/* translators: %s: relación de contraste, por ejemplo 3.2 */
+				'lowLinkAuto'  => __( 'Los links usan este color y sobre el fondo no se leerían (%s:1). El sitio va a usar una versión más oscura; si preferís otro, elegilo en "Links y acentos".', 'feelolab' ),
+				/* translators: %s: relación de contraste, por ejemplo 1.0 */
+				'linkFallback' => __( 'Este color es muy claro para usarlo en links (%s:1 sobre el fondo), así que los links van a usar el color Secundario (o el de Texto). Si preferís otro, elegilo en "Links y acentos".', 'feelolab' ),
+				/* translators: %s: relación de contraste, por ejemplo 3.2 */
+				'lowText'      => __( 'El texto tiene poco contraste con el fondo (%s:1). El tema lo va a oscurecer para que se lea.', 'feelolab' ),
 			)
 		);
 	}

@@ -2,6 +2,15 @@
 
 Cada versión publicada acá llega a los sitios como actualización (Escritorio → Actualizaciones).
 
+## 0.2.6 — 2026-09-24
+
+- Colores separados en tres: fondo de los botones, texto de los botones y links. El texto del botón se puede elegir; vacío es automático (blanco o negro, el que mejor se lea).
+- Si el texto elegido no se lee sobre el botón, el sitio usa el automático y el panel avisa.
+- Un botón muy claro (por ejemplo, blanco sobre fondo blanco) lleva un borde para que se vea como botón.
+- Si el color de los botones es muy claro para links, los links usan el color Secundario o el del texto, en lugar de un gris.
+- Avisos más claros en Personalizar, cada uno en el color que lo causa.
+- El crédito del pie, las cifras y la franja de llamada a la acción ya no usan transparencia en el texto: sobre algunos colores de fondo no se leían bien.
+
 ## 0.2.5 — 2026-09-24
 
 - La página principal del tema y del plugin ahora es feelolab.com.
