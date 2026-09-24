@@ -7,13 +7,14 @@
  * "Actualizar", changelog y la opción de actualizaciones automáticas.
  *
  * Cómo funciona:
- * - Cada versión es un Release de GitHub con tag vX.Y.Z y dos adjuntos: feelolab.zip y
- *   feelolab-core.zip (los arma .github/workflows/release.yml al pushear el tag).
+ * - El código fuente vive en un repo privado; los zips se publican en un repo PÚBLICO que solo
+ *   tiene releases (tonaldoing/feelolab-releases). Así los sitios se actualizan sin credenciales:
+ *   no hay nada que configurar por cliente. Lo arma .github/workflows/release.yml al subir la versión.
+ * - Cada release tiene tag vX.Y.Z y dos adjuntos: feelolab.zip y feelolab-core.zip.
  * - Se consulta el último release como máximo cada 12 horas (transient); "Buscar de nuevo" en
  *   Actualizaciones fuerza la consulta.
- * - Repo privado: definir en wp-config.php
- *     define( 'FEELO_GITHUB_TOKEN', 'github_pat_…' );
- *   (token fine-grained, solo este repo, permiso Contents: Read-only). Repo público: no hace falta.
+ * - Opcional: FEELO_UPDATE_REPO en wp-config.php cambia el repo; FEELO_GITHUB_TOKEN solo hace
+ *   falta si ese repo fuera privado.
  *
  * El tema se actualiza aunque sea el tema activo. Sus ajustes (theme_mods) se guardan por nombre
  * de carpeta: la carpeta tiene que seguir llamándose "feelolab" siempre.
@@ -44,7 +45,7 @@ final class Updater {
 	}
 
 	public static function repo(): string {
-		$repo = defined( 'FEELO_UPDATE_REPO' ) ? (string) FEELO_UPDATE_REPO : 'tonaldoing/feelolab-theme';
+		$repo = defined( 'FEELO_UPDATE_REPO' ) ? (string) FEELO_UPDATE_REPO : 'tonaldoing/feelolab-releases';
 		return (string) apply_filters( 'feelo_update_repo', $repo );
 	}
 
@@ -113,7 +114,7 @@ final class Updater {
 
 		$code = (int) wp_remote_retrieve_response_code( $response );
 		if ( is_wp_error( $response ) || 200 !== $code ) {
-			$reason = is_wp_error( $response ) ? $response->get_error_message() : 'HTTP ' . $code . ( 404 === $code ? ' (¿repo privado sin FEELO_GITHUB_TOKEN, o sin releases?)' : '' );
+			$reason = is_wp_error( $response ) ? $response->get_error_message() : 'HTTP ' . $code . ( 404 === $code ? ' (¿el repo de releases no existe, es privado o no tiene releases?)' : '' );
 			error_log( 'feelolab-core: no se pudo consultar actualizaciones en GitHub: ' . $reason ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
 			set_site_transient(
 				self::CACHE,

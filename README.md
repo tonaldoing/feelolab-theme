@@ -13,36 +13,28 @@ El contenido vive en el plugin y no en el tema. Si mañana el cliente cambia de 
 
 ## Puesta en marcha de un cliente nuevo
 
-1. Bajar `feelolab.zip` y `feelolab-core.zip` del [último release](https://github.com/tonaldoing/feelolab-theme/releases/latest) y subirlos desde *Temas → Añadir nuevo → Subir* y *Plugins → Añadir nuevo → Subir*. Instalar también ACF free.
-2. Agregar el token de actualizaciones en `wp-config.php` (ver abajo).
-3. Activar el plugin y el tema.
-4. **Ajustes del sitio → Módulos**: prender solo lo que el cliente usa.
-5. **Ajustes del sitio**: completar negocio, contacto, redes, legal y formulario.
-6. **Apariencia → Personalizar → Marca**: logo (en Identidad del sitio), colores, tipografía y esquinas.
-7. **Personalizar → Secciones de la home**: prender, ordenar y completar las secciones.
-8. Crear la página "Contacto" con la plantilla **Contacto**, la de privacidad, y armar los menús (principal, pie y legal).
+1. Bajar `feelolab.zip` y `feelolab-core.zip` del [último release](https://github.com/tonaldoing/feelolab-releases/releases/latest) y subirlos desde *Temas → Añadir nuevo → Subir* y *Plugins → Añadir nuevo → Subir*. Instalar también ACF free.
+2. Activar el plugin y el tema.
+3. **Ajustes del sitio → Módulos**: prender solo lo que el cliente usa.
+4. **Ajustes del sitio**: completar negocio, contacto, redes, legal y formulario.
+5. **Apariencia → Personalizar → Marca**: logo (en Identidad del sitio), colores, tipografía y esquinas.
+6. **Personalizar → Secciones de la home**: prender, ordenar y completar las secciones.
+7. Crear la página "Contacto" con la plantilla **Contacto**, la de privacidad, y armar los menús (principal, pie y legal).
 
 ## Actualizaciones
 
-El tema y el plugin se actualizan desde los **Releases de GitHub**. Aparecen en *Escritorio → Actualizaciones* como cualquier plugin de wordpress.org: botón "Actualizar", changelog ("Ver detalles") y la opción de activar actualizaciones automáticas. El estado se ve arriba en *Ajustes del sitio*.
+El tema y el plugin se actualizan solos, **sin configurar nada en cada cliente**. Aparecen en *Escritorio → Actualizaciones* como cualquier plugin de wordpress.org: botón "Actualizar", changelog ("Ver detalles") y la opción de activar actualizaciones automáticas. El estado se ve arriba en *Ajustes del sitio*.
 
-Como el repo es privado, cada sitio necesita un token de solo lectura en `wp-config.php`, antes de la línea `/* That's all, stop editing! */`:
-
-```php
-define( 'FEELO_GITHUB_TOKEN', 'github_pat_…' );
-```
-
-Para crearlo: GitHub → *Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token*.
-- *Repository access*: **Only select repositories** → `feelolab-theme`.
-- *Permissions → Repository permissions → Contents*: **Read-only**. Nada más.
-- Poné una fecha de vencimiento y agendá renovarlo. Un solo token sirve para todos los clientes; si se filtra, solo da lectura a este repo y se revoca en un clic.
-
-Si algún día el repo pasa a ser público, el token deja de hacer falta.
+Cómo está armado:
+- **Este repo (privado)** tiene el código fuente.
+- **[`tonaldoing/feelolab-releases`](https://github.com/tonaldoing/feelolab-releases) (público)** tiene solo los releases con los zips. Los sitios consultan ahí, sin credenciales.
+- Al subir la versión y pushear a `main`, `.github/workflows/release.yml` publica el release en el repo público. Usa el secret `RELEASES_TOKEN`: un token fine-grained con *Contents: Read and write* solo sobre `feelolab-releases`. Ese token vive en GitHub, nunca en los sitios.
 
 Reglas para que las actualizaciones no rompan nada:
 - **Nunca editar el tema ni el plugin en el sitio del cliente**: la próxima actualización pisa los cambios. Lo propio de un cliente va en un **tema hijo** o en un plugin aparte.
 - La carpeta del tema se llama `feelolab` siempre: los ajustes del Personalizador se guardan con ese nombre.
 - El plugin tiene que estar activo para que el tema reciba actualizaciones (el actualizador vive ahí).
+- Los zips publicados son GPL como el tema: lo que se vende es el servicio (armado, soporte, mantenimiento).
 
 ## Qué trae
 

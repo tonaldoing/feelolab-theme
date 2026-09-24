@@ -1,8 +1,12 @@
 name: Release
 
-# Publica el Release (tag vX.Y.Z + feelolab.zip + feelolab-core.zip) cuando llega a main una versión
-# que todavía no tiene release: subir la versión y pushear alcanza, el tag lo crea esta Action.
-# Los sitios lo ven en Escritorio → Actualizaciones (feelolab-core/src/Updater.php).
+# Publica una versión cuando llega a main una que todavía no tiene release.
+#
+# - El código fuente queda en este repo (privado). Los zips se publican en un repo PÚBLICO
+#   que solo tiene releases: los sitios se actualizan sin token (feelolab-core/src/Updater.php).
+# - Necesita el secret RELEASES_TOKEN: token fine-grained con Contents: Read and write
+#   SOLO sobre el repo de releases.
+# - En este repo deja el tag vX.Y.Z apuntando al commit publicado.
 on:
   push:
     branches: [main]
@@ -12,6 +16,9 @@ on:
       - '.github/workflows/release.yml'
   workflow_dispatch:
 
+env:
+  RELEASES_REPO: tonaldoing/feelolab-releases
+
 permissions:
   contents: write
 
@@ -20,16 +27,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+
+      - name: Hay token para publicar
+        env:
+          RELEASES_TOKEN: ${{ secrets.RELEASES_TOKEN }}
+        run: |
+          [ -n "$RELEASES_TOKEN" ] || { echo "::error::Falta el secret RELEASES_TOKEN (Settings → Secrets and variables → Actions)."; exit 1; }
 
       - name: ¿Versión nueva?
         id: version
+        env:
+          GH_TOKEN: ${{ secrets.RELEASES_TOKEN }}
         run: |
           V=$(grep -m1 '^Version:' feelolab/style.css | awk '{print $2}')
           echo "version=$V" >> "$GITHUB_OUTPUT"
-          if git rev-parse -q --verify "refs/tags/v$V" >/dev/null; then
-            echo "v$V ya está publicada: no hay nada que hacer."
+          if gh release view "v$V" --repo "$RELEASES_REPO" >/dev/null 2>&1; then
+            echo "v$V ya está publicada en $RELEASES_REPO: no hay nada que hacer."
             echo "new=false" >> "$GITHUB_OUTPUT"
           else
             echo "new=true" >> "$GITHUB_OUTPUT"
@@ -38,14 +51,13 @@ jobs:
       - name: Las cuatro versiones coinciden
         if: steps.version.outputs.new == 'true'
         run: |
-          TAG="${{ steps.version.outputs.version }}"
-          THEME=$(grep -m1 '^Version:' feelolab/style.css | awk '{print $2}')
+          V="${{ steps.version.outputs.version }}"
           THEME_CONST=$(grep -oP "FEELOLAB_VERSION', '\K[^']+" feelolab/functions.php)
           PLUGIN=$(grep -m1 'Version:' feelolab-core/feelolab-core.php | awk '{print $3}')
           PLUGIN_CONST=$(grep -oP "FEELO_CORE_VERSION', '\K[^']+" feelolab-core/feelolab-core.php)
-          echo "tag=$TAG tema=$THEME/$THEME_CONST plugin=$PLUGIN/$PLUGIN_CONST"
-          for v in "$THEME" "$THEME_CONST" "$PLUGIN" "$PLUGIN_CONST"; do
-            [ "$v" = "$TAG" ] || { echo "::error::Versiones distintas ($THEME / $THEME_CONST / $PLUGIN / $PLUGIN_CONST). Actualizá style.css, functions.php y feelolab-core.php."; exit 1; }
+          echo "style.css=$V functions.php=$THEME_CONST plugin=$PLUGIN/$PLUGIN_CONST"
+          for v in "$THEME_CONST" "$PLUGIN" "$PLUGIN_CONST"; do
+            [ "$v" = "$V" ] || { echo "::error::Versiones distintas. Actualizá style.css, functions.php y feelolab-core.php."; exit 1; }
           done
 
       - name: Sintaxis PHP
@@ -62,18 +74,29 @@ jobs:
       - name: Notas de la versión (sección del CHANGELOG)
         if: steps.version.outputs.new == 'true'
         run: |
-          TAG="${{ steps.version.outputs.version }}"
-          awk -v v="$TAG" '$0 ~ "^## "v" " || $0 == "## "v {f=1; next} /^## / {f=0} f' CHANGELOG.md > notes.md
-          [ -s notes.md ] || echo "Versión $TAG." > notes.md
+          V="${{ steps.version.outputs.version }}"
+          awk -v v="$V" '$0 ~ "^## "v" " || $0 == "## "v {f=1; next} /^## / {f=0} f' CHANGELOG.md > notes.md
+          [ -s notes.md ] || echo "Versión $V." > notes.md
           cat notes.md
 
-      - uses: softprops/action-gh-release@v2
+      - name: Publicar en el repo de releases
         if: steps.version.outputs.new == 'true'
+        uses: softprops/action-gh-release@v2
         with:
+          repository: ${{ env.RELEASES_REPO }}
+          token: ${{ secrets.RELEASES_TOKEN }}
           tag_name: v${{ steps.version.outputs.version }}
-          target_commitish: ${{ github.sha }}
           name: v${{ steps.version.outputs.version }}
           body_path: notes.md
           files: |
             feelolab.zip
             feelolab-core.zip
+
+      - name: Tag en este repo (qué commit es cada versión)
+        if: steps.version.outputs.new == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          V="${{ steps.version.outputs.version }}"
+          gh api "repos/$GITHUB_REPOSITORY/git/refs" -f ref="refs/tags/v$V" -f sha="$GITHUB_SHA" >/dev/null \
+            || echo "::warning::El tag v$V ya existía en este repo."
