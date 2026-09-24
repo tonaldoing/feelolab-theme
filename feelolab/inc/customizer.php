@@ -120,7 +120,7 @@ add_action(
 			)
 		);
 		feelolab_customizer_text( $wp_customize, 'feelolab_footer_text', __( 'Texto breve bajo el logo', 'feelolab' ), 'feelolab_footer', '', 'textarea' );
-		feelolab_customizer_checkbox( $wp_customize, 'feelolab_footer_credit', __( 'Mostrar "Sitio hecho por Feelo"', 'feelolab' ), 'feelolab_footer', true );
+		feelolab_customizer_checkbox( $wp_customize, 'feelolab_footer_credit', __( 'Mostrar "Sitio hecho por FeeloLab" (con link a feelolab.com)', 'feelolab' ), 'feelolab_footer', true );
 
 		/* ---------- Home ---------- */
 		$wp_customize->add_panel(

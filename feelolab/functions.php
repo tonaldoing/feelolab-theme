@@ -10,7 +10,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'FEELOLAB_VERSION', '0.2.6' );
+define( 'FEELOLAB_VERSION', '0.2.7' );
 define( 'FEELOLAB_DIR', get_template_directory() );
 define( 'FEELOLAB_URI', get_template_directory_uri() );
 

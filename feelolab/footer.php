@@ -66,7 +66,10 @@ $feelolab_legal = trim( implode( ' · ', array_filter( array( feelolab_setting( 
 		}
 		?>
 		<?php if ( get_theme_mod( 'feelolab_footer_credit', true ) ) : ?>
-			<p class="site-footer__credit"><?php esc_html_e( 'Sitio hecho por Feelo', 'feelolab' ); ?></p>
+			<p class="site-footer__credit">
+				<?php esc_html_e( 'Sitio hecho por', 'feelolab' ); ?>
+				<a href="https://www.feelolab.com" target="_blank" rel="noopener">FeeloLab<span class="screen-reader-text"> <?php esc_html_e( '(se abre en otra pestaña)', 'feelolab' ); ?></span></a>
+			</p>
 		<?php endif; ?>
 	</div>
 </footer>

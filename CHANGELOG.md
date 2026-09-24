@@ -2,6 +2,10 @@
 
 Cada versión publicada acá llega a los sitios como actualización (Escritorio → Actualizaciones).
 
+## 0.2.7 — 2026-09-24
+
+- El crédito del pie dice "Sitio hecho por FeeloLab" y enlaza a feelolab.com. Se sigue pudiendo ocultar desde Personalizar → Marca → Pie de página.
+
 ## 0.2.6 — 2026-09-24
 
 - Colores separados en tres: fondo de los botones, texto de los botones y links. El texto del botón se puede elegir; vacío es automático (blanco o negro, el que mejor se lea).
