@@ -2,6 +2,11 @@
 
 Cada versión publicada acá llega a los sitios como actualización (Escritorio → Actualizaciones).
 
+## 0.2.2 — 2026-09-24
+
+- Compatibilidad declarada con WordPress 7.1 (probado en 7.1.2).
+- Primera versión que llega por el actualizador: si la ves en Escritorio → Actualizaciones, el circuito funciona.
+
 ## 0.2.1 — 2026-09-24
 
 - **Actualizaciones sin token**: los zips se publican en el repo público `tonaldoing/feelolab-releases` y los sitios se actualizan desde ahí sin configurar nada. `FEELO_GITHUB_TOKEN` ya no hace falta.

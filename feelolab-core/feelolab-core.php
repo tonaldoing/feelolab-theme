@@ -2,8 +2,9 @@
 /**
  * Plugin Name:       Feelolab Core
  * Description:       Contenido y datos del sitio para el tema Feelolab: tipos de contenido, taxonomías, ajustes de marca, schema y formulario de contacto. El contenido vive acá y no en el tema, así sobrevive a un cambio de diseño.
- * Version:           0.2.1
+ * Version:           0.2.2
  * Requires at least: 6.8
+ * Tested up to:      7.1
  * Requires PHP:      8.1
  * Author:            Feelo
  * Text Domain:       feelolab-core
@@ -15,7 +16,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'FEELO_CORE_VERSION', '0.2.1' );
+define( 'FEELO_CORE_VERSION', '0.2.2' );
 define( 'FEELO_CORE_FILE', __FILE__ );
 define( 'FEELO_CORE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FEELO_CORE_URL', plugin_dir_url( __FILE__ ) );
