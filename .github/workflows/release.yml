@@ -92,7 +92,27 @@ jobs:
           cat update.json
 
       - name: Publicar en el repo de releases
+        id: publish
         if: steps.version.outputs.new == 'true'
+        continue-on-error: true
+        uses: softprops/action-gh-release@v2
+        with:
+          repository: ${{ env.RELEASES_REPO }}
+          token: ${{ secrets.RELEASES_TOKEN }}
+          tag_name: v${{ steps.version.outputs.version }}
+          name: v${{ steps.version.outputs.version }}
+          body_path: notes.md
+          files: |
+            feelolab.zip
+            feelolab-core.zip
+            update.json
+
+      - name: Esperar antes de reintentar (la API de GitHub a veces da timeout)
+        if: steps.version.outputs.new == 'true' && steps.publish.outcome == 'failure'
+        run: sleep 30
+
+      - name: Publicar en el repo de releases (reintento)
+        if: steps.version.outputs.new == 'true' && steps.publish.outcome == 'failure'
         uses: softprops/action-gh-release@v2
         with:
           repository: ${{ env.RELEASES_REPO }}
