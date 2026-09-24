@@ -2,6 +2,11 @@
 
 Cada versión publicada acá llega a los sitios como actualización (Escritorio → Actualizaciones).
 
+## 0.2.3 — 2026-09-24
+
+- Miniatura del tema (screenshot.png) con la ardilla de FeeloLab.
+- Nombre y autor con la marca: "FeeloLab" y "FeeloLab Core", con link a feelolab.com. La carpeta sigue siendo `feelolab`, así que no se pierde ningún ajuste.
+
 ## 0.2.2 — 2026-09-24
 
 - Compatibilidad declarada con WordPress 7.1 (probado en 7.1.2).

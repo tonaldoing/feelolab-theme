@@ -226,10 +226,10 @@ final class Updater {
 		}
 		$release = self::release();
 		return (object) array(
-			'name'          => 'Feelolab Core',
+			'name'          => 'FeeloLab Core',
 			'slug'          => 'feelolab-core',
 			'version'       => $release ? $release['version'] : FEELO_CORE_VERSION,
-			'author'        => 'Feelo',
+			'author'        => 'FeeloLab',
 			'homepage'      => 'https://github.com/' . self::repo(),
 			'requires'      => '6.8',
 			'requires_php'  => '8.1',
