@@ -11,8 +11,8 @@
  *   tiene releases (tonaldoing/feelolab-releases). Así los sitios se actualizan sin credenciales:
  *   no hay nada que configurar por cliente. Lo arma .github/workflows/release.yml al subir la versión.
  * - Cada release tiene tag vX.Y.Z y dos adjuntos: feelolab.zip y feelolab-core.zip.
- * - Se consulta el último release como máximo cada 12 horas (transient); "Buscar de nuevo" en
- *   Actualizaciones fuerza la consulta.
+ * - Se lee update.json del último release (CDN de GitHub, sin límite de consultas), cacheado 1 hora;
+ *   "Buscar de nuevo" en Actualizaciones fuerza la consulta.
  * - Opcional: FEELO_UPDATE_REPO en wp-config.php cambia el repo; FEELO_GITHUB_TOKEN solo hace
  *   falta si ese repo fuera privado.
  *
@@ -28,8 +28,9 @@ defined( 'ABSPATH' ) || exit;
 
 final class Updater {
 
-	private const CACHE        = 'feelo_update_release';
-	private const TTL          = 12 * HOUR_IN_SECONDS;
+	private const CACHE = 'feelo_update_release';
+	// Corto a propósito: WordPress ya limita cuándo pregunta (2 veces por día, 1 minuto en Actualizaciones).
+	private const TTL          = HOUR_IN_SECONDS;
 	private const THEME        = 'feelolab';
 	private const THEME_ASSET  = 'feelolab.zip';
 	private const PLUGIN_ASSET = 'feelolab-core.zip';
@@ -40,7 +41,8 @@ final class Updater {
 		add_filter( 'plugins_api', array( self::class, 'plugin_info' ), 20, 3 );
 		add_filter( 'http_request_args', array( self::class, 'auth_download' ), 10, 2 );
 		add_action( 'requests-requests.before_redirect', array( self::class, 'strip_auth_on_redirect' ), 10, 2 );
-		add_action( 'load-update-core.php', array( self::class, 'maybe_force_check' ) );
+		// Prioridad 1: tiene que borrar el caché ANTES de que core consulte (wp_update_plugins/themes, prioridad 10).
+		add_action( 'load-update-core.php', array( self::class, 'maybe_force_check' ), 1 );
 		add_action( 'upgrader_process_complete', array( self::class, 'flush' ) );
 	}
 
@@ -82,7 +84,12 @@ final class Updater {
 	}
 
 	/**
-	 * Último release, normalizado. Null si no hay o si GitHub no respondió (se reintenta en 1 hora).
+	 * Último release, normalizado. Null si no hay o si GitHub no respondió (se reintenta en 15 minutos).
+	 *
+	 * Primero lee update.json, un adjunto estático de cada release servido por la CDN de GitHub
+	 * (github.com/…/releases/latest/download/update.json): sin límite de consultas, a diferencia de la
+	 * API, que permite 60 por hora por IP y en un hosting compartido esa IP la comparten muchos sitios.
+	 * La API queda de respaldo (releases sin update.json, o repo privado con token).
 	 *
 	 * @return array{version: string, url: string, notes: string, date: string, theme: string, plugin: string}|null
 	 */
@@ -97,6 +104,61 @@ final class Updater {
 			return $cached['version'] ? $cached : null;
 		}
 
+		$release = self::token() ? null : self::from_manifest();
+		if ( ! is_array( $release ) ) {
+			$release = self::from_api();
+		}
+
+		if ( is_string( $release ) ) {
+			error_log( 'feelolab-core: no se pudo consultar actualizaciones en GitHub: ' . $release ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+			set_site_transient(
+				self::CACHE,
+				array(
+					'version' => '',
+					'error'   => $release,
+				),
+				15 * MINUTE_IN_SECONDS
+			);
+			return null;
+		}
+
+		set_site_transient( self::CACHE, $release, self::TTL );
+		return $release['version'] ? $release : null;
+	}
+
+	/**
+	 * update.json del último release.
+	 *
+	 * @return array<string, string>|null Null si no está (release viejo) o no se pudo leer.
+	 */
+	private static function from_manifest(): ?array {
+		$response = wp_remote_get(
+			'https://github.com/' . self::repo() . '/releases/latest/download/update.json',
+			array( 'timeout' => 10 )
+		);
+		if ( is_wp_error( $response ) || 200 !== (int) wp_remote_retrieve_response_code( $response ) ) {
+			return null;
+		}
+		$data = json_decode( wp_remote_retrieve_body( $response ), true );
+		if ( ! is_array( $data ) || empty( $data['version'] ) ) {
+			return null;
+		}
+		return array(
+			'version' => ltrim( (string) $data['version'], 'vV' ),
+			'url'     => (string) ( $data['url'] ?? '' ),
+			'notes'   => (string) ( $data['notes'] ?? '' ),
+			'date'    => (string) ( $data['date'] ?? '' ),
+			'theme'   => esc_url_raw( (string) ( $data['theme'] ?? '' ) ),
+			'plugin'  => esc_url_raw( (string) ( $data['plugin'] ?? '' ) ),
+		);
+	}
+
+	/**
+	 * Último release por la API de GitHub.
+	 *
+	 * @return array<string, string>|string El release, o el motivo del error.
+	 */
+	private static function from_api() {
 		$headers = array(
 			'Accept'               => 'application/vnd.github+json',
 			'X-GitHub-Api-Version' => '2022-11-28',
@@ -113,18 +175,15 @@ final class Updater {
 		);
 
 		$code = (int) wp_remote_retrieve_response_code( $response );
-		if ( is_wp_error( $response ) || 200 !== $code ) {
-			$reason = is_wp_error( $response ) ? $response->get_error_message() : 'HTTP ' . $code . ( 404 === $code ? ' (¿el repo de releases no existe, es privado o no tiene releases?)' : '' );
-			error_log( 'feelolab-core: no se pudo consultar actualizaciones en GitHub: ' . $reason ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
-			set_site_transient(
-				self::CACHE,
-				array(
-					'version' => '',
-					'error'   => $reason,
-				),
-				HOUR_IN_SECONDS
+		if ( is_wp_error( $response ) ) {
+			return $response->get_error_message();
+		}
+		if ( 200 !== $code ) {
+			$hint = array(
+				403 => ' (límite de consultas de GitHub para la IP del hosting; se reintenta solo)',
+				404 => ' (¿el repo de releases no existe, es privado o no tiene releases?)',
 			);
-			return null;
+			return 'HTTP ' . $code . ( $hint[ $code ] ?? '' );
 		}
 
 		$data    = json_decode( wp_remote_retrieve_body( $response ), true );
@@ -145,9 +204,7 @@ final class Updater {
 				$release['plugin'] = $download;
 			}
 		}
-
-		set_site_transient( self::CACHE, $release, self::TTL );
-		return $release['version'] ? $release : null;
+		return $release;
 	}
 
 	/**

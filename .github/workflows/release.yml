@@ -79,6 +79,18 @@ jobs:
           [ -s notes.md ] || echo "Versión $V." > notes.md
           cat notes.md
 
+      - name: update.json (lo lee el actualizador de los sitios; CDN de GitHub, sin límite de consultas)
+        if: steps.version.outputs.new == 'true'
+        run: |
+          V="${{ steps.version.outputs.version }}"
+          BASE="https://github.com/$RELEASES_REPO/releases/download/v$V"
+          jq -n --arg v "$V" --rawfile notes notes.md \
+            --arg date "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            --arg url "https://github.com/$RELEASES_REPO/releases/tag/v$V" \
+            --arg theme "$BASE/feelolab.zip" --arg plugin "$BASE/feelolab-core.zip" \
+            '{version: $v, date: $date, url: $url, notes: $notes, theme: $theme, plugin: $plugin}' > update.json
+          cat update.json
+
       - name: Publicar en el repo de releases
         if: steps.version.outputs.new == 'true'
         uses: softprops/action-gh-release@v2
@@ -91,6 +103,7 @@ jobs:
           files: |
             feelolab.zip
             feelolab-core.zip
+            update.json
 
       - name: Tag en este repo (qué commit es cada versión)
         if: steps.version.outputs.new == 'true'

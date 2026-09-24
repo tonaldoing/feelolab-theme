@@ -2,6 +2,12 @@
 
 Cada versión publicada acá llega a los sitios como actualización (Escritorio → Actualizaciones).
 
+## 0.2.4 — 2026-09-24
+
+- **"Buscar de nuevo" ahora encuentra las versiones nuevas al instante.** Antes el caché se borraba después de que WordPress consultaba, y una versión nueva podía tardar hasta un día en aparecer.
+- El actualizador lee `update.json` desde la CDN de GitHub, que no tiene límite de consultas; la API de GitHub queda de respaldo. En un hosting compartido, la API podía cortar por límite de la IP.
+- Caché de 1 hora en lugar de 12.
+
 ## 0.2.3 — 2026-09-24
 
 - Miniatura del tema (screenshot.png) con la ardilla de FeeloLab.
