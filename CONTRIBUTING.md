@@ -31,7 +31,7 @@ Tema clásico (`feelolab/`) + plugin compañero (`feelolab-core/`). WordPress 6.
 - Textos de UI en español rioplatense, con text domain `feelolab` (tema) o `feelolab-core` (plugin).
 
 ### Publicar una versión (llega a todos los sitios)
-1. Anotar los cambios en `CHANGELOG.md` bajo `## X.Y.Z — fecha`.
+1. Anotar los cambios en `CHANGELOG.md` bajo `## X.Y.Z — fecha`, en texto plano: una línea por cambio empezando con "- ", sin negritas ni comillas invertidas. Ese texto es el que ven los clientes en "Ver detalles".
 2. Subir la versión en los cuatro lugares: `feelolab/style.css` (Version), `FEELOLAB_VERSION` en `feelolab/functions.php`, y el header Version y `FEELO_CORE_VERSION` en `feelolab-core/feelolab-core.php`. Tema y plugin van siempre con la misma versión.
 3. Commit y push a `main`. No hace falta crear el tag a mano.
 4. `.github/workflows/release.yml` detecta que esa versión no tiene release en `tonaldoing/feelolab-releases` (público), verifica que las cuatro versiones coincidan, arma los zips, publica el release allá y deja el tag `vX.Y.Z` acá. Necesita el secret `RELEASES_TOKEN`. También se puede correr a mano desde Actions → Release → Run workflow. El workflow también publica `update.json`, que es lo que leen los sitios. Lo ven en hasta 12 horas (el chequeo automático de WordPress), o al instante con "Buscar de nuevo" en Actualizaciones.

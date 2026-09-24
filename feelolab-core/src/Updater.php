@@ -28,6 +28,8 @@ defined( 'ABSPATH' ) || exit;
 
 final class Updater {
 
+	public const HOMEPAGE = 'https://www.feelolab.com';
+
 	private const CACHE = 'feelo_update_release';
 	// Corto a propósito: WordPress ya limita cuándo pregunta (2 veces por día, 1 minuto en Actualizaciones).
 	private const TTL          = HOUR_IN_SECONDS;
@@ -221,7 +223,7 @@ final class Updater {
 			'slug'        => 'feelolab-core',
 			'plugin'      => $file,
 			'new_version' => FEELO_CORE_VERSION,
-			'url'         => 'https://github.com/' . self::repo(),
+			'url'         => self::HOMEPAGE,
 			'package'     => '',
 		);
 
@@ -253,7 +255,7 @@ final class Updater {
 		$item = array(
 			'theme'       => self::THEME,
 			'new_version' => $theme->get( 'Version' ),
-			'url'         => 'https://github.com/' . self::repo(),
+			'url'         => self::HOMEPAGE,
 			'package'     => '',
 		);
 
@@ -287,15 +289,43 @@ final class Updater {
 			'slug'          => 'feelolab-core',
 			'version'       => $release ? $release['version'] : FEELO_CORE_VERSION,
 			'author'        => 'FeeloLab',
-			'homepage'      => 'https://github.com/' . self::repo(),
+			'homepage'      => self::HOMEPAGE,
 			'requires'      => '6.8',
 			'requires_php'  => '8.1',
 			'last_updated'  => $release ? $release['date'] : '',
 			'download_link' => $release ? $release['plugin'] : '',
 			'sections'      => array(
-				'changelog' => $release && $release['notes'] ? wpautop( esc_html( $release['notes'] ) ) : esc_html__( 'Sin notas de versión.', 'feelolab-core' ),
+				'changelog' => $release && $release['notes'] ? self::notes_html( $release['notes'] ) : esc_html__( 'Sin notas de versión.', 'feelolab-core' ),
 			),
 		);
+	}
+
+	/**
+	 * Notas del release (markdown simple) a HTML para el modal: listas con "- ", **negrita** y `código`.
+	 * El texto se escapa antes: nada del release entra como HTML.
+	 */
+	public static function notes_html( string $notes ): string {
+		$html  = '';
+		$in_ul = false;
+		foreach ( preg_split( '/\R/', trim( $notes ) ) as $line ) {
+			$line = trim( $line );
+			$text = esc_html( preg_replace( '/^[-*]\s+/', '', $line ) );
+			$text = preg_replace( '/\*\*(.+?)\*\*/', '<strong>$1</strong>', $text );
+			$text = preg_replace( '/`(.+?)`/', '<code>$1</code>', $text );
+			if ( preg_match( '/^[-*] /', $line ) ) {
+				$html .= ( $in_ul ? '' : '<ul>' ) . '<li>' . $text . '</li>';
+				$in_ul = true;
+				continue;
+			}
+			if ( $in_ul ) {
+				$html .= '</ul>';
+				$in_ul = false;
+			}
+			if ( '' !== $line ) {
+				$html .= '<p>' . $text . '</p>';
+			}
+		}
+		return $html . ( $in_ul ? '</ul>' : '' );
 	}
 
 	/**
