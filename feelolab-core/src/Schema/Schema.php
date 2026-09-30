@@ -395,9 +395,21 @@ final class Schema {
 			$description = wp_strip_all_tags( term_description() );
 			$url         = (string) get_term_link( get_queried_object() );
 		} elseif ( is_post_type_archive() ) {
-			$object      = get_queried_object();
-			$description = $object && ! empty( $object->description ) ? $object->description : '';
+			$object = get_queried_object();
+			// La descripción de los contenidos de FeeloLab es la explicación para el panel, no para Google.
+			$description = $object instanceof \WP_Post_Type && ! empty( $object->description ) && ! str_starts_with( $object->name, 'feelo_' ) ? $object->description : '';
 			$url         = (string) get_post_type_archive_link( (string) get_query_var( 'post_type' ) );
+			// Tienda de WooCommerce: el resumen de su página, si tiene.
+			if ( '' === $description && function_exists( 'is_shop' ) && is_shop() ) {
+				$shop        = get_post( (int) wc_get_page_id( 'shop' ) );
+				$description = $shop ? feelo_plain_summary( $shop ) : '';
+			}
+			// Sin descripción propia: el nombre del listado y la del negocio (datos reales, nada inventado).
+			$type_object = get_post_type_object( (string) ( get_query_var( 'post_type' ) ? get_query_var( 'post_type' ) : 'product' ) );
+			if ( '' === $description && $type_object ) {
+				/* translators: 1: listado (Servicios, Productos…), 2: negocio, 3: descripción del negocio */
+				$description = trim( sprintf( __( '%1$s de %2$s. %3$s', 'feelolab-core' ), $type_object->labels->name, feelo_business_name(), (string) feelo_setting( 'descripcion' ) ) );
+			}
 		}
 
 		if ( ! $image ) {

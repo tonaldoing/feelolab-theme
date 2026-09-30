@@ -44,6 +44,8 @@ final class Plugin {
 			Branding::init();
 			Launch::init();
 			Importer::init();
+			Versions::init();
+			Wizard::init();
 		}
 	}
 }

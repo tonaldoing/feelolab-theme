@@ -1,0 +1,95 @@
+/*
+ * WooCommerce con los colores y formas del tema. Solo se carga en las páginas de la tienda
+ * (inc/woocommerce.php). Los estilos base de WooCommerce siguen: acá se reemplazan sus colores
+ * (el violeta de fábrica) por las variables de marca, que ya tienen el contraste resuelto.
+ */
+
+.woo-main .woocommerce-products-header__title,
+.woo-main .product_title { font-family: var(--f-heading); }
+.woocommerce-breadcrumb { margin-bottom: 1.25rem !important; color: var(--c-muted) !important; font-size: .9rem !important; }
+.woocommerce-breadcrumb a { color: var(--c-muted) !important; }
+.woo-main a:not(.button):not(.wc-block-components-button):not(.woocommerce-loop-product__link),
+.entry-content .woocommerce a:not(.button):not(.wc-block-components-button) { color: var(--c-primary-text); }
+
+/* Grilla de productos: 2 columnas en celular, 3 o 4 en escritorio. */
+.woocommerce ul.products { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 1rem; margin: 0 0 2rem; }
+.woocommerce ul.products::before, .woocommerce ul.products::after { display: none; }
+@media (min-width: 960px) {
+	.woocommerce ul.products { gap: 2rem 1.5rem; }
+	.woocommerce ul.products.columns-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+	.woocommerce ul.products.columns-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+.woocommerce ul.products li.product { float: none !important; width: auto !important; margin: 0 !important; display: flex; flex-direction: column; }
+.woocommerce ul.products li.product a img { margin-bottom: .75rem; border-radius: var(--radius); aspect-ratio: 1; object-fit: cover; }
+.woocommerce ul.products li.product .woocommerce-loop-product__title { padding: 0 !important; font-family: var(--f-heading); font-size: 1.05rem !important; color: var(--c-text); }
+.woocommerce ul.products li.product .button { margin-top: auto !important; align-self: flex-start; }
+.woocommerce ul.products li.product .price { margin: .35rem 0 .9rem; }
+
+/* Precios y oferta. */
+.woocommerce .price, .woocommerce div.product p.price, .woocommerce div.product span.price { color: var(--c-text) !important; font-weight: 700; }
+.woocommerce .price del { color: var(--c-muted); opacity: 1 !important; font-weight: 400; }
+.woocommerce .price ins { color: var(--c-primary-text); text-decoration: none; }
+.woocommerce span.onsale { top: .6rem !important; left: .6rem !important; right: auto !important; margin: 0 !important; min-width: 0 !important; min-height: 0 !important; padding: .3rem .65rem !important; border-radius: var(--radius) !important; background: var(--c-primary) !important; color: var(--c-on-primary) !important; font-size: .85rem !important; font-weight: 700; line-height: 1.3 !important; }
+
+/* Botones como los del tema (mínimo 44 px de alto para tocar). */
+.woocommerce a.button, .woocommerce button.button, .woocommerce input.button, .woocommerce #respond input#submit,
+.woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt,
+.wc-block-components-button:not(.is-link) {
+	display: inline-flex; align-items: center; justify-content: center; min-height: 2.75rem;
+	padding: .7rem 1.25rem; border: 2px solid var(--c-btn-border) !important; border-radius: var(--radius) !important;
+	background: var(--c-primary) !important; color: var(--c-on-primary) !important;
+	font: inherit; font-weight: 700 !important; line-height: 1.2; text-decoration: none;
+}
+.woocommerce a.button:hover, .woocommerce button.button:hover, .woocommerce input.button:hover,
+.woocommerce a.button.alt:hover, .woocommerce button.button.alt:hover,
+.wc-block-components-button:not(.is-link):hover { background: var(--c-primary-hover) !important; color: var(--c-on-primary) !important; }
+.woocommerce a.added_to_cart { display: inline-block; margin-top: .5rem; font-weight: 600; }
+
+/* Ficha de producto. El tema usa .product para su propia ficha (en grilla); la de WooCommerce va con su layout. */
+.woocommerce div.product { display: flow-root; gap: 0; }
+.woocommerce div.product .product_title { font-size: clamp(1.75rem, 1.3rem + 2vw, 2.5rem); }
+.woocommerce div.product div.images img { border-radius: var(--radius); }
+.woocommerce div.product form.cart { display: flex; flex-wrap: wrap; gap: .75rem; align-items: stretch; }
+.woocommerce div.product form.cart div.quantity { float: none; margin: 0; }
+.woocommerce .quantity .qty { width: 5rem; min-height: 2.75rem; }
+.woocommerce div.product .woocommerce-tabs ul.tabs { padding: 0; }
+.woocommerce div.product .woocommerce-tabs ul.tabs::before { border-color: var(--c-border); }
+.woocommerce div.product .woocommerce-tabs ul.tabs li { border-color: var(--c-border) !important; background: var(--c-surface) !important; border-radius: var(--radius) var(--radius) 0 0 !important; }
+.woocommerce div.product .woocommerce-tabs ul.tabs li::before, .woocommerce div.product .woocommerce-tabs ul.tabs li::after { display: none; }
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active { background: var(--c-bg) !important; border-bottom-color: var(--c-bg) !important; }
+.woocommerce div.product .woocommerce-tabs ul.tabs li a { color: var(--c-text) !important; font-weight: 600; }
+.woocommerce .star-rating span::before, .woocommerce p.stars a { color: var(--c-primary-text); }
+.woocommerce .related.products > h2 { margin-top: 3rem; }
+
+/* Avisos (agregado al carrito, errores). */
+.woocommerce-message, .woocommerce-info, .woocommerce-error {
+	border-top: 0 !important; border-left: 4px solid var(--c-primary-text) !important; border-radius: var(--radius);
+	background: var(--c-surface) !important; color: var(--c-text) !important;
+}
+.woocommerce-message::before, .woocommerce-info::before { color: var(--c-primary-text) !important; }
+.woocommerce-error { border-left-color: #b42318 !important; }
+.woocommerce-error::before { color: #b42318 !important; }
+.woocommerce-message .button, .woocommerce-info .button { float: none !important; margin-left: 1rem; }
+
+/* Tablas (carrito clásico, mi cuenta). */
+.woocommerce table.shop_table { border-color: var(--c-border); border-radius: var(--radius); }
+.woocommerce table.shop_table th, .woocommerce table.shop_table td { border-color: var(--c-border) !important; }
+.woocommerce a.remove { color: #b42318 !important; }
+.woocommerce a.remove:hover { background: #b42318; color: #fff !important; }
+
+/* Formularios. */
+.woocommerce form .form-row label { font-weight: 600; }
+.woocommerce form .form-row .required { color: #b42318; }
+.woocommerce-account .woocommerce-MyAccount-navigation ul { list-style: none; margin: 0 0 2rem; padding: 0; border-top: 1px solid var(--c-border); }
+.woocommerce-account .woocommerce-MyAccount-navigation li { border-bottom: 1px solid var(--c-border); }
+.woocommerce-account .woocommerce-MyAccount-navigation a { display: block; padding: .7rem 0; color: var(--c-text) !important; text-decoration: none; font-weight: 600; }
+.woocommerce-account .woocommerce-MyAccount-navigation .is-active a { color: var(--c-primary-text) !important; }
+
+/* Carrito y checkout de bloques. */
+.wc-block-components-totals-item__value, .wc-block-components-product-price { font-weight: 700; }
+.wc-block-components-sale-badge { border-color: var(--c-primary-text) !important; color: var(--c-primary-text) !important; background: var(--c-bg) !important; }
+.wc-block-components-text-input input:focus, .wc-block-components-combobox .wc-block-components-combobox-control input:focus, .wc-blocks-components-select .wc-blocks-components-select__select:focus {
+	outline: 3px solid var(--c-primary-text); outline-offset: 1px; box-shadow: none;
+}
+.wc-block-components-checkbox .wc-block-components-checkbox__input[type="checkbox"]:checked { background: var(--c-primary); border-color: var(--c-primary); }
+.wc-block-components-checkbox .wc-block-components-checkbox__mark { fill: var(--c-on-primary); }

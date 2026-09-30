@@ -21,7 +21,9 @@ add_filter(
 		$release = get_site_transient( 'feelolab_theme_release' );
 		if ( false === $release ) {
 			$repo     = defined( 'FEELO_UPDATE_REPO' ) ? (string) FEELO_UPDATE_REPO : 'tonaldoing/feelolab-releases';
-			$response = wp_remote_get( 'https://github.com/' . $repo . '/releases/latest/download/update.json', array( 'timeout' => 10 ) );
+			$settings = (array) get_option( 'feelo_settings', array() );
+			$path     = empty( $settings['canal_beta'] ) ? 'latest/download' : 'download/canal-beta';
+			$response = wp_remote_get( 'https://github.com/' . $repo . '/releases/' . $path . '/update.json', array( 'timeout' => 10 ) );
 			$data     = ! is_wp_error( $response ) && 200 === (int) wp_remote_retrieve_response_code( $response ) ? json_decode( wp_remote_retrieve_body( $response ), true ) : null;
 			$release  = is_array( $data ) && ! empty( $data['version'] ) && ! empty( $data['theme'] )
 				? array(

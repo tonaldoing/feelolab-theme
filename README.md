@@ -54,6 +54,12 @@ Reglas para que las actualizaciones no rompan nada:
 
 **Fuente propia de la marca**: se suben los .woff2 desde Personalizar (títulos, textos y negrita) y se sirven desde el propio sitio con precarga.
 
+**Primeros pasos**: al activar el plugin se abre un asistente de cinco pasos (negocio, contacto, marca, contenidos y páginas) que crea Inicio, Contacto y Blog, arma el menú, activa las direcciones amigables y borra el contenido de ejemplo. Los sitios ya configurados no lo ven.
+
+**Versiones**: pantalla con la versión instalada y el changelog, canal beta opcional para un sitio de pruebas y botón para volver a una versión anterior (tema y plugin juntos).
+
+**WooCommerce**: si está activo, la tienda toma el diseño del tema (grilla, ficha, carrito, checkout de bloques y mi cuenta con los colores de la marca), un solo `<main>` y carrito con cantidad en el encabezado. El CSS extra carga solo en las páginas de la tienda.
+
 **Importador de productos**: CSV de Excel o Google Sheets con vista previa, importación por tandas (sin tiempos de espera) y actualización por código/SKU. Fotos por link (se bajan una sola vez) o por nombre de archivo de la Biblioteca; categorías jerárquicas con "Padre > Hijo".
 
 **Privacidad**: exportación y borrado de datos personales integrados con WordPress, borrado automático de mensajes por antigüedad, texto sugerido para la política de privacidad y desinstalación limpia.

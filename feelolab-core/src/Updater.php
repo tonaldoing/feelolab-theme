@@ -13,6 +13,11 @@
  * - Cada release tiene tag vX.Y.Z y dos adjuntos: feelolab.zip y feelolab-core.zip.
  * - Se lee update.json del último release (CDN de GitHub, sin límite de consultas), cacheado 1 hora;
  *   "Buscar de nuevo" en Actualizaciones fuerza la consulta.
+ * - Canal beta (opcional, pantalla Versiones): lee update.json del release fijo "canal-beta", que el
+ *   workflow actualiza con cada versión, de prueba o estable. Así un sitio de prueba recibe las
+ *   betas y también la estable que las reemplaza. Los clientes quedan en el canal estable.
+ * - update.json trae la lista de versiones estables anteriores: la pantalla Versiones permite
+ *   volver a una (Versions.php).
  * - Opcional: FEELO_UPDATE_REPO en wp-config.php cambia el repo; FEELO_GITHUB_TOKEN solo hace
  *   falta si ese repo fuera privado.
  *
@@ -36,6 +41,7 @@ final class Updater {
 	private const THEME        = 'feelolab';
 	private const THEME_ASSET  = 'feelolab.zip';
 	private const PLUGIN_ASSET = 'feelolab-core.zip';
+	private const BETA_TAG     = 'canal-beta';
 
 	public static function init(): void {
 		add_filter( 'pre_set_site_transient_update_plugins', array( self::class, 'inject_plugin' ) );
@@ -66,7 +72,7 @@ final class Updater {
 				? sprintf( __( 'Hay una versión nueva (%s): actualizá desde Escritorio → Actualizaciones.', 'feelolab-core' ), $release['version'] )
 				: __( 'Al día.', 'feelolab-core' );
 		}
-		$cached = get_site_transient( self::CACHE );
+		$cached = get_site_transient( self::cache_key() );
 		return is_array( $cached ) && ! empty( $cached['error'] )
 			/* translators: %s: motivo */
 			? sprintf( __( 'No se pudo consultar GitHub: %s', 'feelolab-core' ), $cached['error'] )
@@ -75,6 +81,22 @@ final class Updater {
 
 	public static function flush(): void {
 		delete_site_transient( self::CACHE );
+		delete_site_transient( self::CACHE . '_beta' );
+		delete_site_transient( 'feelolab_theme_release' );
+	}
+
+	/** ¿Este sitio recibe versiones de prueba? */
+	public static function beta(): bool {
+		return (bool) feelo_setting( 'canal_beta' );
+	}
+
+	private static function cache_key(): string {
+		return self::CACHE . ( self::beta() ? '_beta' : '' );
+	}
+
+	/** Zip de una versión publicada (para volver a una anterior). */
+	public static function asset_url( string $version, string $asset ): string {
+		return 'https://github.com/' . self::repo() . '/releases/download/v' . rawurlencode( $version ) . '/' . $asset;
 	}
 
 	/** "Buscar de nuevo" en Escritorio → Actualizaciones consulta GitHub sin esperar al caché. */
@@ -101,7 +123,7 @@ final class Updater {
 			return $pre ? $pre : null;
 		}
 
-		$cached = get_site_transient( self::CACHE );
+		$cached = get_site_transient( self::cache_key() );
 		if ( is_array( $cached ) ) {
 			return $cached['version'] ? $cached : null;
 		}
@@ -114,7 +136,7 @@ final class Updater {
 		if ( is_string( $release ) ) {
 			error_log( 'feelolab-core: no se pudo consultar actualizaciones en GitHub: ' . $release ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
 			set_site_transient(
-				self::CACHE,
+				self::cache_key(),
 				array(
 					'version' => '',
 					'error'   => $release,
@@ -124,7 +146,7 @@ final class Updater {
 			return null;
 		}
 
-		set_site_transient( self::CACHE, $release, self::TTL );
+		set_site_transient( self::cache_key(), $release, self::TTL );
 		return $release['version'] ? $release : null;
 	}
 
@@ -134,8 +156,9 @@ final class Updater {
 	 * @return array<string, string>|null Null si no está (release viejo) o no se pudo leer.
 	 */
 	private static function from_manifest(): ?array {
+		$path     = self::beta() ? 'download/' . self::BETA_TAG : 'latest/download';
 		$response = wp_remote_get(
-			'https://github.com/' . self::repo() . '/releases/latest/download/update.json',
+			'https://github.com/' . self::repo() . '/releases/' . $path . '/update.json',
 			array( 'timeout' => 10 )
 		);
 		if ( is_wp_error( $response ) || 200 !== (int) wp_remote_retrieve_response_code( $response ) ) {
@@ -146,12 +169,14 @@ final class Updater {
 			return null;
 		}
 		return array(
-			'version' => ltrim( (string) $data['version'], 'vV' ),
-			'url'     => (string) ( $data['url'] ?? '' ),
-			'notes'   => (string) ( $data['notes'] ?? '' ),
-			'date'    => (string) ( $data['date'] ?? '' ),
-			'theme'   => esc_url_raw( (string) ( $data['theme'] ?? '' ) ),
-			'plugin'  => esc_url_raw( (string) ( $data['plugin'] ?? '' ) ),
+			'version'  => ltrim( (string) $data['version'], 'vV' ),
+			'url'      => (string) ( $data['url'] ?? '' ),
+			'notes'    => (string) ( $data['notes'] ?? '' ),
+			'date'     => (string) ( $data['date'] ?? '' ),
+			'theme'    => esc_url_raw( (string) ( $data['theme'] ?? '' ) ),
+			'plugin'   => esc_url_raw( (string) ( $data['plugin'] ?? '' ) ),
+			// Versiones estables publicadas, de la más nueva a la más vieja (para volver atrás).
+			'versions' => array_values( array_filter( array_map( static fn( $v ) => ltrim( (string) $v, 'vV' ), (array) ( $data['versions'] ?? array() ) ), static fn( $v ) => (bool) preg_match( '/^\d+\.\d+\.\d+$/', $v ) ) ),
 		);
 	}
 
@@ -190,12 +215,13 @@ final class Updater {
 
 		$data    = json_decode( wp_remote_retrieve_body( $response ), true );
 		$release = array(
-			'version' => ltrim( (string) ( $data['tag_name'] ?? '' ), 'vV' ),
-			'url'     => (string) ( $data['html_url'] ?? '' ),
-			'notes'   => (string) ( $data['body'] ?? '' ),
-			'date'    => (string) ( $data['published_at'] ?? '' ),
-			'theme'   => '',
-			'plugin'  => '',
+			'version'  => ltrim( (string) ( $data['tag_name'] ?? '' ), 'vV' ),
+			'url'      => (string) ( $data['html_url'] ?? '' ),
+			'notes'    => (string) ( $data['body'] ?? '' ),
+			'date'     => (string) ( $data['published_at'] ?? '' ),
+			'theme'    => '',
+			'plugin'   => '',
+			'versions' => array(),
 		);
 		foreach ( (array) ( $data['assets'] ?? array() ) as $asset ) {
 			// Repo privado: se descarga por la API (con token). Público: por el link directo.

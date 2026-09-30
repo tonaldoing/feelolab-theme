@@ -4,6 +4,7 @@
   "description": "Starter WordPress de Feelo. Scripts de desarrollo: WordPress local sin Docker (Playground) y chequeos de accesibilidad.",
   "scripts": {
     "dev": "wp-playground-cli server --blueprint=./blueprint.json --mount=./feelolab:/wordpress/wp-content/themes/feelolab --mount=./feelolab-core:/wordpress/wp-content/plugins/feelolab-core --mount=./dev:/wordpress/dev --port=9400",
+    "dev:woo": "wp-playground-cli server --blueprint=./dev/blueprint-woo.json --mount=./feelolab:/wordpress/wp-content/themes/feelolab --mount=./feelolab-core:/wordpress/wp-content/plugins/feelolab-core --mount=./dev:/wordpress/dev --port=9400",
     "lint:php": "composer lint",
     "a11y": "pa11y-ci --config .pa11yci.json",
     "lighthouse": "node dev/lighthouse-check.mjs"

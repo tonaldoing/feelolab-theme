@@ -330,6 +330,11 @@ final class SiteSettings {
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- options.php ya verificó el nonce.
 		$tab  = isset( $_POST['feelo_tab'] ) ? sanitize_key( wp_unslash( $_POST['feelo_tab'] ) ) : '';
 		$tabs = self::tabs();
+		if ( '' === $tab ) {
+			// No viene de esta pantalla: es código del plugin (asistente, Versiones) que ya saneó
+			// lo que guarda con update_option(). Se respeta tal cual.
+			return $input;
+		}
 		if ( ! isset( $tabs[ $tab ] ) ) {
 			return $current;
 		}

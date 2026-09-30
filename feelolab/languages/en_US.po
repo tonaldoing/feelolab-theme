@@ -2,1024 +2,1486 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FeeloLab\n"
 "Report-Msgid-Bugs-To: https://www.feelolab.com\n"
+"Last-Translator: \n"
 "Language-Team: FeeloLab\n"
-"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-30T17:41:17+00:00\n"
+"PO-Revision-Date: 2026-09-30T17:41:17+00:00\n"
+"Language: en_US\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Domain: feelolab\n"
 
-
+#. Theme Name of the theme
+#. Author of the theme
+#: style.css
+#: inc/patterns.php:21
 msgid "FeeloLab"
 msgstr "FeeloLab"
 
+#. Theme URI of the theme
+#. Author URI of the theme
+#: style.css
 msgid "https://www.feelolab.com"
 msgstr "https://www.feelolab.com"
 
+#. Description of the theme
+#: style.css
 msgid "Tema base para sitios de clientes de FeeloLab. Clásico, liviano y accesible: sin jQuery ni frameworks, fuentes del sistema, home por secciones desde el Personalizador. Se complementa con el plugin FeeloLab Core (servicios, productos, equipo, sedes, testimonios, FAQ, ajustes del negocio y schema)."
 msgstr "Base theme for FeeloLab client sites. Classic, lightweight and accessible: no jQuery or frameworks, system fonts, a section-based home built from the Customizer. Pairs with the FeeloLab Core plugin (services, products, team, locations, testimonials, FAQ, business settings and schema)."
 
+#: 404.php:12
 msgid "No encontramos esta página"
 msgstr "We couldn't find this page"
 
+#: 404.php:16
 msgid "Puede que el link esté mal escrito o que la página ya no exista. Probá buscando o volvé al inicio."
 msgstr "The link may be mistyped or the page may no longer exist. Try searching or go back home."
 
+#: 404.php:18
 msgid "Ir al inicio"
 msgstr "Go to home"
 
+#. translators: %d: cantidad de comentarios
+#: comments.php:19
+#, php-format
 msgid "%d comentario"
 msgid_plural "%d comentarios"
 msgstr[0] "%d comment"
 msgstr[1] "%d comments"
 
+#: comments.php:35
 msgid "Comentarios"
 msgstr "Comments"
 
+#: footer.php:29
+#: inc/customizer.php:202
 msgid "Pie de página"
 msgstr "Footer"
 
+#: footer.php:67
 msgid "Legal"
 msgstr "Legal"
 
+#: footer.php:84
 msgid "Sitio hecho por"
 msgstr "Site by"
 
+#: footer.php:85
+#: inc/template-tags.php:139
+#: inc/template-tags.php:342
+#: template-parts/cards/card-sede.php:42
+#: template-parts/single/content-miembro.php:42
+#: template-parts/topbar.php:33
 msgid "(se abre en otra pestaña)"
 msgstr "(opens in a new tab)"
 
+#: header.php:36
 msgid "Saltar al contenido"
 msgstr "Skip to content"
 
+#: header.php:71
+#: searchform.php:15
 msgid "Buscar"
 msgstr "Search"
 
+#: header.php:79
 msgid "Principal"
 msgstr "Main"
 
+#: header.php:82
 msgid "Menú"
 msgstr "Menu"
 
+#: inc/breadcrumbs.php:15
 msgid "Inicio"
 msgstr "Home"
 
+#. translators: %s: búsqueda
+#: inc/breadcrumbs.php:92
+#: search.php:17
+#, php-format
 msgid "Resultados para \"%s\""
 msgstr "Results for \"%s\""
 
+#: inc/breadcrumbs.php:97
 msgid "Página no encontrada"
 msgstr "Page not found"
 
+#: inc/breadcrumbs.php:103
+#: inc/customizer.php:225
+#: index.php:16
 msgid "Blog"
 msgstr "Blog"
 
+#: inc/breadcrumbs.php:121
+#: inc/breadcrumbs.php:125
+#: inc/breadcrumbs.php:136
 msgid "Migas de pan"
 msgstr "Breadcrumbs"
 
+#. translators: %s: nombre de la sección
+#: inc/class-feelolab-sortable-control.php:43
+#, php-format
 msgid "Subir %s"
 msgstr "Move %s up"
 
+#. translators: %s: nombre de la sección
+#: inc/class-feelolab-sortable-control.php:52
+#, php-format
 msgid "Bajar %s"
 msgstr "Move %s down"
 
+#. translators: %s: nombre de la sección
+#: inc/class-feelolab-sortable-control.php:61
+#, php-format
 msgid "Editar %s"
 msgstr "Edit %s"
 
+#: inc/colors.php:22
 msgid "Botones: fondo (color de marca)"
 msgstr "Buttons: background (brand color)"
 
+#: inc/colors.php:26
 msgid "Botones: texto"
 msgstr "Buttons: text"
 
+#: inc/colors.php:28
 msgid "Vacío = automático: blanco o negro, el que mejor se lea sobre el botón."
 msgstr "Empty = automatic: white or black, whichever reads better on the button."
 
+#: inc/colors.php:31
 msgid "Links y acentos"
 msgstr "Links and accents"
 
+#: inc/colors.php:33
 msgid "Links, volantas e íconos. Vacío = el color de los botones."
 msgstr "Links, kickers and icons. Empty = the button color."
 
+#: inc/colors.php:36
 msgid "Secundario (bloques oscuros, footer)"
 msgstr "Secondary (dark blocks, footer)"
 
+#: inc/colors.php:40
+#: inc/colors.php:292
 msgid "Fondo"
 msgstr "Background"
 
+#: inc/colors.php:44
 msgid "Superficie (secciones alternas, tarjetas)"
 msgstr "Surface (alternate sections, cards)"
 
+#: inc/colors.php:48
+#: inc/colors.php:291
+#: inc/home.php:67
+#: inc/home.php:81
+#: inc/home.php:148
+#: inc/home.php:170
+#: inc/home.php:181
+#: inc/home.php:190
 msgid "Texto"
 msgstr "Text"
 
+#: inc/colors.php:165
 msgid "Sistema (neutra, la más rápida)"
 msgstr "System (neutral, the fastest)"
 
+#: inc/colors.php:170
 msgid "Humanista (cercana)"
 msgstr "Humanist (friendly)"
 
+#: inc/colors.php:175
 msgid "Geométrica (moderna)"
 msgstr "Geometric (modern)"
 
+#: inc/colors.php:180
 msgid "Editorial (títulos serif, texto sans)"
 msgstr "Editorial (serif headings, sans text)"
 
+#: inc/colors.php:185
 msgid "Clásica (todo serif)"
 msgstr "Classic (all serif)"
 
+#: inc/colors.php:190
 msgid "Web: Inter (moderna, muy legible) · 48 KB"
 msgstr "Web: Inter (modern, very legible) · 48 KB"
 
+#: inc/colors.php:196
 msgid "Web: Figtree (amable, geométrica) · 20 KB"
 msgstr "Web: Figtree (friendly, geometric) · 20 KB"
 
+#: inc/colors.php:202
 msgid "Web: Fraunces + Inter (títulos con carácter) · 85 KB"
 msgstr "Web: Fraunces + Inter (headings with character) · 85 KB"
 
+#: inc/colors.php:208
 msgid "Web: Source Serif + Figtree (editorial) · 71 KB"
 msgstr "Web: Source Serif + Figtree (editorial) · 71 KB"
 
+#: inc/colors.php:214
 msgid "Fuente propia de la marca (subila abajo)"
 msgstr "Brand's own font (upload it below)"
 
+#: inc/colors.php:288
 msgid "Botones"
 msgstr "Buttons"
 
+#: inc/colors.php:289
 msgid "Secundario"
 msgstr "Secondary"
 
+#: inc/colors.php:290
 msgid "Superficie"
 msgstr "Surface"
 
+#: inc/customizer.php:18
 msgid "Marca"
 msgstr "Brand"
 
+#: inc/customizer.php:27
 msgid "Colores"
 msgstr "Colors"
 
+#: inc/customizer.php:29
 msgid "Botones, texto de los botones y links se eligen por separado. Si una combinación no se lee bien (contraste WCAG AA), el tema la corrige sola y te avisa acá abajo."
 msgstr "Buttons, button text and links are chosen separately. If a combination isn't readable (WCAG AA contrast), the theme fixes it automatically and lets you know below."
 
+#: inc/customizer.php:58
 msgid "Tipografía y forma"
 msgstr "Typography and shape"
 
+#: inc/customizer.php:63
 msgid "Combinación tipográfica"
 msgstr "Font pairing"
 
+#: inc/customizer.php:63
 msgid "Las de sistema no descargan nada. Las \"Web\" se sirven desde el propio sitio, con métricas ajustadas para que el texto no salte al cargar."
 msgstr "System fonts download nothing. \"Web\" fonts are served from the site itself, with adjusted metrics so text doesn't jump while loading."
 
+#: inc/customizer.php:67
 msgid "Fuente propia: títulos (.woff2)"
 msgstr "Own font: headings (.woff2)"
 
+#: inc/customizer.php:67
 msgid "Subí el archivo .woff2 (si tenés .ttf u .otf, convertilo gratis en transfonter.org). Revisá que la licencia permita usarla en la web."
 msgstr "Upload the .woff2 file (if you have .ttf or .otf, convert it for free at transfonter.org). Check that the license allows web use."
 
+#: inc/customizer.php:68
 msgid "Fuente propia: textos (.woff2)"
 msgstr "Own font: body text (.woff2)"
 
+#: inc/customizer.php:68
 msgid "Opcional: si no la cargás, los textos usan la de títulos."
 msgstr "Optional: if you don't upload it, body text uses the heading font."
 
+#: inc/customizer.php:69
 msgid "Fuente propia: textos en negrita (.woff2)"
 msgstr "Own font: bold body text (.woff2)"
 
+#: inc/customizer.php:69
 msgid "Opcional. Si la fuente de textos es \"variable\" (trae todos los pesos), no hace falta."
 msgstr "Optional. Not needed if the body font is \"variable\" (includes every weight)."
 
+#: inc/customizer.php:96
 msgid "Fuente propia: estilo"
 msgstr "Own font: style"
 
+#: inc/customizer.php:99
 msgid "Sin serifa (palo seco)"
 msgstr "Sans serif"
 
+#: inc/customizer.php:100
 msgid "Con serifa"
 msgstr "Serif"
 
+#: inc/customizer.php:103
 msgid "Define qué fuente del sistema se ve mientras carga la tuya."
 msgstr "Sets which system font shows while yours loads."
 
+#: inc/customizer.php:110
 msgid "Tamaño de texto base"
 msgstr "Base text size"
 
+#: inc/customizer.php:114
 msgid "17 px (recomendado)"
 msgstr "17 px (recommended)"
 
+#: inc/customizer.php:122
 msgid "Esquinas"
 msgstr "Corners"
 
+#: inc/customizer.php:125
 msgid "Rectas"
 msgstr "Square"
 
+#: inc/customizer.php:126
 msgid "Apenas redondeadas"
 msgstr "Slightly rounded"
 
+#: inc/customizer.php:127
 msgid "Redondeadas"
 msgstr "Rounded"
 
+#: inc/customizer.php:128
 msgid "Muy redondeadas"
 msgstr "Very rounded"
 
+#: inc/customizer.php:135
 msgid "Ancho máximo del contenido"
 msgstr "Maximum content width"
 
+#: inc/customizer.php:149
 msgid "Encabezado"
 msgstr "Header"
 
+#: inc/customizer.php:156
+#: inc/home.php:33
 msgid "Diseño"
 msgstr "Layout"
 
+#: inc/customizer.php:159
 msgid "Logo a la izquierda, menú a la derecha"
 msgstr "Logo on the left, menu on the right"
 
+#: inc/customizer.php:160
 msgid "Logo centrado, menú debajo"
 msgstr "Centered logo, menu below"
 
+#: inc/customizer.php:163
 msgid "En el celular los dos se ven igual: logo y botón de menú."
 msgstr "On phones both look the same: logo and menu button."
 
+#: inc/customizer.php:165
 msgid "Encabezado fijo al hacer scroll"
 msgstr "Sticky header on scroll"
 
+#: inc/customizer.php:166
 msgid "Mostrar buscador"
 msgstr "Show search"
 
+#: inc/customizer.php:167
 msgid "Botón del encabezado: texto"
 msgstr "Header button: text"
 
+#: inc/customizer.php:168
 msgid "Botón del encabezado: link"
 msgstr "Header button: link"
 
+#: inc/customizer.php:170
 msgid "Transparente sobre la portada"
 msgstr "Transparent over the hero"
 
+#: inc/customizer.php:171
 msgid "Solo en la home y cuando la portada usa \"Imagen de fondo a todo el ancho\". Al hacer scroll vuelve a su color."
 msgstr "Only on the home page and when the hero uses \"Full-width background image\". It turns solid when scrolling."
 
+#: inc/customizer.php:184
 msgid "Logo claro (para el encabezado transparente)"
 msgstr "Light logo (for the transparent header)"
 
+#: inc/customizer.php:185
 msgid "Una versión blanca o clara del logo, que se lea sobre la foto. Si no la cargás, se usa el logo de siempre."
 msgstr "A white or light version of the logo that reads over the photo. If you don't upload one, the regular logo is used."
 
+#: inc/customizer.php:193
 msgid "Barra superior con contacto y redes"
 msgstr "Top bar with contact and social links"
 
+#: inc/customizer.php:194
 msgid "Muestra el teléfono, WhatsApp, email y redes cargados en Ajustes del sitio."
 msgstr "Shows the phone, WhatsApp, email and social links set in Site settings."
 
+#: inc/customizer.php:195
 msgid "Barra superior: texto corto (opcional)"
 msgstr "Top bar: short text (optional)"
 
+#: inc/customizer.php:206
 msgid "Texto breve bajo el logo"
 msgstr "Short text under the logo"
 
+#: inc/customizer.php:210
 msgid "Estilo"
 msgstr "Style"
 
+#: inc/customizer.php:213
 msgid "Del color secundario de la marca"
 msgstr "Brand secondary color"
 
+#: inc/customizer.php:214
 msgid "Claro"
 msgstr "Light"
 
+#: inc/customizer.php:217
 msgid "Para sumar columnas (horarios, links, un texto), agregá widgets en Apariencia → Widgets → Pie de página: columnas."
 msgstr "To add columns (hours, links, some text), add widgets in Appearance → Widgets → Footer: columns."
 
+#: inc/customizer.php:219
 msgid "Mostrar \"Sitio hecho por FeeloLab\" (con link a feelolab.com)"
 msgstr "Show \"Site by FeeloLab\" (linking to feelolab.com)"
 
+#: inc/customizer.php:229
 msgid "Mostrar el tiempo de lectura"
 msgstr "Show reading time"
 
+#: inc/customizer.php:230
 msgid "Mostrar botones para compartir"
 msgstr "Show share buttons"
 
+#: inc/customizer.php:231
 msgid "Mostrar el recuadro del autor"
 msgstr "Show the author box"
 
+#: inc/customizer.php:232
 msgid "Aparece solo si el autor completó su biografía en Usuarios → Perfil."
 msgstr "Only appears if the author filled in their bio in Users → Profile."
 
+#: inc/customizer.php:238
 msgid "Secciones de la home"
 msgstr "Home sections"
 
+#: inc/customizer.php:240
 msgid "Ordená las secciones arrastrándolas en \"Orden de las secciones\" y completá cada una. Los cambios de texto e imágenes se ven al instante."
 msgstr "Reorder the sections by dragging them in \"Section order\" and fill in each one. Text and image changes show instantly."
 
+#: inc/customizer.php:253
+#: inc/customizer.php:270
 msgid "Orden de las secciones"
 msgstr "Section order"
 
+#: inc/customizer.php:271
 msgid "Arrastrá cada sección o usá las flechas. Las ocultas no se ven en el sitio; se prenden desde el lápiz de cada una."
 msgstr "Drag each section or use the arrows. Hidden sections don't show on the site; turn them on from each one's pencil."
 
+#: inc/customizer.php:291
 msgid "Mostrar esta sección"
 msgstr "Show this section"
 
+#: inc/customizer.php:404
 msgid "Oculta"
 msgstr "Hidden"
 
+#. translators: 1: sección, 2: posición, 3: total
+#: inc/customizer.php:406
+#, php-format
 msgid "%1$s, posición %2$d de %3$d"
 msgstr "%1$s, position %2$d of %3$d"
 
+#. translators: %s: relación de contraste, por ejemplo 3.2
+#: inc/customizer.php:444
+#, php-format
 msgid "El botón casi no se distingue del fondo de la página (%s:1). Se le agrega un borde para que se vea como botón."
 msgstr "The button barely stands out from the page background (%s:1). A border is added so it still looks like a button."
 
+#. translators: %s: relación de contraste, por ejemplo 3.2
+#: inc/customizer.php:446
+#, php-format
 msgid "Este texto no se lee bien sobre el fondo del botón (%s:1, mínimo 4.5:1). El sitio va a usar blanco o negro, el que mejor se lea."
 msgstr "This text isn't readable on the button background (%s:1, minimum 4.5:1). The site will use white or black, whichever reads better."
 
+#. translators: %s: relación de contraste, por ejemplo 3.2
+#: inc/customizer.php:448
+#, php-format
 msgid "Los links tendrían poco contraste con el fondo (%s:1, mínimo 4.5:1). El sitio va a usar una versión más oscura de este color."
 msgstr "Links would have low contrast with the background (%s:1, minimum 4.5:1). The site will use a darker version of this color."
 
+#. translators: %s: relación de contraste, por ejemplo 3.2
+#: inc/customizer.php:450
+#, php-format
 msgid "Los links usan este color y sobre el fondo no se leerían (%s:1). El sitio va a usar una versión más oscura; si preferís otro, elegilo en \"Links y acentos\"."
 msgstr "Links use this color and wouldn't be readable on the background (%s:1). The site will use a darker version; if you prefer another, choose it in \"Links and accents\"."
 
+#. translators: %s: relación de contraste, por ejemplo 1.0
+#: inc/customizer.php:452
+#, php-format
 msgid "Este color es muy claro para usarlo en links (%s:1 sobre el fondo), así que los links van a usar el color Secundario (o el de Texto). Si preferís otro, elegilo en \"Links y acentos\"."
 msgstr "This color is too light for links (%s:1 on the background), so links will use the Secondary color (or the Text color). If you prefer another, choose it in \"Links and accents\"."
 
+#. translators: %s: relación de contraste, por ejemplo 3.2
+#: inc/customizer.php:454
+#, php-format
 msgid "El texto tiene poco contraste con el fondo (%s:1). El tema lo va a oscurecer para que se lea."
 msgstr "The text has low contrast with the background (%s:1). The theme will darken it so it reads well."
 
+#: inc/home.php:27
 msgid "Portada (hero)"
 msgstr "Hero"
 
+#: inc/home.php:36
 msgid "Texto e imagen lado a lado"
 msgstr "Text and image side by side"
 
+#: inc/home.php:37
 msgid "Imagen de fondo a todo el ancho"
 msgstr "Full-width background image"
 
+#: inc/home.php:38
 msgid "Solo texto, centrado"
 msgstr "Text only, centered"
 
+#: inc/home.php:41
 msgid "Título (es el h1 de la home)"
 msgstr "Title (the home page h1)"
 
+#: inc/home.php:42
+#: inc/home.php:57
+#: inc/patterns.php:55
 msgid "Bajada"
 msgstr "Subtitle"
 
+#: inc/home.php:43
 msgid "Imagen (1600×900 o más)"
 msgstr "Image (1600×900 or larger)"
 
+#: inc/home.php:44
 msgid "Botón principal: texto"
 msgstr "Main button: text"
 
+#: inc/home.php:44
+#: patterns/intro-botones.php:25
 msgid "Contactanos"
 msgstr "Contact us"
 
+#: inc/home.php:45
 msgid "Botón principal: link"
 msgstr "Main button: link"
 
+#: inc/home.php:46
 msgid "Botón secundario: texto"
 msgstr "Secondary button: text"
 
+#: inc/home.php:47
 msgid "Botón secundario: link"
 msgstr "Secondary button: link"
 
+#: inc/home.php:51
+#: inc/home.php:56
 msgid "Servicios"
 msgstr "Services"
 
+#: inc/home.php:56
+#: inc/home.php:66
+#: inc/home.php:80
+#: inc/home.php:108
+#: inc/home.php:118
+#: inc/home.php:128
+#: inc/home.php:137
+#: inc/home.php:147
+#: inc/home.php:160
+#: inc/home.php:169
+#: inc/home.php:180
+#: inc/home.php:189
 msgid "Título"
 msgstr "Title"
 
+#: inc/home.php:58
+#: inc/home.php:109
+#: inc/home.php:119
+#: inc/home.php:138
+#: inc/home.php:161
 msgid "Cantidad"
 msgstr "Number of items"
 
+#: inc/home.php:62
 msgid "Sobre nosotros"
 msgstr "About us"
 
+#: inc/home.php:66
+#: patterns/intro-botones.php:16
 msgid "Quiénes somos"
 msgstr "Who we are"
 
+#: inc/home.php:68
+#: inc/home.php:149
 msgid "Imagen"
 msgstr "Image"
 
+#: inc/home.php:69
+#: inc/home.php:150
 msgid "Link: texto"
 msgstr "Link: text"
 
+#: inc/home.php:69
 msgid "Conocenos"
 msgstr "Meet us"
 
+#: inc/home.php:70
+#: inc/home.php:151
 msgid "Link: URL"
 msgstr "Link: URL"
 
+#: inc/home.php:75
 msgid "Llamada a la acción (segunda)"
 msgstr "Call to action (second)"
 
+#: inc/home.php:80
 msgid "¿Necesitás una mano?"
 msgstr "Need a hand?"
 
+#: inc/home.php:82
+#: inc/home.php:171
 msgid "Botón: texto"
 msgstr "Button: text"
 
+#: inc/home.php:82
 msgid "Consultanos"
 msgstr "Ask us"
 
+#: inc/home.php:83
+#: inc/home.php:172
 msgid "Botón: link (vacío = WhatsApp o contacto)"
 msgstr "Button: link (empty = WhatsApp or contact)"
 
+#: inc/home.php:87
+#: template-parts/home/cifras.php:22
 msgid "Cifras"
 msgstr "Stats"
 
+#: inc/home.php:91
 msgid "Título (opcional)"
 msgstr "Title (optional)"
 
+#: inc/home.php:92
 msgid "Cifra 1"
 msgstr "Stat 1"
 
+#: inc/home.php:93
 msgid "Texto 1"
 msgstr "Text 1"
 
+#: inc/home.php:93
+#: patterns/cifras.php:16
 msgid "años de experiencia"
 msgstr "years of experience"
 
+#: inc/home.php:94
 msgid "Cifra 2"
 msgstr "Stat 2"
 
+#: inc/home.php:95
 msgid "Texto 2"
 msgstr "Text 2"
 
+#: inc/home.php:96
 msgid "Cifra 3"
 msgstr "Stat 3"
 
+#: inc/home.php:97
 msgid "Texto 3"
 msgstr "Text 3"
 
+#: inc/home.php:98
 msgid "Cifra 4"
 msgstr "Stat 4"
 
+#: inc/home.php:99
 msgid "Texto 4"
 msgstr "Text 4"
 
+#: inc/home.php:103
+#: inc/home.php:108
 msgid "Proyectos"
 msgstr "Projects"
 
+#: inc/home.php:113
 msgid "Testimonios"
 msgstr "Testimonials"
 
+#: inc/home.php:118
 msgid "Lo que dicen nuestros clientes"
 msgstr "What our clients say"
 
+#: inc/home.php:123
 msgid "Logos de clientes"
 msgstr "Client logos"
 
+#: inc/home.php:128
 msgid "Confían en nosotros"
 msgstr "They trust us"
 
+#: inc/home.php:132
+#: inc/home.php:137
+#: patterns/preguntas.php:22
+#: template-parts/single/content-servicio.php:30
 msgid "Preguntas frecuentes"
 msgstr "Frequently asked questions"
 
+#: inc/home.php:142
 msgid "Texto con imagen (segundo bloque)"
 msgstr "Text with image (second block)"
 
+#: inc/home.php:147
+#: patterns/pasos.php:24
 msgid "Cómo trabajamos"
 msgstr "How we work"
 
+#: inc/home.php:156
 msgid "Últimas notas del blog"
 msgstr "Latest blog posts"
 
+#: inc/home.php:160
 msgid "Novedades"
 msgstr "News"
 
+#: inc/home.php:165
 msgid "Llamada a la acción"
 msgstr "Call to action"
 
+#: inc/home.php:169
+#: patterns/llamada.php:17
+#: template-parts/cta-band.php:12
 msgid "¿Hablamos?"
 msgstr "Let's talk?"
 
+#: inc/home.php:171
+#: patterns/llamada.php:26
+#: template-parts/cta-band.php:14
 msgid "Escribinos"
 msgstr "Write to us"
 
+#: inc/home.php:176
 msgid "Newsletter"
 msgstr "Newsletter"
 
+#: inc/home.php:180
+#: patterns/newsletter.php:17
 msgid "Recibí nuestras novedades"
 msgstr "Get our news"
 
+#: inc/home.php:181
 msgid "Un email al mes con lo que te sirve. Sin spam."
 msgstr "One email a month with useful stuff. No spam."
 
+#: inc/home.php:185
 msgid "Contacto con formulario"
 msgstr "Contact with form"
 
+#. Template Name of the theme
+#: inc/home.php:189
+#: template-parts/topbar.php:28
 msgid "Contacto"
 msgstr "Contact"
 
+#: inc/home.php:217
 msgid "Imagen a la"
 msgstr "Image on the"
 
+#: inc/home.php:220
 msgid "Derecha"
 msgstr "Right"
 
+#: inc/home.php:221
 msgid "Izquierda"
 msgstr "Left"
 
+#. translators: %s: nombre del ítem de menú
+#: inc/nav.php:20
+#, php-format
 msgid "Mostrar submenú de %s"
 msgstr "Show %s submenu"
 
+#: inc/patterns.php:22
 msgid "Secciones listas con el diseño del sitio."
 msgstr "Ready-made sections with the site's design."
 
+#: inc/patterns.php:29
 msgid "Tarjeta"
 msgstr "Card"
 
+#: inc/patterns.php:33
 msgid "Tarjeta destacada"
 msgstr "Featured card"
 
+#: inc/patterns.php:37
 msgid "Fondo suave"
 msgstr "Soft background"
 
+#: inc/patterns.php:41
 msgid "Franja de marca"
 msgstr "Brand band"
 
+#: inc/patterns.php:47
 msgid "Volanta"
 msgstr "Kicker"
 
+#: inc/patterns.php:51
 msgid "Dato grande"
 msgstr "Big number"
 
+#: inc/patterns.php:61
 msgid "Con tildes"
 msgstr "With checkmarks"
 
+#: inc/setup.php:39
 msgid "Menú principal"
 msgstr "Main menu"
 
+#: inc/setup.php:40
 msgid "Menú del pie"
 msgstr "Footer menu"
 
+#: inc/setup.php:41
 msgid "Menú legal (privacidad, términos)"
 msgstr "Legal menu (privacy, terms)"
 
+#: inc/setup.php:69
+#: template-parts/sidebar-blog.php:14
 msgid "Barra lateral del blog"
 msgstr "Blog sidebar"
 
+#: inc/setup.php:79
 msgid "Pie de página: columnas"
 msgstr "Footer: columns"
 
+#: inc/setup.php:81
 msgid "Cada widget es una columna más del pie, después del contacto."
 msgstr "Each widget becomes another footer column, after the contact details."
 
+#. translators: %d: minutos
+#: inc/template-tags.php:176
+#, php-format
 msgid "%d minuto de lectura"
 msgid_plural "%d minutos de lectura"
 msgstr[0] "%d minute read"
 msgstr[1] "%d minute read"
 
+#: inc/template-tags.php:184
 msgid "Actualizado"
 msgstr "Updated"
 
+#: inc/template-tags.php:194
+#: template-parts/single/content.php:53
 msgid "Anterior"
 msgstr "Previous"
 
+#: inc/template-tags.php:195
+#: template-parts/single/content.php:54
 msgid "Siguiente"
 msgstr "Next"
 
+#: inc/template-tags.php:196
 msgid "Página"
 msgstr "Page"
 
+#: inc/template-tags.php:197
 msgid "Paginación"
 msgstr "Pagination"
 
+#. translators: %d: calificación
+#: inc/template-tags.php:210
+#, php-format
 msgid "Calificación: %d de 5"
 msgstr "Rating: %d out of 5"
 
+#. translators: %s: red social
+#: inc/template-tags.php:234
+#, php-format
 msgid "%s (se abre en otra pestaña)"
 msgstr "%s (opens in a new tab)"
 
+#: inc/template-tags.php:257
 msgid "(WhatsApp, se abre en otra pestaña)"
 msgstr "(WhatsApp, opens in a new tab)"
 
+#: inc/template-tags.php:265
 msgid "(ver en el mapa, se abre en otra pestaña)"
 msgstr "(see on the map, opens in a new tab)"
 
+#. translators: %s: dirección
+#: inc/template-tags.php:336
+#, php-format
 msgid "Mapa: %s"
 msgstr "Map: %s"
 
+#: inc/template-tags.php:341
 msgid "Ver mapa"
 msgstr "Show map"
 
+#: inc/template-tags.php:342
 msgid "Abrir en Google Maps"
 msgstr "Open in Google Maps"
 
+#: inc/template-tags.php:344
 msgid "El mapa lo muestra Google: se carga solo si lo pedís."
 msgstr "The map is provided by Google: it only loads if you ask for it."
 
+#. Template Name of the theme
 msgid "Ancho completo"
 msgstr "Full width"
 
+#: page-templates/contacto.php:30
+#: page-templates/contacto.php:31
+#: template-parts/cards/card-sede.php:20
 msgid "Datos de contacto"
 msgstr "Contact details"
 
+#: page-templates/contacto.php:39
+#: template-parts/single/content-sede.php:28
 msgid "Cómo llegar"
 msgstr "How to get here"
 
+#: page-templates/contacto.php:59
 msgid "Sedes"
 msgstr "Locations"
 
+#: patterns/cifras.php
 msgctxt "Pattern title"
 msgid "Cifras"
 msgstr "Stats"
 
+#: patterns/cifras.php
 msgctxt "Pattern description"
 msgid "Cuatro números grandes con su texto. Solo datos reales y verificables."
 msgstr "Four big numbers with their text. Only real, verifiable data."
 
+#: patterns/cifras.php:17
 msgid "clientes"
 msgstr "clients"
 
+#: patterns/cifras.php:18
 msgid "tiempo de respuesta"
 msgstr "response time"
 
+#: patterns/cifras.php:19
 msgid "de calificación en Google"
 msgstr "rating on Google"
 
+#: patterns/equipo.php
 msgctxt "Pattern title"
 msgid "Equipo"
 msgstr "Team"
 
+#: patterns/equipo.php
 msgctxt "Pattern description"
 msgid "Tres personas con foto, nombre y cargo. Reemplazá las fotos de muestra y completá el texto alternativo con el nombre. Si el módulo Equipo está activo, cada persona también tiene su ficha propia."
 msgstr "Three people with photo, name and role. Replace the sample photos and fill in the alt text with the name. If the Team module is active, each person also gets their own page."
 
+#: patterns/equipo.php:16
 msgid "Directora"
 msgstr "Director"
 
+#: patterns/equipo.php:17
 msgid "Contador"
 msgstr "Accountant"
 
+#: patterns/equipo.php:18
 msgid "Atención a clientes"
 msgstr "Customer service"
 
+#: patterns/equipo.php:23
 msgid "Nuestro equipo"
 msgstr "Our team"
 
+#: patterns/intro-botones.php
 msgctxt "Pattern title"
 msgid "Introducción con botones"
 msgstr "Intro with buttons"
 
+#: patterns/intro-botones.php
 msgctxt "Pattern description"
 msgid "Volanta, una bajada grande y dos botones. Para abrir cualquier página interior."
 msgstr "Kicker, a large subtitle and two buttons. To open any inner page."
 
+#: patterns/intro-botones.php:20
 msgid "Contá en dos o tres líneas qué hacen, para quién y qué los diferencia. Es lo primero que se lee: que se entienda sin conocerlos."
 msgstr "Say in two or three lines what you do, for whom and what sets you apart. It's the first thing people read: make it clear to someone who doesn't know you."
 
+#: patterns/intro-botones.php:29
 msgid "Ver servicios"
 msgstr "See services"
 
+#: patterns/landing.php
 msgctxt "Pattern title"
 msgid "Landing completa"
 msgstr "Full landing page"
 
+#: patterns/landing.php
 msgctxt "Pattern description"
 msgid "Una página de campaña entera: título, beneficios, pasos, preguntas y cierre. Usala con la plantilla \"Ancho completo\" (trae su propio título principal)."
 msgstr "An entire campaign page: title, benefits, steps, questions and closing. Use it with the \"Full width\" template (it brings its own main title)."
 
+#: patterns/landing.php:18
 msgid "Oferta de lanzamiento"
 msgstr "Launch offer"
 
+#: patterns/landing.php:22
 msgid "Ordená las cuentas de tu negocio en 30 días"
 msgstr "Get your business finances in order in 30 days"
 
+#: patterns/landing.php:26
 msgid "Una promesa concreta: qué gana la persona y en cuánto tiempo. Una sola idea por landing."
 msgstr "A concrete promise: what the person gets and how fast. One idea per landing page."
 
+#: patterns/landing.php:31
 msgid "Quiero empezar"
 msgstr "Get started"
 
+#: patterns/llamada.php
 msgctxt "Pattern title"
 msgid "Llamada a la acción"
 msgstr "Call to action"
 
+#: patterns/llamada.php
 msgctxt "Pattern description"
 msgid "Franja del color de la marca a todo el ancho con título, texto y botón. Para cerrar una página."
 msgstr "Full-width band in the brand color with title, text and button. To close a page."
 
+#: patterns/llamada.php:21
 msgid "Contanos qué necesitás y te respondemos en el día."
 msgstr "Tell us what you need and we'll reply the same day."
 
+#: patterns/newsletter.php
 msgctxt "Pattern title"
 msgid "Suscripción al newsletter"
 msgstr "Newsletter signup"
 
+#: patterns/newsletter.php
 msgctxt "Pattern description"
 msgid "Franja con el formulario de suscripción (se configura en Ajustes del sitio → Newsletter)."
 msgstr "Band with the signup form (set it up in Site settings → Newsletter)."
 
+#: patterns/newsletter.php:21
 msgid "Un email al mes con lo que te sirve. Sin spam: te das de baja con un clic."
 msgstr "One email a month with useful stuff. No spam: unsubscribe with one click."
 
+#: patterns/pasos.php
 msgctxt "Pattern title"
 msgid "Cómo trabajamos (pasos)"
 msgstr "How we work (steps)"
 
+#: patterns/pasos.php
 msgctxt "Pattern description"
 msgid "Cuatro pasos numerados sobre fondo suave: explica el proceso y baja la ansiedad antes de contactar."
 msgstr "Four numbered steps on a soft background: explains the process and eases doubts before contacting."
 
+#: patterns/pasos.php:16
 msgid "Nos contás"
 msgstr "You tell us"
 
+#: patterns/pasos.php:16
 msgid "Una charla corta para entender qué necesitás."
 msgstr "A short chat to understand what you need."
 
+#: patterns/pasos.php:17
 msgid "Te proponemos"
 msgstr "We propose"
 
+#: patterns/pasos.php:17
 msgid "Un plan claro con plazos y costos cerrados."
 msgstr "A clear plan with fixed timelines and costs."
 
+#: patterns/pasos.php:18
 msgid "Lo hacemos"
 msgstr "We do it"
 
+#: patterns/pasos.php:18
 msgid "Trabajamos y te mantenemos al tanto en cada etapa."
 msgstr "We work and keep you posted at every stage."
 
+#: patterns/pasos.php:19
 msgid "Te acompañamos"
 msgstr "We stay with you"
 
+#: patterns/pasos.php:19
 msgid "Seguimos disponibles después de la entrega."
 msgstr "We're still available after delivery."
 
+#: patterns/precios.php
 msgctxt "Pattern title"
 msgid "Tabla de precios"
 msgstr "Pricing table"
 
+#: patterns/precios.php
 msgctxt "Pattern description"
 msgid "Tres planes con lo que incluye cada uno; el del medio va destacado."
 msgstr "Three plans with what each includes; the middle one is featured."
 
+#: patterns/precios.php:16
 msgid "Básico"
 msgstr "Basic"
 
+#: patterns/precios.php:16
 msgid "Lo esencial para arrancar"
 msgstr "The essentials to get started"
 
+#: patterns/precios.php:16
 msgid "Atención por email"
 msgstr "Email support"
 
+#: patterns/precios.php:16
 msgid "Informe mensual"
 msgstr "Monthly report"
 
+#: patterns/precios.php:17
 msgid "Completo"
 msgstr "Complete"
 
+#: patterns/precios.php:17
 msgid "Todo lo del plan Básico"
 msgstr "Everything in Basic"
 
+#: patterns/precios.php:17
 msgid "Atención por WhatsApp"
 msgstr "WhatsApp support"
 
+#: patterns/precios.php:17
 msgid "Reunión mensual"
 msgstr "Monthly meeting"
 
+#: patterns/precios.php:18
 msgid "Empresas"
 msgstr "Business"
 
+#: patterns/precios.php:18
 msgid "Para equipos grandes"
 msgstr "For large teams"
 
+#: patterns/precios.php:18
 msgid "Persona asignada"
 msgstr "Dedicated contact"
 
+#: patterns/precios.php:18
 msgid "Reportes a medida"
 msgstr "Custom reports"
 
+#: patterns/precios.php:23
 msgid "Planes"
 msgstr "Plans"
 
+#: patterns/precios.php:35
 msgid "El más elegido"
 msgstr "Most popular"
 
+#: patterns/precios.php:58
 msgid "Quiero este plan"
 msgstr "I want this plan"
 
+#: patterns/precios.php:66
 msgid "Precios finales por mes. Podés cambiar de plan cuando quieras."
 msgstr "Final monthly prices. You can switch plans anytime."
 
+#: patterns/preguntas.php
 msgctxt "Pattern title"
 msgid "Preguntas frecuentes"
 msgstr "Frequently asked questions"
 
+#: patterns/preguntas.php
 msgctxt "Pattern description"
 msgid "Preguntas que se abren al tocarlas. Para las preguntas que se repiten en todo el sitio conviene el módulo Preguntas frecuentes (suma schema para Google)."
 msgstr "Questions that expand when tapped. For questions repeated across the site, use the FAQ module (it adds schema for Google)."
 
+#: patterns/preguntas.php:16
 msgid "¿Cuánto tarda una respuesta?"
 msgstr "How long does a reply take?"
 
+#: patterns/preguntas.php:16
 msgid "Respondemos todas las consultas en menos de 24 horas hábiles."
 msgstr "We answer every inquiry within 24 business hours."
 
+#: patterns/preguntas.php:17
 msgid "¿Trabajan a distancia?"
 msgstr "Do you work remotely?"
 
+#: patterns/preguntas.php:17
 msgid "Sí, atendemos por videollamada a clientes de todo el país."
 msgstr "Yes, we meet clients across the country by video call."
 
+#: patterns/preguntas.php:18
 msgid "¿Cómo se paga?"
 msgstr "How can I pay?"
 
+#: patterns/preguntas.php:18
 msgid "Transferencia, tarjeta o Mercado Pago. Emitimos factura."
 msgstr "Bank transfer, card or online payment. We issue invoices."
 
+#: patterns/texto-imagen.php
 msgctxt "Pattern title"
 msgid "Texto con imagen"
 msgstr "Text with image"
 
+#: patterns/texto-imagen.php
 msgctxt "Pattern description"
 msgid "Un bloque de texto con una foto al costado. En el celular la foto va arriba."
 msgstr "A text block with a photo beside it. On phones the photo goes on top."
 
+#: patterns/texto-imagen.php:17
 msgid "Nuestra historia"
 msgstr "Our story"
 
+#: patterns/texto-imagen.php:21
 msgid "Más de 15 años al lado de pymes"
 msgstr "Over 15 years alongside small businesses"
 
+#: patterns/texto-imagen.php:25
 msgid "Contá cómo empezaron, qué aprendieron y qué los mueve hoy. Dos párrafos cortos alcanzan. Reemplazá la imagen con una foto real del equipo o del lugar."
 msgstr "Tell how you started, what you learned and what drives you today. Two short paragraphs are enough. Replace the image with a real photo of the team or the place."
 
+#: patterns/valores.php
 msgctxt "Pattern title"
 msgid "Misión, visión y valores"
 msgstr "Mission, vision and values"
 
+#: patterns/valores.php
 msgctxt "Pattern description"
 msgid "Tres tarjetas lado a lado. Sirve también para tres beneficios o tres diferenciales."
 msgstr "Three cards side by side. Also works for three benefits or three differentiators."
 
+#: patterns/valores.php:16
 msgid "Misión"
 msgstr "Mission"
 
+#: patterns/valores.php:16
 msgid "Qué hacen todos los días y para quién, en una o dos frases."
 msgstr "What you do every day and for whom, in one or two sentences."
 
+#: patterns/valores.php:17
 msgid "Visión"
 msgstr "Vision"
 
+#: patterns/valores.php:17
 msgid "Adónde quieren llegar: el cambio que buscan en sus clientes."
 msgstr "Where you want to go: the change you seek for your clients."
 
+#: patterns/valores.php:18
 msgid "Valores"
 msgstr "Values"
 
+#: patterns/valores.php:18
 msgid "Tres o cuatro palabras que guían cómo trabajan, con un ejemplo concreto."
 msgstr "Three or four words that guide how you work, with a concrete example."
 
+#: patterns/valores.php:23
 msgid "Lo que nos guía"
 msgstr "What guides us"
 
+#. translators: %d: cantidad de resultados
+#: search.php:26
+#, php-format
 msgid "%d resultado"
 msgid_plural "%d resultados"
 msgstr[0] "%d result"
 msgstr[1] "%d results"
 
+#: searchform.php:13
 msgid "Buscar en el sitio"
 msgstr "Search the site"
 
+#: searchform.php:14
 msgid "Buscar…"
 msgstr "Search…"
 
+#: template-parts/author-box.php:25
 msgid "Escrito por"
 msgstr "Written by"
 
+#: template-parts/cards/card-producto.php:23
 msgid "Sin stock"
 msgstr "Out of stock"
 
+#: template-parts/cards/card-producto.php:25
 msgid "Oferta"
 msgstr "Sale"
 
+#. translators: %s: nombre de la sede
+#: template-parts/cards/card-sede.php:40
+#, php-format
 msgid "Cómo llegar a %s"
 msgstr "How to get to %s"
 
+#: template-parts/cards/card-servicio.php:24
+#: template-parts/single/content-servicio.php:38
 msgid "Desde"
 msgstr "From"
 
+#: template-parts/cards/card-servicio.php:26
 msgid "Ver más"
 msgstr "Read more"
 
+#: template-parts/gallery-grid.php:17
 msgid "Galería"
 msgstr "Gallery"
 
+#: template-parts/gallery-grid.php:30
 msgid "(ver imagen grande)"
 msgstr "(view larger image)"
 
+#: template-parts/gallery.php:41
 msgid "Imágenes del producto"
 msgstr "Product images"
 
+#. translators: 1: número de imagen, 2: total, 3: producto
+#: template-parts/gallery.php:50
+#, php-format
 msgid "Imagen %1$d de %2$d de %3$s"
 msgstr "Image %1$d of %2$d of %3$s"
 
+#: template-parts/home/blog.php:36
 msgid "Ver todas las notas"
 msgstr "See all posts"
 
+#: template-parts/home/proyectos.php:34
 msgid "Ver todos los proyectos"
 msgstr "See all projects"
 
+#: template-parts/home/servicios.php:34
 msgid "Ver todos los servicios"
 msgstr "See all services"
 
+#: template-parts/none.php:11
 msgid "No encontramos nada con esa búsqueda. Probá con otras palabras."
 msgstr "We found nothing for that search. Try other words."
 
+#: template-parts/none.php:11
 msgid "Todavía no hay contenido acá."
 msgstr "There's no content here yet."
 
+#: template-parts/price.php:20
 msgid "Antes:"
 msgstr "Before:"
 
+#: template-parts/price.php:21
 msgid "Ahora:"
 msgstr "Now:"
 
+#. translators: %s: nombre del tipo de contenido en plural
+#: template-parts/related.php:45
+#, php-format
 msgid "Más %s"
 msgstr "More %s"
 
+#: template-parts/share.php:22
+#: template-parts/single/content-miembro.php:39
 msgid "Email"
 msgstr "Email"
 
+#: template-parts/share.php:26
+#: template-parts/share.php:31
 msgid "Compartir"
 msgstr "Share"
 
+#: template-parts/share.php:42
 msgid "Enviar por email"
 msgstr "Send by email"
 
+#. translators: %s: red social
+#: template-parts/share.php:44
+#, php-format
 msgid "Compartir en %s (se abre en otra pestaña)"
 msgstr "Share on %s (opens in a new tab)"
 
+#: template-parts/share.php:52
 msgid "Link copiado"
 msgstr "Link copied"
 
+#: template-parts/share.php:54
 msgid "Copiar link"
 msgstr "Copy link"
 
+#. translators: %s: nombre del producto
+#: template-parts/single/content-producto.php:35
+#, php-format
 msgid "Hola, quiero consultar por: %s"
 msgstr "Hi, I'd like to ask about: %s"
 
+#: template-parts/single/content-producto.php:51
 msgid "Disponible"
 msgstr "Available"
 
+#: template-parts/single/content-producto.php:51
 msgid "Sin stock por el momento"
 msgstr "Out of stock for now"
 
+#: template-parts/single/content-producto.php:58
 msgid "Elegí para tu consulta"
 msgstr "Choose for your inquiry"
 
+#: template-parts/single/content-producto.php:64
 msgid "Sin elegir"
 msgstr "Not selected"
 
+#: template-parts/single/content-producto.php:75
 msgid "Consultar por WhatsApp"
 msgstr "Ask on WhatsApp"
 
+#: template-parts/single/content-producto.php:75
+#: template-parts/single/content-servicio.php:14
 msgid "Consultar"
 msgstr "Ask"
 
+#: template-parts/single/content-producto.php:79
 msgid "Código:"
 msgstr "Code:"
 
+#: template-parts/single/content-producto.php:88
 msgid "Ficha técnica"
 msgstr "Specifications"
 
+#. translators: %s: producto
+#: template-parts/single/content-producto.php:93
+#, php-format
 msgid "Características de %s"
 msgstr "Features of %s"
 
+#: template-parts/single/content-proyecto.php:12
 msgid "Cliente"
 msgstr "Client"
 
+#: template-parts/single/content-proyecto.php:13
 msgid "Año"
 msgstr "Year"
 
+#: template-parts/single/content-proyecto.php:14
 msgid "Resultado"
 msgstr "Result"
 
+#: template-parts/single/content-proyecto.php:32
 msgid "Datos del proyecto"
 msgstr "Project details"
 
+#: template-parts/single/content-proyecto.php:39
 msgid "Ver el proyecto"
 msgstr "See the project"
 
+#: template-parts/single/content-servicio.php:36
 msgid "Contratar este servicio"
 msgstr "Hire this service"
 
+#: template-parts/single/content.php:49
 msgid "Etiquetas:"
 msgstr "Tags:"
 
+#: template-parts/term-filter.php:42
 msgid "Filtrar por categoría"
 msgstr "Filter by category"
 
+#: template-parts/term-filter.php:44
 msgid "Todos"
 msgstr "All"
 
+#: theme.json
 msgctxt "Font size name"
 msgid "Chico"
 msgstr "Small"
 
+#: theme.json
 msgctxt "Font size name"
 msgid "Normal"
 msgstr "Normal"
 
+#: theme.json
 msgctxt "Font size name"
 msgid "Grande"
 msgstr "Large"
 
+#: theme.json
 msgctxt "Font size name"
 msgid "Muy grande"
 msgstr "Extra large"
+
+#. translators: %d: productos en el carrito
+#: inc/woocommerce.php:106
+#, php-format
+msgid "Carrito: %d producto"
+msgid_plural "Carrito: %d productos"
+msgstr[0] "Cart: %d item"
+msgstr[1] "Cart: %d items"

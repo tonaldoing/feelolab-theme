@@ -7,6 +7,11 @@ name: Release
 # - Necesita el secret RELEASES_TOKEN: token fine-grained con Contents: Read and write
 #   SOLO sobre el repo de releases.
 # - En este repo deja el tag vX.Y.Z apuntando al commit publicado.
+# - Versiones de prueba: una versión con guion (0.8.0-beta.1) se publica como "prerelease": no es
+#   la "latest", así que los sitios en el canal estable no la ven.
+# - Canal beta: el release fijo "canal-beta" guarda un update.json que se reemplaza con CADA versión
+#   (de prueba o estable). Los sitios con "Recibir versiones de prueba" leen ese.
+# - update.json lleva "versions": las estables publicadas, para volver a una anterior.
 on:
   push:
     branches: [main]
@@ -41,6 +46,7 @@ jobs:
         run: |
           V=$(grep -m1 '^Version:' feelolab/style.css | awk '{print $2}')
           echo "version=$V" >> "$GITHUB_OUTPUT"
+          case "$V" in *-*) echo "prerelease=true" >> "$GITHUB_OUTPUT" ;; *) echo "prerelease=false" >> "$GITHUB_OUTPUT" ;; esac
           if gh release view "v$V" --repo "$RELEASES_REPO" >/dev/null 2>&1; then
             echo "v$V ya está publicada en $RELEASES_REPO: no hay nada que hacer."
             echo "new=false" >> "$GITHUB_OUTPUT"
@@ -81,14 +87,21 @@ jobs:
 
       - name: update.json (lo lee el actualizador de los sitios; CDN de GitHub, sin límite de consultas)
         if: steps.version.outputs.new == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.RELEASES_TOKEN }}
         run: |
           V="${{ steps.version.outputs.version }}"
           BASE="https://github.com/$RELEASES_REPO/releases/download/v$V"
+          # Versiones estables ya publicadas (más la actual si es estable), de la más nueva a la más vieja.
+          PREV=$(gh release list --repo "$RELEASES_REPO" --exclude-pre-releases --limit 30 --json tagName --jq '.[].tagName' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sed 's/^v//' || true)
+          [ "${{ steps.version.outputs.prerelease }}" = "true" ] || PREV=$(printf '%s\n%s\n' "$V" "$PREV")
+          VERSIONS=$(printf '%s\n' "$PREV" | grep -v '^$' | sort -rV | uniq | head -15 | jq -R . | jq -s .)
           jq -n --arg v "$V" --rawfile notes notes.md \
             --arg date "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
             --arg url "https://github.com/$RELEASES_REPO/releases/tag/v$V" \
             --arg theme "$BASE/feelolab.zip" --arg plugin "$BASE/feelolab-core.zip" \
-            '{version: $v, date: $date, url: $url, notes: $notes, theme: $theme, plugin: $plugin}' > update.json
+            --argjson versions "$VERSIONS" \
+            '{version: $v, date: $date, url: $url, notes: $notes, theme: $theme, plugin: $plugin, versions: $versions}' > update.json
           cat update.json
 
       - name: Publicar en el repo de releases
@@ -101,6 +114,8 @@ jobs:
           token: ${{ secrets.RELEASES_TOKEN }}
           tag_name: v${{ steps.version.outputs.version }}
           name: v${{ steps.version.outputs.version }}
+          prerelease: ${{ steps.version.outputs.prerelease == 'true' }}
+          make_latest: ${{ steps.version.outputs.prerelease == 'true' && 'false' || 'true' }}
           body_path: notes.md
           files: |
             feelolab.zip
@@ -119,11 +134,24 @@ jobs:
           token: ${{ secrets.RELEASES_TOKEN }}
           tag_name: v${{ steps.version.outputs.version }}
           name: v${{ steps.version.outputs.version }}
+          prerelease: ${{ steps.version.outputs.prerelease == 'true' }}
+          make_latest: ${{ steps.version.outputs.prerelease == 'true' && 'false' || 'true' }}
           body_path: notes.md
           files: |
             feelolab.zip
             feelolab-core.zip
             update.json
+
+      - name: Canal beta (update.json del release fijo "canal-beta")
+        if: steps.version.outputs.new == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.RELEASES_TOKEN }}
+        run: |
+          if ! gh release view canal-beta --repo "$RELEASES_REPO" >/dev/null 2>&1; then
+            gh release create canal-beta --repo "$RELEASES_REPO" --prerelease --latest=false \
+              --title "Canal beta" --notes "update.json para los sitios que reciben versiones de prueba. Se reemplaza con cada versión."
+          fi
+          gh release upload canal-beta update.json --repo "$RELEASES_REPO" --clobber
 
       - name: Tag en este repo (qué commit es cada versión)
         if: steps.version.outputs.new == 'true'

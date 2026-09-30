@@ -2,6 +2,15 @@
 
 Cada versión publicada acá llega a los sitios como actualización (Escritorio → Actualizaciones).
 
+## 0.8.0 — 2026-09-30
+
+- Asistente de primeros pasos: al instalar, cinco pasos (negocio, contacto, marca, contenidos y páginas) dejan el sitio armado. Crea las páginas Inicio, Contacto y Blog, arma el menú, activa las direcciones amigables, elige la zona horaria y borra el contenido de ejemplo. Los sitios que ya estaban configurados no lo ven. Está en Ajustes del sitio → Primeros pasos.
+- Nueva pantalla Versiones (Ajustes del sitio → Versiones): muestra la versión instalada y qué trae la última, y permite volver a una versión anterior si una actualización trae un problema. Tema y plugin vuelven juntos; los ajustes y el contenido no se tocan.
+- Canal beta opcional: un sitio de pruebas puede recibir las versiones nuevas antes que los clientes.
+- WooCommerce: si está instalado, la tienda, la ficha de producto, el carrito, el checkout y Mi cuenta toman el diseño y los colores del sitio, y el encabezado muestra el carrito con la cantidad.
+- Google: los listados (servicios, sedes, tienda) tienen una descripción con el nombre del negocio. Antes, en servicios y otros listados se mostraba el texto interno del panel.
+- Arreglo: los cambios hechos desde el asistente y desde Versiones no se guardaban en Ajustes del sitio.
+
 ## 0.7.0 — 2026-09-30
 
 - Importador de productos desde una planilla (Ajustes del sitio → Importar productos): se sube un CSV de Excel o Google Sheets, se revisa cómo se leyó y se importa con barra de progreso. Trae precio, oferta, código, disponibilidad, ficha técnica, opciones, categorías (con subcategorías), marca y fotos (por link o por nombre de archivo de la Biblioteca). Si el producto ya existe, se actualiza. Hay una plantilla para descargar.

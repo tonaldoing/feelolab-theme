@@ -57,6 +57,13 @@ $feelolab_logo_light = (int) get_theme_mod( 'feelolab_logo_light', 0 );
 			<?php endif; ?>
 		</div>
 
+		<?php
+		$feelolab_cart = function_exists( 'feelolab_cart_link' ) ? feelolab_cart_link() : '';
+		if ( $feelolab_cart ) {
+			echo '<div class="site-cart">' . $feelolab_cart . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escapado en la función.
+		}
+		?>
+
 		<?php if ( $feelolab_search ) : ?>
 			<div class="site-search">
 				<button type="button" class="site-search__toggle" aria-expanded="false" aria-controls="site-search-panel">

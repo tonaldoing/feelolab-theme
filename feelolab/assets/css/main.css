@@ -818,3 +818,12 @@ label { display: block; font-weight: 600; margin-bottom: .35rem; }
 .feelo-news__notice--ok { border-color: #1f7a4d; background: #e8f5ee; color: #14532d; }
 .feelo-news__notice--error { border-color: #b42318; background: #fdecea; color: #7a1a12; }
 .section--surface .feelo-news__consent a { color: var(--c-primary-on-surface); }
+
+/* ---------- Carrito en el encabezado (con WooCommerce) ---------- */
+.site-cart { margin-left: auto; }
+.header-cart { position: relative; display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; color: inherit; border-radius: var(--radius); }
+.header-cart .icon { width: 1.35rem; height: 1.35rem; }
+.header-cart__count { position: absolute; top: .1rem; right: .05rem; min-width: 1.2rem; height: 1.2rem; padding: 0 .3rem; border-radius: 99px; background: var(--c-primary); color: var(--c-on-primary); border: 1px solid var(--c-btn-border); font-size: .72rem; font-weight: 700; line-height: 1.1rem; text-align: center; }
+.header-cart__count[hidden] { display: none; }
+.site-cart + .site-search { margin-left: 0; }
+@media (min-width: 960px) { .site-cart { order: 4; margin-left: 0; } .site-header--centrado .site-cart { position: absolute; right: 3rem; top: 1rem; } }
