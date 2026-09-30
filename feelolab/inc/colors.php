@@ -106,9 +106,17 @@ function feelolab_contrast( string $a, string $b ): float {
 	return ( max( $la, $lb ) + 0.05 ) / ( min( $la, $lb ) + 0.05 );
 }
 
-/** Blanco o casi negro, el que más contraste dé. */
+/**
+ * Blanco o casi negro, el que más contraste dé. En tonos medios (un gris #777) ninguno de los dos
+ * llega a 4.5:1: ahí va negro puro, que siempre llega (el peor caso da 4.58:1).
+ */
 function feelolab_on_color( string $bg ): string {
-	return feelolab_contrast( $bg, '#ffffff' ) >= feelolab_contrast( $bg, '#111111' ) ? '#ffffff' : '#111111';
+	$white = feelolab_contrast( $bg, '#ffffff' );
+	$dark  = feelolab_contrast( $bg, '#111111' );
+	if ( max( $white, $dark ) >= 4.5 ) {
+		return $white >= $dark ? '#ffffff' : '#111111';
+	}
+	return $white >= feelolab_contrast( $bg, '#000000' ) ? '#ffffff' : '#000000';
 }
 
 /** Mezcla hacia negro (amount > 0) o blanco (amount < 0). */
@@ -124,10 +132,13 @@ function feelolab_shade( string $hex, float $amount ): string {
  */
 function feelolab_ensure_contrast( string $color, string $bg, float $ratio = 4.5 ): string {
 	$direction = feelolab_luminance( $bg ) > 0.4 ? 1 : -1;
-	for ( $step = 0; $step <= 20; $step++ ) {
-		$candidate = feelolab_shade( $color, $direction * $step * 0.05 );
-		if ( feelolab_contrast( $candidate, $bg ) >= $ratio ) {
-			return $candidate;
+	// Primero hacia donde corresponde; con fondos de tono medio a veces solo llega al revés.
+	foreach ( array( $direction, -$direction ) as $dir ) {
+		for ( $step = 0; $step <= 20; $step++ ) {
+			$candidate = feelolab_shade( $color, $dir * $step * 0.05 );
+			if ( feelolab_contrast( $candidate, $bg ) >= $ratio ) {
+				return $candidate;
+			}
 		}
 	}
 	return feelolab_on_color( $bg );

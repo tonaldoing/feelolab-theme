@@ -2,6 +2,18 @@
 
 Cada versión publicada acá llega a los sitios como actualización (Escritorio → Actualizaciones).
 
+## 0.7.0 — 2026-09-30
+
+- Importador de productos desde una planilla (Ajustes del sitio → Importar productos): se sube un CSV de Excel o Google Sheets, se revisa cómo se leyó y se importa con barra de progreso. Trae precio, oferta, código, disponibilidad, ficha técnica, opciones, categorías (con subcategorías), marca y fotos (por link o por nombre de archivo de la Biblioteca). Si el producto ya existe, se actualiza. Hay una plantilla para descargar.
+- Fotos en WebP: las imágenes que se suben se guardan en WebP, que pesa entre 25 y 35 % menos. El original queda guardado aparte. Se apaga en Ajustes del sitio → Integraciones.
+- Datos personales: los mensajes y suscripciones se pueden exportar o borrar desde Herramientas → Exportar / Borrar datos personales, y se pueden borrar solos a los 6, 12 o 24 meses (Ajustes del sitio → Formulario).
+- Texto sugerido para la política de privacidad, armado con lo que el sitio usa (Ajustes → Privacidad → guía).
+- Desinstalación limpia: al borrar el plugin se borran sus ajustes; los mensajes, solo si se eligió; el contenido nunca.
+- Traducción al inglés del tema y del plugin: con WordPress en inglés, el sitio y el panel salen en inglés.
+- El tema recibe actualizaciones aunque el plugin esté desactivado.
+- Arreglo de contraste: con botones de tono medio (por ejemplo gris), el texto del botón ahora siempre alcanza el mínimo de legibilidad.
+- Tests automáticos y control de Lighthouse en cada cambio del código, para detectar errores antes de publicar.
+
 ## 0.6.0 — 2026-09-30
 
 - Patrones de bloques para armar páginas interiores en minutos: introducción con botones, texto con imagen, misión, visión y valores, tabla de precios, cómo trabajamos, equipo, cifras, preguntas frecuentes, llamada a la acción, newsletter y una landing completa. Están en el editor, en Patrones → FeeloLab.

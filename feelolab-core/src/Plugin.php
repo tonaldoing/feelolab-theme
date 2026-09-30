@@ -36,11 +36,14 @@ final class Plugin {
 		Updater::init();
 		Consent::init();
 		Tracking::init();
+		Privacy::init();
+		Media::init();
 
 		if ( is_admin() ) {
 			Admin::init();
 			Branding::init();
 			Launch::init();
+			Importer::init();
 		}
 	}
 }

@@ -1,0 +1,1229 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FeeloLab Core\n"
+"Report-Msgid-Bugs-To: https://www.feelolab.com\n"
+"Language-Team: FeeloLab\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: feelolab-core\n"
+
+
+msgid "FeeloLab Core"
+msgstr "FeeloLab Core"
+
+msgid "https://www.feelolab.com"
+msgstr "https://www.feelolab.com"
+
+msgid "Contenido y datos del sitio para el tema FeeloLab: tipos de contenido, taxonomías, ajustes de marca, schema y formulario de contacto. El contenido vive acá y no en el tema, así sobrevive a un cambio de diseño."
+msgstr "Site content and data for the FeeloLab theme: content types, taxonomies, brand settings, schema and contact form. Content lives here and not in the theme, so it survives a design change."
+
+msgid "FeeloLab"
+msgstr "FeeloLab"
+
+msgid "Mensaje"
+msgstr "Message"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Teléfono"
+msgstr "Phone"
+
+msgid "Interés"
+msgstr "Interest"
+
+msgid "Enviado desde"
+msgstr "Sent from"
+
+msgid "Fecha"
+msgstr "Date"
+
+msgid "El email de aviso no se pudo enviar. Revisá la configuración SMTP del sitio."
+msgstr "The notification email couldn't be sent. Check the site's SMTP settings."
+
+msgid "Responder por email"
+msgstr "Reply by email"
+
+msgid "De"
+msgstr "From"
+
+msgid "Aviso por email"
+msgstr "Email notification"
+
+msgid "Falló"
+msgstr "Failed"
+
+msgid "Enviado"
+msgstr "Sent"
+
+msgid "Feelolab Core: instalá Advanced Custom Fields (versión gratuita) o Secure Custom Fields para editar los campos extra de cada contenido (precio, cargo, horarios…). Sin eso, el sitio funciona pero esos datos no se pueden cargar."
+msgstr "Feelolab Core: install Advanced Custom Fields (free version) or Secure Custom Fields to edit each content's extra fields (price, role, hours…). Without it the site works, but that data can't be entered."
+
+msgid "Mensajes"
+msgstr "Messages"
+
+msgid "Todo lo que llega por el formulario de contacto queda guardado acá, aunque el email de aviso falle."
+msgstr "Everything sent through the contact form is saved here, even if the notification email fails."
+
+msgid "Tu sitio, hecho por %s."
+msgstr "Your site, made by %s."
+
+msgid "(se abre en otra pestaña)"
+msgstr "(opens in a new tab)"
+
+msgid "Al día."
+msgstr "Up to date."
+
+msgid "Versión %s"
+msgstr "Version %s"
+
+msgid "Actualizaciones al día"
+msgstr "Updates up to date"
+
+msgid "Revisar actualizaciones"
+msgstr "Check for updates"
+
+msgid "Personalizar marca"
+msgstr "Customize brand"
+
+msgid "Ver sitio"
+msgstr "View site"
+
+msgid "Ajustes del sitio"
+msgstr "Site settings"
+
+msgid "Módulos"
+msgstr "Modules"
+
+msgid "Lanzamiento"
+msgstr "Launch"
+
+msgid "Importar productos"
+msgstr "Import products"
+
+msgid "Usamos cookies para entender cómo se usa el sitio y mejorarlo. Podés aceptarlas o rechazarlas: el sitio funciona igual."
+msgstr "We use cookies to understand how the site is used and improve it. You can accept or reject them: the site works the same."
+
+msgid "Aviso de cookies"
+msgstr "Cookie notice"
+
+msgid "Política de privacidad"
+msgstr "Privacy policy"
+
+msgid "Aceptar"
+msgstr "Accept"
+
+msgid "Rechazar"
+msgstr "Reject"
+
+msgid "Preferencias de cookies"
+msgstr "Cookie preferences"
+
+msgid "Datos"
+msgstr "Details"
+
+msgid "Bajada"
+msgstr "Subtitle"
+
+msgid "Una frase que resume el servicio. Aparece en las tarjetas."
+msgstr "One sentence summarizing the service. Shown on the cards."
+
+msgid "Ícono"
+msgstr "Icon"
+
+msgid "Opcional. SVG o PNG cuadrado."
+msgstr "Optional. Square SVG or PNG."
+
+msgid "Precio desde"
+msgstr "Price from"
+
+msgid "Opcional, como se muestra: \"$ 25.000\"."
+msgstr "Optional, as displayed: \"$ 25.000\"."
+
+msgid "Botón"
+msgstr "Button"
+
+msgid "Si queda vacío, el botón lleva a WhatsApp o a contacto."
+msgstr "If left empty, the button goes to WhatsApp or contact."
+
+msgid "Preguntas frecuentes de este servicio"
+msgstr "FAQs for this service"
+
+msgid "Precio"
+msgstr "Price"
+
+msgid "Precio de oferta"
+msgstr "Sale price"
+
+msgid "Si está cargado, el precio normal se muestra tachado."
+msgstr "If set, the regular price is shown struck through."
+
+msgid "Código / SKU"
+msgstr "Code / SKU"
+
+msgid "Disponible"
+msgstr "Available"
+
+msgid "Ficha técnica"
+msgstr "Specifications"
+
+msgid "Una característica por línea, formato \"Material: Acero\". Se muestra como tabla."
+msgstr "One feature per line, formatted \"Material: Steel\". Shown as a table."
+
+msgid "Opciones para elegir al consultar"
+msgstr "Options to choose when asking"
+
+msgid "Una opción por línea, con sus valores separados por barras: \"Plataforma: Acrílico | Metálica | Flexible\". Se muestran como listas desplegables y lo elegido va en el mensaje de WhatsApp o del formulario."
+msgstr "One option per line, with its values separated by bars: \"Platform: Acrylic | Metal | Flexible\". Shown as dropdowns, and the choice goes into the WhatsApp or form message."
+
+msgid "Botón \"Consultar por WhatsApp\""
+msgstr "\"Ask on WhatsApp\" button"
+
+msgid "Cliente"
+msgstr "Client"
+
+msgid "Año"
+msgstr "Year"
+
+msgid "Link al proyecto"
+msgstr "Project link"
+
+msgid "Resultado"
+msgstr "Result"
+
+msgid "El logro en una frase, con un número si lo hay."
+msgstr "The achievement in one sentence, with a number if there is one."
+
+msgid "Cargo"
+msgstr "Role"
+
+msgid "Nombre"
+msgstr "Name"
+
+msgid "El título del testimonio es interno; esto es lo que se muestra."
+msgstr "The testimonial title is internal; this is what is shown."
+
+msgid "Cargo y empresa"
+msgstr "Role and company"
+
+msgid "Calificación"
+msgstr "Rating"
+
+msgid "Dirección"
+msgstr "Address"
+
+msgid "Ciudad"
+msgstr "City"
+
+msgid "Horarios"
+msgstr "Hours"
+
+msgid "Mismo formato que en Ajustes del sitio: \"Lu-Vi 09:00-18:00\"."
+msgstr "Same format as in Site settings: \"Mo-Fr 09:00-18:00\"."
+
+msgid "Link a Google Maps"
+msgstr "Google Maps link"
+
+msgid "Mostrar mapa en la ficha"
+msgstr "Show map on the page"
+
+msgid "Con la dirección de arriba. Se carga solo cuando la persona lo pide."
+msgstr "Uses the address above. It only loads when the person asks for it."
+
+msgid "Sitio web"
+msgstr "Website"
+
+msgid "¡Gracias! Recibimos tu mensaje y te respondemos a la brevedad."
+msgstr "Thank you! We got your message and will reply shortly."
+
+msgid "Revisá estos campos:"
+msgstr "Please check these fields:"
+
+msgid "¿Qué te interesa?"
+msgstr "What are you interested in?"
+
+msgid "(opcional)"
+msgstr "(optional)"
+
+msgid "Elegí una opción"
+msgstr "Choose an option"
+
+msgid "Acepto la %s."
+msgstr "I accept the %s."
+
+msgid "política de privacidad"
+msgstr "privacy policy"
+
+msgid "Enviar mensaje"
+msgstr "Send message"
+
+msgid "Completá el campo %s."
+msgstr "Please fill in the %s field."
+
+msgid "El campo %s es demasiado largo."
+msgstr "The %s field is too long."
+
+msgid "El email no parece válido. Revisalo, por ejemplo nombre@dominio.com."
+msgstr "That email doesn't look valid. Please check it, for example name@domain.com."
+
+msgid "Para enviar el mensaje tenés que aceptar la política de privacidad."
+msgstr "To send the message you need to accept the privacy policy."
+
+msgid "Recibimos varios mensajes seguidos desde tu conexión. Esperá unos minutos y volvé a intentar."
+msgstr "We got several messages in a row from your connection. Wait a few minutes and try again."
+
+msgid "No pudimos verificar que no seas un robot. Volvé a intentar."
+msgstr "We couldn't verify you're not a robot. Please try again."
+
+msgid "[%1$s] Nuevo mensaje de %2$s"
+msgstr "[%1$s] New message from %2$s"
+
+msgid "¡Casi listo! Te mandamos un email: tocá el link para confirmar la suscripción."
+msgstr "Almost done! We sent you an email: tap the link to confirm your subscription."
+
+msgid "¡Listo! Ya estás suscripto."
+msgstr "Done! You're subscribed."
+
+msgid "Para suscribirte tenés que aceptar recibir los emails."
+msgstr "To subscribe you need to agree to receive the emails."
+
+msgid "Recibimos varios intentos seguidos desde tu conexión. Esperá unos minutos y volvé a intentar."
+msgstr "We got several attempts in a row from your connection. Wait a few minutes and try again."
+
+msgid "Tu email"
+msgstr "Your email"
+
+msgid "Suscribirme"
+msgstr "Subscribe"
+
+msgid "Acepto recibir emails de %s. Me puedo dar de baja cuando quiera."
+msgstr "I agree to receive emails from %s. I can unsubscribe anytime."
+
+msgid "Suscripción al newsletter — %s"
+msgstr "Newsletter subscription — %s"
+
+msgid "No se pudo enviar a %s: quedó guardada acá. Cargala a mano o revisá la clave y la lista en Ajustes del sitio → Newsletter."
+msgstr "Couldn't send it to %s: it was saved here. Add it manually or check the key and list in Site settings → Newsletter."
+
+msgid "Pidió recibir el newsletter."
+msgstr "Asked to receive the newsletter."
+
+msgid "Escribinos por WhatsApp (se abre en otra pestaña)"
+msgstr "Message us on WhatsApp (opens in a new tab)"
+
+msgid "Galería"
+msgstr "Gallery"
+
+msgid "Imágenes adicionales. La imagen destacada va primero; estas se muestran después, en este orden (arrastrá para reordenar). Completá el texto alternativo de cada imagen en la biblioteca."
+msgstr "Additional images. The featured image goes first; these are shown after it, in this order (drag to reorder). Fill in each image's alt text in the library."
+
+msgid "Agregar imágenes"
+msgstr "Add images"
+
+msgid "Sin texto alt"
+msgstr "No alt text"
+
+msgid "Quitar imagen"
+msgstr "Remove image"
+
+msgid "Elegir imágenes de la galería"
+msgstr "Choose gallery images"
+
+msgid "Agregar a la galería"
+msgstr "Add to gallery"
+
+msgid "Cargá muchos productos de una vez desde una planilla. Si un producto ya existe, se actualiza: podés corregir la planilla y volver a importar."
+msgstr "Load many products at once from a spreadsheet. If a product already exists, it gets updated: you can fix the spreadsheet and import again."
+
+msgid "Primero activá el módulo Productos."
+msgstr "First turn on the Products module."
+
+msgid "Ir a Módulos"
+msgstr "Go to Modules"
+
+msgid "No llegó ningún archivo, o no es un CSV. En Excel o Google Sheets: Archivo → Descargar / Guardar como → CSV."
+msgstr "No file arrived, or it isn't a CSV. In Excel or Google Sheets: File → Download / Save as → CSV."
+
+msgid "La planilla no tiene una columna \"titulo\" (o \"nombre\"). Es la única obligatoria: fijate que esté en la primera fila."
+msgstr "The spreadsheet has no \"titulo\" (or \"nombre\" / \"title\") column. It's the only required one: make sure it's in the first row."
+
+msgid "La planilla no tiene filas con productos debajo de los títulos de columna."
+msgstr "The spreadsheet has no product rows under the column titles."
+
+msgid "No se pudo leer el archivo."
+msgstr "The file couldn't be read."
+
+msgid "Subí la planilla"
+msgstr "Upload the spreadsheet"
+
+msgid "Bajá la plantilla y completala en Excel o Google Sheets (una fila por producto)."
+msgstr "Download the template and fill it in with Excel or Google Sheets (one row per product)."
+
+msgid "Descargar plantilla"
+msgstr "Download template"
+
+msgid "Guardala como CSV (Archivo → Descargar → CSV)."
+msgstr "Save it as CSV (File → Download → CSV)."
+
+msgid "Subila acá. Antes de importar vas a ver cómo se leyó."
+msgstr "Upload it here. Before importing you'll see how it was read."
+
+msgid "Archivo CSV"
+msgstr "CSV file"
+
+msgid "Las fotos pueden ser links (https://…) o nombres de archivos que ya estén en la Biblioteca de medios. Varias fotos se separan con |; la primera es la principal."
+msgstr "Photos can be links (https://…) or names of files already in the Media Library. Separate several photos with |; the first one is the main photo."
+
+msgid "Subir y revisar"
+msgstr "Upload and review"
+
+msgid "Revisá antes de importar: %d producto"
+msgid_plural "Revisá antes de importar: %d productos"
+msgstr[0] "Review before importing: %d product"
+msgstr[1] "Review before importing: %d products"
+
+msgid "Columnas"
+msgstr "Columns"
+
+msgid "no se usa"
+msgstr "not used"
+
+msgid "Primeras filas"
+msgstr "First rows"
+
+msgid "Título"
+msgstr "Title"
+
+msgid "Código"
+msgstr "Code"
+
+msgid "Categorías"
+msgstr "Categories"
+
+msgid "Fotos"
+msgstr "Photos"
+
+msgid "Qué va a pasar"
+msgstr "What will happen"
+
+msgid "Se saltea: sin título"
+msgstr "Skipped: no title"
+
+msgid "Actualiza el existente"
+msgstr "Updates the existing one"
+
+msgid "Crea uno nuevo"
+msgstr "Creates a new one"
+
+msgid "Progreso de la importación"
+msgstr "Import progress"
+
+msgid "Seguir importando (%1$d de %2$d)"
+msgstr "Continue importing (%1$d of %2$d)"
+
+msgid "Importar %d producto"
+msgid_plural "Importar %d productos"
+msgstr[0] "Import %d product"
+msgstr[1] "Import %d products"
+
+msgid "Cancelar y subir otro archivo"
+msgstr "Cancel and upload another file"
+
+msgid "No cierres esta pestaña mientras importa. Si se corta, volvé a esta pantalla y seguí desde donde quedó."
+msgstr "Don't close this tab while importing. If it stops, come back to this screen and continue from where it left off."
+
+msgid "Importación terminada"
+msgstr "Import finished"
+
+msgid "%d producto nuevo"
+msgid_plural "%d productos nuevos"
+msgstr[0] "%d new product"
+msgstr[1] "%d new products"
+
+msgid "%d actualizado"
+msgid_plural "%d actualizados"
+msgstr[0] "%d updated"
+msgstr[1] "%d updated"
+
+msgid "%d aviso"
+msgid_plural "%d avisos"
+msgstr[0] "%d notice"
+msgstr[1] "%d notices"
+
+msgid "Para revisar"
+msgstr "To review"
+
+msgid "Ver los productos"
+msgstr "View products"
+
+msgid "Importar otra planilla"
+msgstr "Import another spreadsheet"
+
+msgid "Importando: %1$d de %2$d…"
+msgstr "Importing: %1$d of %2$d…"
+
+msgid "Se cortó la conexión. Tocá \"Seguir importando\" para continuar desde donde quedó."
+msgstr "The connection dropped. Tap \"Continue importing\" to resume from where it left off."
+
+msgid "Seguir importando"
+msgstr "Continue importing"
+
+msgid "No tenés permisos para importar."
+msgstr "You don't have permission to import."
+
+msgid "Fila %d:"
+msgstr "Row %d:"
+
+msgid "no tiene título, se salteó."
+msgstr "has no title, it was skipped."
+
+msgid "no se pudo usar la foto \"%1$s\" (%2$s)."
+msgstr "couldn't use the photo \"%1$s\" (%2$s)."
+
+msgid "no está en la Biblioteca de medios"
+msgstr "it isn't in the Media Library"
+
+msgid "Descripción"
+msgstr "Description"
+
+msgid "Resumen"
+msgstr "Summary"
+
+msgid "Opciones"
+msgstr "Options"
+
+msgid "Marca"
+msgstr "Brand"
+
+msgid "Slug (dirección)"
+msgstr "Slug (address)"
+
+msgid "Orden"
+msgstr "Order"
+
+msgid "Google"
+msgstr "Google"
+
+msgid "El sitio es visible para los buscadores"
+msgstr "The site is visible to search engines"
+
+msgid "Si está tildado \"Pedir a los motores de búsqueda que no indexen este sitio\", Google no lo muestra nunca."
+msgstr "If \"Discourage search engines from indexing this site\" is checked, Google never shows it."
+
+msgid "Direcciones amigables activadas"
+msgstr "Pretty permalinks turned on"
+
+msgid "Con las direcciones \"simples\" (?p=123) las páginas de servicios y productos no funcionan bien y posicionan peor."
+msgstr "With \"plain\" addresses (?p=123) service and product pages don't work well and rank worse."
+
+msgid "Contenido"
+msgstr "Content"
+
+msgid "Advanced Custom Fields instalado y activo"
+msgstr "Advanced Custom Fields installed and active"
+
+msgid "Sin ACF no se pueden cargar precios, cargos, horarios ni el resto de los campos de cada contenido."
+msgstr "Without ACF you can't enter prices, roles, hours or the rest of each content's fields."
+
+msgid "Legal"
+msgstr "Legal"
+
+msgid "Política de privacidad publicada y elegida"
+msgstr "Privacy policy published and selected"
+
+msgid "El formulario pide aceptarla y el banner de cookies la enlaza. Es obligatoria si se recolectan datos."
+msgstr "The form asks to accept it and the cookie banner links to it. It's required if you collect data."
+
+msgid "Logo cargado"
+msgstr "Logo uploaded"
+
+msgid "Sin logo, el encabezado muestra el nombre en texto y Google no tiene imagen para la ficha del negocio."
+msgstr "Without a logo, the header shows the name as text and Google has no image for the business listing."
+
+msgid "Ícono del sitio (favicon) cargado"
+msgstr "Site icon (favicon) uploaded"
+
+msgid "Es el que aparece en la pestaña del navegador y en los resultados de Google en el celular."
+msgstr "It's the one shown in the browser tab and in Google results on phones."
+
+msgid "Negocio"
+msgstr "Business"
+
+msgid "Al menos un dato de contacto (teléfono, WhatsApp o email)"
+msgstr "At least one contact detail (phone, WhatsApp or email)"
+
+msgid "Es lo que convierte: sin esto, los botones de contacto no tienen a dónde llevar."
+msgstr "It's what converts: without it, the contact buttons have nowhere to go."
+
+msgid "Descripción breve del negocio"
+msgstr "Short business description"
+
+msgid "Es la descripción que muestra Google para la home y la que leen los asistentes con IA."
+msgstr "It's the description Google shows for the home page and the one AI assistants read."
+
+msgid "Tipo de negocio elegido"
+msgstr "Business type chosen"
+
+msgid "Define la ficha que arma Google (tienda, consultorio, estudio…)."
+msgstr "Defines the listing Google builds (store, practice, firm…)."
+
+msgid "Dirección completa (negocio con local)"
+msgstr "Full address (business with premises)"
+
+msgid "Un negocio local sin dirección pierde la ficha de Google Maps."
+msgstr "A local business without an address loses its Google Maps listing."
+
+msgid "Páginas"
+msgstr "Pages"
+
+msgid "La portada es una página estática"
+msgstr "The front page is a static page"
+
+msgid "Las secciones de la home (portada, servicios, testimonios…) solo aparecen con una portada estática."
+msgstr "Home sections (hero, services, testimonials…) only appear with a static front page."
+
+msgid "Página de contacto con la plantilla \"Contacto\""
+msgstr "Contact page using the \"Contact\" template"
+
+msgid "Muestra el formulario, los datos y las sedes solos, y es a donde llevan los botones sin WhatsApp."
+msgstr "Shows the form, the details and the locations automatically, and it's where buttons go when there's no WhatsApp."
+
+msgid "Menú principal asignado"
+msgstr "Main menu assigned"
+
+msgid "Sin menú asignado, el encabezado muestra una lista automática de páginas."
+msgstr "Without an assigned menu, the header shows an automatic list of pages."
+
+msgid "Contenido de ejemplo de WordPress borrado"
+msgstr "WordPress sample content deleted"
+
+msgid "\"Hello world!\" y \"Sample Page\" quedan indexados y muestran un sitio sin terminar."
+msgstr "\"Hello world!\" and \"Sample Page\" get indexed and make the site look unfinished."
+
+msgid "Descripción corta del sitio cambiada"
+msgstr "Site tagline changed"
+
+msgid "La que trae WordPress (\"Otro sitio realizado con WordPress\") aparece en el título de la pestaña y en Google."
+msgstr "WordPress's default (\"Just another WordPress site\") shows in the tab title and on Google."
+
+msgid "Configuración"
+msgstr "Settings"
+
+msgid "Zona horaria del negocio elegida"
+msgstr "Business time zone chosen"
+
+msgid "Las fechas de las notas y de los mensajes salen en hora UTC si no se elige una ciudad."
+msgstr "Post and message dates show in UTC if no city is chosen."
+
+msgid "Envío de emails configurado (SMTP)"
+msgstr "Email sending configured (SMTP)"
+
+msgid "Sin SMTP, los avisos del formulario suelen caer en spam. FluentSMTP es gratis. Igual los mensajes quedan guardados en Mensajes."
+msgstr "Without SMTP, form notifications often land in spam. FluentSMTP is free. Messages are saved in Messages anyway."
+
+msgid "Medición"
+msgstr "Analytics"
+
+msgid "Google Analytics o Tag Manager cargado"
+msgstr "Google Analytics or Tag Manager set up"
+
+msgid "Sin medición no se ven las visitas ni los clics de WhatsApp, teléfono y formulario."
+msgstr "Without analytics you can't see visits or WhatsApp, phone and form clicks."
+
+msgid "Banner de cookies activado (si hay Analytics)"
+msgstr "Cookie banner turned on (if there's Analytics)"
+
+msgid "Obligatorio con visitas de Europa y para medir conversiones de Google Ads."
+msgstr "Required with visitors from Europe and to measure Google Ads conversions."
+
+msgid "Lo que suele quedar mal al entregar un sitio. Cuando todo esté en verde, está listo para publicar."
+msgstr "What usually goes wrong when handing over a site. When everything is green, it's ready to publish."
+
+msgid "%1$d de %2$d listos"
+msgstr "%1$d of %2$d done"
+
+msgid "Falta %d punto importante antes de publicar."
+msgid_plural "Faltan %d puntos importantes antes de publicar."
+msgstr[0] "%d important item left before publishing."
+msgstr[1] "%d important items left before publishing."
+
+msgid "¡Todo listo! El sitio está para publicar."
+msgstr "All set! The site is ready to publish."
+
+msgid "Lo importante está resuelto. Quedan recomendaciones."
+msgstr "The important things are done. Some recommendations remain."
+
+msgid "Listo"
+msgstr "Done"
+
+msgid "Importante"
+msgstr "Important"
+
+msgid "Recomendado"
+msgstr "Recommended"
+
+msgid "Arreglar"
+msgstr "Fix"
+
+msgid "FeeloLab · Lanzamiento"
+msgstr "FeeloLab · Launch"
+
+msgid "Progreso del lanzamiento"
+msgstr "Launch progress"
+
+msgid "Importante:"
+msgstr "Important:"
+
+msgid "Ver el checklist completo"
+msgstr "See the full checklist"
+
+msgid "Servicios"
+msgstr "Services"
+
+msgid "Productos"
+msgstr "Products"
+
+msgid "Proyectos"
+msgstr "Projects"
+
+msgid "Sedes"
+msgstr "Locations"
+
+msgid "Equipo"
+msgstr "Team"
+
+msgid "Preguntas frecuentes"
+msgstr "FAQ"
+
+msgid "Blog"
+msgstr "Blog"
+
+msgid "Servicio"
+msgstr "Service"
+
+msgid "Lo que ofrece el negocio, con categoría, precio desde y llamada a la acción."
+msgstr "What the business offers, with category, starting price and call to action."
+
+msgctxt "slug de URL"
+msgid "servicios"
+msgstr "services"
+
+msgid "Categoría de servicio"
+msgstr "Service category"
+
+msgid "Categorías de servicio"
+msgstr "Service categories"
+
+msgctxt "slug de URL"
+msgid "categoria-servicio"
+msgstr "service-category"
+
+msgid "Producto"
+msgstr "Product"
+
+msgid "Catálogo con consulta. Para vender online, instalar WooCommerce."
+msgstr "Catalog with inquiries. To sell online, install WooCommerce."
+
+msgctxt "slug de URL"
+msgid "productos"
+msgstr "products"
+
+msgid "Categoría de producto"
+msgstr "Product category"
+
+msgid "Categorías de producto"
+msgstr "Product categories"
+
+msgctxt "slug de URL"
+msgid "categoria-producto"
+msgstr "product-category"
+
+msgid "Marcas"
+msgstr "Brands"
+
+msgctxt "slug de URL"
+msgid "marca"
+msgstr "brand"
+
+msgid "Proyecto"
+msgstr "Project"
+
+msgid "Portfolio o casos de éxito."
+msgstr "Portfolio or case studies."
+
+msgctxt "slug de URL"
+msgid "proyectos"
+msgstr "projects"
+
+msgid "Tipo de proyecto"
+msgstr "Project type"
+
+msgid "Tipos de proyecto"
+msgstr "Project types"
+
+msgctxt "slug de URL"
+msgid "tipo-proyecto"
+msgstr "project-type"
+
+msgid "Integrante"
+msgstr "Team member"
+
+msgid "Personas del equipo con cargo, foto y redes."
+msgstr "Team members with role, photo and social links."
+
+msgctxt "slug de URL"
+msgid "equipo"
+msgstr "team"
+
+msgid "Área"
+msgstr "Area"
+
+msgid "Áreas"
+msgstr "Areas"
+
+msgctxt "slug de URL"
+msgid "area"
+msgstr "area"
+
+msgid "Testimonio"
+msgstr "Testimonial"
+
+msgid "Testimonios"
+msgstr "Testimonials"
+
+msgid "Opiniones de clientes. Se muestran en la home y en los servicios."
+msgstr "Client reviews. Shown on the home page and on services."
+
+msgid "Pregunta frecuente"
+msgstr "FAQ"
+
+msgid "El título es la pregunta y el contenido la respuesta. Suma schema FAQPage."
+msgstr "The title is the question and the content is the answer. Adds FAQPage schema."
+
+msgid "Tema"
+msgstr "Topic"
+
+msgid "Temas"
+msgstr "Topics"
+
+msgctxt "slug de URL"
+msgid "tema-faq"
+msgstr "faq-topic"
+
+msgid "Sede"
+msgstr "Location"
+
+msgid "Sucursales con dirección, horarios y mapa. Cada una suma su LocalBusiness."
+msgstr "Branches with address, hours and map. Each one adds its own LocalBusiness."
+
+msgctxt "slug de URL"
+msgid "sedes"
+msgstr "locations"
+
+msgid "Zona"
+msgstr "Zone"
+
+msgid "Zonas"
+msgstr "Zones"
+
+msgctxt "slug de URL"
+msgid "zona"
+msgstr "zone"
+
+msgid "Clientes"
+msgstr "Clients"
+
+msgid "Logos de clientes o marcas con las que se trabaja. El logo es la imagen destacada."
+msgstr "Logos of clients or brands you work with. The logo is the featured image."
+
+msgid "Todavía no llegaron mensajes. Cuando alguien complete el formulario de contacto, lo vas a ver acá."
+msgstr "No messages yet. When someone fills in the contact form, you'll see it here."
+
+msgid "Agregar %s"
+msgstr "Add %s"
+
+msgid "Editar %s"
+msgstr "Edit %s"
+
+msgid "Nuevo: %s"
+msgstr "New: %s"
+
+msgid "Ver %s"
+msgstr "View %s"
+
+msgid "Buscar en %s"
+msgstr "Search %s"
+
+msgid "No se encontró nada."
+msgstr "Nothing found."
+
+msgid "No hay nada en la papelera."
+msgstr "Nothing in the trash."
+
+msgid "Mensajes y suscripciones (FeeloLab)"
+msgstr "Messages and subscriptions (FeeloLab)"
+
+msgid "Asunto"
+msgstr "Subject"
+
+msgid "Mensajes enviados al sitio"
+msgstr "Messages sent to the site"
+
+msgid "Formulario de contacto"
+msgstr "Contact form"
+
+msgid "Cuando nos escribís por el formulario guardamos tu nombre, email, teléfono (si lo dejás) y el mensaje, para poder responderte. Solo los ve %s y no los compartimos con terceros."
+msgstr "When you write to us through the form we store your name, email, phone (if you leave it) and message, so we can reply. Only %s sees them and we don't share them with third parties."
+
+msgid "Los mensajes se borran automáticamente a los %d mes."
+msgid_plural "Los mensajes se borran automáticamente a los %d meses."
+msgstr[0] "Messages are automatically deleted after %d month."
+msgstr[1] "Messages are automatically deleted after %d months."
+
+msgid "Los mensajes se guardan hasta que pidas que los borremos."
+msgstr "Messages are kept until you ask us to delete them."
+
+msgid "Podés pedir una copia de tus datos o que los borremos escribiéndonos."
+msgstr "You can ask for a copy of your data or ask us to delete it by writing to us."
+
+msgid "Newsletter"
+msgstr "Newsletter"
+
+msgid "Si te suscribís, tu email se guarda en %s, el servicio que usamos para enviar el newsletter. Cada email trae un link para darte de baja."
+msgstr "If you subscribe, your email is stored in %s, the service we use to send the newsletter. Every email includes an unsubscribe link."
+
+msgid "Si te suscribís, guardamos tu email solo para enviarte el newsletter. Podés darte de baja cuando quieras."
+msgstr "If you subscribe, we store your email only to send you the newsletter. You can unsubscribe anytime."
+
+msgid "Cookies y medición"
+msgstr "Cookies and analytics"
+
+msgid "Usamos Google Analytics para saber cuántas personas visitan el sitio y qué páginas les sirven. Si el aviso de cookies está activo, no se guardan cookies de medición hasta que las aceptes; podés cambiar tu elección desde \"Preferencias de cookies\" al pie del sitio."
+msgstr "We use Google Analytics to know how many people visit the site and which pages help them. If the cookie notice is on, no analytics cookies are stored until you accept them; you can change your choice from \"Cookie preferences\" at the bottom of the site."
+
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+msgid "Los botones de WhatsApp abren la aplicación de WhatsApp (Meta). Lo que escribas ahí queda sujeto a su política de privacidad."
+msgstr "WhatsApp buttons open the WhatsApp app (Meta). What you write there is subject to its privacy policy."
+
+msgid "Mapas"
+msgstr "Maps"
+
+msgid "Los mapas del sitio son de Google Maps y se cargan solo si tocás \"Ver mapa\". Recién ahí Google recibe tu visita."
+msgstr "The site's maps are from Google Maps and only load if you tap \"Show map\". Only then does Google receive your visit."
+
+msgid "Módulos de contenido"
+msgstr "Content modules"
+
+msgid "Prendé solo lo que el cliente usa: el panel queda más simple y el sitio no muestra secciones vacías. Apagar un módulo no borra su contenido."
+msgstr "Turn on only what the client uses: the dashboard stays simpler and the site doesn't show empty sections. Turning off a module doesn't delete its content."
+
+msgid "Módulos activos"
+msgstr "Active modules"
+
+msgid "Se muestra dentro de otras páginas"
+msgstr "Shown inside other pages"
+
+msgid "Los cambios se aplican al guardar."
+msgstr "Changes apply when you save."
+
+msgid "Guardar módulos"
+msgstr "Save modules"
+
+msgid "Nombre comercial"
+msgstr "Trade name"
+
+msgid "Si queda vacío se usa el título del sitio."
+msgstr "If left empty, the site title is used."
+
+msgid "Tipo de negocio (schema)"
+msgstr "Business type (schema)"
+
+msgid "Organización / empresa sin local"
+msgstr "Organization / company without premises"
+
+msgid "Negocio local (genérico)"
+msgstr "Local business (generic)"
+
+msgid "Servicio profesional (estudio, consultora)"
+msgstr "Professional service (firm, consultancy)"
+
+msgid "Tienda"
+msgstr "Store"
+
+msgid "Restaurante / gastronomía"
+msgstr "Restaurant / food"
+
+msgid "Salud / consultorio"
+msgstr "Health / practice"
+
+msgid "Construcción / hogar"
+msgstr "Construction / home"
+
+msgid "Automotor"
+msgstr "Automotive"
+
+msgid "Educación"
+msgstr "Education"
+
+msgid "Define el tipo de ficha que ve Google. Un negocio con local debe elegir un tipo local."
+msgstr "Defines the kind of listing Google sees. A business with premises should choose a local type."
+
+msgid "Descripción breve"
+msgstr "Short description"
+
+msgid "Una o dos frases. Se usa en el schema y como meta descripción de la home si no hay plugin de SEO."
+msgstr "One or two sentences. Used in the schema and as the home page meta description if there's no SEO plugin."
+
+msgid "Moneda (código ISO)"
+msgstr "Currency (ISO code)"
+
+msgid "ARS, USD, UYU, EUR… La usan los precios de productos en el schema."
+msgstr "USD, EUR, ARS, MXN… Product prices use it in the schema."
+
+msgid "Rango de precios"
+msgstr "Price range"
+
+msgid "Opcional, para negocios locales: $, $$, $$$."
+msgstr "Optional, for local businesses: $, $$, $$$."
+
+msgid "Contacto"
+msgstr "Contact"
+
+msgid "Como se muestra, por ejemplo +54 11 4000-0000."
+msgstr "As displayed, for example +1 555 000 0000."
+
+msgid "Con código de país, por ejemplo +54 9 11 5000-0000."
+msgstr "With country code, for example +1 555 000 0000."
+
+msgid "Mensaje inicial de WhatsApp"
+msgstr "WhatsApp initial message"
+
+msgid "Mostrar botón flotante de WhatsApp"
+msgstr "Show floating WhatsApp button"
+
+msgid "Email público"
+msgstr "Public email"
+
+msgid "Provincia / región"
+msgstr "State / region"
+
+msgid "Código postal"
+msgstr "Postal code"
+
+msgid "País (código ISO)"
+msgstr "Country (ISO code)"
+
+msgid "Dos letras: AR, UY, ES, MX…"
+msgstr "Two letters: US, AR, ES, MX…"
+
+msgid "Una línea por franja, formato \"Lu-Vi 09:00-18:00\" o \"Sa 10:00-13:00\". Así se muestran y así los lee el schema."
+msgstr "One line per time slot, formatted \"Mo-Fr 09:00-18:00\" or \"Sa 10:00-13:00\". That's how they're shown and how the schema reads them."
+
+msgid "Mostrar el mapa en la página de contacto"
+msgstr "Show the map on the contact page"
+
+msgid "Usa la dirección de arriba. El mapa se carga solo cuando la persona lo pide: no hace lenta la página."
+msgstr "Uses the address above. The map only loads when the person asks for it: it doesn't slow the page down."
+
+msgid "Redes"
+msgstr "Social"
+
+msgid "Razón social"
+msgstr "Legal name"
+
+msgid "CUIT / identificación fiscal"
+msgstr "Tax ID"
+
+msgid "Página de términos y condiciones"
+msgstr "Terms and conditions page"
+
+msgid "La de privacidad se elige en Ajustes → Privacidad."
+msgstr "The privacy page is chosen in Settings → Privacy."
+
+msgid "Formulario"
+msgstr "Form"
+
+msgid "Email que recibe los mensajes"
+msgstr "Email that receives messages"
+
+msgid "Si queda vacío se usa el email público y, si no, el del administrador. Los mensajes quedan guardados en Mensajes aunque el email falle."
+msgstr "If left empty, the public email is used and, if there's none, the administrator's. Messages are saved in Messages even if the email fails."
+
+msgid "Cloudflare Turnstile: site key"
+msgstr "Cloudflare Turnstile: site key"
+
+msgid "Opcional y gratis. Sin claves, el antispam es honeypot + tiempo mínimo + límite por IP."
+msgstr "Optional and free. Without keys, the anti-spam is honeypot + minimum time + per-IP limit."
+
+msgid "Cloudflare Turnstile: secret key"
+msgstr "Cloudflare Turnstile: secret key"
+
+msgid "Mensaje de envío correcto"
+msgstr "Success message"
+
+msgid "Borrar los mensajes automáticamente"
+msgstr "Delete messages automatically"
+
+msgid "Nunca (se guardan hasta borrarlos a mano)"
+msgstr "Never (kept until deleted manually)"
+
+msgid "A los 6 meses"
+msgstr "After 6 months"
+
+msgid "Al año"
+msgstr "After a year"
+
+msgid "A los 2 años"
+msgstr "After 2 years"
+
+msgid "Guardar datos personales solo el tiempo necesario es una buena práctica (y en Europa, una obligación). Una persona también puede pedir que se borren sus datos: Herramientas → Borrar datos personales."
+msgstr "Keeping personal data only as long as needed is good practice (and in Europe, an obligation). A person can also ask for their data to be deleted: Tools → Erase Personal Data."
+
+msgid "Al borrar el plugin, borrar también los mensajes"
+msgstr "When deleting the plugin, also delete messages"
+
+msgid "Los ajustes del plugin se borran siempre al eliminarlo. Los mensajes solo si tildás esto. El contenido (servicios, productos, etc.) nunca se borra."
+msgstr "Plugin settings are always deleted when it's removed. Messages only if you check this. Content (services, products, etc.) is never deleted."
+
+msgid "Dónde se guardan las suscripciones"
+msgstr "Where subscriptions are stored"
+
+msgid "En el sitio (Mensajes), sin servicio externo"
+msgstr "On the site (Messages), no external service"
+
+msgid "Si el servicio externo falla, la suscripción igual queda guardada en Mensajes: no se pierde ninguna."
+msgstr "If the external service fails, the subscription is still saved in Messages: none are lost."
+
+msgid "Clave de API"
+msgstr "API key"
+
+msgid "Brevo: Configuración → SMTP y API → Claves de API. Mailchimp: Perfil → Extras → API keys (termina en -us21 o similar)."
+msgstr "Brevo: Settings → SMTP & API → API keys. Mailchimp: Profile → Extras → API keys (ends in -us21 or similar)."
+
+msgid "Lista"
+msgstr "List"
+
+msgid "Brevo: el número de la lista (Contactos → Listas). Mailchimp: el Audience ID (Audience → Settings)."
+msgstr "Brevo: the list number (Contacts → Lists). Mailchimp: the Audience ID (Audience → Settings)."
+
+msgid "Pedir confirmación por email (doble opt-in)"
+msgstr "Ask for email confirmation (double opt-in)"
+
+msgid "Recomendado: la persona confirma con un clic y la lista queda limpia. En Brevo hace falta el número de plantilla de confirmación de abajo."
+msgstr "Recommended: the person confirms with one click and the list stays clean. Brevo needs the confirmation template number below."
+
+msgid "Brevo: número de plantilla de confirmación"
+msgstr "Brevo: confirmation template number"
+
+msgid "Una plantilla de tipo \"Doble opt-in\" creada en Brevo."
+msgstr "A \"Double opt-in\" template created in Brevo."
+
+msgid "Texto del botón"
+msgstr "Button text"
+
+msgid "Si queda vacío: \"Suscribirme\"."
+msgstr "If left empty: \"Subscribe\"."
+
+msgid "Mensaje al suscribirse"
+msgstr "Subscription message"
+
+msgid "Si queda vacío: \"¡Listo! Ya estás suscripto.\" (o \"Revisá tu email para confirmar\", con doble opt-in)."
+msgstr "If left empty: \"Done! You're subscribed.\" (or \"Check your email to confirm\", with double opt-in)."
+
+msgid "Integraciones"
+msgstr "Integrations"
+
+msgid "Google Analytics 4 (G-XXXXXXX)"
+msgstr "Google Analytics 4 (G-XXXXXXX)"
+
+msgid "Si cargás GTM, poné GA4 dentro de GTM y dejá este vacío para no medir doble."
+msgstr "If you set up GTM, put GA4 inside GTM and leave this empty to avoid double counting."
+
+msgid "Google Tag Manager (GTM-XXXXXX)"
+msgstr "Google Tag Manager (GTM-XXXXXX)"
+
+msgid "Banner de cookies (Consent Mode v2)"
+msgstr "Cookie banner (Consent Mode v2)"
+
+msgid "Hasta que la persona acepta, Google mide sin cookies. Obligatorio si el sitio recibe visitas de Europa o usa Google Ads. El banner se vuelve a abrir desde \"Preferencias de cookies\" en el pie."
+msgstr "Until the person accepts, Google measures without cookies. Required if the site gets visitors from Europe or uses Google Ads. The banner reopens from \"Cookie preferences\" in the footer."
+
+msgid "Texto del banner de cookies"
+msgstr "Cookie banner text"
+
+msgid "Opcional. Si queda vacío: \"Usamos cookies para entender cómo se usa el sitio y mejorarlo. Podés aceptarlas o rechazarlas: el sitio funciona igual.\""
+msgstr "Optional. If left empty: \"We use cookies to understand how the site is used and improve it. You can accept or reject them: the site works the same.\""
+
+msgid "No convertir las fotos a WebP"
+msgstr "Don't convert photos to WebP"
+
+msgid "Las fotos que se suben se guardan en WebP, que pesa 25 a 35 % menos con la misma calidad. Tildalo solo si algún sistema externo necesita JPEG."
+msgstr "Uploaded photos are saved as WebP, which weighs 25 to 35% less at the same quality. Check this only if some external system needs JPEG."
+
+msgid "Desactivar /llms.txt"
+msgstr "Turn off /llms.txt"
+
+msgid "El sitio publica en /llms.txt un resumen en texto del negocio y su contenido para asistentes con IA (ChatGPT, Perplexity, Gemini). Se arma solo con lo cargado."
+msgstr "The site publishes at /llms.txt a text summary of the business and its content for AI assistants (ChatGPT, Perplexity, Gemini). It's built from what's been entered."
+
+msgid "Verificación de Search Console (content del meta)"
+msgstr "Search Console verification (meta content)"
+
+msgid "Cómo se presenta el negocio en el sitio y en Google."
+msgstr "How the business presents itself on the site and on Google."
+
+msgid "Aparecen en el encabezado, el pie, la página de contacto y el botón de WhatsApp."
+msgstr "Shown in the header, footer, contact page and WhatsApp button."
+
+msgid "Links completos, con https:// adelante. Las vacías no se muestran."
+msgstr "Full links, starting with https://. Empty ones aren't shown."
+
+msgid "Se muestran en la última línea del pie."
+msgstr "Shown on the last line of the footer."
+
+msgid "A dónde llegan los mensajes y cómo se protege el formulario del spam."
+msgstr "Where messages go and how the form is protected from spam."
+
+msgid "El formulario de suscripción: en la home (Personalizar → Secciones), en el patrón \"Suscripción al newsletter\" o con [feelo_newsletter]."
+msgstr "The signup form: on the home page (Customize → Sections), in the \"Newsletter signup\" pattern or with [feelo_newsletter]."
+
+msgid "Medición y verificación de Google, y el resumen para asistentes con IA."
+msgstr "Google analytics and verification, and the summary for AI assistants."
+
+msgid "Los datos del negocio se cargan una sola vez y aparecen solos en todo el sitio. Colores, logo y tipografía van en Personalizar marca."
+msgstr "Business details are entered once and show up automatically across the site. Colors, logo and typography go in Customize brand."
+
+msgid "Secciones de ajustes"
+msgstr "Settings sections"
+
+msgid "Se guarda solo la pestaña \"%s\"."
+msgstr "Only the \"%s\" tab is saved."
+
+msgid "Guardar cambios"
+msgstr "Save changes"
+
+msgid "— Elegir —"
+msgstr "— Choose —"
+
+msgid "— Ninguna —"
+msgstr "— None —"
+
+msgid "Guardada. Escribí una nueva para reemplazarla."
+msgstr "Saved. Type a new one to replace it."
+
+msgid "Hay una versión nueva (%s): actualizá desde Escritorio → Actualizaciones."
+msgstr "There's a new version (%s): update from Dashboard → Updates."
+
+msgid "No se pudo consultar GitHub: %s"
+msgstr "Couldn't reach GitHub: %s"
+
+msgid "Todavía no hay versiones publicadas."
+msgstr "No versions published yet."
+
+msgid "Sin notas de versión."
+msgstr "No release notes."

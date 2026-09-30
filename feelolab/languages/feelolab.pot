@@ -1,0 +1,1480 @@
+# Copyright (C) 2026 FeeloLab
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: FeeloLab 0.6.0\n"
+"Report-Msgid-Bugs-To: https://www.feelolab.com\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: FeeloLab\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-30T16:41:38+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: feelolab\n"
+
+#. Theme Name of the theme
+#. Author of the theme
+#: style.css
+#: inc/patterns.php:21
+msgid "FeeloLab"
+msgstr ""
+
+#. Theme URI of the theme
+#. Author URI of the theme
+#: style.css
+msgid "https://www.feelolab.com"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "Tema base para sitios de clientes de FeeloLab. Clásico, liviano y accesible: sin jQuery ni frameworks, fuentes del sistema, home por secciones desde el Personalizador. Se complementa con el plugin FeeloLab Core (servicios, productos, equipo, sedes, testimonios, FAQ, ajustes del negocio y schema)."
+msgstr ""
+
+#: 404.php:12
+msgid "No encontramos esta página"
+msgstr ""
+
+#: 404.php:16
+msgid "Puede que el link esté mal escrito o que la página ya no exista. Probá buscando o volvé al inicio."
+msgstr ""
+
+#: 404.php:18
+msgid "Ir al inicio"
+msgstr ""
+
+#. translators: %d: cantidad de comentarios
+#: comments.php:19
+#, php-format
+msgid "%d comentario"
+msgid_plural "%d comentarios"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:35
+msgid "Comentarios"
+msgstr ""
+
+#: footer.php:29
+#: inc/customizer.php:202
+msgid "Pie de página"
+msgstr ""
+
+#: footer.php:67
+msgid "Legal"
+msgstr ""
+
+#: footer.php:84
+msgid "Sitio hecho por"
+msgstr ""
+
+#: footer.php:85
+#: inc/template-tags.php:138
+#: inc/template-tags.php:341
+#: template-parts/cards/card-sede.php:42
+#: template-parts/single/content-miembro.php:42
+#: template-parts/topbar.php:33
+msgid "(se abre en otra pestaña)"
+msgstr ""
+
+#: header.php:36
+msgid "Saltar al contenido"
+msgstr ""
+
+#: header.php:64
+#: searchform.php:15
+msgid "Buscar"
+msgstr ""
+
+#: header.php:72
+msgid "Principal"
+msgstr ""
+
+#: header.php:75
+msgid "Menú"
+msgstr ""
+
+#: inc/breadcrumbs.php:15
+msgid "Inicio"
+msgstr ""
+
+#. translators: %s: búsqueda
+#: inc/breadcrumbs.php:92
+#: search.php:17
+#, php-format
+msgid "Resultados para \"%s\""
+msgstr ""
+
+#: inc/breadcrumbs.php:97
+msgid "Página no encontrada"
+msgstr ""
+
+#: inc/breadcrumbs.php:103
+#: inc/customizer.php:225
+#: index.php:16
+msgid "Blog"
+msgstr ""
+
+#: inc/breadcrumbs.php:121
+#: inc/breadcrumbs.php:125
+#: inc/breadcrumbs.php:136
+msgid "Migas de pan"
+msgstr ""
+
+#. translators: %s: nombre de la sección
+#: inc/class-feelolab-sortable-control.php:43
+#, php-format
+msgid "Subir %s"
+msgstr ""
+
+#. translators: %s: nombre de la sección
+#: inc/class-feelolab-sortable-control.php:52
+#, php-format
+msgid "Bajar %s"
+msgstr ""
+
+#. translators: %s: nombre de la sección
+#: inc/class-feelolab-sortable-control.php:61
+#, php-format
+msgid "Editar %s"
+msgstr ""
+
+#: inc/colors.php:22
+msgid "Botones: fondo (color de marca)"
+msgstr ""
+
+#: inc/colors.php:26
+msgid "Botones: texto"
+msgstr ""
+
+#: inc/colors.php:28
+msgid "Vacío = automático: blanco o negro, el que mejor se lea sobre el botón."
+msgstr ""
+
+#: inc/colors.php:31
+msgid "Links y acentos"
+msgstr ""
+
+#: inc/colors.php:33
+msgid "Links, volantas e íconos. Vacío = el color de los botones."
+msgstr ""
+
+#: inc/colors.php:36
+msgid "Secundario (bloques oscuros, footer)"
+msgstr ""
+
+#: inc/colors.php:40
+#: inc/colors.php:292
+msgid "Fondo"
+msgstr ""
+
+#: inc/colors.php:44
+msgid "Superficie (secciones alternas, tarjetas)"
+msgstr ""
+
+#: inc/colors.php:48
+#: inc/colors.php:291
+#: inc/home.php:67
+#: inc/home.php:81
+#: inc/home.php:148
+#: inc/home.php:170
+#: inc/home.php:181
+#: inc/home.php:190
+msgid "Texto"
+msgstr ""
+
+#: inc/colors.php:165
+msgid "Sistema (neutra, la más rápida)"
+msgstr ""
+
+#: inc/colors.php:170
+msgid "Humanista (cercana)"
+msgstr ""
+
+#: inc/colors.php:175
+msgid "Geométrica (moderna)"
+msgstr ""
+
+#: inc/colors.php:180
+msgid "Editorial (títulos serif, texto sans)"
+msgstr ""
+
+#: inc/colors.php:185
+msgid "Clásica (todo serif)"
+msgstr ""
+
+#: inc/colors.php:190
+msgid "Web: Inter (moderna, muy legible) · 48 KB"
+msgstr ""
+
+#: inc/colors.php:196
+msgid "Web: Figtree (amable, geométrica) · 20 KB"
+msgstr ""
+
+#: inc/colors.php:202
+msgid "Web: Fraunces + Inter (títulos con carácter) · 85 KB"
+msgstr ""
+
+#: inc/colors.php:208
+msgid "Web: Source Serif + Figtree (editorial) · 71 KB"
+msgstr ""
+
+#: inc/colors.php:214
+msgid "Fuente propia de la marca (subila abajo)"
+msgstr ""
+
+#: inc/colors.php:288
+msgid "Botones"
+msgstr ""
+
+#: inc/colors.php:289
+msgid "Secundario"
+msgstr ""
+
+#: inc/colors.php:290
+msgid "Superficie"
+msgstr ""
+
+#: inc/customizer.php:18
+msgid "Marca"
+msgstr ""
+
+#: inc/customizer.php:27
+msgid "Colores"
+msgstr ""
+
+#: inc/customizer.php:29
+msgid "Botones, texto de los botones y links se eligen por separado. Si una combinación no se lee bien (contraste WCAG AA), el tema la corrige sola y te avisa acá abajo."
+msgstr ""
+
+#: inc/customizer.php:58
+msgid "Tipografía y forma"
+msgstr ""
+
+#: inc/customizer.php:63
+msgid "Combinación tipográfica"
+msgstr ""
+
+#: inc/customizer.php:63
+msgid "Las de sistema no descargan nada. Las \"Web\" se sirven desde el propio sitio, con métricas ajustadas para que el texto no salte al cargar."
+msgstr ""
+
+#: inc/customizer.php:67
+msgid "Fuente propia: títulos (.woff2)"
+msgstr ""
+
+#: inc/customizer.php:67
+msgid "Subí el archivo .woff2 (si tenés .ttf u .otf, convertilo gratis en transfonter.org). Revisá que la licencia permita usarla en la web."
+msgstr ""
+
+#: inc/customizer.php:68
+msgid "Fuente propia: textos (.woff2)"
+msgstr ""
+
+#: inc/customizer.php:68
+msgid "Opcional: si no la cargás, los textos usan la de títulos."
+msgstr ""
+
+#: inc/customizer.php:69
+msgid "Fuente propia: textos en negrita (.woff2)"
+msgstr ""
+
+#: inc/customizer.php:69
+msgid "Opcional. Si la fuente de textos es \"variable\" (trae todos los pesos), no hace falta."
+msgstr ""
+
+#: inc/customizer.php:96
+msgid "Fuente propia: estilo"
+msgstr ""
+
+#: inc/customizer.php:99
+msgid "Sin serifa (palo seco)"
+msgstr ""
+
+#: inc/customizer.php:100
+msgid "Con serifa"
+msgstr ""
+
+#: inc/customizer.php:103
+msgid "Define qué fuente del sistema se ve mientras carga la tuya."
+msgstr ""
+
+#: inc/customizer.php:110
+msgid "Tamaño de texto base"
+msgstr ""
+
+#: inc/customizer.php:114
+msgid "17 px (recomendado)"
+msgstr ""
+
+#: inc/customizer.php:122
+msgid "Esquinas"
+msgstr ""
+
+#: inc/customizer.php:125
+msgid "Rectas"
+msgstr ""
+
+#: inc/customizer.php:126
+msgid "Apenas redondeadas"
+msgstr ""
+
+#: inc/customizer.php:127
+msgid "Redondeadas"
+msgstr ""
+
+#: inc/customizer.php:128
+msgid "Muy redondeadas"
+msgstr ""
+
+#: inc/customizer.php:135
+msgid "Ancho máximo del contenido"
+msgstr ""
+
+#: inc/customizer.php:149
+msgid "Encabezado"
+msgstr ""
+
+#: inc/customizer.php:156
+#: inc/home.php:33
+msgid "Diseño"
+msgstr ""
+
+#: inc/customizer.php:159
+msgid "Logo a la izquierda, menú a la derecha"
+msgstr ""
+
+#: inc/customizer.php:160
+msgid "Logo centrado, menú debajo"
+msgstr ""
+
+#: inc/customizer.php:163
+msgid "En el celular los dos se ven igual: logo y botón de menú."
+msgstr ""
+
+#: inc/customizer.php:165
+msgid "Encabezado fijo al hacer scroll"
+msgstr ""
+
+#: inc/customizer.php:166
+msgid "Mostrar buscador"
+msgstr ""
+
+#: inc/customizer.php:167
+msgid "Botón del encabezado: texto"
+msgstr ""
+
+#: inc/customizer.php:168
+msgid "Botón del encabezado: link"
+msgstr ""
+
+#: inc/customizer.php:170
+msgid "Transparente sobre la portada"
+msgstr ""
+
+#: inc/customizer.php:171
+msgid "Solo en la home y cuando la portada usa \"Imagen de fondo a todo el ancho\". Al hacer scroll vuelve a su color."
+msgstr ""
+
+#: inc/customizer.php:184
+msgid "Logo claro (para el encabezado transparente)"
+msgstr ""
+
+#: inc/customizer.php:185
+msgid "Una versión blanca o clara del logo, que se lea sobre la foto. Si no la cargás, se usa el logo de siempre."
+msgstr ""
+
+#: inc/customizer.php:193
+msgid "Barra superior con contacto y redes"
+msgstr ""
+
+#: inc/customizer.php:194
+msgid "Muestra el teléfono, WhatsApp, email y redes cargados en Ajustes del sitio."
+msgstr ""
+
+#: inc/customizer.php:195
+msgid "Barra superior: texto corto (opcional)"
+msgstr ""
+
+#: inc/customizer.php:206
+msgid "Texto breve bajo el logo"
+msgstr ""
+
+#: inc/customizer.php:210
+msgid "Estilo"
+msgstr ""
+
+#: inc/customizer.php:213
+msgid "Del color secundario de la marca"
+msgstr ""
+
+#: inc/customizer.php:214
+msgid "Claro"
+msgstr ""
+
+#: inc/customizer.php:217
+msgid "Para sumar columnas (horarios, links, un texto), agregá widgets en Apariencia → Widgets → Pie de página: columnas."
+msgstr ""
+
+#: inc/customizer.php:219
+msgid "Mostrar \"Sitio hecho por FeeloLab\" (con link a feelolab.com)"
+msgstr ""
+
+#: inc/customizer.php:229
+msgid "Mostrar el tiempo de lectura"
+msgstr ""
+
+#: inc/customizer.php:230
+msgid "Mostrar botones para compartir"
+msgstr ""
+
+#: inc/customizer.php:231
+msgid "Mostrar el recuadro del autor"
+msgstr ""
+
+#: inc/customizer.php:232
+msgid "Aparece solo si el autor completó su biografía en Usuarios → Perfil."
+msgstr ""
+
+#: inc/customizer.php:238
+msgid "Secciones de la home"
+msgstr ""
+
+#: inc/customizer.php:240
+msgid "Ordená las secciones arrastrándolas en \"Orden de las secciones\" y completá cada una. Los cambios de texto e imágenes se ven al instante."
+msgstr ""
+
+#: inc/customizer.php:253
+#: inc/customizer.php:270
+msgid "Orden de las secciones"
+msgstr ""
+
+#: inc/customizer.php:271
+msgid "Arrastrá cada sección o usá las flechas. Las ocultas no se ven en el sitio; se prenden desde el lápiz de cada una."
+msgstr ""
+
+#: inc/customizer.php:291
+msgid "Mostrar esta sección"
+msgstr ""
+
+#: inc/customizer.php:404
+msgid "Oculta"
+msgstr ""
+
+#. translators: 1: sección, 2: posición, 3: total
+#: inc/customizer.php:406
+#, php-format
+msgid "%1$s, posición %2$d de %3$d"
+msgstr ""
+
+#. translators: %s: relación de contraste, por ejemplo 3.2
+#: inc/customizer.php:444
+#, php-format
+msgid "El botón casi no se distingue del fondo de la página (%s:1). Se le agrega un borde para que se vea como botón."
+msgstr ""
+
+#. translators: %s: relación de contraste, por ejemplo 3.2
+#: inc/customizer.php:446
+#, php-format
+msgid "Este texto no se lee bien sobre el fondo del botón (%s:1, mínimo 4.5:1). El sitio va a usar blanco o negro, el que mejor se lea."
+msgstr ""
+
+#. translators: %s: relación de contraste, por ejemplo 3.2
+#: inc/customizer.php:448
+#, php-format
+msgid "Los links tendrían poco contraste con el fondo (%s:1, mínimo 4.5:1). El sitio va a usar una versión más oscura de este color."
+msgstr ""
+
+#. translators: %s: relación de contraste, por ejemplo 3.2
+#: inc/customizer.php:450
+#, php-format
+msgid "Los links usan este color y sobre el fondo no se leerían (%s:1). El sitio va a usar una versión más oscura; si preferís otro, elegilo en \"Links y acentos\"."
+msgstr ""
+
+#. translators: %s: relación de contraste, por ejemplo 1.0
+#: inc/customizer.php:452
+#, php-format
+msgid "Este color es muy claro para usarlo en links (%s:1 sobre el fondo), así que los links van a usar el color Secundario (o el de Texto). Si preferís otro, elegilo en \"Links y acentos\"."
+msgstr ""
+
+#. translators: %s: relación de contraste, por ejemplo 3.2
+#: inc/customizer.php:454
+#, php-format
+msgid "El texto tiene poco contraste con el fondo (%s:1). El tema lo va a oscurecer para que se lea."
+msgstr ""
+
+#: inc/home.php:27
+msgid "Portada (hero)"
+msgstr ""
+
+#: inc/home.php:36
+msgid "Texto e imagen lado a lado"
+msgstr ""
+
+#: inc/home.php:37
+msgid "Imagen de fondo a todo el ancho"
+msgstr ""
+
+#: inc/home.php:38
+msgid "Solo texto, centrado"
+msgstr ""
+
+#: inc/home.php:41
+msgid "Título (es el h1 de la home)"
+msgstr ""
+
+#: inc/home.php:42
+#: inc/home.php:57
+#: inc/patterns.php:55
+msgid "Bajada"
+msgstr ""
+
+#: inc/home.php:43
+msgid "Imagen (1600×900 o más)"
+msgstr ""
+
+#: inc/home.php:44
+msgid "Botón principal: texto"
+msgstr ""
+
+#: inc/home.php:44
+#: patterns/intro-botones.php:25
+msgid "Contactanos"
+msgstr ""
+
+#: inc/home.php:45
+msgid "Botón principal: link"
+msgstr ""
+
+#: inc/home.php:46
+msgid "Botón secundario: texto"
+msgstr ""
+
+#: inc/home.php:47
+msgid "Botón secundario: link"
+msgstr ""
+
+#: inc/home.php:51
+#: inc/home.php:56
+msgid "Servicios"
+msgstr ""
+
+#: inc/home.php:56
+#: inc/home.php:66
+#: inc/home.php:80
+#: inc/home.php:108
+#: inc/home.php:118
+#: inc/home.php:128
+#: inc/home.php:137
+#: inc/home.php:147
+#: inc/home.php:160
+#: inc/home.php:169
+#: inc/home.php:180
+#: inc/home.php:189
+msgid "Título"
+msgstr ""
+
+#: inc/home.php:58
+#: inc/home.php:109
+#: inc/home.php:119
+#: inc/home.php:138
+#: inc/home.php:161
+msgid "Cantidad"
+msgstr ""
+
+#: inc/home.php:62
+msgid "Sobre nosotros"
+msgstr ""
+
+#: inc/home.php:66
+#: patterns/intro-botones.php:16
+msgid "Quiénes somos"
+msgstr ""
+
+#: inc/home.php:68
+#: inc/home.php:149
+msgid "Imagen"
+msgstr ""
+
+#: inc/home.php:69
+#: inc/home.php:150
+msgid "Link: texto"
+msgstr ""
+
+#: inc/home.php:69
+msgid "Conocenos"
+msgstr ""
+
+#: inc/home.php:70
+#: inc/home.php:151
+msgid "Link: URL"
+msgstr ""
+
+#: inc/home.php:75
+msgid "Llamada a la acción (segunda)"
+msgstr ""
+
+#: inc/home.php:80
+msgid "¿Necesitás una mano?"
+msgstr ""
+
+#: inc/home.php:82
+#: inc/home.php:171
+msgid "Botón: texto"
+msgstr ""
+
+#: inc/home.php:82
+msgid "Consultanos"
+msgstr ""
+
+#: inc/home.php:83
+#: inc/home.php:172
+msgid "Botón: link (vacío = WhatsApp o contacto)"
+msgstr ""
+
+#: inc/home.php:87
+#: template-parts/home/cifras.php:22
+msgid "Cifras"
+msgstr ""
+
+#: inc/home.php:91
+msgid "Título (opcional)"
+msgstr ""
+
+#: inc/home.php:92
+msgid "Cifra 1"
+msgstr ""
+
+#: inc/home.php:93
+msgid "Texto 1"
+msgstr ""
+
+#: inc/home.php:93
+#: patterns/cifras.php:16
+msgid "años de experiencia"
+msgstr ""
+
+#: inc/home.php:94
+msgid "Cifra 2"
+msgstr ""
+
+#: inc/home.php:95
+msgid "Texto 2"
+msgstr ""
+
+#: inc/home.php:96
+msgid "Cifra 3"
+msgstr ""
+
+#: inc/home.php:97
+msgid "Texto 3"
+msgstr ""
+
+#: inc/home.php:98
+msgid "Cifra 4"
+msgstr ""
+
+#: inc/home.php:99
+msgid "Texto 4"
+msgstr ""
+
+#: inc/home.php:103
+#: inc/home.php:108
+msgid "Proyectos"
+msgstr ""
+
+#: inc/home.php:113
+msgid "Testimonios"
+msgstr ""
+
+#: inc/home.php:118
+msgid "Lo que dicen nuestros clientes"
+msgstr ""
+
+#: inc/home.php:123
+msgid "Logos de clientes"
+msgstr ""
+
+#: inc/home.php:128
+msgid "Confían en nosotros"
+msgstr ""
+
+#: inc/home.php:132
+#: inc/home.php:137
+#: patterns/preguntas.php:22
+#: template-parts/single/content-servicio.php:30
+msgid "Preguntas frecuentes"
+msgstr ""
+
+#: inc/home.php:142
+msgid "Texto con imagen (segundo bloque)"
+msgstr ""
+
+#: inc/home.php:147
+#: patterns/pasos.php:24
+msgid "Cómo trabajamos"
+msgstr ""
+
+#: inc/home.php:156
+msgid "Últimas notas del blog"
+msgstr ""
+
+#: inc/home.php:160
+msgid "Novedades"
+msgstr ""
+
+#: inc/home.php:165
+msgid "Llamada a la acción"
+msgstr ""
+
+#: inc/home.php:169
+#: patterns/llamada.php:17
+#: template-parts/cta-band.php:12
+msgid "¿Hablamos?"
+msgstr ""
+
+#: inc/home.php:171
+#: patterns/llamada.php:26
+#: template-parts/cta-band.php:14
+msgid "Escribinos"
+msgstr ""
+
+#: inc/home.php:176
+msgid "Newsletter"
+msgstr ""
+
+#: inc/home.php:180
+#: patterns/newsletter.php:17
+msgid "Recibí nuestras novedades"
+msgstr ""
+
+#: inc/home.php:181
+msgid "Un email al mes con lo que te sirve. Sin spam."
+msgstr ""
+
+#: inc/home.php:185
+msgid "Contacto con formulario"
+msgstr ""
+
+#. Template Name of the theme
+#: inc/home.php:189
+#: template-parts/topbar.php:28
+msgid "Contacto"
+msgstr ""
+
+#: inc/home.php:217
+msgid "Imagen a la"
+msgstr ""
+
+#: inc/home.php:220
+msgid "Derecha"
+msgstr ""
+
+#: inc/home.php:221
+msgid "Izquierda"
+msgstr ""
+
+#. translators: %s: nombre del ítem de menú
+#: inc/nav.php:20
+#, php-format
+msgid "Mostrar submenú de %s"
+msgstr ""
+
+#: inc/patterns.php:22
+msgid "Secciones listas con el diseño del sitio."
+msgstr ""
+
+#: inc/patterns.php:29
+msgid "Tarjeta"
+msgstr ""
+
+#: inc/patterns.php:33
+msgid "Tarjeta destacada"
+msgstr ""
+
+#: inc/patterns.php:37
+msgid "Fondo suave"
+msgstr ""
+
+#: inc/patterns.php:41
+msgid "Franja de marca"
+msgstr ""
+
+#: inc/patterns.php:47
+msgid "Volanta"
+msgstr ""
+
+#: inc/patterns.php:51
+msgid "Dato grande"
+msgstr ""
+
+#: inc/patterns.php:61
+msgid "Con tildes"
+msgstr ""
+
+#: inc/setup.php:39
+msgid "Menú principal"
+msgstr ""
+
+#: inc/setup.php:40
+msgid "Menú del pie"
+msgstr ""
+
+#: inc/setup.php:41
+msgid "Menú legal (privacidad, términos)"
+msgstr ""
+
+#: inc/setup.php:69
+#: template-parts/sidebar-blog.php:14
+msgid "Barra lateral del blog"
+msgstr ""
+
+#: inc/setup.php:79
+msgid "Pie de página: columnas"
+msgstr ""
+
+#: inc/setup.php:81
+msgid "Cada widget es una columna más del pie, después del contacto."
+msgstr ""
+
+#. translators: %d: minutos
+#: inc/template-tags.php:175
+#, php-format
+msgid "%d minuto de lectura"
+msgid_plural "%d minutos de lectura"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/template-tags.php:183
+msgid "Actualizado"
+msgstr ""
+
+#: inc/template-tags.php:193
+#: template-parts/single/content.php:53
+msgid "Anterior"
+msgstr ""
+
+#: inc/template-tags.php:194
+#: template-parts/single/content.php:54
+msgid "Siguiente"
+msgstr ""
+
+#: inc/template-tags.php:195
+msgid "Página"
+msgstr ""
+
+#: inc/template-tags.php:196
+msgid "Paginación"
+msgstr ""
+
+#. translators: %d: calificación
+#: inc/template-tags.php:209
+#, php-format
+msgid "Calificación: %d de 5"
+msgstr ""
+
+#. translators: %s: red social
+#: inc/template-tags.php:233
+#, php-format
+msgid "%s (se abre en otra pestaña)"
+msgstr ""
+
+#: inc/template-tags.php:256
+msgid "(WhatsApp, se abre en otra pestaña)"
+msgstr ""
+
+#: inc/template-tags.php:264
+msgid "(ver en el mapa, se abre en otra pestaña)"
+msgstr ""
+
+#. translators: %s: dirección
+#: inc/template-tags.php:335
+#, php-format
+msgid "Mapa: %s"
+msgstr ""
+
+#: inc/template-tags.php:340
+msgid "Ver mapa"
+msgstr ""
+
+#: inc/template-tags.php:341
+msgid "Abrir en Google Maps"
+msgstr ""
+
+#: inc/template-tags.php:343
+msgid "El mapa lo muestra Google: se carga solo si lo pedís."
+msgstr ""
+
+#. Template Name of the theme
+msgid "Ancho completo"
+msgstr ""
+
+#: page-templates/contacto.php:30
+#: page-templates/contacto.php:31
+#: template-parts/cards/card-sede.php:20
+msgid "Datos de contacto"
+msgstr ""
+
+#: page-templates/contacto.php:39
+#: template-parts/single/content-sede.php:28
+msgid "Cómo llegar"
+msgstr ""
+
+#: page-templates/contacto.php:59
+msgid "Sedes"
+msgstr ""
+
+#: patterns/cifras.php
+msgctxt "Pattern title"
+msgid "Cifras"
+msgstr ""
+
+#: patterns/cifras.php
+msgctxt "Pattern description"
+msgid "Cuatro números grandes con su texto. Solo datos reales y verificables."
+msgstr ""
+
+#: patterns/cifras.php:17
+msgid "clientes"
+msgstr ""
+
+#: patterns/cifras.php:18
+msgid "tiempo de respuesta"
+msgstr ""
+
+#: patterns/cifras.php:19
+msgid "de calificación en Google"
+msgstr ""
+
+#: patterns/equipo.php
+msgctxt "Pattern title"
+msgid "Equipo"
+msgstr ""
+
+#: patterns/equipo.php
+msgctxt "Pattern description"
+msgid "Tres personas con foto, nombre y cargo. Reemplazá las fotos de muestra y completá el texto alternativo con el nombre. Si el módulo Equipo está activo, cada persona también tiene su ficha propia."
+msgstr ""
+
+#: patterns/equipo.php:16
+msgid "Directora"
+msgstr ""
+
+#: patterns/equipo.php:17
+msgid "Contador"
+msgstr ""
+
+#: patterns/equipo.php:18
+msgid "Atención a clientes"
+msgstr ""
+
+#: patterns/equipo.php:23
+msgid "Nuestro equipo"
+msgstr ""
+
+#: patterns/intro-botones.php
+msgctxt "Pattern title"
+msgid "Introducción con botones"
+msgstr ""
+
+#: patterns/intro-botones.php
+msgctxt "Pattern description"
+msgid "Volanta, una bajada grande y dos botones. Para abrir cualquier página interior."
+msgstr ""
+
+#: patterns/intro-botones.php:20
+msgid "Contá en dos o tres líneas qué hacen, para quién y qué los diferencia. Es lo primero que se lee: que se entienda sin conocerlos."
+msgstr ""
+
+#: patterns/intro-botones.php:29
+msgid "Ver servicios"
+msgstr ""
+
+#: patterns/landing.php
+msgctxt "Pattern title"
+msgid "Landing completa"
+msgstr ""
+
+#: patterns/landing.php
+msgctxt "Pattern description"
+msgid "Una página de campaña entera: título, beneficios, pasos, preguntas y cierre. Usala con la plantilla \"Ancho completo\" (trae su propio título principal)."
+msgstr ""
+
+#: patterns/landing.php:18
+msgid "Oferta de lanzamiento"
+msgstr ""
+
+#: patterns/landing.php:22
+msgid "Ordená las cuentas de tu negocio en 30 días"
+msgstr ""
+
+#: patterns/landing.php:26
+msgid "Una promesa concreta: qué gana la persona y en cuánto tiempo. Una sola idea por landing."
+msgstr ""
+
+#: patterns/landing.php:31
+msgid "Quiero empezar"
+msgstr ""
+
+#: patterns/llamada.php
+msgctxt "Pattern title"
+msgid "Llamada a la acción"
+msgstr ""
+
+#: patterns/llamada.php
+msgctxt "Pattern description"
+msgid "Franja del color de la marca a todo el ancho con título, texto y botón. Para cerrar una página."
+msgstr ""
+
+#: patterns/llamada.php:21
+msgid "Contanos qué necesitás y te respondemos en el día."
+msgstr ""
+
+#: patterns/newsletter.php
+msgctxt "Pattern title"
+msgid "Suscripción al newsletter"
+msgstr ""
+
+#: patterns/newsletter.php
+msgctxt "Pattern description"
+msgid "Franja con el formulario de suscripción (se configura en Ajustes del sitio → Newsletter)."
+msgstr ""
+
+#: patterns/newsletter.php:21
+msgid "Un email al mes con lo que te sirve. Sin spam: te das de baja con un clic."
+msgstr ""
+
+#: patterns/pasos.php
+msgctxt "Pattern title"
+msgid "Cómo trabajamos (pasos)"
+msgstr ""
+
+#: patterns/pasos.php
+msgctxt "Pattern description"
+msgid "Cuatro pasos numerados sobre fondo suave: explica el proceso y baja la ansiedad antes de contactar."
+msgstr ""
+
+#: patterns/pasos.php:16
+msgid "Nos contás"
+msgstr ""
+
+#: patterns/pasos.php:16
+msgid "Una charla corta para entender qué necesitás."
+msgstr ""
+
+#: patterns/pasos.php:17
+msgid "Te proponemos"
+msgstr ""
+
+#: patterns/pasos.php:17
+msgid "Un plan claro con plazos y costos cerrados."
+msgstr ""
+
+#: patterns/pasos.php:18
+msgid "Lo hacemos"
+msgstr ""
+
+#: patterns/pasos.php:18
+msgid "Trabajamos y te mantenemos al tanto en cada etapa."
+msgstr ""
+
+#: patterns/pasos.php:19
+msgid "Te acompañamos"
+msgstr ""
+
+#: patterns/pasos.php:19
+msgid "Seguimos disponibles después de la entrega."
+msgstr ""
+
+#: patterns/precios.php
+msgctxt "Pattern title"
+msgid "Tabla de precios"
+msgstr ""
+
+#: patterns/precios.php
+msgctxt "Pattern description"
+msgid "Tres planes con lo que incluye cada uno; el del medio va destacado."
+msgstr ""
+
+#: patterns/precios.php:16
+msgid "Básico"
+msgstr ""
+
+#: patterns/precios.php:16
+msgid "Lo esencial para arrancar"
+msgstr ""
+
+#: patterns/precios.php:16
+msgid "Atención por email"
+msgstr ""
+
+#: patterns/precios.php:16
+msgid "Informe mensual"
+msgstr ""
+
+#: patterns/precios.php:17
+msgid "Completo"
+msgstr ""
+
+#: patterns/precios.php:17
+msgid "Todo lo del plan Básico"
+msgstr ""
+
+#: patterns/precios.php:17
+msgid "Atención por WhatsApp"
+msgstr ""
+
+#: patterns/precios.php:17
+msgid "Reunión mensual"
+msgstr ""
+
+#: patterns/precios.php:18
+msgid "Empresas"
+msgstr ""
+
+#: patterns/precios.php:18
+msgid "Para equipos grandes"
+msgstr ""
+
+#: patterns/precios.php:18
+msgid "Persona asignada"
+msgstr ""
+
+#: patterns/precios.php:18
+msgid "Reportes a medida"
+msgstr ""
+
+#: patterns/precios.php:23
+msgid "Planes"
+msgstr ""
+
+#: patterns/precios.php:35
+msgid "El más elegido"
+msgstr ""
+
+#: patterns/precios.php:58
+msgid "Quiero este plan"
+msgstr ""
+
+#: patterns/precios.php:66
+msgid "Precios finales por mes. Podés cambiar de plan cuando quieras."
+msgstr ""
+
+#: patterns/preguntas.php
+msgctxt "Pattern title"
+msgid "Preguntas frecuentes"
+msgstr ""
+
+#: patterns/preguntas.php
+msgctxt "Pattern description"
+msgid "Preguntas que se abren al tocarlas. Para las preguntas que se repiten en todo el sitio conviene el módulo Preguntas frecuentes (suma schema para Google)."
+msgstr ""
+
+#: patterns/preguntas.php:16
+msgid "¿Cuánto tarda una respuesta?"
+msgstr ""
+
+#: patterns/preguntas.php:16
+msgid "Respondemos todas las consultas en menos de 24 horas hábiles."
+msgstr ""
+
+#: patterns/preguntas.php:17
+msgid "¿Trabajan a distancia?"
+msgstr ""
+
+#: patterns/preguntas.php:17
+msgid "Sí, atendemos por videollamada a clientes de todo el país."
+msgstr ""
+
+#: patterns/preguntas.php:18
+msgid "¿Cómo se paga?"
+msgstr ""
+
+#: patterns/preguntas.php:18
+msgid "Transferencia, tarjeta o Mercado Pago. Emitimos factura."
+msgstr ""
+
+#: patterns/texto-imagen.php
+msgctxt "Pattern title"
+msgid "Texto con imagen"
+msgstr ""
+
+#: patterns/texto-imagen.php
+msgctxt "Pattern description"
+msgid "Un bloque de texto con una foto al costado. En el celular la foto va arriba."
+msgstr ""
+
+#: patterns/texto-imagen.php:17
+msgid "Nuestra historia"
+msgstr ""
+
+#: patterns/texto-imagen.php:21
+msgid "Más de 15 años al lado de pymes"
+msgstr ""
+
+#: patterns/texto-imagen.php:25
+msgid "Contá cómo empezaron, qué aprendieron y qué los mueve hoy. Dos párrafos cortos alcanzan. Reemplazá la imagen con una foto real del equipo o del lugar."
+msgstr ""
+
+#: patterns/valores.php
+msgctxt "Pattern title"
+msgid "Misión, visión y valores"
+msgstr ""
+
+#: patterns/valores.php
+msgctxt "Pattern description"
+msgid "Tres tarjetas lado a lado. Sirve también para tres beneficios o tres diferenciales."
+msgstr ""
+
+#: patterns/valores.php:16
+msgid "Misión"
+msgstr ""
+
+#: patterns/valores.php:16
+msgid "Qué hacen todos los días y para quién, en una o dos frases."
+msgstr ""
+
+#: patterns/valores.php:17
+msgid "Visión"
+msgstr ""
+
+#: patterns/valores.php:17
+msgid "Adónde quieren llegar: el cambio que buscan en sus clientes."
+msgstr ""
+
+#: patterns/valores.php:18
+msgid "Valores"
+msgstr ""
+
+#: patterns/valores.php:18
+msgid "Tres o cuatro palabras que guían cómo trabajan, con un ejemplo concreto."
+msgstr ""
+
+#: patterns/valores.php:23
+msgid "Lo que nos guía"
+msgstr ""
+
+#. translators: %d: cantidad de resultados
+#: search.php:26
+#, php-format
+msgid "%d resultado"
+msgid_plural "%d resultados"
+msgstr[0] ""
+msgstr[1] ""
+
+#: searchform.php:13
+msgid "Buscar en el sitio"
+msgstr ""
+
+#: searchform.php:14
+msgid "Buscar…"
+msgstr ""
+
+#: template-parts/author-box.php:25
+msgid "Escrito por"
+msgstr ""
+
+#: template-parts/cards/card-producto.php:23
+msgid "Sin stock"
+msgstr ""
+
+#: template-parts/cards/card-producto.php:25
+msgid "Oferta"
+msgstr ""
+
+#. translators: %s: nombre de la sede
+#: template-parts/cards/card-sede.php:40
+#, php-format
+msgid "Cómo llegar a %s"
+msgstr ""
+
+#: template-parts/cards/card-servicio.php:24
+#: template-parts/single/content-servicio.php:38
+msgid "Desde"
+msgstr ""
+
+#: template-parts/cards/card-servicio.php:26
+msgid "Ver más"
+msgstr ""
+
+#: template-parts/gallery-grid.php:17
+msgid "Galería"
+msgstr ""
+
+#: template-parts/gallery-grid.php:30
+msgid "(ver imagen grande)"
+msgstr ""
+
+#: template-parts/gallery.php:41
+msgid "Imágenes del producto"
+msgstr ""
+
+#. translators: 1: número de imagen, 2: total, 3: producto
+#: template-parts/gallery.php:50
+#, php-format
+msgid "Imagen %1$d de %2$d de %3$s"
+msgstr ""
+
+#: template-parts/home/blog.php:36
+msgid "Ver todas las notas"
+msgstr ""
+
+#: template-parts/home/proyectos.php:34
+msgid "Ver todos los proyectos"
+msgstr ""
+
+#: template-parts/home/servicios.php:34
+msgid "Ver todos los servicios"
+msgstr ""
+
+#: template-parts/none.php:11
+msgid "No encontramos nada con esa búsqueda. Probá con otras palabras."
+msgstr ""
+
+#: template-parts/none.php:11
+msgid "Todavía no hay contenido acá."
+msgstr ""
+
+#: template-parts/price.php:20
+msgid "Antes:"
+msgstr ""
+
+#: template-parts/price.php:21
+msgid "Ahora:"
+msgstr ""
+
+#. translators: %s: nombre del tipo de contenido en plural
+#: template-parts/related.php:45
+#, php-format
+msgid "Más %s"
+msgstr ""
+
+#: template-parts/share.php:22
+#: template-parts/single/content-miembro.php:39
+msgid "Email"
+msgstr ""
+
+#: template-parts/share.php:26
+#: template-parts/share.php:31
+msgid "Compartir"
+msgstr ""
+
+#: template-parts/share.php:42
+msgid "Enviar por email"
+msgstr ""
+
+#. translators: %s: red social
+#: template-parts/share.php:44
+#, php-format
+msgid "Compartir en %s (se abre en otra pestaña)"
+msgstr ""
+
+#: template-parts/share.php:52
+msgid "Link copiado"
+msgstr ""
+
+#: template-parts/share.php:54
+msgid "Copiar link"
+msgstr ""
+
+#. translators: %s: nombre del producto
+#: template-parts/single/content-producto.php:35
+#, php-format
+msgid "Hola, quiero consultar por: %s"
+msgstr ""
+
+#: template-parts/single/content-producto.php:51
+msgid "Disponible"
+msgstr ""
+
+#: template-parts/single/content-producto.php:51
+msgid "Sin stock por el momento"
+msgstr ""
+
+#: template-parts/single/content-producto.php:58
+msgid "Elegí para tu consulta"
+msgstr ""
+
+#: template-parts/single/content-producto.php:64
+msgid "Sin elegir"
+msgstr ""
+
+#: template-parts/single/content-producto.php:75
+msgid "Consultar por WhatsApp"
+msgstr ""
+
+#: template-parts/single/content-producto.php:75
+#: template-parts/single/content-servicio.php:14
+msgid "Consultar"
+msgstr ""
+
+#: template-parts/single/content-producto.php:79
+msgid "Código:"
+msgstr ""
+
+#: template-parts/single/content-producto.php:88
+msgid "Ficha técnica"
+msgstr ""
+
+#. translators: %s: producto
+#: template-parts/single/content-producto.php:93
+#, php-format
+msgid "Características de %s"
+msgstr ""
+
+#: template-parts/single/content-proyecto.php:12
+msgid "Cliente"
+msgstr ""
+
+#: template-parts/single/content-proyecto.php:13
+msgid "Año"
+msgstr ""
+
+#: template-parts/single/content-proyecto.php:14
+msgid "Resultado"
+msgstr ""
+
+#: template-parts/single/content-proyecto.php:32
+msgid "Datos del proyecto"
+msgstr ""
+
+#: template-parts/single/content-proyecto.php:39
+msgid "Ver el proyecto"
+msgstr ""
+
+#: template-parts/single/content-servicio.php:36
+msgid "Contratar este servicio"
+msgstr ""
+
+#: template-parts/single/content.php:49
+msgid "Etiquetas:"
+msgstr ""
+
+#: template-parts/term-filter.php:42
+msgid "Filtrar por categoría"
+msgstr ""
+
+#: template-parts/term-filter.php:44
+msgid "Todos"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Chico"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Normal"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Grande"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Muy grande"
+msgstr ""

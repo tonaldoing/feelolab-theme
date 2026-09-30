@@ -1,0 +1,1025 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FeeloLab\n"
+"Report-Msgid-Bugs-To: https://www.feelolab.com\n"
+"Language-Team: FeeloLab\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: feelolab\n"
+
+
+msgid "FeeloLab"
+msgstr "FeeloLab"
+
+msgid "https://www.feelolab.com"
+msgstr "https://www.feelolab.com"
+
+msgid "Tema base para sitios de clientes de FeeloLab. Clásico, liviano y accesible: sin jQuery ni frameworks, fuentes del sistema, home por secciones desde el Personalizador. Se complementa con el plugin FeeloLab Core (servicios, productos, equipo, sedes, testimonios, FAQ, ajustes del negocio y schema)."
+msgstr "Base theme for FeeloLab client sites. Classic, lightweight and accessible: no jQuery or frameworks, system fonts, a section-based home built from the Customizer. Pairs with the FeeloLab Core plugin (services, products, team, locations, testimonials, FAQ, business settings and schema)."
+
+msgid "No encontramos esta página"
+msgstr "We couldn't find this page"
+
+msgid "Puede que el link esté mal escrito o que la página ya no exista. Probá buscando o volvé al inicio."
+msgstr "The link may be mistyped or the page may no longer exist. Try searching or go back home."
+
+msgid "Ir al inicio"
+msgstr "Go to home"
+
+msgid "%d comentario"
+msgid_plural "%d comentarios"
+msgstr[0] "%d comment"
+msgstr[1] "%d comments"
+
+msgid "Comentarios"
+msgstr "Comments"
+
+msgid "Pie de página"
+msgstr "Footer"
+
+msgid "Legal"
+msgstr "Legal"
+
+msgid "Sitio hecho por"
+msgstr "Site by"
+
+msgid "(se abre en otra pestaña)"
+msgstr "(opens in a new tab)"
+
+msgid "Saltar al contenido"
+msgstr "Skip to content"
+
+msgid "Buscar"
+msgstr "Search"
+
+msgid "Principal"
+msgstr "Main"
+
+msgid "Menú"
+msgstr "Menu"
+
+msgid "Inicio"
+msgstr "Home"
+
+msgid "Resultados para \"%s\""
+msgstr "Results for \"%s\""
+
+msgid "Página no encontrada"
+msgstr "Page not found"
+
+msgid "Blog"
+msgstr "Blog"
+
+msgid "Migas de pan"
+msgstr "Breadcrumbs"
+
+msgid "Subir %s"
+msgstr "Move %s up"
+
+msgid "Bajar %s"
+msgstr "Move %s down"
+
+msgid "Editar %s"
+msgstr "Edit %s"
+
+msgid "Botones: fondo (color de marca)"
+msgstr "Buttons: background (brand color)"
+
+msgid "Botones: texto"
+msgstr "Buttons: text"
+
+msgid "Vacío = automático: blanco o negro, el que mejor se lea sobre el botón."
+msgstr "Empty = automatic: white or black, whichever reads better on the button."
+
+msgid "Links y acentos"
+msgstr "Links and accents"
+
+msgid "Links, volantas e íconos. Vacío = el color de los botones."
+msgstr "Links, kickers and icons. Empty = the button color."
+
+msgid "Secundario (bloques oscuros, footer)"
+msgstr "Secondary (dark blocks, footer)"
+
+msgid "Fondo"
+msgstr "Background"
+
+msgid "Superficie (secciones alternas, tarjetas)"
+msgstr "Surface (alternate sections, cards)"
+
+msgid "Texto"
+msgstr "Text"
+
+msgid "Sistema (neutra, la más rápida)"
+msgstr "System (neutral, the fastest)"
+
+msgid "Humanista (cercana)"
+msgstr "Humanist (friendly)"
+
+msgid "Geométrica (moderna)"
+msgstr "Geometric (modern)"
+
+msgid "Editorial (títulos serif, texto sans)"
+msgstr "Editorial (serif headings, sans text)"
+
+msgid "Clásica (todo serif)"
+msgstr "Classic (all serif)"
+
+msgid "Web: Inter (moderna, muy legible) · 48 KB"
+msgstr "Web: Inter (modern, very legible) · 48 KB"
+
+msgid "Web: Figtree (amable, geométrica) · 20 KB"
+msgstr "Web: Figtree (friendly, geometric) · 20 KB"
+
+msgid "Web: Fraunces + Inter (títulos con carácter) · 85 KB"
+msgstr "Web: Fraunces + Inter (headings with character) · 85 KB"
+
+msgid "Web: Source Serif + Figtree (editorial) · 71 KB"
+msgstr "Web: Source Serif + Figtree (editorial) · 71 KB"
+
+msgid "Fuente propia de la marca (subila abajo)"
+msgstr "Brand's own font (upload it below)"
+
+msgid "Botones"
+msgstr "Buttons"
+
+msgid "Secundario"
+msgstr "Secondary"
+
+msgid "Superficie"
+msgstr "Surface"
+
+msgid "Marca"
+msgstr "Brand"
+
+msgid "Colores"
+msgstr "Colors"
+
+msgid "Botones, texto de los botones y links se eligen por separado. Si una combinación no se lee bien (contraste WCAG AA), el tema la corrige sola y te avisa acá abajo."
+msgstr "Buttons, button text and links are chosen separately. If a combination isn't readable (WCAG AA contrast), the theme fixes it automatically and lets you know below."
+
+msgid "Tipografía y forma"
+msgstr "Typography and shape"
+
+msgid "Combinación tipográfica"
+msgstr "Font pairing"
+
+msgid "Las de sistema no descargan nada. Las \"Web\" se sirven desde el propio sitio, con métricas ajustadas para que el texto no salte al cargar."
+msgstr "System fonts download nothing. \"Web\" fonts are served from the site itself, with adjusted metrics so text doesn't jump while loading."
+
+msgid "Fuente propia: títulos (.woff2)"
+msgstr "Own font: headings (.woff2)"
+
+msgid "Subí el archivo .woff2 (si tenés .ttf u .otf, convertilo gratis en transfonter.org). Revisá que la licencia permita usarla en la web."
+msgstr "Upload the .woff2 file (if you have .ttf or .otf, convert it for free at transfonter.org). Check that the license allows web use."
+
+msgid "Fuente propia: textos (.woff2)"
+msgstr "Own font: body text (.woff2)"
+
+msgid "Opcional: si no la cargás, los textos usan la de títulos."
+msgstr "Optional: if you don't upload it, body text uses the heading font."
+
+msgid "Fuente propia: textos en negrita (.woff2)"
+msgstr "Own font: bold body text (.woff2)"
+
+msgid "Opcional. Si la fuente de textos es \"variable\" (trae todos los pesos), no hace falta."
+msgstr "Optional. Not needed if the body font is \"variable\" (includes every weight)."
+
+msgid "Fuente propia: estilo"
+msgstr "Own font: style"
+
+msgid "Sin serifa (palo seco)"
+msgstr "Sans serif"
+
+msgid "Con serifa"
+msgstr "Serif"
+
+msgid "Define qué fuente del sistema se ve mientras carga la tuya."
+msgstr "Sets which system font shows while yours loads."
+
+msgid "Tamaño de texto base"
+msgstr "Base text size"
+
+msgid "17 px (recomendado)"
+msgstr "17 px (recommended)"
+
+msgid "Esquinas"
+msgstr "Corners"
+
+msgid "Rectas"
+msgstr "Square"
+
+msgid "Apenas redondeadas"
+msgstr "Slightly rounded"
+
+msgid "Redondeadas"
+msgstr "Rounded"
+
+msgid "Muy redondeadas"
+msgstr "Very rounded"
+
+msgid "Ancho máximo del contenido"
+msgstr "Maximum content width"
+
+msgid "Encabezado"
+msgstr "Header"
+
+msgid "Diseño"
+msgstr "Layout"
+
+msgid "Logo a la izquierda, menú a la derecha"
+msgstr "Logo on the left, menu on the right"
+
+msgid "Logo centrado, menú debajo"
+msgstr "Centered logo, menu below"
+
+msgid "En el celular los dos se ven igual: logo y botón de menú."
+msgstr "On phones both look the same: logo and menu button."
+
+msgid "Encabezado fijo al hacer scroll"
+msgstr "Sticky header on scroll"
+
+msgid "Mostrar buscador"
+msgstr "Show search"
+
+msgid "Botón del encabezado: texto"
+msgstr "Header button: text"
+
+msgid "Botón del encabezado: link"
+msgstr "Header button: link"
+
+msgid "Transparente sobre la portada"
+msgstr "Transparent over the hero"
+
+msgid "Solo en la home y cuando la portada usa \"Imagen de fondo a todo el ancho\". Al hacer scroll vuelve a su color."
+msgstr "Only on the home page and when the hero uses \"Full-width background image\". It turns solid when scrolling."
+
+msgid "Logo claro (para el encabezado transparente)"
+msgstr "Light logo (for the transparent header)"
+
+msgid "Una versión blanca o clara del logo, que se lea sobre la foto. Si no la cargás, se usa el logo de siempre."
+msgstr "A white or light version of the logo that reads over the photo. If you don't upload one, the regular logo is used."
+
+msgid "Barra superior con contacto y redes"
+msgstr "Top bar with contact and social links"
+
+msgid "Muestra el teléfono, WhatsApp, email y redes cargados en Ajustes del sitio."
+msgstr "Shows the phone, WhatsApp, email and social links set in Site settings."
+
+msgid "Barra superior: texto corto (opcional)"
+msgstr "Top bar: short text (optional)"
+
+msgid "Texto breve bajo el logo"
+msgstr "Short text under the logo"
+
+msgid "Estilo"
+msgstr "Style"
+
+msgid "Del color secundario de la marca"
+msgstr "Brand secondary color"
+
+msgid "Claro"
+msgstr "Light"
+
+msgid "Para sumar columnas (horarios, links, un texto), agregá widgets en Apariencia → Widgets → Pie de página: columnas."
+msgstr "To add columns (hours, links, some text), add widgets in Appearance → Widgets → Footer: columns."
+
+msgid "Mostrar \"Sitio hecho por FeeloLab\" (con link a feelolab.com)"
+msgstr "Show \"Site by FeeloLab\" (linking to feelolab.com)"
+
+msgid "Mostrar el tiempo de lectura"
+msgstr "Show reading time"
+
+msgid "Mostrar botones para compartir"
+msgstr "Show share buttons"
+
+msgid "Mostrar el recuadro del autor"
+msgstr "Show the author box"
+
+msgid "Aparece solo si el autor completó su biografía en Usuarios → Perfil."
+msgstr "Only appears if the author filled in their bio in Users → Profile."
+
+msgid "Secciones de la home"
+msgstr "Home sections"
+
+msgid "Ordená las secciones arrastrándolas en \"Orden de las secciones\" y completá cada una. Los cambios de texto e imágenes se ven al instante."
+msgstr "Reorder the sections by dragging them in \"Section order\" and fill in each one. Text and image changes show instantly."
+
+msgid "Orden de las secciones"
+msgstr "Section order"
+
+msgid "Arrastrá cada sección o usá las flechas. Las ocultas no se ven en el sitio; se prenden desde el lápiz de cada una."
+msgstr "Drag each section or use the arrows. Hidden sections don't show on the site; turn them on from each one's pencil."
+
+msgid "Mostrar esta sección"
+msgstr "Show this section"
+
+msgid "Oculta"
+msgstr "Hidden"
+
+msgid "%1$s, posición %2$d de %3$d"
+msgstr "%1$s, position %2$d of %3$d"
+
+msgid "El botón casi no se distingue del fondo de la página (%s:1). Se le agrega un borde para que se vea como botón."
+msgstr "The button barely stands out from the page background (%s:1). A border is added so it still looks like a button."
+
+msgid "Este texto no se lee bien sobre el fondo del botón (%s:1, mínimo 4.5:1). El sitio va a usar blanco o negro, el que mejor se lea."
+msgstr "This text isn't readable on the button background (%s:1, minimum 4.5:1). The site will use white or black, whichever reads better."
+
+msgid "Los links tendrían poco contraste con el fondo (%s:1, mínimo 4.5:1). El sitio va a usar una versión más oscura de este color."
+msgstr "Links would have low contrast with the background (%s:1, minimum 4.5:1). The site will use a darker version of this color."
+
+msgid "Los links usan este color y sobre el fondo no se leerían (%s:1). El sitio va a usar una versión más oscura; si preferís otro, elegilo en \"Links y acentos\"."
+msgstr "Links use this color and wouldn't be readable on the background (%s:1). The site will use a darker version; if you prefer another, choose it in \"Links and accents\"."
+
+msgid "Este color es muy claro para usarlo en links (%s:1 sobre el fondo), así que los links van a usar el color Secundario (o el de Texto). Si preferís otro, elegilo en \"Links y acentos\"."
+msgstr "This color is too light for links (%s:1 on the background), so links will use the Secondary color (or the Text color). If you prefer another, choose it in \"Links and accents\"."
+
+msgid "El texto tiene poco contraste con el fondo (%s:1). El tema lo va a oscurecer para que se lea."
+msgstr "The text has low contrast with the background (%s:1). The theme will darken it so it reads well."
+
+msgid "Portada (hero)"
+msgstr "Hero"
+
+msgid "Texto e imagen lado a lado"
+msgstr "Text and image side by side"
+
+msgid "Imagen de fondo a todo el ancho"
+msgstr "Full-width background image"
+
+msgid "Solo texto, centrado"
+msgstr "Text only, centered"
+
+msgid "Título (es el h1 de la home)"
+msgstr "Title (the home page h1)"
+
+msgid "Bajada"
+msgstr "Subtitle"
+
+msgid "Imagen (1600×900 o más)"
+msgstr "Image (1600×900 or larger)"
+
+msgid "Botón principal: texto"
+msgstr "Main button: text"
+
+msgid "Contactanos"
+msgstr "Contact us"
+
+msgid "Botón principal: link"
+msgstr "Main button: link"
+
+msgid "Botón secundario: texto"
+msgstr "Secondary button: text"
+
+msgid "Botón secundario: link"
+msgstr "Secondary button: link"
+
+msgid "Servicios"
+msgstr "Services"
+
+msgid "Título"
+msgstr "Title"
+
+msgid "Cantidad"
+msgstr "Number of items"
+
+msgid "Sobre nosotros"
+msgstr "About us"
+
+msgid "Quiénes somos"
+msgstr "Who we are"
+
+msgid "Imagen"
+msgstr "Image"
+
+msgid "Link: texto"
+msgstr "Link: text"
+
+msgid "Conocenos"
+msgstr "Meet us"
+
+msgid "Link: URL"
+msgstr "Link: URL"
+
+msgid "Llamada a la acción (segunda)"
+msgstr "Call to action (second)"
+
+msgid "¿Necesitás una mano?"
+msgstr "Need a hand?"
+
+msgid "Botón: texto"
+msgstr "Button: text"
+
+msgid "Consultanos"
+msgstr "Ask us"
+
+msgid "Botón: link (vacío = WhatsApp o contacto)"
+msgstr "Button: link (empty = WhatsApp or contact)"
+
+msgid "Cifras"
+msgstr "Stats"
+
+msgid "Título (opcional)"
+msgstr "Title (optional)"
+
+msgid "Cifra 1"
+msgstr "Stat 1"
+
+msgid "Texto 1"
+msgstr "Text 1"
+
+msgid "años de experiencia"
+msgstr "years of experience"
+
+msgid "Cifra 2"
+msgstr "Stat 2"
+
+msgid "Texto 2"
+msgstr "Text 2"
+
+msgid "Cifra 3"
+msgstr "Stat 3"
+
+msgid "Texto 3"
+msgstr "Text 3"
+
+msgid "Cifra 4"
+msgstr "Stat 4"
+
+msgid "Texto 4"
+msgstr "Text 4"
+
+msgid "Proyectos"
+msgstr "Projects"
+
+msgid "Testimonios"
+msgstr "Testimonials"
+
+msgid "Lo que dicen nuestros clientes"
+msgstr "What our clients say"
+
+msgid "Logos de clientes"
+msgstr "Client logos"
+
+msgid "Confían en nosotros"
+msgstr "They trust us"
+
+msgid "Preguntas frecuentes"
+msgstr "Frequently asked questions"
+
+msgid "Texto con imagen (segundo bloque)"
+msgstr "Text with image (second block)"
+
+msgid "Cómo trabajamos"
+msgstr "How we work"
+
+msgid "Últimas notas del blog"
+msgstr "Latest blog posts"
+
+msgid "Novedades"
+msgstr "News"
+
+msgid "Llamada a la acción"
+msgstr "Call to action"
+
+msgid "¿Hablamos?"
+msgstr "Let's talk?"
+
+msgid "Escribinos"
+msgstr "Write to us"
+
+msgid "Newsletter"
+msgstr "Newsletter"
+
+msgid "Recibí nuestras novedades"
+msgstr "Get our news"
+
+msgid "Un email al mes con lo que te sirve. Sin spam."
+msgstr "One email a month with useful stuff. No spam."
+
+msgid "Contacto con formulario"
+msgstr "Contact with form"
+
+msgid "Contacto"
+msgstr "Contact"
+
+msgid "Imagen a la"
+msgstr "Image on the"
+
+msgid "Derecha"
+msgstr "Right"
+
+msgid "Izquierda"
+msgstr "Left"
+
+msgid "Mostrar submenú de %s"
+msgstr "Show %s submenu"
+
+msgid "Secciones listas con el diseño del sitio."
+msgstr "Ready-made sections with the site's design."
+
+msgid "Tarjeta"
+msgstr "Card"
+
+msgid "Tarjeta destacada"
+msgstr "Featured card"
+
+msgid "Fondo suave"
+msgstr "Soft background"
+
+msgid "Franja de marca"
+msgstr "Brand band"
+
+msgid "Volanta"
+msgstr "Kicker"
+
+msgid "Dato grande"
+msgstr "Big number"
+
+msgid "Con tildes"
+msgstr "With checkmarks"
+
+msgid "Menú principal"
+msgstr "Main menu"
+
+msgid "Menú del pie"
+msgstr "Footer menu"
+
+msgid "Menú legal (privacidad, términos)"
+msgstr "Legal menu (privacy, terms)"
+
+msgid "Barra lateral del blog"
+msgstr "Blog sidebar"
+
+msgid "Pie de página: columnas"
+msgstr "Footer: columns"
+
+msgid "Cada widget es una columna más del pie, después del contacto."
+msgstr "Each widget becomes another footer column, after the contact details."
+
+msgid "%d minuto de lectura"
+msgid_plural "%d minutos de lectura"
+msgstr[0] "%d minute read"
+msgstr[1] "%d minute read"
+
+msgid "Actualizado"
+msgstr "Updated"
+
+msgid "Anterior"
+msgstr "Previous"
+
+msgid "Siguiente"
+msgstr "Next"
+
+msgid "Página"
+msgstr "Page"
+
+msgid "Paginación"
+msgstr "Pagination"
+
+msgid "Calificación: %d de 5"
+msgstr "Rating: %d out of 5"
+
+msgid "%s (se abre en otra pestaña)"
+msgstr "%s (opens in a new tab)"
+
+msgid "(WhatsApp, se abre en otra pestaña)"
+msgstr "(WhatsApp, opens in a new tab)"
+
+msgid "(ver en el mapa, se abre en otra pestaña)"
+msgstr "(see on the map, opens in a new tab)"
+
+msgid "Mapa: %s"
+msgstr "Map: %s"
+
+msgid "Ver mapa"
+msgstr "Show map"
+
+msgid "Abrir en Google Maps"
+msgstr "Open in Google Maps"
+
+msgid "El mapa lo muestra Google: se carga solo si lo pedís."
+msgstr "The map is provided by Google: it only loads if you ask for it."
+
+msgid "Ancho completo"
+msgstr "Full width"
+
+msgid "Datos de contacto"
+msgstr "Contact details"
+
+msgid "Cómo llegar"
+msgstr "How to get here"
+
+msgid "Sedes"
+msgstr "Locations"
+
+msgctxt "Pattern title"
+msgid "Cifras"
+msgstr "Stats"
+
+msgctxt "Pattern description"
+msgid "Cuatro números grandes con su texto. Solo datos reales y verificables."
+msgstr "Four big numbers with their text. Only real, verifiable data."
+
+msgid "clientes"
+msgstr "clients"
+
+msgid "tiempo de respuesta"
+msgstr "response time"
+
+msgid "de calificación en Google"
+msgstr "rating on Google"
+
+msgctxt "Pattern title"
+msgid "Equipo"
+msgstr "Team"
+
+msgctxt "Pattern description"
+msgid "Tres personas con foto, nombre y cargo. Reemplazá las fotos de muestra y completá el texto alternativo con el nombre. Si el módulo Equipo está activo, cada persona también tiene su ficha propia."
+msgstr "Three people with photo, name and role. Replace the sample photos and fill in the alt text with the name. If the Team module is active, each person also gets their own page."
+
+msgid "Directora"
+msgstr "Director"
+
+msgid "Contador"
+msgstr "Accountant"
+
+msgid "Atención a clientes"
+msgstr "Customer service"
+
+msgid "Nuestro equipo"
+msgstr "Our team"
+
+msgctxt "Pattern title"
+msgid "Introducción con botones"
+msgstr "Intro with buttons"
+
+msgctxt "Pattern description"
+msgid "Volanta, una bajada grande y dos botones. Para abrir cualquier página interior."
+msgstr "Kicker, a large subtitle and two buttons. To open any inner page."
+
+msgid "Contá en dos o tres líneas qué hacen, para quién y qué los diferencia. Es lo primero que se lee: que se entienda sin conocerlos."
+msgstr "Say in two or three lines what you do, for whom and what sets you apart. It's the first thing people read: make it clear to someone who doesn't know you."
+
+msgid "Ver servicios"
+msgstr "See services"
+
+msgctxt "Pattern title"
+msgid "Landing completa"
+msgstr "Full landing page"
+
+msgctxt "Pattern description"
+msgid "Una página de campaña entera: título, beneficios, pasos, preguntas y cierre. Usala con la plantilla \"Ancho completo\" (trae su propio título principal)."
+msgstr "An entire campaign page: title, benefits, steps, questions and closing. Use it with the \"Full width\" template (it brings its own main title)."
+
+msgid "Oferta de lanzamiento"
+msgstr "Launch offer"
+
+msgid "Ordená las cuentas de tu negocio en 30 días"
+msgstr "Get your business finances in order in 30 days"
+
+msgid "Una promesa concreta: qué gana la persona y en cuánto tiempo. Una sola idea por landing."
+msgstr "A concrete promise: what the person gets and how fast. One idea per landing page."
+
+msgid "Quiero empezar"
+msgstr "Get started"
+
+msgctxt "Pattern title"
+msgid "Llamada a la acción"
+msgstr "Call to action"
+
+msgctxt "Pattern description"
+msgid "Franja del color de la marca a todo el ancho con título, texto y botón. Para cerrar una página."
+msgstr "Full-width band in the brand color with title, text and button. To close a page."
+
+msgid "Contanos qué necesitás y te respondemos en el día."
+msgstr "Tell us what you need and we'll reply the same day."
+
+msgctxt "Pattern title"
+msgid "Suscripción al newsletter"
+msgstr "Newsletter signup"
+
+msgctxt "Pattern description"
+msgid "Franja con el formulario de suscripción (se configura en Ajustes del sitio → Newsletter)."
+msgstr "Band with the signup form (set it up in Site settings → Newsletter)."
+
+msgid "Un email al mes con lo que te sirve. Sin spam: te das de baja con un clic."
+msgstr "One email a month with useful stuff. No spam: unsubscribe with one click."
+
+msgctxt "Pattern title"
+msgid "Cómo trabajamos (pasos)"
+msgstr "How we work (steps)"
+
+msgctxt "Pattern description"
+msgid "Cuatro pasos numerados sobre fondo suave: explica el proceso y baja la ansiedad antes de contactar."
+msgstr "Four numbered steps on a soft background: explains the process and eases doubts before contacting."
+
+msgid "Nos contás"
+msgstr "You tell us"
+
+msgid "Una charla corta para entender qué necesitás."
+msgstr "A short chat to understand what you need."
+
+msgid "Te proponemos"
+msgstr "We propose"
+
+msgid "Un plan claro con plazos y costos cerrados."
+msgstr "A clear plan with fixed timelines and costs."
+
+msgid "Lo hacemos"
+msgstr "We do it"
+
+msgid "Trabajamos y te mantenemos al tanto en cada etapa."
+msgstr "We work and keep you posted at every stage."
+
+msgid "Te acompañamos"
+msgstr "We stay with you"
+
+msgid "Seguimos disponibles después de la entrega."
+msgstr "We're still available after delivery."
+
+msgctxt "Pattern title"
+msgid "Tabla de precios"
+msgstr "Pricing table"
+
+msgctxt "Pattern description"
+msgid "Tres planes con lo que incluye cada uno; el del medio va destacado."
+msgstr "Three plans with what each includes; the middle one is featured."
+
+msgid "Básico"
+msgstr "Basic"
+
+msgid "Lo esencial para arrancar"
+msgstr "The essentials to get started"
+
+msgid "Atención por email"
+msgstr "Email support"
+
+msgid "Informe mensual"
+msgstr "Monthly report"
+
+msgid "Completo"
+msgstr "Complete"
+
+msgid "Todo lo del plan Básico"
+msgstr "Everything in Basic"
+
+msgid "Atención por WhatsApp"
+msgstr "WhatsApp support"
+
+msgid "Reunión mensual"
+msgstr "Monthly meeting"
+
+msgid "Empresas"
+msgstr "Business"
+
+msgid "Para equipos grandes"
+msgstr "For large teams"
+
+msgid "Persona asignada"
+msgstr "Dedicated contact"
+
+msgid "Reportes a medida"
+msgstr "Custom reports"
+
+msgid "Planes"
+msgstr "Plans"
+
+msgid "El más elegido"
+msgstr "Most popular"
+
+msgid "Quiero este plan"
+msgstr "I want this plan"
+
+msgid "Precios finales por mes. Podés cambiar de plan cuando quieras."
+msgstr "Final monthly prices. You can switch plans anytime."
+
+msgctxt "Pattern title"
+msgid "Preguntas frecuentes"
+msgstr "Frequently asked questions"
+
+msgctxt "Pattern description"
+msgid "Preguntas que se abren al tocarlas. Para las preguntas que se repiten en todo el sitio conviene el módulo Preguntas frecuentes (suma schema para Google)."
+msgstr "Questions that expand when tapped. For questions repeated across the site, use the FAQ module (it adds schema for Google)."
+
+msgid "¿Cuánto tarda una respuesta?"
+msgstr "How long does a reply take?"
+
+msgid "Respondemos todas las consultas en menos de 24 horas hábiles."
+msgstr "We answer every inquiry within 24 business hours."
+
+msgid "¿Trabajan a distancia?"
+msgstr "Do you work remotely?"
+
+msgid "Sí, atendemos por videollamada a clientes de todo el país."
+msgstr "Yes, we meet clients across the country by video call."
+
+msgid "¿Cómo se paga?"
+msgstr "How can I pay?"
+
+msgid "Transferencia, tarjeta o Mercado Pago. Emitimos factura."
+msgstr "Bank transfer, card or online payment. We issue invoices."
+
+msgctxt "Pattern title"
+msgid "Texto con imagen"
+msgstr "Text with image"
+
+msgctxt "Pattern description"
+msgid "Un bloque de texto con una foto al costado. En el celular la foto va arriba."
+msgstr "A text block with a photo beside it. On phones the photo goes on top."
+
+msgid "Nuestra historia"
+msgstr "Our story"
+
+msgid "Más de 15 años al lado de pymes"
+msgstr "Over 15 years alongside small businesses"
+
+msgid "Contá cómo empezaron, qué aprendieron y qué los mueve hoy. Dos párrafos cortos alcanzan. Reemplazá la imagen con una foto real del equipo o del lugar."
+msgstr "Tell how you started, what you learned and what drives you today. Two short paragraphs are enough. Replace the image with a real photo of the team or the place."
+
+msgctxt "Pattern title"
+msgid "Misión, visión y valores"
+msgstr "Mission, vision and values"
+
+msgctxt "Pattern description"
+msgid "Tres tarjetas lado a lado. Sirve también para tres beneficios o tres diferenciales."
+msgstr "Three cards side by side. Also works for three benefits or three differentiators."
+
+msgid "Misión"
+msgstr "Mission"
+
+msgid "Qué hacen todos los días y para quién, en una o dos frases."
+msgstr "What you do every day and for whom, in one or two sentences."
+
+msgid "Visión"
+msgstr "Vision"
+
+msgid "Adónde quieren llegar: el cambio que buscan en sus clientes."
+msgstr "Where you want to go: the change you seek for your clients."
+
+msgid "Valores"
+msgstr "Values"
+
+msgid "Tres o cuatro palabras que guían cómo trabajan, con un ejemplo concreto."
+msgstr "Three or four words that guide how you work, with a concrete example."
+
+msgid "Lo que nos guía"
+msgstr "What guides us"
+
+msgid "%d resultado"
+msgid_plural "%d resultados"
+msgstr[0] "%d result"
+msgstr[1] "%d results"
+
+msgid "Buscar en el sitio"
+msgstr "Search the site"
+
+msgid "Buscar…"
+msgstr "Search…"
+
+msgid "Escrito por"
+msgstr "Written by"
+
+msgid "Sin stock"
+msgstr "Out of stock"
+
+msgid "Oferta"
+msgstr "Sale"
+
+msgid "Cómo llegar a %s"
+msgstr "How to get to %s"
+
+msgid "Desde"
+msgstr "From"
+
+msgid "Ver más"
+msgstr "Read more"
+
+msgid "Galería"
+msgstr "Gallery"
+
+msgid "(ver imagen grande)"
+msgstr "(view larger image)"
+
+msgid "Imágenes del producto"
+msgstr "Product images"
+
+msgid "Imagen %1$d de %2$d de %3$s"
+msgstr "Image %1$d of %2$d of %3$s"
+
+msgid "Ver todas las notas"
+msgstr "See all posts"
+
+msgid "Ver todos los proyectos"
+msgstr "See all projects"
+
+msgid "Ver todos los servicios"
+msgstr "See all services"
+
+msgid "No encontramos nada con esa búsqueda. Probá con otras palabras."
+msgstr "We found nothing for that search. Try other words."
+
+msgid "Todavía no hay contenido acá."
+msgstr "There's no content here yet."
+
+msgid "Antes:"
+msgstr "Before:"
+
+msgid "Ahora:"
+msgstr "Now:"
+
+msgid "Más %s"
+msgstr "More %s"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Compartir"
+msgstr "Share"
+
+msgid "Enviar por email"
+msgstr "Send by email"
+
+msgid "Compartir en %s (se abre en otra pestaña)"
+msgstr "Share on %s (opens in a new tab)"
+
+msgid "Link copiado"
+msgstr "Link copied"
+
+msgid "Copiar link"
+msgstr "Copy link"
+
+msgid "Hola, quiero consultar por: %s"
+msgstr "Hi, I'd like to ask about: %s"
+
+msgid "Disponible"
+msgstr "Available"
+
+msgid "Sin stock por el momento"
+msgstr "Out of stock for now"
+
+msgid "Elegí para tu consulta"
+msgstr "Choose for your inquiry"
+
+msgid "Sin elegir"
+msgstr "Not selected"
+
+msgid "Consultar por WhatsApp"
+msgstr "Ask on WhatsApp"
+
+msgid "Consultar"
+msgstr "Ask"
+
+msgid "Código:"
+msgstr "Code:"
+
+msgid "Ficha técnica"
+msgstr "Specifications"
+
+msgid "Características de %s"
+msgstr "Features of %s"
+
+msgid "Cliente"
+msgstr "Client"
+
+msgid "Año"
+msgstr "Year"
+
+msgid "Resultado"
+msgstr "Result"
+
+msgid "Datos del proyecto"
+msgstr "Project details"
+
+msgid "Ver el proyecto"
+msgstr "See the project"
+
+msgid "Contratar este servicio"
+msgstr "Hire this service"
+
+msgid "Etiquetas:"
+msgstr "Tags:"
+
+msgid "Filtrar por categoría"
+msgstr "Filter by category"
+
+msgid "Todos"
+msgstr "All"
+
+msgctxt "Font size name"
+msgid "Chico"
+msgstr "Small"
+
+msgctxt "Font size name"
+msgid "Normal"
+msgstr "Normal"
+
+msgctxt "Font size name"
+msgid "Grande"
+msgstr "Large"
+
+msgctxt "Font size name"
+msgid "Muy grande"
+msgstr "Extra large"

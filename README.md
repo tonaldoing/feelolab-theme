@@ -54,6 +54,12 @@ Reglas para que las actualizaciones no rompan nada:
 
 **Fuente propia de la marca**: se suben los .woff2 desde Personalizar (títulos, textos y negrita) y se sirven desde el propio sitio con precarga.
 
+**Importador de productos**: CSV de Excel o Google Sheets con vista previa, importación por tandas (sin tiempos de espera) y actualización por código/SKU. Fotos por link (se bajan una sola vez) o por nombre de archivo de la Biblioteca; categorías jerárquicas con "Padre > Hijo".
+
+**Privacidad**: exportación y borrado de datos personales integrados con WordPress, borrado automático de mensajes por antigüedad, texto sugerido para la política de privacidad y desinstalación limpia.
+
+**Traducciones**: `.pot` de tema y plugin, y traducción completa al inglés.
+
 **Lanzamiento**: checklist de 19 puntos con barra de progreso (Ajustes del sitio → Lanzamiento) y resumen en el Escritorio. Cada punto explica por qué importa y lleva a la pantalla donde se arregla. Se pueden sumar puntos con el filtro `feelo_launch_checks`.
 
 **Cookies y medición**: banner opcional con Google Consent Mode v2 (todo denegado por defecto, Aceptar y Rechazar con el mismo peso, reabrible desde el pie). Con GA4 o GTM cargados se envían solos los eventos `click_whatsapp`, `click_phone`, `click_email` y `generate_lead`, cada uno con `feelo_location`.

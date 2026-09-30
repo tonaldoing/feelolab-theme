@@ -161,23 +161,39 @@ final class SiteSettings {
 			'formulario'    => array(
 				'label'  => __( 'Formulario', 'feelolab-core' ),
 				'fields' => array(
-					'form_email'       => array(
+					'form_email'            => array(
 						'label' => __( 'Email que recibe los mensajes', 'feelolab-core' ),
 						'type'  => 'email',
 						'help'  => __( 'Si queda vacío se usa el email público y, si no, el del administrador. Los mensajes quedan guardados en Mensajes aunque el email falle.', 'feelolab-core' ),
 					),
-					'turnstile_site'   => array(
+					'turnstile_site'        => array(
 						'label' => __( 'Cloudflare Turnstile: site key', 'feelolab-core' ),
 						'type'  => 'text',
 						'help'  => __( 'Opcional y gratis. Sin claves, el antispam es honeypot + tiempo mínimo + límite por IP.', 'feelolab-core' ),
 					),
-					'turnstile_secret' => array(
+					'turnstile_secret'      => array(
 						'label' => __( 'Cloudflare Turnstile: secret key', 'feelolab-core' ),
 						'type'  => 'password',
 					),
-					'form_exito'       => array(
+					'form_exito'            => array(
 						'label' => __( 'Mensaje de envío correcto', 'feelolab-core' ),
 						'type'  => 'text',
+					),
+					'mensajes_retencion'    => array(
+						'label'   => __( 'Borrar los mensajes automáticamente', 'feelolab-core' ),
+						'type'    => 'select',
+						'options' => array(
+							''   => __( 'Nunca (se guardan hasta borrarlos a mano)', 'feelolab-core' ),
+							'6'  => __( 'A los 6 meses', 'feelolab-core' ),
+							'12' => __( 'Al año', 'feelolab-core' ),
+							'24' => __( 'A los 2 años', 'feelolab-core' ),
+						),
+						'help'    => __( 'Guardar datos personales solo el tiempo necesario es una buena práctica (y en Europa, una obligación). Una persona también puede pedir que se borren sus datos: Herramientas → Borrar datos personales.', 'feelolab-core' ),
+					),
+					'borrar_al_desinstalar' => array(
+						'label' => __( 'Al borrar el plugin, borrar también los mensajes', 'feelolab-core' ),
+						'type'  => 'checkbox',
+						'help'  => __( 'Los ajustes del plugin se borran siempre al eliminarlo. Los mensajes solo si tildás esto. El contenido (servicios, productos, etc.) nunca se borra.', 'feelolab-core' ),
 					),
 				),
 			),
@@ -247,6 +263,11 @@ final class SiteSettings {
 						'label' => __( 'Texto del banner de cookies', 'feelolab-core' ),
 						'type'  => 'textarea',
 						'help'  => __( 'Opcional. Si queda vacío: "Usamos cookies para entender cómo se usa el sitio y mejorarlo. Podés aceptarlas o rechazarlas: el sitio funciona igual."', 'feelolab-core' ),
+					),
+					'webp_off'         => array(
+						'label' => __( 'No convertir las fotos a WebP', 'feelolab-core' ),
+						'type'  => 'checkbox',
+						'help'  => __( 'Las fotos que se suben se guardan en WebP, que pesa 25 a 35 % menos con la misma calidad. Tildalo solo si algún sistema externo necesita JPEG.', 'feelolab-core' ),
 					),
 					'llms_txt_off'     => array(
 						'label' => __( 'Desactivar /llms.txt', 'feelolab-core' ),

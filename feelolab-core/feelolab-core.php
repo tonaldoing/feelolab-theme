@@ -3,7 +3,7 @@
  * Plugin Name:       FeeloLab Core
  * Plugin URI:        https://www.feelolab.com
  * Description:       Contenido y datos del sitio para el tema FeeloLab: tipos de contenido, taxonomías, ajustes de marca, schema y formulario de contacto. El contenido vive acá y no en el tema, así sobrevive a un cambio de diseño.
- * Version:           0.6.0
+ * Version:           0.7.0
  * Requires at least: 6.8
  * Tested up to:      7.1
  * Requires PHP:      8.1
@@ -18,7 +18,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'FEELO_CORE_VERSION', '0.6.0' );
+define( 'FEELO_CORE_VERSION', '0.7.0' );
 define( 'FEELO_CORE_FILE', __FILE__ );
 define( 'FEELO_CORE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FEELO_CORE_URL', plugin_dir_url( __FILE__ ) );
@@ -52,4 +52,10 @@ register_activation_hook(
 	}
 );
 
-register_deactivation_hook( __FILE__, 'flush_rewrite_rules' );
+register_deactivation_hook(
+	__FILE__,
+	static function (): void {
+		wp_clear_scheduled_hook( 'feelo_privacy_cleanup' );
+		flush_rewrite_rules();
+	}
+);

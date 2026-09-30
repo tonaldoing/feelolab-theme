@@ -4,3 +4,4 @@
 .DS_Store
 *.log
 .phpcs-cache
+.phpunit.cache

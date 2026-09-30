@@ -27,8 +27,17 @@ Tema clásico (`feelolab/`) + plugin compañero (`feelolab-core/`). WordPress 6.
 
 ### Verificar antes de commitear
 - `composer lint` (WPCS) tiene que pasar limpio.
-- `npm run dev` + `npm run a11y` (pa11y, 0 errores). Si tocás plantillas, correr también Lighthouse mobile.
+- `composer test` (PHPUnit): contraste de colores, orden de secciones, importador y changelog. Son tests sin WordPress (`tests/bootstrap.php` imita lo mínimo); si una función nueva es lógica pura, sumale su test.
+- `npm run dev` + `npm run a11y` (pa11y, 0 errores) + `npm run lighthouse` (performance ≥ 85 en CI, accesibilidad y SEO 100, CLS ≤ 0.1). El CI corre los tres en cada push.
 - Textos de UI en español rioplatense, con text domain `feelolab` (tema) o `feelolab-core` (plugin).
+
+### Traducciones
+- El sitio viene en español y trae la traducción al inglés (`en_US`): con WordPress en inglés, el tema, el plugin, el panel y las direcciones (`/services/`, `/products/`) salen en inglés.
+- Archivos: `feelolab/languages/` (`feelolab.pot`, `en_US.po/.mo/.l10n.php`) y `feelolab-core/languages/` (`feelolab-core.pot`, `feelolab-core-en_US.*`). Para otro idioma, copiar el `.pot`, traducir (Poedit o Loco Translate) y compilar.
+- Si agregás o cambiás textos, regenerá antes de publicar (necesita WP-CLI):
+  1. `wp i18n make-pot feelolab feelolab/languages/feelolab.pot --domain=feelolab --skip-js` (y lo mismo con `feelolab-core`).
+  2. `wp i18n update-po feelolab/languages/feelolab.pot feelolab/languages/en_US.po` (idem plugin) y traducir lo nuevo.
+  3. `wp i18n make-mo` y `wp i18n make-php` sobre cada carpeta `languages`.
 
 ### Publicar una versión (llega a todos los sitios)
 1. Anotar los cambios en `CHANGELOG.md` bajo `## X.Y.Z — fecha`, en texto plano: una línea por cambio empezando con "- ", sin negritas ni comillas invertidas. Ese texto es el que ven los clientes en "Ver detalles".

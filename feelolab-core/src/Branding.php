@@ -129,6 +129,7 @@ final class Branding {
 			'modulos'     => array( __( 'Módulos', 'feelolab-core' ), admin_url( 'admin.php?page=feelo-modulos' ), 'dashicons-screenoptions' ),
 			'mensajes'    => array( __( 'Mensajes', 'feelolab-core' ), admin_url( 'edit.php?post_type=feelo_mensaje' ), 'dashicons-email-alt' ),
 			'lanzamiento' => array( __( 'Lanzamiento', 'feelolab-core' ), admin_url( 'admin.php?page=' . Launch::PAGE ), 'dashicons-flag' ),
+			'importar'    => array( __( 'Importar productos', 'feelolab-core' ), admin_url( 'admin.php?page=' . Importer::PAGE ), 'dashicons-database-import' ),
 		);
 		echo '<nav class="feelo-sections" aria-label="' . esc_attr__( 'FeeloLab', 'feelolab-core' ) . '"><ul>';
 		foreach ( $items as $key => $item ) {

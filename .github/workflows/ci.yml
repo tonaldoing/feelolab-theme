@@ -26,9 +26,11 @@ jobs:
       - name: WordPress Coding Standards
         if: matrix.php == '8.3'
         run: vendor/bin/phpcs
+      - name: Tests (PHPUnit)
+        run: vendor/bin/phpunit
 
   a11y:
-    name: Accesibilidad (pa11y + axe) en WordPress real
+    name: Accesibilidad (pa11y + axe) y Lighthouse en WordPress real
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -43,3 +45,5 @@ jobs:
           cat playground.log
       - name: pa11y-ci (WCAG 2 AA, runner axe)
         run: npm run a11y
+      - name: Lighthouse (performance, accesibilidad, SEO, CLS)
+        run: node dev/lighthouse-check.mjs
