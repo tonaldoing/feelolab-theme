@@ -31,6 +31,15 @@ final class CoreTest extends TestCase {
 		);
 	}
 
+	public function test_woocommerce_export_headers_are_recognized(): void {
+		// Títulos de columna de Productos → Exportar de WooCommerce (en inglés).
+		$map = Importer::map_columns( array( 'ID', 'Type', 'SKU', 'Name', 'Published', 'Short description', 'Description', 'In stock?', 'Sale price', 'Regular price', 'Categories', 'Images', 'Brands' ) );
+		foreach ( array( 'sku', 'titulo', 'resumen', 'descripcion', 'disponible', 'precio_oferta', 'precio', 'categorias', 'imagenes', 'marca' ) as $field ) {
+			$this->assertArrayHasKey( $field, $map, $field );
+		}
+		$this->assertSame( array( 'Implantes > Cónicos', 'Pilares' ), Importer::split_list( 'Implantes > Cónicos, Pilares' ) );
+	}
+
 	public function test_row_to_fields_and_lists(): void {
 		$row = Importer::row_to_fields( array( ' Pilar ', '$ 10', 'Pilares | Accesorios' ), array( 'titulo' => 0, 'precio' => 1, 'categorias' => 2 ) );
 		$this->assertSame( 'Pilar', $row['titulo'] );

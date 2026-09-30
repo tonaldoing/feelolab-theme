@@ -2,6 +2,10 @@
 
 Cada versión publicada acá llega a los sitios como actualización (Escritorio → Actualizaciones).
 
+## 0.8.1 — 2026-09-30
+
+- Importar productos reconoce la exportación de WooCommerce tal como sale (Productos → Exportar): ahora también toma las columnas de stock y marcas.
+
 ## 0.8.0 — 2026-09-30
 
 - Asistente de primeros pasos: al instalar, cinco pasos (negocio, contacto, marca, contenidos y páginas) dejan el sitio armado. Crea las páginas Inicio, Contacto y Blog, arma el menú, activa las direcciones amigables, elige la zona horaria y borra el contenido de ejemplo. Los sitios que ya estaban configurados no lo ven. Está en Ajustes del sitio → Primeros pasos.
