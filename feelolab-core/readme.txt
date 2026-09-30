@@ -69,3 +69,10 @@ GitHub (updates): the plugin and the FeeloLab theme check https://github.com for
 
 = 0.9.0 =
 * See CHANGELOG.md in the repository for the full history.
+
+== Copyright ==
+
+FeeloLab Core, Copyright 2026 FeeloLab.
+FeeloLab Core is distributed under the terms of the GNU GPL v2 or later.
+
+Mascot illustrations (assets/img/ardilla-lupa.webp, assets/img/ardilla-megafono.webp): Copyright 2026 FeeloLab, own work, GPLv2 or later.
