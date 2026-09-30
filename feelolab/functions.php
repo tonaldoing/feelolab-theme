@@ -10,11 +10,11 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'FEELOLAB_VERSION', '0.5.0' );
+define( 'FEELOLAB_VERSION', '0.6.0' );
 define( 'FEELOLAB_DIR', get_template_directory() );
 define( 'FEELOLAB_URI', get_template_directory_uri() );
 
-foreach ( array( 'setup', 'performance', 'fonts', 'colors', 'customizer', 'assets', 'nav', 'template-tags', 'breadcrumbs', 'home' ) as $feelolab_file ) {
+foreach ( array( 'setup', 'performance', 'fonts', 'colors', 'customizer', 'assets', 'nav', 'template-tags', 'breadcrumbs', 'home', 'patterns' ) as $feelolab_file ) {
 	require FEELOLAB_DIR . '/inc/' . $feelolab_file . '.php';
 }
 unset( $feelolab_file );

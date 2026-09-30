@@ -2,6 +2,18 @@
 
 Cada versión publicada acá llega a los sitios como actualización (Escritorio → Actualizaciones).
 
+## 0.6.0 — 2026-09-30
+
+- Patrones de bloques para armar páginas interiores en minutos: introducción con botones, texto con imagen, misión, visión y valores, tabla de precios, cómo trabajamos, equipo, cifras, preguntas frecuentes, llamada a la acción, newsletter y una landing completa. Están en el editor, en Patrones → FeeloLab.
+- Estilos nuevos para los bloques: tarjeta, tarjeta destacada, fondo suave, franja de marca, volanta, dato grande, bajada y lista con tildes. Siempre con los colores de la marca y el contraste asegurado.
+- Newsletter: formulario de suscripción conectado a Brevo o Mailchimp (Ajustes del sitio → Newsletter), con confirmación por email opcional. Se suma como sección de la home o con el patrón. Sin servicio conectado, las suscripciones quedan en Mensajes, y si el servicio falla también: no se pierde ninguna.
+- Mapa en la página de contacto y en cada sede. No hace lenta la página: el mapa de Google se carga recién cuando la persona toca "Ver mapa".
+- Opciones de producto para elegir antes de consultar (por ejemplo, plataforma y altura). Lo elegido va en el mensaje de WhatsApp o del formulario.
+- Fuente propia de la marca: se suben los archivos .woff2 en Personalizar → Marca → Tipografía y forma.
+- Las suscripciones al newsletter se miden como evento sign_up en Google Analytics.
+- En una instalación nueva, los widgets de ejemplo de WordPress (en inglés) ya no aparecen en el pie.
+- Las landings con la plantilla Ancho completo quedan alineadas con el encabezado y con aire entre secciones.
+
 ## 0.5.0 — 2026-09-30
 
 - Portada con tres diseños a elegir: texto e imagen lado a lado, imagen de fondo a todo el ancho o solo texto centrado. Con imagen de fondo, un velo oscuro parejo asegura que el texto se lea con cualquier foto.

@@ -44,6 +44,16 @@ Reglas para que las actualizaciones no rompan nada:
 
 **/llms.txt**: resumen en markdown del negocio y su contenido para asistentes con IA (ChatGPT, Perplexity, Gemini). Se arma solo con lo cargado y se desactiva en *Ajustes del sitio → Integraciones*.
 
+**Patrones de bloques** (en el editor, pestaña Patrones → FeeloLab): introducción con botones, texto con imagen, misión/visión/valores, tabla de precios, pasos, equipo, cifras, preguntas frecuentes, llamada a la acción, newsletter y una landing completa. Usan estilos de bloque propios (Tarjeta, Tarjeta destacada, Fondo suave, Franja de marca, Volanta, Dato grande, Bajada, Lista con tildes) cuyo CSS se carga solo en las páginas que los usan.
+
+**Newsletter**: formulario inline (`[feelo_newsletter]`, sección de la home o patrón) conectado a Brevo o Mailchimp, con doble opt-in opcional. Sin servicio, o si el servicio falla, la suscripción queda en Mensajes. Mismo antispam que el formulario de contacto y evento `sign_up` en GA4.
+
+**Mapa con fachada** en la página de contacto y en cada sede: no carga nada de Google hasta que la persona toca "Ver mapa". Sin clave de API.
+
+**Opciones de producto**: listas desplegables ("Plataforma: Acrílico | Metálica") cuya elección viaja en el mensaje de WhatsApp o del formulario.
+
+**Fuente propia de la marca**: se suben los .woff2 desde Personalizar (títulos, textos y negrita) y se sirven desde el propio sitio con precarga.
+
 **Lanzamiento**: checklist de 19 puntos con barra de progreso (Ajustes del sitio → Lanzamiento) y resumen en el Escritorio. Cada punto explica por qué importa y lleva a la pantalla donde se arregla. Se pueden sumar puntos con el filtro `feelo_launch_checks`.
 
 **Cookies y medición**: banner opcional con Google Consent Mode v2 (todo denegado por defecto, Aceptar y Rechazar con el mismo peso, reabrible desde el pie). Con GA4 o GTM cargados se envían solos los eventos `click_whatsapp`, `click_phone`, `click_email` y `generate_lead`, cada uno con `feelo_location`.

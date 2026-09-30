@@ -118,10 +118,10 @@ final class Frontend {
 		);
 	}
 
-	/** Tras enviar el formulario, el foco va al aviso: así un lector de pantalla lo anuncia. */
+	/** Tras enviar un formulario (contacto o newsletter), el foco va al aviso: así un lector de pantalla lo anuncia. */
 	public static function form_focus(): void {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- solo decide si imprimir un script.
-		if ( ! isset( $_GET['feelo_form'] ) ) {
+		if ( ! isset( $_GET['feelo_form'] ) && ! isset( $_GET['feelo_news'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			return;
 		}
 		// En "load" y después del salto al ancla: si no, el navegador mueve el foco al ancla y lo pisa.

@@ -109,3 +109,37 @@ add_action(
 		}
 	}
 );
+
+/**
+ * Al activar el tema, WordPress reparte sus widgets de ejemplo ("Archives", "Categories"… en
+ * inglés) entre las áreas del tema, y terminan en el pie. Se pasan a Widgets inactivos, solo si el
+ * área tiene únicamente esos bloques de fábrica: nada que haya cargado una persona se toca.
+ */
+add_action(
+	'after_switch_theme',
+	static function (): void {
+		$sidebars = wp_get_sidebars_widgets();
+		$blocks   = (array) get_option( 'widget_block', array() );
+		$defaults = '/<!-- wp:(search|archives|categories|latest-posts|latest-comments)\b/';
+		$changed  = false;
+		foreach ( array( 'blog', 'footer' ) as $area ) {
+			$ids = $sidebars[ $area ] ?? array();
+			if ( ! $ids ) {
+				continue;
+			}
+			foreach ( $ids as $id ) {
+				$number = (int) str_replace( 'block-', '', $id );
+				if ( ! str_starts_with( $id, 'block-' ) || ! preg_match( $defaults, (string) ( $blocks[ $number ]['content'] ?? '' ) ) ) {
+					continue 2;
+				}
+			}
+			$sidebars['wp_inactive_widgets'] = array_merge( $sidebars['wp_inactive_widgets'] ?? array(), $ids );
+			$sidebars[ $area ]               = array();
+			$changed                         = true;
+		}
+		if ( $changed ) {
+			wp_set_sidebars_widgets( $sidebars );
+		}
+	},
+	20
+);

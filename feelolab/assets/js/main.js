@@ -190,3 +190,63 @@
 		} );
 	} );
 } )();
+
+/**
+ * Mapa con fachada: el iframe de Google Maps se crea recién al tocar "Ver mapa".
+ */
+( function () {
+	'use strict';
+
+	document.querySelectorAll( '[data-feelo-map]' ).forEach( function ( box ) {
+		var load = box.querySelector( '.map-facade__load' );
+		if ( ! load ) {
+			return;
+		}
+		load.hidden = false;
+		load.addEventListener( 'click', function () {
+			var frame = document.createElement( 'iframe' );
+			frame.src = box.getAttribute( 'data-feelo-map' );
+			frame.title = box.getAttribute( 'data-map-title' );
+			frame.className = 'map-facade__frame';
+			frame.setAttribute( 'allowfullscreen', '' );
+			frame.setAttribute( 'referrerpolicy', 'no-referrer-when-downgrade' );
+			box.classList.add( 'is-loaded' );
+			box.replaceChildren( frame );
+			frame.focus();
+		} );
+	} );
+} )();
+
+/**
+ * Opciones de producto: lo que se elige se suma al mensaje del botón de consulta (texto de
+ * WhatsApp o mensaje precargado del formulario). Sin JS las listas no se muestran.
+ */
+( function () {
+	'use strict';
+
+	document.querySelectorAll( '[data-feelo-options]' ).forEach( function ( box ) {
+		var product = box.closest( '.product__summary' );
+		var button = product && product.querySelector( '.product__actions .btn' );
+		if ( ! button ) {
+			return;
+		}
+		var base = box.getAttribute( 'data-message' );
+		function update() {
+			var chosen = [];
+			box.querySelectorAll( 'select[data-option]' ).forEach( function ( select ) {
+				if ( select.value ) {
+					chosen.push( select.getAttribute( 'data-option' ) + ': ' + select.value );
+				}
+			} );
+			var url = new URL( button.href );
+			var param = /(^|\.)wa\.me$|whatsapp\.com$/.test( url.hostname ) ? 'text' : 'consulta';
+			var text = chosen.length ? base + ' — ' + chosen.join( ', ' ) : base;
+			// Espacios como %20 (no "+", que URLSearchParams usa y no todas las apps de WhatsApp entienden).
+			url.searchParams.delete( param );
+			url.search += ( url.search ? '&' : '?' ) + param + '=' + encodeURIComponent( text );
+			button.href = url.toString();
+		}
+		box.addEventListener( 'change', update );
+		update();
+	} );
+} )();

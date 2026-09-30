@@ -102,6 +102,15 @@ function feelolab_contact_url_uncached(): string {
 			return $wa;
 		}
 	}
+	return feelolab_contact_page_url();
+}
+
+/** Página con la plantilla Contacto, o el formulario de la home si no hay. Nunca WhatsApp. */
+function feelolab_contact_page_url(): string {
+	static $url = null;
+	if ( null !== $url ) {
+		return $url;
+	}
 	$pages = get_posts(
 		array(
 			'post_type'      => 'page',
@@ -112,7 +121,8 @@ function feelolab_contact_url_uncached(): string {
 			'no_found_rows'  => true,
 		)
 	);
-	return $pages ? (string) get_permalink( $pages[0] ) : home_url( '/#contacto' );
+	$url   = $pages ? (string) get_permalink( $pages[0] ) : home_url( '/#contacto' );
+	return $url;
 }
 
 /** ¿El link abre fuera del sitio? Entonces se avisa (a11y) y se agrega rel. */
@@ -306,4 +316,37 @@ function feelolab_reading_time( ?int $post_id = null ): int {
 	$text  = wp_strip_all_tags( strip_shortcodes( (string) get_post_field( 'post_content', $post_id ?? get_the_ID() ) ) );
 	$words = count( preg_split( '/\s+/u', trim( $text ), -1, PREG_SPLIT_NO_EMPTY ) );
 	return max( 1, (int) ceil( $words / 200 ) );
+}
+
+/**
+ * Mapa con fachada: se ve un recuadro con la dirección y un botón "Ver mapa". El iframe de Google
+ * Maps se carga recién al tocarlo: no suma peso a la página (un mapa embebido pesa ~1 MB de JS) ni
+ * le manda datos a Google sin que la persona lo pida. Sin JS queda el link a Google Maps.
+ * Usa el embed público de Google Maps por dirección: no hace falta clave de API.
+ */
+function feelolab_map( string $address, string $link = '' ): void {
+	$address = trim( $address );
+	if ( '' === $address ) {
+		return;
+	}
+	$embed = 'https://www.google.com/maps?q=' . rawurlencode( $address ) . '&output=embed';
+	$link  = $link ? $link : 'https://www.google.com/maps/search/?api=1&query=' . rawurlencode( $address );
+	?>
+	<div class="map-facade" data-feelo-map="<?php echo esc_url( $embed ); ?>" data-map-title="<?php echo esc_attr( sprintf( /* translators: %s: dirección */ __( 'Mapa: %s', 'feelolab' ), $address ) ); ?>">
+		<div class="map-facade__inner">
+			<?php echo feelolab_icon( 'map-pin', 'map-facade__pin' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<p class="map-facade__address"><?php echo esc_html( $address ); ?></p>
+			<div class="map-facade__actions">
+				<button type="button" class="btn btn--primary map-facade__load" hidden><?php esc_html_e( 'Ver mapa', 'feelolab' ); ?></button>
+				<a class="btn btn--secondary" href="<?php echo esc_url( $link ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Abrir en Google Maps', 'feelolab' ); ?><span class="screen-reader-text"> <?php esc_html_e( '(se abre en otra pestaña)', 'feelolab' ); ?></span></a>
+			</div>
+			<p class="map-facade__note"><?php esc_html_e( 'El mapa lo muestra Google: se carga solo si lo pedís.', 'feelolab' ); ?></p>
+		</div>
+	</div>
+	<?php
+}
+
+/** Dirección completa del negocio (Ajustes del sitio), para el mapa. */
+function feelolab_business_address(): string {
+	return trim( implode( ', ', array_filter( array( feelolab_setting( 'direccion' ), feelolab_setting( 'ciudad' ), feelolab_setting( 'provincia' ), feelolab_setting( 'pais' ) ) ) ) );
 }

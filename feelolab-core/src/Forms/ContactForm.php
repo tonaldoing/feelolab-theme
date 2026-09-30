@@ -74,6 +74,11 @@ final class ContactForm {
 				$old    = $state['old'];
 			}
 		}
+		// Consulta que llega armada desde otra página (un producto con sus opciones): ?consulta=...
+		// Sin nonce a propósito: solo precarga un campo visible, que la persona revisa antes de enviar.
+		if ( ! $old && isset( $_GET['consulta'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$old['mensaje'] = mb_substr( sanitize_textarea_field( wp_unslash( $_GET['consulta'] ) ), 0, 600 ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		}
 
 		$services      = $args['services'] ? self::services() : array();
 		$turnstile_key = (string) feelo_setting( 'turnstile_site' );

@@ -61,6 +61,49 @@ add_action(
 		);
 		$choices = wp_list_pluck( feelolab_font_stacks(), 'label' );
 		feelolab_customizer_select( $wp_customize, 'feelolab_font_pair', __( 'Combinación tipográfica', 'feelolab' ), 'feelolab_type', $choices, 'sistema', __( 'Las de sistema no descargan nada. Las "Web" se sirven desde el propio sitio, con métricas ajustadas para que el texto no salte al cargar.', 'feelolab' ) );
+		// Fuente propia: aparece al elegir "Fuente propia de la marca".
+		$own_active = static fn() => 'propia' === get_theme_mod( 'feelolab_font_pair', 'sistema' );
+		$own_files  = array(
+			'feelolab_font_own_heading'   => array( __( 'Fuente propia: títulos (.woff2)', 'feelolab' ), __( 'Subí el archivo .woff2 (si tenés .ttf u .otf, convertilo gratis en transfonter.org). Revisá que la licencia permita usarla en la web.', 'feelolab' ) ),
+			'feelolab_font_own_body'      => array( __( 'Fuente propia: textos (.woff2)', 'feelolab' ), __( 'Opcional: si no la cargás, los textos usan la de títulos.', 'feelolab' ) ),
+			'feelolab_font_own_body_bold' => array( __( 'Fuente propia: textos en negrita (.woff2)', 'feelolab' ), __( 'Opcional. Si la fuente de textos es "variable" (trae todos los pesos), no hace falta.', 'feelolab' ) ),
+		);
+		foreach ( $own_files as $id => $texts ) {
+			$wp_customize->add_setting(
+				$id,
+				array(
+					'default'           => 0,
+					'sanitize_callback' => 'absint',
+				)
+			);
+			$wp_customize->add_control(
+				new WP_Customize_Media_Control(
+					$wp_customize,
+					$id,
+					array(
+						'label'           => $texts[0],
+						'description'     => $texts[1],
+						'section'         => 'feelolab_type',
+						'mime_type'       => 'font',
+						'active_callback' => $own_active,
+					)
+				)
+			);
+		}
+		feelolab_customizer_select(
+			$wp_customize,
+			'feelolab_font_own_generic',
+			__( 'Fuente propia: estilo', 'feelolab' ),
+			'feelolab_type',
+			array(
+				'sans-serif' => __( 'Sin serifa (palo seco)', 'feelolab' ),
+				'serif'      => __( 'Con serifa', 'feelolab' ),
+			),
+			'sans-serif',
+			__( 'Define qué fuente del sistema se ve mientras carga la tuya.', 'feelolab' )
+		);
+		$wp_customize->get_control( 'feelolab_font_own_generic' )->active_callback = $own_active;
+
 		feelolab_customizer_select(
 			$wp_customize,
 			'feelolab_font_size',
@@ -300,7 +343,7 @@ add_action(
 		}
 
 		// Colores, tipografía y forma: se recalcula solo el CSS de marca (con el ajuste de contraste en PHP).
-		$brand = array( 'feelolab_font_pair', 'feelolab_font_size', 'feelolab_radius', 'feelolab_container' );
+		$brand = array( 'feelolab_font_pair', 'feelolab_font_size', 'feelolab_radius', 'feelolab_container', 'feelolab_font_own_heading', 'feelolab_font_own_body', 'feelolab_font_own_body_bold', 'feelolab_font_own_generic' );
 		foreach ( array_keys( feelolab_color_settings() ) as $color ) {
 			$brand[] = 'feelolab_color_' . $color;
 		}

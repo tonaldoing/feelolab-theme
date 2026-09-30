@@ -196,3 +196,8 @@ function feelo_consent_link(): string {
 function feelo_contact_form( array $args = array() ): string {
 	return Feelo\Core\Forms\ContactForm::render( $args );
 }
+
+/** Formulario de suscripción al newsletter (también como [feelo_newsletter]). */
+function feelo_newsletter_form(): string {
+	return \Feelo\Core\Forms\Newsletter::render();
+}

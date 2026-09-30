@@ -34,6 +34,13 @@ while ( have_posts() ) :
 			</aside>
 		</div>
 
+		<?php if ( feelolab_setting( 'mapa_mostrar' ) && feelolab_business_address() ) : ?>
+			<section class="section section--tight" aria-labelledby="mapa-title">
+				<h2 id="mapa-title"><?php esc_html_e( 'Cómo llegar', 'feelolab' ); ?></h2>
+				<?php feelolab_map( feelolab_business_address(), (string) feelolab_setting( 'mapa_url' ) ); ?>
+			</section>
+		<?php endif; ?>
+
 		<?php
 		$feelolab_sedes = function_exists( 'feelo_module_post_type' ) ? feelo_module_post_type( 'sedes' ) : null;
 		if ( $feelolab_sedes ) :

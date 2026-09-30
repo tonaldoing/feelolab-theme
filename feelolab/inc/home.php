@@ -172,6 +172,15 @@ function feelolab_home_sections(): array {
 				'btn_url'  => array( 'type' => 'url', 'label' => __( 'Botón: link (vacío = WhatsApp o contacto)', 'feelolab' ) ),
 			),
 		),
+		'newsletter'  => array(
+			'label'  => __( 'Newsletter', 'feelolab' ),
+			'show'   => false,
+			'order'  => 85,
+			'fields' => array(
+				'title' => array( 'type' => 'text', 'label' => __( 'Título', 'feelolab' ), 'default' => __( 'Recibí nuestras novedades', 'feelolab' ) ),
+				'text'  => array( 'type' => 'textarea', 'label' => __( 'Texto', 'feelolab' ), 'default' => __( 'Un email al mes con lo que te sirve. Sin spam.', 'feelolab' ) ),
+			),
+		),
 		'contacto'    => array(
 			'label'  => __( 'Contacto con formulario', 'feelolab' ),
 			'show'   => true,

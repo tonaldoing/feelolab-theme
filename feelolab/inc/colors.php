@@ -199,6 +199,13 @@ function feelolab_font_stacks(): array {
 				'heading'  => feelolab_web_font_stack( 'source-serif-4' ),
 				'webfonts' => array( 'source-serif-4', 'figtree' ),
 			),
+			'propia'        => array_merge(
+				array( 'label' => __( 'Fuente propia de la marca (subila abajo)', 'feelolab' ) ),
+				function_exists( 'feelolab_own_fonts_active' ) && feelolab_own_fonts_active() ? feelolab_own_font_stacks() : array(
+					'body'    => $system,
+					'heading' => $system,
+				)
+			),
 		)
 	);
 }

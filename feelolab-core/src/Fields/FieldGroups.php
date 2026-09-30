@@ -136,6 +136,13 @@ final class FieldGroups {
 					'instructions' => __( 'Una característica por línea, formato "Material: Acero". Se muestra como tabla.', 'feelolab-core' ),
 				),
 				array(
+					'name'         => 'opciones',
+					'label'        => __( 'Opciones para elegir al consultar', 'feelolab-core' ),
+					'type'         => 'textarea',
+					'rows'         => 3,
+					'instructions' => __( 'Una opción por línea, con sus valores separados por barras: "Plataforma: Acrílico | Metálica | Flexible". Se muestran como listas desplegables y lo elegido va en el mensaje de WhatsApp o del formulario.', 'feelolab-core' ),
+				),
+				array(
 					'name'          => 'consulta_whatsapp',
 					'label'         => __( 'Botón "Consultar por WhatsApp"', 'feelolab-core' ),
 					'type'          => 'true_false',
@@ -244,6 +251,14 @@ final class FieldGroups {
 					'name'  => 'mapa_url',
 					'label' => __( 'Link a Google Maps', 'feelolab-core' ),
 					'type'  => 'url',
+				),
+				array(
+					'name'          => 'mostrar_mapa',
+					'label'         => __( 'Mostrar mapa en la ficha', 'feelolab-core' ),
+					'type'          => 'true_false',
+					'ui'            => 1,
+					'default_value' => 1,
+					'instructions'  => __( 'Con la dirección de arriba. Se carga solo cuando la persona lo pide.', 'feelolab-core' ),
 				),
 			),
 			'clientes'    => array(

@@ -19,10 +19,22 @@ foreach ( preg_split( '/\R/', (string) feelolab_field( 'ficha_tecnica' ) ) as $f
 		$feelolab_specs[] = array_map( 'trim', explode( ':', $feelolab_line, 2 ) );
 	}
 }
-$feelolab_wa_url = ( '' === $feelolab_wa || $feelolab_wa ) && function_exists( 'feelo_whatsapp_url' )
-	/* translators: %s: nombre del producto */
-	? feelo_whatsapp_url( sprintf( __( 'Hola, quiero consultar por: %s', 'feelolab' ), get_the_title() ) . ( $feelolab_sku ? ' (' . $feelolab_sku . ')' : '' ) )
-	: '';
+// Opciones para elegir ("Plataforma: Acrílico | Metálica"): lo elegido se suma al mensaje de la consulta.
+$feelolab_options = array();
+foreach ( preg_split( '/\R/', (string) feelolab_field( 'opciones' ) ) as $feelolab_line ) {
+	if ( ! str_contains( $feelolab_line, ':' ) ) {
+		continue;
+	}
+	list( $feelolab_opt_name, $feelolab_opt_values ) = array_map( 'trim', explode( ':', $feelolab_line, 2 ) );
+	$feelolab_opt_values                             = array_values( array_filter( array_map( 'trim', explode( '|', $feelolab_opt_values ) ), 'strlen' ) );
+	if ( $feelolab_opt_name && $feelolab_opt_values ) {
+		$feelolab_options[ $feelolab_opt_name ] = $feelolab_opt_values;
+	}
+}
+/* translators: %s: nombre del producto */
+$feelolab_message = sprintf( __( 'Hola, quiero consultar por: %s', 'feelolab' ), get_the_title() ) . ( $feelolab_sku ? ' (' . $feelolab_sku . ')' : '' );
+$feelolab_wa_url  = ( '' === $feelolab_wa || $feelolab_wa ) && function_exists( 'feelo_whatsapp_url' ) ? feelo_whatsapp_url( $feelolab_message ) : '';
+$feelolab_ask_url = $feelolab_wa_url ? $feelolab_wa_url : add_query_arg( 'consulta', rawurlencode( $feelolab_message ), feelolab_contact_page_url() );
 ?>
 <article <?php post_class( 'entry' ); ?>>
 	<div class="container section">
@@ -41,11 +53,26 @@ $feelolab_wa_url = ( '' === $feelolab_wa || $feelolab_wa ) && function_exists( '
 				<?php if ( has_excerpt() ) : ?>
 					<div class="product__excerpt"><?php the_excerpt(); ?></div>
 				<?php endif; ?>
+				<?php if ( $feelolab_options ) : ?>
+					<fieldset class="product-options" data-feelo-options data-message="<?php echo esc_attr( $feelolab_message ); ?>">
+						<legend class="product-options__legend"><?php esc_html_e( 'Elegí para tu consulta', 'feelolab' ); ?></legend>
+						<?php foreach ( $feelolab_options as $feelolab_opt_name => $feelolab_opt_values ) : ?>
+							<?php $feelolab_opt_id = wp_unique_id( 'opcion-' ); ?>
+							<p class="product-options__field">
+								<label for="<?php echo esc_attr( $feelolab_opt_id ); ?>"><?php echo esc_html( $feelolab_opt_name ); ?></label>
+								<select id="<?php echo esc_attr( $feelolab_opt_id ); ?>" data-option="<?php echo esc_attr( $feelolab_opt_name ); ?>">
+									<option value=""><?php esc_html_e( 'Sin elegir', 'feelolab' ); ?></option>
+									<?php foreach ( $feelolab_opt_values as $feelolab_opt_value ) : ?>
+										<option><?php echo esc_html( $feelolab_opt_value ); ?></option>
+									<?php endforeach; ?>
+								</select>
+							</p>
+						<?php endforeach; ?>
+					</fieldset>
+				<?php endif; ?>
 				<div class="product__actions">
 					<?php
-					echo $feelolab_wa_url
-						? feelolab_button( __( 'Consultar por WhatsApp', 'feelolab' ), $feelolab_wa_url, 'primary' ) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-						: feelolab_button( __( 'Consultar', 'feelolab' ), feelolab_contact_url(), 'primary' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo feelolab_button( $feelolab_wa_url ? __( 'Consultar por WhatsApp', 'feelolab' ) : __( 'Consultar', 'feelolab' ), $feelolab_ask_url, 'primary' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					?>
 				</div>
 				<?php if ( $feelolab_sku ) : ?>

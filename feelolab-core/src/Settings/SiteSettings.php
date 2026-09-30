@@ -122,6 +122,11 @@ final class SiteSettings {
 						'label' => __( 'Link a Google Maps', 'feelolab-core' ),
 						'type'  => 'url',
 					),
+					'mapa_mostrar'      => array(
+						'label' => __( 'Mostrar el mapa en la página de contacto', 'feelolab-core' ),
+						'type'  => 'checkbox',
+						'help'  => __( 'Usa la dirección de arriba. El mapa se carga solo cuando la persona lo pide: no hace lenta la página.', 'feelolab-core' ),
+					),
 				),
 			),
 			'redes'         => array(
@@ -173,6 +178,51 @@ final class SiteSettings {
 					'form_exito'       => array(
 						'label' => __( 'Mensaje de envío correcto', 'feelolab-core' ),
 						'type'  => 'text',
+					),
+				),
+			),
+			'newsletter'    => array(
+				'label'  => __( 'Newsletter', 'feelolab-core' ),
+				'fields' => array(
+					'news_proveedor' => array(
+						'label'   => __( 'Dónde se guardan las suscripciones', 'feelolab-core' ),
+						'type'    => 'select',
+						'options' => array(
+							''          => __( 'En el sitio (Mensajes), sin servicio externo', 'feelolab-core' ),
+							'brevo'     => 'Brevo',
+							'mailchimp' => 'Mailchimp',
+						),
+						'help'    => __( 'Si el servicio externo falla, la suscripción igual queda guardada en Mensajes: no se pierde ninguna.', 'feelolab-core' ),
+					),
+					'news_api_key'   => array(
+						'label' => __( 'Clave de API', 'feelolab-core' ),
+						'type'  => 'password',
+						'help'  => __( 'Brevo: Configuración → SMTP y API → Claves de API. Mailchimp: Perfil → Extras → API keys (termina en -us21 o similar).', 'feelolab-core' ),
+					),
+					'news_lista'     => array(
+						'label' => __( 'Lista', 'feelolab-core' ),
+						'type'  => 'text',
+						'help'  => __( 'Brevo: el número de la lista (Contactos → Listas). Mailchimp: el Audience ID (Audience → Settings).', 'feelolab-core' ),
+					),
+					'news_doble'     => array(
+						'label' => __( 'Pedir confirmación por email (doble opt-in)', 'feelolab-core' ),
+						'type'  => 'checkbox',
+						'help'  => __( 'Recomendado: la persona confirma con un clic y la lista queda limpia. En Brevo hace falta el número de plantilla de confirmación de abajo.', 'feelolab-core' ),
+					),
+					'news_plantilla' => array(
+						'label' => __( 'Brevo: número de plantilla de confirmación', 'feelolab-core' ),
+						'type'  => 'text',
+						'help'  => __( 'Una plantilla de tipo "Doble opt-in" creada en Brevo.', 'feelolab-core' ),
+					),
+					'news_boton'     => array(
+						'label' => __( 'Texto del botón', 'feelolab-core' ),
+						'type'  => 'text',
+						'help'  => __( 'Si queda vacío: "Suscribirme".', 'feelolab-core' ),
+					),
+					'news_exito'     => array(
+						'label' => __( 'Mensaje al suscribirse', 'feelolab-core' ),
+						'type'  => 'text',
+						'help'  => __( 'Si queda vacío: "¡Listo! Ya estás suscripto." (o "Revisá tu email para confirmar", con doble opt-in).', 'feelolab-core' ),
 					),
 				),
 			),
@@ -313,6 +363,7 @@ final class SiteSettings {
 			'redes'         => array( 'dashicons-share', __( 'Links completos, con https:// adelante. Las vacías no se muestran.', 'feelolab-core' ) ),
 			'legal'         => array( 'dashicons-media-document', __( 'Se muestran en la última línea del pie.', 'feelolab-core' ) ),
 			'formulario'    => array( 'dashicons-email-alt', __( 'A dónde llegan los mensajes y cómo se protege el formulario del spam.', 'feelolab-core' ) ),
+			'newsletter'    => array( 'dashicons-megaphone', __( 'El formulario de suscripción: en la home (Personalizar → Secciones), en el patrón "Suscripción al newsletter" o con [feelo_newsletter].', 'feelolab-core' ) ),
 			'integraciones' => array( 'dashicons-chart-area', __( 'Medición y verificación de Google, y el resumen para asistentes con IA.', 'feelolab-core' ) ),
 		);
 		?>

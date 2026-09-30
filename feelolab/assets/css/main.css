@@ -421,9 +421,38 @@ hr { border: 0; border-top: 1px solid var(--c-border); margin: 2rem 0; }
 .prose li + li { margin-top: .35em; }
 .prose table { width: 100%; border-collapse: collapse; }
 .prose th, .prose td { border-bottom: 1px solid var(--c-border); padding: .6rem .5rem; text-align: left; }
-.entry-content--full > * { max-width: var(--container); margin-inline: auto; padding-inline: 1rem; }
+/* Bloques anchos y a todo el ancho dentro de una página normal (la columna de texto queda a la
+   izquierda del contenedor): los patrones de secciones salen del ancho de lectura. */
+.prose > .alignwide, .prose > .alignfull { max-width: none; margin-block: clamp(2rem, 1.5rem + 2vw, 3.5rem); }
+.prose > .alignwide { width: min(var(--container), 100vw - 2rem); }
+.prose > .alignfull { width: 100vw; margin-left: calc((min(var(--container), 100vw - 2rem) - 100vw) / 2); }
+@media (min-width: 768px) {
+	.prose > .alignwide { width: min(var(--container), 100vw - 3rem); }
+	.prose > .alignfull { margin-left: calc((min(var(--container), 100vw - 3rem) - 100vw) / 2); }
+}
+body { overflow-x: clip; } /* 100vw incluye la barra de scroll: sin esto, un bloque a todo el ancho da scroll lateral. */
+.alignfull > .wp-block-group__inner-container, .alignfull.is-layout-constrained > * { max-width: var(--container); margin-inline: auto; }
+.wp-block-columns { gap: 1.5rem; }
+.wp-block-column > :first-child { margin-top: 0; }
+.wp-block-media-text__media img { border-radius: var(--radius); }
+.wp-block-button.is-style-outline .wp-block-button__link { background: transparent; color: var(--c-text); border-color: currentColor; }
+.wp-block-button.is-style-outline .wp-block-button__link:hover { background: var(--c-text); color: var(--c-bg); }
+.wp-block-details { border-bottom: 1px solid var(--c-border); padding-block: 1rem; }
+.wp-block-details summary { font-weight: 700; font-size: 1.1rem; cursor: pointer; }
+.wp-block-details > :not(summary) { color: var(--c-muted); }
+.wp-block-details + .wp-block-details { margin-top: 0; }
+.entry-content--full > * { max-width: calc(var(--container) + 2rem); margin-inline: auto; padding-inline: 1rem; }
 .entry-content--full > .alignfull { max-width: none; padding-inline: 0; }
-.entry-content--full > .alignwide { max-width: calc(var(--container) + 10rem); }
+/* Anchos: el borde coincide con el contenido del encabezado; el padding lo pone cada estilo de bloque. */
+.entry-content--full > .alignwide { width: min(var(--container), 100% - 2rem); max-width: none; padding-inline: 0; }
+@media (min-width: 768px) {
+	.entry-content--full > :not(.alignwide):not(.alignfull) { max-width: calc(var(--container) + 3rem); padding-inline: 1.5rem; }
+	.entry-content--full > .alignwide { width: min(var(--container), 100% - 3rem); }
+}
+/* Aire entre secciones en las landings; la primera y la última pegan con el encabezado y el pie. */
+.entry-content--full > :is(.alignwide, .alignfull, .wp-block-group) { margin-block: clamp(2.5rem, 1.5rem + 3vw, 4.5rem); }
+.entry-content--full > :first-child { margin-top: 0; }
+.entry-content--full > :last-child { margin-bottom: 0; }
 .alignwide, .alignfull { width: 100%; }
 .entry__hero { margin-bottom: 2rem; }
 .entry__hero img { width: 100%; border-radius: var(--radius); }
@@ -747,3 +776,45 @@ label { display: block; font-weight: 600; margin-bottom: .35rem; }
 	body { background: #fff; color: #000; }
 	a[href^="http"]::after { content: " (" attr(href) ")"; font-size: .8em; }
 }
+
+/* ---------- Mapa con fachada ---------- */
+.map-facade {
+	position: relative; display: grid; place-items: center;
+	aspect-ratio: 16 / 9; max-height: 28rem; width: 100%;
+	border: 1px solid var(--c-border); border-radius: var(--radius); overflow: hidden;
+	/* Cuadrícula de "plano" hecha con CSS: nada que descargar. */
+	background-color: var(--c-surface);
+	background-image: linear-gradient(var(--c-border) 1px, transparent 1px), linear-gradient(90deg, var(--c-border) 1px, transparent 1px);
+	background-size: 2.5rem 2.5rem;
+}
+@media (max-width: 639px) { .map-facade { aspect-ratio: 4 / 5; } }
+.map-facade__inner { max-width: 26rem; padding: 1.5rem; margin: 1rem; text-align: center; background: var(--c-bg); border: 1px solid var(--c-border); border-radius: var(--radius); }
+.map-facade__pin { width: 2rem; height: 2rem; color: var(--c-primary-text); }
+.map-facade__address { margin: .5rem 0 1rem; font-weight: 700; }
+.map-facade__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
+.map-facade__actions [hidden] { display: none; }
+.map-facade__note { margin: 1rem 0 0; font-size: .85rem; color: var(--c-muted); }
+.map-facade.is-loaded { display: block; background: none; }
+.map-facade__frame { display: block; width: 100%; height: 100%; border: 0; }
+
+/* ---------- Opciones de producto ---------- */
+.product-options { margin: 1.25rem 0 0; padding: 0; border: 0; display: grid; gap: .75rem; }
+.no-js .product-options { display: none; }
+.product-options__legend { padding: 0; margin-bottom: .5rem; font-weight: 700; }
+.product-options__field { margin: 0; display: grid; gap: .3rem; }
+.product-options__field label { font-weight: 600; font-size: .95rem; }
+.product-options select { width: 100%; max-width: 22rem; min-height: 2.75rem; }
+
+/* ---------- Newsletter ---------- */
+.newsletter-band { display: grid; gap: 1.5rem; align-items: center; }
+@media (min-width: 960px) { .newsletter-band { grid-template-columns: 1fr 1.1fr; gap: 4rem; } }
+.newsletter-band__text { margin: 0; color: var(--c-muted-on-surface); }
+.feelo-news__row { display: flex; flex-wrap: wrap; gap: .5rem; }
+.feelo-news__row input[type="email"] { flex: 1 1 14rem; min-width: 0; }
+.feelo-news__row .btn { flex: 0 0 auto; }
+.feelo-news__consent { display: flex; gap: .6rem; align-items: flex-start; margin: .85rem 0 0; font-size: .9rem; }
+.feelo-news__consent input { width: 1.25rem; height: 1.25rem; margin-top: .15rem; flex-shrink: 0; accent-color: var(--c-primary-text); }
+.feelo-news__notice { margin: 0 0 1rem; padding: .75rem 1rem; border-radius: var(--radius); border-left: 4px solid; font-weight: 600; }
+.feelo-news__notice--ok { border-color: #1f7a4d; background: #e8f5ee; color: #14532d; }
+.feelo-news__notice--error { border-color: #b42318; background: #fdecea; color: #7a1a12; }
+.section--surface .feelo-news__consent a { color: var(--c-primary-on-surface); }

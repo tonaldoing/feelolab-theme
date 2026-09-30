@@ -7,6 +7,7 @@
  * - click_phone: links tel:.
  * - click_email: links mailto:.
  * - generate_lead: envío correcto del formulario de contacto (evento recomendado de GA4).
+ * - sign_up: suscripción al newsletter (evento recomendado de GA4, method = newsletter). Una vez por envío.
  * - share: botones de compartir de las notas (evento recomendado de GA4, con method = la red).
  *   Una sola vez por envío: recargar la página de "gracias" no lo repite.
  * Cada evento lleva feelo_location: dónde estaba el link (flotante, encabezado, pie, o el id
@@ -74,6 +75,18 @@ final class Tracking {
 			}
 		} catch (err) {
 			send('generate_lead', { feelo_location: 'formulario', page_path: location.pathname });
+		}
+	}
+	// Suscripción al newsletter: ?feelo_news=ok, también una vez por envío.
+	if (/[?&]feelo_news=ok\b/.test(location.search)) {
+		var nkey = 'feelo_signup_' + location.pathname + location.search;
+		try {
+			if (!sessionStorage.getItem(nkey)) {
+				sessionStorage.setItem(nkey, '1');
+				send('sign_up', { method: 'newsletter', page_path: location.pathname });
+			}
+		} catch (err) {
+			send('sign_up', { method: 'newsletter', page_path: location.pathname });
 		}
 	}
 })();

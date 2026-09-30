@@ -9,6 +9,7 @@ namespace Feelo\Core;
 
 use Feelo\Core\Fields\FieldGroups;
 use Feelo\Core\Forms\ContactForm;
+use Feelo\Core\Forms\Newsletter;
 use Feelo\Core\Modules\Registry;
 use Feelo\Core\Schema\Schema;
 use Feelo\Core\Settings\ModulesPage;
@@ -27,6 +28,7 @@ final class Plugin {
 		SiteSettings::init();
 		ModulesPage::init();
 		ContactForm::init();
+		Newsletter::init();
 		Schema::init();
 		Frontend::init();
 		Gallery::init();
