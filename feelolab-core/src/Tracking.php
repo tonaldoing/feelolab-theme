@@ -7,6 +7,7 @@
  * - click_phone: links tel:.
  * - click_email: links mailto:.
  * - generate_lead: envío correcto del formulario de contacto (evento recomendado de GA4).
+ * - share: botones de compartir de las notas (evento recomendado de GA4, con method = la red).
  *   Una sola vez por envío: recargar la página de "gracias" no lo repite.
  * Cada evento lleva feelo_location: dónde estaba el link (flotante, encabezado, pie, o el id
  * de la sección: servicios, contacto…), para saber qué parte del sitio convierte.
@@ -44,12 +45,18 @@ final class Tracking {
 	}
 	function where(el) {
 		if (el.closest('.feelo-wa-wrap')) { return 'flotante'; }
+		if (el.closest('.topbar')) { return 'barra-superior'; }
 		if (el.closest('.site-header')) { return 'encabezado'; }
 		if (el.closest('.site-footer')) { return 'pie'; }
 		var s = el.closest('section[id], [id].section, main [id]');
 		return s ? s.id : 'contenido';
 	}
 	document.addEventListener('click', function (e) {
+		var share = e.target.closest('[data-feelo-share]');
+		if (share) {
+			send('share', { method: share.getAttribute('data-feelo-share'), content_type: 'article', item_id: location.pathname });
+			return;
+		}
 		var a = e.target.closest('a[href]');
 		if (!a) { return; }
 		var href = a.getAttribute('href') || '';

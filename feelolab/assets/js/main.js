@@ -90,3 +90,103 @@
 		closeSubmenus();
 	} );
 } )();
+
+/**
+ * Buscador del encabezado (disclosure): el botón abre el campo y le da foco; Escape o clic afuera
+ * lo cierran y devuelven el foco al botón. Sin JS, el campo queda visible.
+ */
+( function () {
+	'use strict';
+
+	var toggle = document.querySelector( '.site-search__toggle' );
+	var panel = document.getElementById( 'site-search-panel' );
+	if ( ! toggle || ! panel ) {
+		return;
+	}
+	function set( open, restoreFocus ) {
+		toggle.setAttribute( 'aria-expanded', String( open ) );
+		panel.classList.toggle( 'is-open', open );
+		if ( open ) {
+			panel.querySelector( 'input' ).focus();
+		} else if ( restoreFocus ) {
+			toggle.focus();
+		}
+	}
+	toggle.addEventListener( 'click', function () {
+		set( toggle.getAttribute( 'aria-expanded' ) !== 'true', true );
+	} );
+	document.addEventListener( 'keydown', function ( e ) {
+		if ( e.key === 'Escape' && toggle.getAttribute( 'aria-expanded' ) === 'true' ) {
+			set( false, true );
+		}
+	} );
+	document.addEventListener( 'click', function ( e ) {
+		if ( toggle.getAttribute( 'aria-expanded' ) === 'true' && ! e.target.closest( '.site-search' ) ) {
+			set( false, false );
+		}
+	} );
+} )();
+
+/**
+ * Encabezado transparente sobre la portada: toma su color al hacer scroll o al abrir el menú.
+ * --header-h es su alto real, para que la portada deje ese espacio arriba del título.
+ */
+( function () {
+	'use strict';
+
+	var header = document.querySelector( '.site-header.is-transparent' );
+	if ( ! header ) {
+		return;
+	}
+	var root = document.documentElement;
+	function measure() {
+		root.style.setProperty( '--header-h', header.offsetHeight + 'px' );
+	}
+	function update() {
+		var open = !! header.querySelector( '[aria-expanded="true"]' );
+		header.classList.toggle( 'is-solid', open || window.scrollY > 8 );
+	}
+	measure();
+	update();
+	window.addEventListener( 'resize', measure, { passive: true } );
+	window.addEventListener( 'scroll', update, { passive: true } );
+	header.addEventListener( 'click', function () {
+		window.setTimeout( update, 0 );
+	} );
+	document.addEventListener( 'keydown', function () {
+		window.setTimeout( update, 0 );
+	} );
+} )();
+
+/**
+ * Compartir: "Compartir" usa el menú nativo del teléfono y "Copiar link" el portapapeles. Cada
+ * botón aparece solo si el navegador lo soporta (lo decide un script en línea en share.php, antes
+ * de pintar); los links a cada red funcionan siempre.
+ */
+( function () {
+	'use strict';
+
+	document.querySelectorAll( '.share' ).forEach( function ( box ) {
+		var status = box.querySelector( '.share__status' );
+		box.addEventListener( 'click', function ( e ) {
+			var btn = e.target.closest( 'button[data-feelo-share]' );
+			if ( ! btn ) {
+				return;
+			}
+			var url = btn.getAttribute( 'data-share-url' );
+			if ( btn.getAttribute( 'data-feelo-share' ) === 'nativo' ) {
+				// Si la persona cierra el menú nativo la promesa se rechaza: no es un error.
+				navigator.share( { title: btn.getAttribute( 'data-share-title' ), url: url } ).catch( function () {} );
+				return;
+			}
+			navigator.clipboard.writeText( url ).then( function () {
+				status.textContent = btn.getAttribute( 'data-copied' );
+				btn.classList.add( 'is-done' );
+				window.setTimeout( function () {
+					status.textContent = '';
+					btn.classList.remove( 'is-done' );
+				}, 2500 );
+			} );
+		} );
+	} );
+} )();

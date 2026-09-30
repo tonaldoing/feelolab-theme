@@ -53,7 +53,11 @@ Reglas para que las actualizaciones no rompan nada:
 **Personalizador**:
 - **Colores con contraste AA garantizado.** El tema calcula solo el color de texto sobre los botones y oscurece el tono de los links si hace falta. Mientras elegís un color, aparece un aviso en vivo si el contraste no alcanza.
 - Cinco combinaciones tipográficas con fuentes del sistema, que no descargan nada, y cuatro con **fuentes web servidas desde el propio sitio** (Inter, Figtree, Fraunces + Inter, Source Serif + Figtree). Las fuentes web vienen con fallback de métricas ajustadas: el texto no salta al cargar (CLS 0). Licencias OFL en `feelolab/assets/fonts/`.
-- Home con 11 secciones que se prenden y se ordenan: hero, servicios, nosotros, cifras, proyectos, testimonios, logos, FAQ, blog, CTA y contacto.
+- Home con 13 secciones que se prenden y se ordenan arrastrando (con flechas para teclado): hero, servicios, nosotros, cifras, proyectos, testimonios, logos, FAQ, blog, CTA, contacto y dos repetidas (segunda CTA y segundo bloque de texto con imagen). Los cambios de texto, imágenes, colores y tipografía se ven al instante, sin recargar la vista previa.
+- Portada en tres diseños: texto e imagen lado a lado, imagen de fondo a todo el ancho (velo parejo que garantiza el contraste del texto con cualquier foto) o solo texto centrado.
+- Encabezado: logo a la izquierda o centrado, barra superior con contacto y redes, buscador, y transparente sobre la portada de imagen de fondo (con logo claro opcional). Sin salto de contenido al cargar.
+- Pie del color de la marca o claro, con columnas de widgets opcionales.
+- Blog: tiempo de lectura, botones para compartir sin scripts de terceros (y el menú nativo del teléfono) y recuadro del autor cuando tiene biografía. Compartir se mide como evento `share` de GA4.
 
 **Formulario de contacto propio** (`[feelo_formulario]` o `feelo_contact_form()`):
 - Sin plugin y sin costo. Antispam con honeypot, tiempo mínimo de llenado firmado y límite por IP. Opcionalmente, Cloudflare Turnstile, que es gratis.

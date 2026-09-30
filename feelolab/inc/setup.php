@@ -74,6 +74,17 @@ add_action(
 				'after_title'   => '</h2>',
 			)
 		);
+		register_sidebar(
+			array(
+				'name'          => __( 'Pie de página: columnas', 'feelolab' ),
+				'id'            => 'footer',
+				'description'   => __( 'Cada widget es una columna más del pie, después del contacto.', 'feelolab' ),
+				'before_widget' => '<section id="%1$s" class="widget site-footer__widget %2$s">',
+				'after_widget'  => '</section>',
+				'before_title'  => '<h2 class="widget__title">',
+				'after_title'   => '</h2>',
+			)
+		);
 	}
 );
 

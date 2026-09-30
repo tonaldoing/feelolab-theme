@@ -2,14 +2,45 @@
 /**
  * Portada. La imagen es el LCP de la home: eager + fetchpriority="high" + srcset a medida.
  *
+ * Tres diseños (Personalizar → Secciones de la home → Portada):
+ * - dividida: texto e imagen lado a lado (sin imagen, el texto ocupa el ancho).
+ * - fondo: la imagen cubre la franja con un velo oscuro parejo. El velo garantiza el contraste
+ *   del texto blanco con cualquier foto (5,7:1 en el peor caso, una foto blanca). Sin imagen,
+ *   cae a centrada.
+ * - centrada: solo texto, centrado.
+ *
  * @package Feelolab
  */
 
 defined( 'ABSPATH' ) || exit;
 
-$feelolab_image = (int) feelolab_home( 'hero', 'image' );
+$feelolab_image  = (int) feelolab_home( 'hero', 'image' );
+$feelolab_layout = feelolab_hero_layout();
+$feelolab_bg     = 'fondo' === $feelolab_layout;
+$feelolab_class  = array( 'hero', 'hero--' . $feelolab_layout );
+if ( $feelolab_image && 'dividida' === $feelolab_layout ) {
+	$feelolab_class[] = 'hero--image';
+}
 ?>
-<section class="hero<?php echo $feelolab_image ? ' hero--image' : ''; ?>">
+<section class="<?php echo esc_attr( implode( ' ', $feelolab_class ) ); ?>">
+	<?php if ( $feelolab_bg ) : ?>
+		<div class="hero__bg">
+			<?php
+			echo wp_get_attachment_image(
+				$feelolab_image,
+				'feelolab-hero',
+				false,
+				array(
+					'loading'       => 'eager',
+					'fetchpriority' => 'high',
+					'decoding'      => 'async',
+					'sizes'         => '100vw',
+					'alt'           => '',
+				)
+			);
+			?>
+		</div>
+	<?php endif; ?>
 	<div class="container hero__inner">
 		<div class="hero__content">
 			<h1 class="hero__title"><?php echo esc_html( feelolab_home( 'hero', 'title' ) ); ?></h1>
@@ -23,7 +54,7 @@ $feelolab_image = (int) feelolab_home( 'hero', 'image' );
 				?>
 			</div>
 		</div>
-		<?php if ( $feelolab_image ) : ?>
+		<?php if ( $feelolab_image && 'dividida' === $feelolab_layout ) : ?>
 			<div class="hero__media">
 				<?php
 				echo wp_get_attachment_image(

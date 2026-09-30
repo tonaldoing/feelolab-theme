@@ -20,7 +20,7 @@ if ( $feelolab_sections ) {
 		echo '<h1 class="screen-reader-text">' . esc_html( function_exists( 'feelo_business_name' ) ? feelo_business_name() : get_bloginfo( 'name' ) ) . '</h1>';
 	}
 	foreach ( $feelolab_sections as $feelolab_i => $feelolab_key ) {
-		get_template_part( 'template-parts/home/' . $feelolab_key, null, array( 'index' => $feelolab_i ) );
+		feelolab_home_render_section( $feelolab_key, $feelolab_i );
 	}
 } else {
 	while ( have_posts() ) :

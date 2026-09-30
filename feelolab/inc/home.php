@@ -15,7 +15,9 @@ defined( 'ABSPATH' ) || exit;
  * Definición de secciones.
  *
  * - module: módulo de Feelolab Core que necesita; si no está activo, la sección no se ofrece.
- * - fields: campos editables (text, textarea, url, image, number).
+ * - template: plantilla de template-parts/home/ si no es la clave (las secciones repetidas, como
+ *   la segunda llamada a la acción, reusan la plantilla de la primera con sus propios textos).
+ * - fields: campos editables (text, textarea, url, image, number, select con choices).
  *
  * @return array<string, array<string, mixed>>
  */
@@ -26,6 +28,16 @@ function feelolab_home_sections(): array {
 			'show'   => true,
 			'order'  => 10,
 			'fields' => array(
+				'layout'    => array(
+					'type'    => 'select',
+					'label'   => __( 'Diseño', 'feelolab' ),
+					'default' => 'dividida',
+					'choices' => array(
+						'dividida' => __( 'Texto e imagen lado a lado', 'feelolab' ),
+						'fondo'    => __( 'Imagen de fondo a todo el ancho', 'feelolab' ),
+						'centrada' => __( 'Solo texto, centrado', 'feelolab' ),
+					),
+				),
 				'title'     => array( 'type' => 'text', 'label' => __( 'Título (es el h1 de la home)', 'feelolab' ), 'default' => get_bloginfo( 'name' ) ),
 				'text'      => array( 'type' => 'textarea', 'label' => __( 'Bajada', 'feelolab' ), 'default' => get_bloginfo( 'description' ) ),
 				'image'     => array( 'type' => 'image', 'label' => __( 'Imagen (1600×900 o más)', 'feelolab' ) ),
@@ -56,6 +68,19 @@ function feelolab_home_sections(): array {
 				'image'     => array( 'type' => 'image', 'label' => __( 'Imagen', 'feelolab' ) ),
 				'link_text' => array( 'type' => 'text', 'label' => __( 'Link: texto', 'feelolab' ), 'default' => __( 'Conocenos', 'feelolab' ) ),
 				'link_url'  => array( 'type' => 'url', 'label' => __( 'Link: URL', 'feelolab' ) ),
+				'side'      => feelolab_home_side_field( 'derecha' ),
+			),
+		),
+		'cta_2'       => array(
+			'label'    => __( 'Llamada a la acción (segunda)', 'feelolab' ),
+			'template' => 'cta',
+			'show'     => false,
+			'order'    => 35,
+			'fields'   => array(
+				'title'    => array( 'type' => 'text', 'label' => __( 'Título', 'feelolab' ), 'default' => __( '¿Necesitás una mano?', 'feelolab' ) ),
+				'text'     => array( 'type' => 'textarea', 'label' => __( 'Texto', 'feelolab' ) ),
+				'btn_text' => array( 'type' => 'text', 'label' => __( 'Botón: texto', 'feelolab' ), 'default' => __( 'Consultanos', 'feelolab' ) ),
+				'btn_url'  => array( 'type' => 'url', 'label' => __( 'Botón: link (vacío = WhatsApp o contacto)', 'feelolab' ) ),
 			),
 		),
 		'cifras'      => array(
@@ -113,6 +138,20 @@ function feelolab_home_sections(): array {
 				'count' => array( 'type' => 'number', 'label' => __( 'Cantidad', 'feelolab' ), 'default' => 6 ),
 			),
 		),
+		'nosotros_2'  => array(
+			'label'    => __( 'Texto con imagen (segundo bloque)', 'feelolab' ),
+			'template' => 'nosotros',
+			'show'     => false,
+			'order'    => 65,
+			'fields'   => array(
+				'title'     => array( 'type' => 'text', 'label' => __( 'Título', 'feelolab' ), 'default' => __( 'Cómo trabajamos', 'feelolab' ) ),
+				'text'      => array( 'type' => 'textarea', 'label' => __( 'Texto', 'feelolab' ) ),
+				'image'     => array( 'type' => 'image', 'label' => __( 'Imagen', 'feelolab' ) ),
+				'link_text' => array( 'type' => 'text', 'label' => __( 'Link: texto', 'feelolab' ) ),
+				'link_url'  => array( 'type' => 'url', 'label' => __( 'Link: URL', 'feelolab' ) ),
+				'side'      => feelolab_home_side_field( 'izquierda' ),
+			),
+		),
 		'blog'        => array(
 			'label'  => __( 'Últimas notas del blog', 'feelolab' ),
 			'show'   => false,
@@ -162,18 +201,111 @@ function feelolab_home( string $section, string $field ) {
 	return get_theme_mod( "feelolab_home_{$section}_{$field}", $default );
 }
 
+/** Campo "lado de la imagen" de los bloques de texto con imagen. */
+function feelolab_home_side_field( string $side ): array {
+	return array(
+		'type'    => 'select',
+		'label'   => __( 'Imagen a la', 'feelolab' ),
+		'default' => $side,
+		'choices' => array(
+			'derecha'   => __( 'Derecha', 'feelolab' ),
+			'izquierda' => __( 'Izquierda', 'feelolab' ),
+		),
+	);
+}
+
+/** Plantilla de una sección (las repetidas usan la de la original). */
+function feelolab_home_template( string $key ): string {
+	$sections = feelolab_home_sections();
+	return (string) ( $sections[ $key ]['template'] ?? $key );
+}
+
+/**
+ * Todas las secciones disponibles, en orden (prendidas o no).
+ *
+ * El orden se arrastra en el Personalizador y se guarda como lista en feelolab_home_order.
+ * Las que no están en la lista (sitios de antes de 0.5 o secciones nuevas) van según su número.
+ *
+ * @return string[]
+ */
+function feelolab_home_ordered_keys(): array {
+	$numbers = array();
+	foreach ( feelolab_home_sections() as $key => $section ) {
+		if ( feelolab_home_section_available( $section ) ) {
+			$numbers[ $key ] = (int) get_theme_mod( "feelolab_home_{$key}_order", $section['order'] );
+		}
+	}
+	asort( $numbers );
+	$by_number = array_keys( $numbers );
+
+	$saved = array_filter( array_map( 'trim', explode( ',', (string) get_theme_mod( 'feelolab_home_order', '' ) ) ) );
+	if ( ! $saved ) {
+		return $by_number;
+	}
+	$ordered = array_values( array_intersect( $saved, $by_number ) );
+	// Una sección nueva se ubica después de la que la precede por número.
+	foreach ( $by_number as $i => $key ) {
+		if ( in_array( $key, $ordered, true ) ) {
+			continue;
+		}
+		$after = $i > 0 ? array_search( $by_number[ $i - 1 ], $ordered, true ) : -1;
+		array_splice( $ordered, false === $after ? count( $ordered ) : $after + 1, 0, array( $key ) );
+	}
+	return $ordered;
+}
+
 /** @return string[] Claves de secciones visibles, en orden. */
 function feelolab_home_active_sections(): array {
-	$active = array();
-	foreach ( feelolab_home_sections() as $key => $section ) {
-		if ( ! feelolab_home_section_available( $section ) ) {
-			continue;
-		}
-		if ( ! get_theme_mod( "feelolab_home_{$key}_show", $section['show'] ) ) {
-			continue;
-		}
-		$active[ $key ] = (int) get_theme_mod( "feelolab_home_{$key}_order", $section['order'] );
+	$sections = feelolab_home_sections();
+	return array_values(
+		array_filter(
+			feelolab_home_ordered_keys(),
+			static fn( string $key ) => (bool) get_theme_mod( "feelolab_home_{$key}_show", $sections[ $key ]['show'] )
+		)
+	);
+}
+
+/** Renderiza una sección. En la vista previa del Personalizador va envuelta para refrescarla sola. */
+function feelolab_home_render_section( string $key, int $index ): void {
+	$preview = is_customize_preview();
+	if ( $preview ) {
+		echo '<div class="feelolab-home-partial" data-feelolab-home="' . esc_attr( $key ) . '">';
 	}
-	asort( $active );
-	return array_keys( $active );
+	get_template_part(
+		'template-parts/home/' . feelolab_home_template( $key ),
+		null,
+		array(
+			'index' => $index,
+			'key'   => $key,
+		)
+	);
+	if ( $preview ) {
+		echo '</div>';
+	}
+}
+
+/** Diseño efectivo de la portada: "fondo" sin imagen no tiene sentido y pasa a "centrada". */
+function feelolab_hero_layout(): string {
+	$layout = (string) feelolab_home( 'hero', 'layout' );
+	if ( ! in_array( $layout, array( 'dividida', 'fondo', 'centrada' ), true ) ) {
+		$layout = 'dividida';
+	}
+	if ( 'fondo' === $layout && ! (int) feelolab_home( 'hero', 'image' ) ) {
+		$layout = 'centrada';
+	}
+	return $layout;
+}
+
+/**
+ * ¿El encabezado va transparente sobre la portada? Solo en la home, con la opción prendida,
+ * la portada con imagen de fondo y como primera sección: si no, quedaría texto blanco sobre blanco.
+ */
+function feelolab_header_is_transparent(): bool {
+	static $cache = null;
+	if ( null !== $cache ) {
+		return $cache;
+	}
+	$sections = is_front_page() && get_theme_mod( 'feelolab_header_transparent', false ) ? feelolab_home_active_sections() : array();
+	$cache    = $sections && 'hero' === $sections[0] && 'fondo' === feelolab_hero_layout();
+	return $cache;
 }

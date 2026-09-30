@@ -44,6 +44,8 @@ $feelolab_wrap = $feelolab_is_post && is_active_sidebar( 'blog' ) ? 'container' 
 		</div>
 
 		<?php if ( $feelolab_is_post ) : ?>
+			<?php get_template_part( 'template-parts/share' ); ?>
+			<?php get_template_part( 'template-parts/author-box' ); ?>
 			<?php the_tags( '<p class="entry-tags"><span class="screen-reader-text">' . esc_html__( 'Etiquetas:', 'feelolab' ) . ' </span>', ' ', '</p>' ); ?>
 			<?php
 			the_post_navigation(

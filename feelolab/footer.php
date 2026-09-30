@@ -1,6 +1,7 @@
 <?php
 /**
- * Pie: marca, contacto, menú, redes y línea legal.
+ * Pie: marca, contacto, menú, redes, columnas de widgets opcionales y línea legal.
+ * Dos estilos (Personalizar → Marca → Pie de página): del color de la marca o claro.
  *
  * @package Feelolab
  */
@@ -13,8 +14,9 @@ $feelolab_legal = trim( implode( ' · ', array_filter( array( feelolab_setting( 
 ?>
 </main>
 
-<footer class="site-footer">
-	<div class="container site-footer__grid">
+<?php $feelolab_widgets = is_active_sidebar( 'footer' ); ?>
+<footer class="site-footer site-footer--<?php echo esc_attr( 'claro' === get_theme_mod( 'feelolab_footer_style', 'marca' ) ? 'claro' : 'marca' ); ?>">
+	<div class="container site-footer__grid<?php echo $feelolab_widgets ? ' site-footer__grid--widgets' : ''; ?>">
 		<div class="site-footer__brand">
 			<p class="site-footer__name"><?php echo esc_html( $feelolab_name ); ?></p>
 			<?php if ( $feelolab_text ) : ?>
@@ -41,6 +43,12 @@ $feelolab_legal = trim( implode( ' · ', array_filter( array( feelolab_setting( 
 		<div class="site-footer__contact">
 			<?php feelolab_contact_list(); ?>
 		</div>
+
+		<?php
+		if ( $feelolab_widgets ) {
+			dynamic_sidebar( 'footer' );
+		}
+		?>
 	</div>
 
 	<div class="container site-footer__bottom">

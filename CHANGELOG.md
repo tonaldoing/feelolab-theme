@@ -2,6 +2,17 @@
 
 Cada versión publicada acá llega a los sitios como actualización (Escritorio → Actualizaciones).
 
+## 0.5.0 — 2026-09-30
+
+- Portada con tres diseños a elegir: texto e imagen lado a lado, imagen de fondo a todo el ancho o solo texto centrado. Con imagen de fondo, un velo oscuro parejo asegura que el texto se lea con cualquier foto.
+- Encabezado con más opciones: logo centrado con el menú debajo, barra superior con teléfono, WhatsApp, email y redes, buscador, y encabezado transparente sobre la portada con imagen de fondo (se puede cargar un logo claro para ese caso).
+- Pie de página claro, además del que usa el color de la marca, y columnas extra con widgets (Apariencia → Widgets → Pie de página: columnas).
+- Secciones de la home: ahora se ordenan arrastrándolas (o con flechas) en Personalizar → Secciones de la home → Orden de las secciones. El orden que ya tenías se respeta.
+- Dos secciones nuevas para repetir: una segunda llamada a la acción y un segundo bloque de texto con imagen, que puede llevar la imagen a la izquierda.
+- Vista previa al instante: los cambios de textos, imágenes, colores y tipografía se ven sin recargar la página.
+- Blog: tiempo de lectura, botones para compartir (WhatsApp, Facebook, LinkedIn, X, email y copiar link) y recuadro del autor con su biografía. Cada opción se apaga en Personalizar → Marca → Blog.
+- Los clics en compartir se miden como evento share en Google Analytics.
+
 ## 0.4.0 — 2026-09-30
 
 - Nueva pantalla Lanzamiento (Ajustes del sitio → Lanzamiento): revisa 19 puntos antes de publicar (sitio visible para Google, direcciones amigables, logo, política de privacidad, datos de contacto, menú, portada, zona horaria, envío de emails, contenido de ejemplo borrado y más). Cada punto dice por qué importa y trae un botón Arreglar que lleva a la pantalla indicada.

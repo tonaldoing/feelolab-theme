@@ -23,6 +23,8 @@ function feelolab_icon( string $name, string $extra_class = '' ): string {
 		'map-pin'      => '<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>',
 		'clock'        => '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
 		'check'        => '<path d="M20 6 9 17l-5-5"/>',
+		'link'         => '<path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/>',
+		'share'        => '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/>',
 		'star'         => '<path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/>',
 		'whatsapp'     => '<path d="M3 21l1.7-5A8.5 8.5 0 1 1 8 19.3z"/><path d="M9 10c0 3 2 5 5 5l1.5-1.5-2-1-1 .8a4 4 0 0 1-2-2l.8-1-1-2z"/>',
 		'instagram'    => '<rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>',
@@ -157,13 +159,20 @@ function feelolab_section_header( string $title, string $text = '', string $id =
 }
 
 function feelolab_posted_on(): void {
+	$reading = 'post' === get_post_type() && get_theme_mod( 'feelolab_blog_reading_time', true )
+		? ' · ' . esc_html(
+			/* translators: %d: minutos */
+			sprintf( _n( '%d minuto de lectura', '%d minutos de lectura', feelolab_reading_time(), 'feelolab' ), feelolab_reading_time() )
+		)
+		: '';
 	printf(
-		'<p class="entry-meta"><time datetime="%1$s">%2$s</time>%3$s</p>',
+		'<p class="entry-meta"><time datetime="%1$s">%2$s</time>%3$s%4$s</p>',
 		esc_attr( get_the_date( 'c' ) ),
 		esc_html( get_the_date() ),
 		get_the_modified_date( 'Y-m-d' ) !== get_the_date( 'Y-m-d' )
 			? ' · ' . esc_html__( 'Actualizado', 'feelolab' ) . ' <time datetime="' . esc_attr( get_the_modified_date( 'c' ) ) . '">' . esc_html( get_the_modified_date() ) . '</time>'
-			: ''
+			: '',
+		$reading // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escapado arriba.
 	);
 }
 
@@ -285,4 +294,16 @@ function feelolab_faq_list( array $faqs ): void {
 	}
 	echo '</div>';
 	feelolab_schema_faqs( wp_list_pluck( $faqs, 'ID' ) );
+}
+
+/** Diseño del encabezado: clasico (logo a la izquierda) o centrado. */
+function feelolab_header_layout(): string {
+	return 'centrado' === get_theme_mod( 'feelolab_header_layout', 'clasico' ) ? 'centrado' : 'clasico';
+}
+
+/** Minutos de lectura de la nota actual, a 200 palabras por minuto (mínimo 1). */
+function feelolab_reading_time( ?int $post_id = null ): int {
+	$text  = wp_strip_all_tags( strip_shortcodes( (string) get_post_field( 'post_content', $post_id ?? get_the_ID() ) ) );
+	$words = count( preg_split( '/\s+/u', trim( $text ), -1, PREG_SPLIT_NO_EMPTY ) );
+	return max( 1, (int) ceil( $words / 200 ) );
 }

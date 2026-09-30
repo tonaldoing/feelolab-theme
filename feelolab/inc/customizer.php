@@ -107,9 +107,50 @@ add_action(
 				'panel' => 'feelolab_brand',
 			)
 		);
+		feelolab_customizer_select(
+			$wp_customize,
+			'feelolab_header_layout',
+			__( 'Diseño', 'feelolab' ),
+			'feelolab_header',
+			array(
+				'clasico'  => __( 'Logo a la izquierda, menú a la derecha', 'feelolab' ),
+				'centrado' => __( 'Logo centrado, menú debajo', 'feelolab' ),
+			),
+			'clasico',
+			__( 'En el celular los dos se ven igual: logo y botón de menú.', 'feelolab' )
+		);
 		feelolab_customizer_checkbox( $wp_customize, 'feelolab_header_sticky', __( 'Encabezado fijo al hacer scroll', 'feelolab' ), 'feelolab_header', true );
+		feelolab_customizer_checkbox( $wp_customize, 'feelolab_header_search', __( 'Mostrar buscador', 'feelolab' ), 'feelolab_header', false );
 		feelolab_customizer_text( $wp_customize, 'feelolab_header_cta_text', __( 'Botón del encabezado: texto', 'feelolab' ), 'feelolab_header', '' );
 		feelolab_customizer_text( $wp_customize, 'feelolab_header_cta_url', __( 'Botón del encabezado: link', 'feelolab' ), 'feelolab_header', '', 'url' );
+
+		feelolab_customizer_checkbox( $wp_customize, 'feelolab_header_transparent', __( 'Transparente sobre la portada', 'feelolab' ), 'feelolab_header', false );
+		$wp_customize->get_control( 'feelolab_header_transparent' )->description = __( 'Solo en la home y cuando la portada usa "Imagen de fondo a todo el ancho". Al hacer scroll vuelve a su color.', 'feelolab' );
+		$wp_customize->add_setting(
+			'feelolab_logo_light',
+			array(
+				'default'           => 0,
+				'sanitize_callback' => 'absint',
+			)
+		);
+		$wp_customize->add_control(
+			new WP_Customize_Media_Control(
+				$wp_customize,
+				'feelolab_logo_light',
+				array(
+					'label'           => __( 'Logo claro (para el encabezado transparente)', 'feelolab' ),
+					'description'     => __( 'Una versión blanca o clara del logo, que se lea sobre la foto. Si no la cargás, se usa el logo de siempre.', 'feelolab' ),
+					'section'         => 'feelolab_header',
+					'mime_type'       => 'image',
+					'active_callback' => static fn() => (bool) get_theme_mod( 'feelolab_header_transparent', false ),
+				)
+			)
+		);
+
+		feelolab_customizer_checkbox( $wp_customize, 'feelolab_topbar', __( 'Barra superior con contacto y redes', 'feelolab' ), 'feelolab_header', false );
+		$wp_customize->get_control( 'feelolab_topbar' )->description = __( 'Muestra el teléfono, WhatsApp, email y redes cargados en Ajustes del sitio.', 'feelolab' );
+		feelolab_customizer_text( $wp_customize, 'feelolab_topbar_text', __( 'Barra superior: texto corto (opcional)', 'feelolab' ), 'feelolab_header', '' );
+		$wp_customize->get_control( 'feelolab_topbar_text' )->active_callback = static fn() => (bool) get_theme_mod( 'feelolab_topbar', false );
 
 		/* ---------- Footer ---------- */
 		$wp_customize->add_section(
@@ -120,7 +161,32 @@ add_action(
 			)
 		);
 		feelolab_customizer_text( $wp_customize, 'feelolab_footer_text', __( 'Texto breve bajo el logo', 'feelolab' ), 'feelolab_footer', '', 'textarea' );
+		feelolab_customizer_select(
+			$wp_customize,
+			'feelolab_footer_style',
+			__( 'Estilo', 'feelolab' ),
+			'feelolab_footer',
+			array(
+				'marca' => __( 'Del color secundario de la marca', 'feelolab' ),
+				'claro' => __( 'Claro', 'feelolab' ),
+			),
+			'marca',
+			__( 'Para sumar columnas (horarios, links, un texto), agregá widgets en Apariencia → Widgets → Pie de página: columnas.', 'feelolab' )
+		);
 		feelolab_customizer_checkbox( $wp_customize, 'feelolab_footer_credit', __( 'Mostrar "Sitio hecho por FeeloLab" (con link a feelolab.com)', 'feelolab' ), 'feelolab_footer', true );
+
+		/* ---------- Blog ---------- */
+		$wp_customize->add_section(
+			'feelolab_blog',
+			array(
+				'title' => __( 'Blog', 'feelolab' ),
+				'panel' => 'feelolab_brand',
+			)
+		);
+		feelolab_customizer_checkbox( $wp_customize, 'feelolab_blog_reading_time', __( 'Mostrar el tiempo de lectura', 'feelolab' ), 'feelolab_blog', true );
+		feelolab_customizer_checkbox( $wp_customize, 'feelolab_blog_share', __( 'Mostrar botones para compartir', 'feelolab' ), 'feelolab_blog', true );
+		feelolab_customizer_checkbox( $wp_customize, 'feelolab_blog_author', __( 'Mostrar el recuadro del autor', 'feelolab' ), 'feelolab_blog', true );
+		$wp_customize->get_control( 'feelolab_blog_author' )->description = __( 'Aparece solo si el autor completó su biografía en Usuarios → Perfil.', 'feelolab' );
 
 		/* ---------- Home ---------- */
 		$wp_customize->add_panel(
@@ -128,11 +194,45 @@ add_action(
 			array(
 				'title'           => __( 'Secciones de la home', 'feelolab' ),
 				'priority'        => 26,
-				'description'     => __( 'Prendé, ordená y completá cada sección. El orden es un número: menor va primero.', 'feelolab' ),
+				'description'     => __( 'Ordená las secciones arrastrándolas en "Orden de las secciones" y completá cada una. Los cambios de texto e imágenes se ven al instante.', 'feelolab' ),
 				'active_callback' => 'is_front_page',
 			)
 		);
-		foreach ( feelolab_home_sections() as $key => $section ) {
+		require_once FEELOLAB_DIR . '/inc/class-feelolab-sortable-control.php';
+		$sections = feelolab_home_sections();
+		$items    = array();
+		foreach ( feelolab_home_ordered_keys() as $key ) {
+			$items[ $key ] = $sections[ $key ]['label'];
+		}
+		$wp_customize->add_section(
+			'feelolab_home_order',
+			array(
+				'title'    => __( 'Orden de las secciones', 'feelolab' ),
+				'panel'    => 'feelolab_home',
+				'priority' => 1,
+			)
+		);
+		$wp_customize->add_setting(
+			'feelolab_home_order',
+			array(
+				'default'           => '',
+				'sanitize_callback' => static fn( $value ) => implode( ',', array_intersect( array_map( 'sanitize_key', explode( ',', (string) $value ) ), array_keys( $sections ) ) ),
+			)
+		);
+		$wp_customize->add_control(
+			new Feelolab_Sortable_Control(
+				$wp_customize,
+				'feelolab_home_order',
+				array(
+					'label'       => __( 'Orden de las secciones', 'feelolab' ),
+					'description' => __( 'Arrastrá cada sección o usá las flechas. Las ocultas no se ven en el sitio; se prenden desde el lápiz de cada una.', 'feelolab' ),
+					'section'     => 'feelolab_home_order',
+					'items'       => $items,
+				)
+			)
+		);
+
+		foreach ( $sections as $key => $section ) {
 			if ( ! feelolab_home_section_available( $section ) ) {
 				continue;
 			}
@@ -140,13 +240,14 @@ add_action(
 			$wp_customize->add_section(
 				$section_id,
 				array(
-					'title' => $section['label'],
-					'panel' => 'feelolab_home',
+					'title'    => $section['label'],
+					'panel'    => 'feelolab_home',
+					'priority' => 10 + (int) array_search( $key, array_keys( $items ), true ),
 				)
 			);
 			feelolab_customizer_checkbox( $wp_customize, "feelolab_home_{$key}_show", __( 'Mostrar esta sección', 'feelolab' ), $section_id, $section['show'] );
-			feelolab_customizer_text( $wp_customize, "feelolab_home_{$key}_order", __( 'Orden', 'feelolab' ), $section_id, $section['order'], 'number' );
 
+			$live = array();
 			foreach ( $section['fields'] as $field => $def ) {
 				$id = "feelolab_home_{$key}_{$field}";
 				if ( 'image' === $def['type'] ) {
@@ -168,11 +269,82 @@ add_action(
 							)
 						)
 					);
-					continue;
+				} elseif ( 'select' === $def['type'] ) {
+					feelolab_customizer_select( $wp_customize, $id, $def['label'], $section_id, $def['choices'], $def['default'] );
+				} else {
+					feelolab_customizer_text( $wp_customize, $id, $def['label'], $section_id, $def['default'] ?? '', $def['type'] );
 				}
-				feelolab_customizer_text( $wp_customize, $id, $def['label'], $section_id, $def['default'] ?? '', $def['type'] );
+				// La portada define si el encabezado va transparente: su diseño y su imagen recargan todo.
+				if ( 'hero' !== $key || ! in_array( $field, array( 'layout', 'image' ), true ) ) {
+					$live[] = $id;
+
+					$wp_customize->get_setting( $id )->transport = 'postMessage';
+				}
+			}
+
+			// Vista previa al instante: solo se vuelve a pedir esta sección, no la página entera.
+			if ( $live && isset( $wp_customize->selective_refresh ) ) {
+				$wp_customize->selective_refresh->add_partial(
+					'feelolab_home_' . $key,
+					array(
+						'selector'            => '[data-feelolab-home="' . $key . '"]',
+						'settings'            => $live,
+						'container_inclusive' => true,
+						'fallback_refresh'    => true,
+						'render_callback'     => static function () use ( $key ): void {
+							feelolab_home_render_section( $key, (int) array_search( $key, feelolab_home_active_sections(), true ) );
+						},
+					)
+				);
 			}
 		}
+
+		// Colores, tipografía y forma: se recalcula solo el CSS de marca (con el ajuste de contraste en PHP).
+		$brand = array( 'feelolab_font_pair', 'feelolab_font_size', 'feelolab_radius', 'feelolab_container' );
+		foreach ( array_keys( feelolab_color_settings() ) as $color ) {
+			$brand[] = 'feelolab_color_' . $color;
+		}
+		foreach ( $brand as $id ) {
+			$wp_customize->get_setting( $id )->transport = 'postMessage';
+		}
+		if ( isset( $wp_customize->selective_refresh ) ) {
+			$wp_customize->selective_refresh->add_partial(
+				'feelolab_brand_css',
+				array(
+					'selector'            => '#feelolab-brand-partial',
+					'settings'            => $brand,
+					'container_inclusive' => true,
+					'fallback_refresh'    => true,
+					'render_callback'     => 'feelolab_brand_css_partial',
+				)
+			);
+		}
+	}
+);
+
+/**
+ * Contenedor del CSS de marca para la vista previa en vivo. No se refresca el <style> mismo: el
+ * refresco parcial le pone un title y un <style> con title pasa a ser una hoja "alternativa" que el
+ * navegador no aplica. Llega acá y customizer-preview.js lo copia al <style> del tema.
+ */
+function feelolab_brand_css_partial(): void {
+	echo '<script type="text/css" id="feelolab-brand-partial">' . feelolab_brand_css() . '</script>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS armado con valores saneados; no es ejecutable.
+}
+
+add_action(
+	'wp_footer',
+	static function (): void {
+		if ( is_customize_preview() ) {
+			feelolab_brand_css_partial();
+		}
+	}
+);
+
+/** Vista previa: aplica el CSS de marca refrescado en vivo. */
+add_action(
+	'customize_preview_init',
+	static function (): void {
+		wp_enqueue_script( 'feelolab-customizer-preview', FEELOLAB_URI . '/assets/js/customizer-preview.js', array( 'customize-preview', 'customize-selective-refresh' ), FEELOLAB_VERSION, true );
 	}
 );
 
@@ -181,6 +353,16 @@ add_action(
 	'customize_controls_enqueue_scripts',
 	static function (): void {
 		wp_enqueue_script( 'feelolab-customizer-controls', FEELOLAB_URI . '/assets/js/customizer-controls.js', array( 'customize-controls' ), FEELOLAB_VERSION, true );
+		wp_enqueue_script( 'feelolab-customizer-sortable', FEELOLAB_URI . '/assets/js/customizer-sortable.js', array( 'customize-controls', 'wp-a11y' ), FEELOLAB_VERSION, true );
+		wp_localize_script(
+			'feelolab-customizer-sortable',
+			'feelolabSortable',
+			array(
+				'hidden' => __( 'Oculta', 'feelolab' ),
+				/* translators: 1: sección, 2: posición, 3: total */
+				'moved'  => __( '%1$s, posición %2$d de %3$d', 'feelolab' ),
+			)
+		);
 
 		// Paneles propios de FeeloLab: barra y etiqueta de marca en la lista, cabecera con degradado al abrirlos.
 		$row   = static fn( string $suffix = '' ) => '#accordion-panel-feelolab_brand > .accordion-section-title' . $suffix . ',#accordion-panel-feelolab_home > .accordion-section-title' . $suffix;
@@ -196,6 +378,19 @@ add_action(
 			. $meta( '.panel-title' ) . '{color:#fff}'
 			. $meta( '.customize-panel-back' ) . '{background:transparent;color:#ece7e2;border-right-color:rgb(255 255 255/.2)}'
 			. $meta( '.customize-panel-back:hover' ) . ',' . $meta( '.customize-panel-back:focus' ) . '{background:rgb(255 255 255/.1);color:#b9d101}'
+			// Lista ordenable de secciones.
+			. '.feelolab-sortable{margin:12px 0 0;padding:0;list-style:none}'
+			. '.feelolab-sortable__item{display:flex;align-items:center;gap:4px;margin:0 0 6px;padding:6px 6px 6px 8px;border:1px solid #c3c4c7;border-radius:6px;background:#fff;cursor:grab}'
+			. '.feelolab-sortable__item.is-dragging{opacity:.5;border-style:dashed}'
+			. '.feelolab-sortable__item.is-hidden .feelolab-sortable__label{color:#646970}'
+			. '.feelolab-sortable__handle{color:#646970}'
+			. '.feelolab-sortable__label{flex:1;font-weight:600}'
+			. '.feelolab-sortable__state{padding:0 6px;border-radius:99px;background:#f0f0f1;color:#50575e;font-size:11px}'
+			. '.feelolab-sortable__state:empty{display:none}'
+			. '.feelolab-sortable__btn{display:grid;place-items:center;width:30px;height:30px;padding:0;border:0;border-radius:4px;background:none;color:#1d2327;cursor:pointer}'
+			. '.feelolab-sortable__btn:focus-visible{outline:2px solid #2271b1;outline-offset:0;box-shadow:none}'
+			. '.feelolab-sortable__item button:hover{background:#f0f6e1;color:#4a6400}'
+			. '.feelolab-sortable__item:first-child [data-dir="-1"],.feelolab-sortable__item:last-child [data-dir="1"]{opacity:.35;cursor:default}'
 		);
 
 		wp_localize_script(
