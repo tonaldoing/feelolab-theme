@@ -1,0 +1,4 @@
+Título;Descripción;Precio;Código;Disponible;Categoría
+Producto de prueba e2e;Descripción del producto de prueba.;$ 1.500;E2E-01;Sí;Pruebas
+Otro producto e2e;;$ 2.000;E2E-02;no;Pruebas
+;sin título;$ 1;E2E-X;;

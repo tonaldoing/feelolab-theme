@@ -31,14 +31,14 @@ msgstr "Site content and data for the FeeloLab theme: content types, taxonomies,
 
 #. Author of the plugin
 #: feelolab-core.php
-#: src/Branding.php:135
+#: src/Branding.php:154
 msgid "FeeloLab"
 msgstr "FeeloLab"
 
 #: src/Admin.php:24
 #: src/Admin.php:41
-#: src/Forms/ContactForm.php:145
-#: src/Forms/ContactForm.php:184
+#: src/Forms/ContactForm.php:146
+#: src/Forms/ContactForm.php:185
 #: src/Modules/Registry.php:259
 #: src/Privacy.php:76
 msgid "Mensaje"
@@ -47,9 +47,9 @@ msgstr "Message"
 #: src/Admin.php:27
 #: src/Fields/FieldGroups.php:187
 #: src/Fields/FieldGroups.php:240
-#: src/Forms/ContactForm.php:129
-#: src/Forms/ContactForm.php:182
-#: src/Forms/ContactForm.php:359
+#: src/Forms/ContactForm.php:130
+#: src/Forms/ContactForm.php:183
+#: src/Forms/ContactForm.php:360
 #: src/LlmsTxt.php:76
 #: src/Privacy.php:74
 msgid "Email"
@@ -57,9 +57,9 @@ msgstr "Email"
 
 #: src/Admin.php:28
 #: src/Fields/FieldGroups.php:235
-#: src/Forms/ContactForm.php:130
-#: src/Forms/ContactForm.php:183
-#: src/Forms/ContactForm.php:362
+#: src/Forms/ContactForm.php:131
+#: src/Forms/ContactForm.php:184
+#: src/Forms/ContactForm.php:363
 #: src/LlmsTxt.php:74
 #: src/Privacy.php:75
 #: src/Settings/SiteSettings.php:74
@@ -68,13 +68,13 @@ msgstr "Phone"
 
 #: src/Admin.php:29
 #: src/Admin.php:66
-#: src/Forms/ContactForm.php:365
+#: src/Forms/ContactForm.php:366
 #: src/Privacy.php:77
 msgid "Interés"
 msgstr "Interest"
 
 #: src/Admin.php:30
-#: src/Forms/ContactForm.php:370
+#: src/Forms/ContactForm.php:371
 #: src/Privacy.php:78
 msgid "Enviado desde"
 msgstr "Sent from"
@@ -113,103 +113,103 @@ msgstr "Sent"
 msgid "Feelolab Core: instalá Advanced Custom Fields (versión gratuita) o Secure Custom Fields para editar los campos extra de cada contenido (precio, cargo, horarios…). Sin eso, el sitio funciona pero esos datos no se pueden cargar."
 msgstr "Feelolab Core: install Advanced Custom Fields (free version) or Secure Custom Fields to edit each content's extra fields (price, role, hours…). Without it the site works, but that data can't be entered."
 
-#: src/Branding.php:40
-#: src/Branding.php:130
+#: src/Branding.php:42
+#: src/Branding.php:147
 #: src/Modules/Registry.php:259
 msgid "Mensajes"
 msgstr "Messages"
 
-#: src/Branding.php:41
+#: src/Branding.php:43
 msgid "Todo lo que llega por el formulario de contacto queda guardado acá, aunque el email de aviso falle."
 msgstr "Everything sent through the contact form is saved here, even if the notification email fails."
 
 #. translators: %s: link a FeeloLab
-#: src/Branding.php:75
+#: src/Branding.php:88
 #, php-format
 msgid "Tu sitio, hecho por %s."
 msgstr "Your site, made by %s."
 
-#: src/Branding.php:76
-#: src/Branding.php:113
+#: src/Branding.php:89
+#: src/Branding.php:130
 msgid "(se abre en otra pestaña)"
 msgstr "(opens in a new tab)"
 
-#: src/Branding.php:93
+#: src/Branding.php:108
 #: src/Updater.php:73
 msgid "Al día."
 msgstr "Up to date."
 
 #. translators: %s: versión
-#: src/Branding.php:104
+#: src/Branding.php:119
 #, php-format
 msgid "Versión %s"
 msgstr "Version %s"
 
-#: src/Branding.php:108
+#: src/Branding.php:125
 msgid "Actualizaciones al día"
 msgstr "Updates up to date"
 
-#: src/Branding.php:110
+#: src/Branding.php:127
 msgid "Revisar actualizaciones"
 msgstr "Check for updates"
 
-#: src/Branding.php:112
+#: src/Branding.php:129
 msgid "Personalizar marca"
 msgstr "Customize brand"
 
-#: src/Branding.php:113
+#: src/Branding.php:130
 msgid "Ver sitio"
 msgstr "View site"
 
-#: src/Branding.php:128
+#: src/Branding.php:145
 #: src/Settings/SiteSettings.php:297
 #: src/Settings/SiteSettings.php:298
 #: src/Settings/SiteSettings.php:399
 msgid "Ajustes del sitio"
 msgstr "Site settings"
 
-#: src/Branding.php:129
+#: src/Branding.php:146
 #: src/Settings/ModulesPage.php:30
 #: src/Settings/ModulesPage.php:31
 msgid "Módulos"
 msgstr "Modules"
 
-#: src/Branding.php:131
+#: src/Branding.php:148
 #: src/Launch.php:30
 #: src/Launch.php:31
 #: src/Launch.php:270
 msgid "Lanzamiento"
 msgstr "Launch"
 
-#: src/Branding.php:132
+#: src/Branding.php:149
 #: src/Importer.php:63
 #: src/Importer.php:64
-#: src/Importer.php:87
+#: src/Importer.php:86
 msgid "Importar productos"
 msgstr "Import products"
 
-#: src/Consent.php:51
+#: src/Consent.php:75
 msgid "Usamos cookies para entender cómo se usa el sitio y mejorarlo. Podés aceptarlas o rechazarlas: el sitio funciona igual."
 msgstr "We use cookies to understand how the site is used and improve it. You can accept or reject them: the site works the same."
 
-#: src/Consent.php:59
+#: src/Consent.php:79
 msgid "Aviso de cookies"
 msgstr "Cookie notice"
 
-#: src/Consent.php:63
+#: src/Consent.php:83
 #: src/Forms/Newsletter.php:86
 msgid "Política de privacidad"
 msgstr "Privacy policy"
 
-#: src/Consent.php:67
+#: src/Consent.php:87
 msgid "Aceptar"
 msgstr "Accept"
 
-#: src/Consent.php:68
+#: src/Consent.php:88
 msgid "Rechazar"
 msgstr "Reject"
 
-#: src/Consent.php:112
+#: src/Consent.php:99
 msgid "Preferencias de cookies"
 msgstr "Cookie preferences"
 
@@ -254,13 +254,13 @@ msgid "Preguntas frecuentes de este servicio"
 msgstr "FAQs for this service"
 
 #: src/Fields/FieldGroups.php:111
-#: src/Importer.php:174
-#: src/Importer.php:804
+#: src/Importer.php:173
+#: src/Importer.php:788
 msgid "Precio"
 msgstr "Price"
 
 #: src/Fields/FieldGroups.php:116
-#: src/Importer.php:805
+#: src/Importer.php:789
 msgid "Precio de oferta"
 msgstr "Sale price"
 
@@ -269,17 +269,17 @@ msgid "Si está cargado, el precio normal se muestra tachado."
 msgstr "If set, the regular price is shown struck through."
 
 #: src/Fields/FieldGroups.php:122
-#: src/Importer.php:806
+#: src/Importer.php:790
 msgid "Código / SKU"
 msgstr "Code / SKU"
 
 #: src/Fields/FieldGroups.php:127
-#: src/Importer.php:807
+#: src/Importer.php:791
 msgid "Disponible"
 msgstr "Available"
 
 #: src/Fields/FieldGroups.php:134
-#: src/Importer.php:808
+#: src/Importer.php:792
 msgid "Ficha técnica"
 msgstr "Specifications"
 
@@ -325,9 +325,9 @@ msgid "Cargo"
 msgstr "Role"
 
 #: src/Fields/FieldGroups.php:204
-#: src/Forms/ContactForm.php:128
-#: src/Forms/ContactForm.php:181
-#: src/Forms/ContactForm.php:358
+#: src/Forms/ContactForm.php:129
+#: src/Forms/ContactForm.php:182
+#: src/Forms/ContactForm.php:359
 msgid "Nombre"
 msgstr "Name"
 
@@ -381,72 +381,72 @@ msgstr "Uses the address above. It only loads when the person asks for it."
 msgid "Sitio web"
 msgstr "Website"
 
-#: src/Forms/ContactForm.php:102
+#: src/Forms/ContactForm.php:103
 msgid "¡Gracias! Recibimos tu mensaje y te respondemos a la brevedad."
 msgstr "Thank you! We got your message and will reply shortly."
 
-#: src/Forms/ContactForm.php:106
+#: src/Forms/ContactForm.php:107
 msgid "Revisá estos campos:"
 msgstr "Please check these fields:"
 
-#: src/Forms/ContactForm.php:135
+#: src/Forms/ContactForm.php:136
 msgid "¿Qué te interesa?"
 msgstr "What are you interested in?"
 
-#: src/Forms/ContactForm.php:135
-#: src/Forms/ContactForm.php:211
+#: src/Forms/ContactForm.php:136
+#: src/Forms/ContactForm.php:212
 msgid "(opcional)"
 msgstr "(optional)"
 
-#: src/Forms/ContactForm.php:137
+#: src/Forms/ContactForm.php:138
 msgid "Elegí una opción"
 msgstr "Choose an option"
 
 #. translators: %s: link a la política de privacidad
-#: src/Forms/ContactForm.php:156
+#: src/Forms/ContactForm.php:157
 #, php-format
 msgid "Acepto la %s."
 msgstr "I accept the %s."
 
-#: src/Forms/ContactForm.php:157
+#: src/Forms/ContactForm.php:158
 msgid "política de privacidad"
 msgstr "privacy policy"
 
-#: src/Forms/ContactForm.php:171
+#: src/Forms/ContactForm.php:172
 msgid "Enviar mensaje"
 msgstr "Send message"
 
 #. translators: %s: nombre del campo
-#: src/Forms/ContactForm.php:279
+#: src/Forms/ContactForm.php:280
 #, php-format
 msgid "Completá el campo %s."
 msgstr "Please fill in the %s field."
 
 #. translators: %s: nombre del campo
-#: src/Forms/ContactForm.php:282
+#: src/Forms/ContactForm.php:283
 #, php-format
 msgid "El campo %s es demasiado largo."
 msgstr "The %s field is too long."
 
-#: src/Forms/ContactForm.php:293
+#: src/Forms/ContactForm.php:294
 #: src/Forms/Newsletter.php:50
 msgid "El email no parece válido. Revisalo, por ejemplo nombre@dominio.com."
 msgstr "That email doesn't look valid. Please check it, for example name@domain.com."
 
-#: src/Forms/ContactForm.php:296
+#: src/Forms/ContactForm.php:297
 msgid "Para enviar el mensaje tenés que aceptar la política de privacidad."
 msgstr "To send the message you need to accept the privacy policy."
 
-#: src/Forms/ContactForm.php:299
+#: src/Forms/ContactForm.php:300
 msgid "Recibimos varios mensajes seguidos desde tu conexión. Esperá unos minutos y volvé a intentar."
 msgstr "We got several messages in a row from your connection. Wait a few minutes and try again."
 
-#: src/Forms/ContactForm.php:302
+#: src/Forms/ContactForm.php:303
 msgid "No pudimos verificar que no seas un robot. Volvé a intentar."
 msgstr "We couldn't verify you're not a robot. Please try again."
 
 #. translators: 1: sitio, 2: nombre
-#: src/Forms/ContactForm.php:356
+#: src/Forms/ContactForm.php:357
 #, php-format
 msgid "[%1$s] Nuevo mensaje de %2$s"
 msgstr "[%1$s] New message from %2$s"
@@ -483,22 +483,22 @@ msgid "Acepto recibir emails de %s. Me puedo dar de baja cuando quiera."
 msgstr "I agree to receive emails from %s. I can unsubscribe anytime."
 
 #. translators: %s: email
-#: src/Forms/Newsletter.php:225
+#: src/Forms/Newsletter.php:238
 #, php-format
 msgid "Suscripción al newsletter — %s"
 msgstr "Newsletter subscription — %s"
 
 #. translators: %s: Brevo o Mailchimp
-#: src/Forms/Newsletter.php:230
+#: src/Forms/Newsletter.php:243
 #, php-format
 msgid "No se pudo enviar a %s: quedó guardada acá. Cargala a mano o revisá la clave y la lista en Ajustes del sitio → Newsletter."
 msgstr "Couldn't send it to %s: it was saved here. Add it manually or check the key and list in Site settings → Newsletter."
 
-#: src/Forms/Newsletter.php:231
+#: src/Forms/Newsletter.php:244
 msgid "Pidió recibir el newsletter."
 msgstr "Asked to receive the newsletter."
 
-#: src/Frontend.php:116
+#: src/Frontend.php:126
 msgid "Escribinos por WhatsApp (se abre en otra pestaña)"
 msgstr "Message us on WhatsApp (opens in a new tab)"
 
@@ -530,153 +530,153 @@ msgstr "Choose gallery images"
 msgid "Agregar a la galería"
 msgstr "Add to gallery"
 
-#: src/Importer.php:88
+#: src/Importer.php:87
 msgid "Cargá muchos productos de una vez desde una planilla. Si un producto ya existe, se actualiza: podés corregir la planilla y volver a importar."
 msgstr "Load many products at once from a spreadsheet. If a product already exists, it gets updated: you can fix the spreadsheet and import again."
 
-#: src/Importer.php:93
+#: src/Importer.php:92
 msgid "Primero activá el módulo Productos."
 msgstr "First turn on the Products module."
 
-#: src/Importer.php:93
+#: src/Importer.php:92
 msgid "Ir a Módulos"
 msgstr "Go to Modules"
 
-#: src/Importer.php:98
+#: src/Importer.php:97
 msgid "No llegó ningún archivo, o no es un CSV. En Excel o Google Sheets: Archivo → Descargar / Guardar como → CSV."
 msgstr "No file arrived, or it isn't a CSV. In Excel or Google Sheets: File → Download / Save as → CSV."
 
-#: src/Importer.php:99
+#: src/Importer.php:98
 msgid "La planilla no tiene una columna \"titulo\" (o \"nombre\"). Es la única obligatoria: fijate que esté en la primera fila."
 msgstr "The spreadsheet has no \"titulo\" (or \"nombre\" / \"title\") column. It's the only required one: make sure it's in the first row."
 
-#: src/Importer.php:100
+#: src/Importer.php:99
 msgid "La planilla no tiene filas con productos debajo de los títulos de columna."
 msgstr "The spreadsheet has no product rows under the column titles."
 
-#: src/Importer.php:102
+#: src/Importer.php:101
 msgid "No se pudo leer el archivo."
 msgstr "The file couldn't be read."
 
-#: src/Importer.php:120
+#: src/Importer.php:119
 msgid "Subí la planilla"
 msgstr "Upload the spreadsheet"
 
-#: src/Importer.php:123
+#: src/Importer.php:122
 msgid "Bajá la plantilla y completala en Excel o Google Sheets (una fila por producto)."
 msgstr "Download the template and fill it in with Excel or Google Sheets (one row per product)."
 
-#: src/Importer.php:124
+#: src/Importer.php:123
 msgid "Descargar plantilla"
 msgstr "Download template"
 
-#: src/Importer.php:126
+#: src/Importer.php:125
 msgid "Guardala como CSV (Archivo → Descargar → CSV)."
 msgstr "Save it as CSV (File → Download → CSV)."
 
-#: src/Importer.php:127
+#: src/Importer.php:126
 msgid "Subila acá. Antes de importar vas a ver cómo se leyó."
 msgstr "Upload it here. Before importing you'll see how it was read."
 
-#: src/Importer.php:133
+#: src/Importer.php:132
 msgid "Archivo CSV"
 msgstr "CSV file"
 
-#: src/Importer.php:137
+#: src/Importer.php:136
 msgid "Las fotos pueden ser links (https://…) o nombres de archivos que ya estén en la Biblioteca de medios. Varias fotos se separan con |; la primera es la principal."
 msgstr "Photos can be links (https://…) or names of files already in the Media Library. Separate several photos with |; the first one is the main photo."
 
-#: src/Importer.php:139
+#: src/Importer.php:138
 msgid "Subir y revisar"
 msgstr "Upload and review"
 
 #. translators: %d: cantidad de productos
-#: src/Importer.php:154
+#: src/Importer.php:153
 #, php-format
 msgid "Revisá antes de importar: %d producto"
 msgid_plural "Revisá antes de importar: %d productos"
 msgstr[0] "Review before importing: %d product"
 msgstr[1] "Review before importing: %d products"
 
-#: src/Importer.php:158
+#: src/Importer.php:157
 msgid "Columnas"
 msgstr "Columns"
 
-#: src/Importer.php:164
+#: src/Importer.php:163
 msgid "no se usa"
 msgstr "not used"
 
-#: src/Importer.php:169
+#: src/Importer.php:168
 msgid "Primeras filas"
 msgstr "First rows"
 
-#: src/Importer.php:173
-#: src/Importer.php:801
+#: src/Importer.php:172
+#: src/Importer.php:785
 msgid "Título"
 msgstr "Title"
 
-#: src/Importer.php:175
+#: src/Importer.php:174
 msgid "Código"
 msgstr "Code"
 
-#: src/Importer.php:176
-#: src/Importer.php:810
+#: src/Importer.php:175
+#: src/Importer.php:794
 msgid "Categorías"
 msgstr "Categories"
 
-#: src/Importer.php:177
-#: src/Importer.php:812
+#: src/Importer.php:176
+#: src/Importer.php:796
 msgid "Fotos"
 msgstr "Photos"
 
-#: src/Importer.php:178
+#: src/Importer.php:177
 msgid "Qué va a pasar"
 msgstr "What will happen"
 
-#: src/Importer.php:189
+#: src/Importer.php:188
 msgid "Se saltea: sin título"
 msgstr "Skipped: no title"
 
-#: src/Importer.php:189
+#: src/Importer.php:188
 msgid "Actualiza el existente"
 msgstr "Updates the existing one"
 
-#: src/Importer.php:189
+#: src/Importer.php:188
 msgid "Crea uno nuevo"
 msgstr "Creates a new one"
 
-#: src/Importer.php:197
+#: src/Importer.php:196
 msgid "Progreso de la importación"
 msgstr "Import progress"
 
 #. translators: 1: importados, 2: total
-#: src/Importer.php:207
+#: src/Importer.php:206
 #, php-format
 msgid "Seguir importando (%1$d de %2$d)"
 msgstr "Continue importing (%1$d of %2$d)"
 
 #. translators: %d: cantidad
-#: src/Importer.php:209
+#: src/Importer.php:208
 #, php-format
 msgid "Importar %d producto"
 msgid_plural "Importar %d productos"
 msgstr[0] "Import %d product"
 msgstr[1] "Import %d products"
 
-#: src/Importer.php:213
+#: src/Importer.php:212
 msgid "Cancelar y subir otro archivo"
 msgstr "Cancel and upload another file"
 
-#: src/Importer.php:215
+#: src/Importer.php:214
 msgid "No cierres esta pestaña mientras importa. Si se corta, volvé a esta pantalla y seguí desde donde quedó."
 msgstr "Don't close this tab while importing. If it stops, come back to this screen and continue from where it left off."
 
-#: src/Importer.php:227
+#: src/Importer.php:225
 msgid "Importación terminada"
 msgstr "Import finished"
 
 #. translators: %d: cantidad
-#: src/Importer.php:230
+#: src/Importer.php:228
 #, php-format
 msgid "%d producto nuevo"
 msgid_plural "%d productos nuevos"
@@ -684,7 +684,7 @@ msgstr[0] "%d new product"
 msgstr[1] "%d new products"
 
 #. translators: %d: cantidad
-#: src/Importer.php:232
+#: src/Importer.php:230
 #, php-format
 msgid "%d actualizado"
 msgid_plural "%d actualizados"
@@ -692,90 +692,90 @@ msgstr[0] "%d updated"
 msgstr[1] "%d updated"
 
 #. translators: %d: cantidad
-#: src/Importer.php:234
+#: src/Importer.php:232
 #, php-format
 msgid "%d aviso"
 msgid_plural "%d avisos"
 msgstr[0] "%d notice"
 msgstr[1] "%d notices"
 
-#: src/Importer.php:237
+#: src/Importer.php:235
 msgid "Para revisar"
 msgstr "To review"
 
-#: src/Importer.php:245
+#: src/Importer.php:243
 msgid "Ver los productos"
 msgstr "View products"
 
-#: src/Importer.php:246
+#: src/Importer.php:244
 msgid "Importar otra planilla"
 msgstr "Import another spreadsheet"
 
 #. translators: 1: procesados, 2: total
-#: src/Importer.php:255
+#: src/Branding.php:69
 #, php-format
 msgid "Importando: %1$d de %2$d…"
 msgstr "Importing: %1$d of %2$d…"
 
-#: src/Importer.php:256
+#: src/Branding.php:70
 msgid "Se cortó la conexión. Tocá \"Seguir importando\" para continuar desde donde quedó."
 msgstr "The connection dropped. Tap \"Continue importing\" to resume from where it left off."
 
-#: src/Importer.php:257
+#: src/Branding.php:71
 msgid "Seguir importando"
 msgstr "Continue importing"
 
-#: src/Importer.php:306
-#: src/Importer.php:379
-#: src/Importer.php:394
+#: src/Importer.php:252
+#: src/Importer.php:338
+#: src/Importer.php:353
 msgid "No tenés permisos para importar."
 msgstr "You don't have permission to import."
 
 #. translators: %d: número de fila
-#: src/Importer.php:472
+#: src/Importer.php:430
 #, php-format
 msgid "Fila %d:"
 msgstr "Row %d:"
 
-#: src/Importer.php:477
+#: src/Importer.php:435
 msgid "no tiene título, se salteó."
 msgstr "has no title, it was skipped."
 
 #. translators: 1: foto, 2: motivo
-#: src/Importer.php:535
+#: src/Importer.php:493
 #, php-format
 msgid "no se pudo usar la foto \"%1$s\" (%2$s)."
 msgstr "couldn't use the photo \"%1$s\" (%2$s)."
 
-#: src/Importer.php:686
+#: src/Importer.php:644
 msgid "no está en la Biblioteca de medios"
 msgstr "it isn't in the Media Library"
 
-#: src/Importer.php:802
+#: src/Importer.php:786
 msgid "Descripción"
 msgstr "Description"
 
-#: src/Importer.php:803
+#: src/Importer.php:787
 msgid "Resumen"
 msgstr "Summary"
 
-#: src/Importer.php:809
+#: src/Importer.php:793
 msgid "Opciones"
 msgstr "Options"
 
-#: src/Importer.php:811
+#: src/Importer.php:795
 #: src/Launch.php:105
 #: src/Launch.php:114
 #: src/Modules/Registry.php:67
-#: src/Wizard.php:99
+#: src/Wizard.php:94
 msgid "Marca"
 msgstr "Brand"
 
-#: src/Importer.php:813
+#: src/Importer.php:797
 msgid "Slug (dirección)"
 msgstr "Slug (address)"
 
-#: src/Importer.php:814
+#: src/Importer.php:798
 msgid "Orden"
 msgstr "Order"
 
@@ -849,7 +849,7 @@ msgstr "It's the one shown in the browser tab and in Google results on phones."
 #: src/Launch.php:141
 #: src/Launch.php:150
 #: src/Settings/SiteSettings.php:30
-#: src/Wizard.php:97
+#: src/Wizard.php:92
 msgid "Negocio"
 msgstr "Business"
 
@@ -888,8 +888,8 @@ msgstr "A local business without an address loses its Google Maps listing."
 #: src/Launch.php:159
 #: src/Launch.php:168
 #: src/Launch.php:177
-#: src/LlmsTxt.php:137
-#: src/Wizard.php:101
+#: src/LlmsTxt.php:142
+#: src/Wizard.php:96
 msgid "Páginas"
 msgstr "Pages"
 
@@ -1003,7 +1003,7 @@ msgid "Lo importante está resuelto. Quedan recomendaciones."
 msgstr "The important things are done. Some recommendations remain."
 
 #: src/Launch.php:300
-#: src/Wizard.php:102
+#: src/Wizard.php:97
 msgid "Listo"
 msgstr "Done"
 
@@ -1065,8 +1065,8 @@ msgstr "Team"
 msgid "Preguntas frecuentes"
 msgstr "FAQ"
 
-#: src/LlmsTxt.php:153
-#: src/Wizard.php:248
+#: src/LlmsTxt.php:158
+#: src/Wizard.php:254
 msgid "Blog"
 msgstr "Blog"
 
@@ -1476,8 +1476,8 @@ msgid "Opcional, para negocios locales: $, $$, $$$."
 msgstr "Optional, for local businesses: $, $$, $$$."
 
 #: src/Settings/SiteSettings.php:71
-#: src/Wizard.php:98
-#: src/Wizard.php:247
+#: src/Wizard.php:93
+#: src/Wizard.php:253
 msgid "Contacto"
 msgstr "Contact"
 
@@ -1768,7 +1768,7 @@ msgid "Guardar cambios"
 msgstr "Save changes"
 
 #: src/Settings/SiteSettings.php:472
-#: src/Wizard.php:461
+#: src/Wizard.php:467
 msgid "— Elegir —"
 msgstr "— Choose —"
 
@@ -1796,11 +1796,11 @@ msgstr "Couldn't reach GitHub: %s"
 msgid "Todavía no hay versiones publicadas."
 msgstr "No versions published yet."
 
-#: src/Updater.php:324
+#: src/Updater.php:345
 msgid "Sin notas de versión."
 msgstr "No release notes."
 
-#: src/Branding.php:133
+#: src/Branding.php:152
 #: src/Versions.php:32
 #: src/Versions.php:33
 #: src/Versions.php:143
@@ -1913,186 +1913,186 @@ msgstr "WordPress will then offer the latest version again. Update when FeeloLab
 msgid "Todavía no hay versiones anteriores disponibles para volver."
 msgstr "There are no previous versions to go back to yet."
 
-#: src/Wizard.php:41
 #: src/Wizard.php:42
-#: src/Wizard.php:389
+#: src/Wizard.php:43
+#: src/Wizard.php:395
 msgid "Primeros pasos"
 msgstr "Getting started"
 
-#: src/Wizard.php:81
+#: src/Wizard.php:76
 msgid "FeeloLab:"
 msgstr "FeeloLab:"
 
-#: src/Wizard.php:82
+#: src/Wizard.php:77
 msgid "dejá el sitio listo en cinco pasos: datos del negocio, marca, contenidos y páginas."
 msgstr "get the site ready in five steps: business details, brand, content and pages."
 
-#: src/Wizard.php:84
+#: src/Wizard.php:79
 msgid "Empezar"
 msgstr "Start"
 
-#: src/Wizard.php:86
+#: src/Wizard.php:81
 msgid "Ya está configurado, no mostrar más"
 msgstr "It's already set up, don't show again"
 
-#: src/Wizard.php:100
+#: src/Wizard.php:95
 msgid "Contenidos"
 msgstr "Content"
 
-#: src/Wizard.php:235
+#: src/Wizard.php:241
 msgid "Direcciones amigables activadas."
 msgstr "Pretty permalinks turned on."
 
 #. translators: %s: zona horaria
-#: src/Wizard.php:241
+#: src/Wizard.php:247
 #, php-format
 msgid "Zona horaria: %s."
 msgstr "Time zone: %s."
 
-#: src/Wizard.php:246
+#: src/Wizard.php:252
 msgid "Inicio"
 msgstr "Home"
 
-#: src/Wizard.php:252
+#: src/Wizard.php:258
 msgid "La portada es la página Inicio, con las secciones de la home."
 msgstr "The front page is the Home page, with the home sections."
 
-#: src/Wizard.php:264
+#: src/Wizard.php:270
 msgid "Política de privacidad publicada (revisala y completala en Ajustes → Privacidad)."
 msgstr "Privacy policy published (review and complete it in Settings → Privacy)."
 
-#: src/Wizard.php:288
+#: src/Wizard.php:294
 msgid "Contenido de ejemplo de WordPress enviado a la papelera."
 msgstr "WordPress sample content moved to the trash."
 
 #. translators: %s: título de la página
-#: src/Wizard.php:324
+#: src/Wizard.php:330
 #, php-format
 msgid "Página \"%s\" creada."
 msgstr "Page \"%s\" created."
 
-#: src/Wizard.php:334
+#: src/Wizard.php:340
 msgid "Menú principal"
 msgstr "Main menu"
 
-#: src/Wizard.php:341
+#: src/Wizard.php:347
 msgid "No se pudo crear el menú."
 msgstr "Couldn't create the menu."
 
-#: src/Wizard.php:376
+#: src/Wizard.php:382
 msgid "Menú principal armado y asignado al encabezado."
 msgstr "Main menu built and assigned to the header."
 
-#: src/Wizard.php:390
+#: src/Wizard.php:396
 msgid "Cinco pasos para dejar el sitio listo. Todo se puede cambiar después, y cualquier paso se puede saltear."
 msgstr "Five steps to get the site ready. Everything can be changed later, and any step can be skipped."
 
-#: src/Wizard.php:421
+#: src/Wizard.php:427
 msgid "Cómo se presenta el negocio. Esto lo usa Google para armar su ficha."
 msgstr "How the business presents itself. Google uses this to build its listing."
 
-#: src/Wizard.php:422
+#: src/Wizard.php:428
 msgid "Aparece en el encabezado, el pie, la página de contacto y el botón de WhatsApp. Completá solo lo que tengas."
 msgstr "Shown in the header, footer, contact page and WhatsApp button. Fill in only what you have."
 
-#: src/Wizard.php:423
+#: src/Wizard.php:429
 msgid "El logo y dos colores alcanzan para que el sitio se vea de la marca. El tema cuida solo que todo se lea bien."
 msgstr "A logo and two colors are enough for the site to look on brand. The theme makes sure everything stays readable."
 
-#: src/Wizard.php:424
+#: src/Wizard.php:430
 msgid "Prendé solo lo que el negocio va a usar: el panel queda más simple. Se puede cambiar cuando quieras en Módulos."
 msgstr "Turn on only what the business will use: the dashboard stays simpler. You can change it anytime in Modules."
 
-#: src/Wizard.php:425
+#: src/Wizard.php:431
 msgid "Lo que casi todos los sitios necesitan. Destildá lo que no quieras; nada de lo que ya existe se duplica."
 msgstr "What almost every site needs. Uncheck what you don't want; nothing that already exists gets duplicated."
 
-#: src/Wizard.php:447
+#: src/Wizard.php:453
 msgid "Armar el sitio"
 msgstr "Build the site"
 
-#: src/Wizard.php:447
+#: src/Wizard.php:453
 msgid "Guardar y seguir"
 msgstr "Save and continue"
 
-#: src/Wizard.php:448
+#: src/Wizard.php:454
 msgid "Saltear este paso"
 msgstr "Skip this step"
 
-#: src/Wizard.php:499
+#: src/Wizard.php:505
 msgid "Logo"
 msgstr "Logo"
 
-#: src/Wizard.php:504
+#: src/Wizard.php:510
 msgid "Ya hay un logo cargado. Subí otro solo si querés reemplazarlo."
 msgstr "A logo is already uploaded. Upload another only if you want to replace it."
 
-#: src/Wizard.php:504
+#: src/Wizard.php:510
 msgid "PNG o WebP con fondo transparente, idealmente horizontal."
 msgstr "PNG or WebP with a transparent background, ideally horizontal."
 
-#: src/Wizard.php:515
+#: src/Wizard.php:521
 msgid "Tipografía"
 msgstr "Typography"
 
-#: src/Wizard.php:527
+#: src/Wizard.php:533
 msgid "Más opciones (colores de texto y fondo, encabezado, portada, fuente propia) en Apariencia → Personalizar, con vista previa en vivo."
 msgstr "More options (text and background colors, header, hero, own font) in Appearance → Customize, with live preview."
 
-#: src/Wizard.php:533
+#: src/Wizard.php:539
 msgid "Contenidos del sitio"
 msgstr "Site content"
 
-#: src/Wizard.php:548
+#: src/Wizard.php:554
 msgid "Crear las páginas Inicio, Contacto (con el formulario) y Blog, y usar Inicio como portada"
 msgstr "Create the Home, Contact (with the form) and Blog pages, and use Home as the front page"
 
-#: src/Wizard.php:549
+#: src/Wizard.php:555
 msgid "Armar el menú principal con esas páginas y los contenidos activos"
 msgstr "Build the main menu with those pages and the active content"
 
-#: src/Wizard.php:550
+#: src/Wizard.php:556
 msgid "Activar las direcciones amigables (/servicios/nombre en lugar de ?p=123)"
 msgstr "Turn on pretty permalinks (/services/name instead of ?p=123)"
 
-#: src/Wizard.php:551
+#: src/Wizard.php:557
 msgid "Publicar la política de privacidad que trae WordPress (después hay que revisarla)"
 msgstr "Publish WordPress's privacy policy (it needs reviewing afterwards)"
 
-#: src/Wizard.php:552
+#: src/Wizard.php:558
 msgid "Mandar a la papelera el contenido de ejemplo (\"Hello world!\", \"Sample Page\")"
 msgstr "Move the sample content to the trash (\"Hello world!\", \"Sample Page\")"
 
-#: src/Wizard.php:554
+#: src/Wizard.php:560
 msgid "Qué armar"
 msgstr "What to build"
 
-#: src/Wizard.php:566
+#: src/Wizard.php:572
 msgid "Zona horaria del negocio"
 msgstr "Business time zone"
 
-#: src/Wizard.php:577
+#: src/Wizard.php:583
 msgid "¡Listo! El sitio ya tiene lo básico. Siguientes pasos:"
 msgstr "Done! The site has the basics. Next steps:"
 
-#: src/Wizard.php:586
+#: src/Wizard.php:592
 msgid "Completar las secciones de la home"
 msgstr "Fill in the home sections"
 
-#: src/Wizard.php:588
+#: src/Wizard.php:594
 msgid "Importar productos desde una planilla"
 msgstr "Import products from a spreadsheet"
 
-#: src/Wizard.php:590
+#: src/Wizard.php:596
 msgid "Revisar el checklist de lanzamiento"
 msgstr "Review the launch checklist"
 
-#: src/Wizard.php:591
+#: src/Wizard.php:597
 msgid "Ver el sitio"
 msgstr "View the site"
 
 #. translators: 1: listado (Servicios, Productos…), 2: negocio, 3: descripción del negocio
-#: src/Schema/Schema.php:411
+#: src/Schema/Schema.php:414
 #, php-format
 msgid "%1$s de %2$s. %3$s"
 msgstr "%1$s by %2$s. %3$s"

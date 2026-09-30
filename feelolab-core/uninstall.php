@@ -31,7 +31,7 @@ if ( ! empty( $feelo_settings['borrar_al_desinstalar'] ) ) {
 	} while ( $feelo_more );
 }
 
-foreach ( array( 'feelo_settings', 'feelo_modules' ) as $feelo_option ) {
+foreach ( array( 'feelo_settings', 'feelo_modules', 'feelo_wizard_done', 'feelo_wizard_pending' ) as $feelo_option ) {
 	delete_option( $feelo_option );
 }
 delete_transient( 'feelo_update_release' );
@@ -41,6 +41,6 @@ delete_site_transient( 'feelo_update_release' );
 // Cachés con clave variable (límite por IP, estado de formularios, importaciones): por prefijo.
 global $wpdb;
 // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- limpieza única al desinstalar.
-$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE '\\_transient\\_feelo\\_%' OR option_name LIKE '\\_transient\\_timeout\\_feelo\\_%' OR option_name LIKE 'feelo\\_import\\_%'" );
+$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE '\\_transient\\_feelo\\_%' OR option_name LIKE '\\_transient\\_timeout\\_feelo\\_%' OR option_name LIKE '\\_site\\_transient\\_feelo\\_%' OR option_name LIKE '\\_site\\_transient\\_timeout\\_feelo\\_%' OR option_name LIKE 'feelo\\_import\\_%'" );
 
 wp_clear_scheduled_hook( 'feelo_privacy_cleanup' );

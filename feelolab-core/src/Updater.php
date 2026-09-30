@@ -165,7 +165,17 @@ final class Updater {
 			return null;
 		}
 		$data = json_decode( wp_remote_retrieve_body( $response ), true );
-		if ( ! is_array( $data ) || empty( $data['version'] ) ) {
+		return is_array( $data ) ? self::parse_manifest( $data ) : null;
+	}
+
+	/**
+	 * Datos de update.json normalizados (versión sin la "v", solo versiones estables en la lista).
+	 *
+	 * @param array<string, mixed> $data update.json decodificado.
+	 * @return array<string, mixed>|null Null si no trae versión.
+	 */
+	public static function parse_manifest( array $data ): ?array {
+		if ( empty( $data['version'] ) || ! is_scalar( $data['version'] ) ) {
 			return null;
 		}
 		return array(
@@ -213,7 +223,18 @@ final class Updater {
 			return 'HTTP ' . $code . ( $hint[ $code ] ?? '' );
 		}
 
-		$data    = json_decode( wp_remote_retrieve_body( $response ), true );
+		$data = json_decode( wp_remote_retrieve_body( $response ), true );
+		return self::parse_api_release( is_array( $data ) ? $data : array(), '' !== self::token() );
+	}
+
+	/**
+	 * Release de la API de GitHub con la forma de update.json.
+	 *
+	 * @param array<string, mixed> $data     Respuesta de /releases/latest.
+	 * @param bool                 $with_api Repo privado (con token): los zips se bajan por la API.
+	 * @return array<string, mixed>
+	 */
+	public static function parse_api_release( array $data, bool $with_api ): array {
 		$release = array(
 			'version'  => ltrim( (string) ( $data['tag_name'] ?? '' ), 'vV' ),
 			'url'      => (string) ( $data['html_url'] ?? '' ),
@@ -224,11 +245,11 @@ final class Updater {
 			'versions' => array(),
 		);
 		foreach ( (array) ( $data['assets'] ?? array() ) as $asset ) {
-			// Repo privado: se descarga por la API (con token). Público: por el link directo.
-			$download = self::token() ? (string) $asset['url'] : (string) $asset['browser_download_url'];
-			if ( self::THEME_ASSET === $asset['name'] ) {
+			$download = (string) ( $with_api ? ( $asset['url'] ?? '' ) : ( $asset['browser_download_url'] ?? '' ) );
+			$name     = (string) ( $asset['name'] ?? '' );
+			if ( self::THEME_ASSET === $name ) {
 				$release['theme'] = $download;
-			} elseif ( self::PLUGIN_ASSET === $asset['name'] ) {
+			} elseif ( self::PLUGIN_ASSET === $name ) {
 				$release['plugin'] = $download;
 			}
 		}

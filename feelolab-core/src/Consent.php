@@ -25,6 +25,29 @@ final class Consent {
 
 	public static function init(): void {
 		add_action( 'wp_footer', array( self::class, 'banner' ), 5 );
+		add_action( 'wp_enqueue_scripts', array( self::class, 'assets' ) );
+	}
+
+	/** JS del banner (y estilos mínimos si el tema activo no es FeeloLab). */
+	public static function assets(): void {
+		if ( ! self::enabled() ) {
+			return;
+		}
+		wp_enqueue_script(
+			'feelo-consent',
+			FEELO_CORE_URL . 'assets/js/consent.js',
+			array(),
+			FEELO_CORE_VERSION,
+			array(
+				'strategy'  => 'defer',
+				'in_footer' => true,
+			)
+		);
+		if ( ! current_theme_supports( 'feelolab-core' ) ) {
+			wp_register_style( 'feelo-consent', false, array(), FEELO_CORE_VERSION );
+			wp_enqueue_style( 'feelo-consent' );
+			wp_add_inline_style( 'feelo-consent', '.feelo-consent{position:fixed;left:1rem;right:1rem;bottom:1rem;z-index:100;max-width:34rem;padding:1rem 1.25rem;border-radius:12px;background:#111;color:#fff;box-shadow:0 10px 30px rgb(0 0 0/.25)}.feelo-consent[hidden]{display:none}.feelo-consent a{color:inherit}.feelo-consent__actions{display:flex;gap:.5rem;margin-top:.75rem}.feelo-consent button{min-height:44px;padding:.5rem 1rem;border:2px solid #fff;border-radius:8px;background:#fff;color:#111;font:inherit;font-weight:700;cursor:pointer}.feelo-consent button+button{background:transparent;color:#fff}' );
+		}
 	}
 
 	public static function enabled(): bool {
@@ -39,9 +62,10 @@ final class Consent {
 		if ( ! self::enabled() ) {
 			return;
 		}
-		?>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){var m=document.cookie.match(/(?:^|; )<?php echo esc_js( self::COOKIE ); ?>=(granted|denied)/);if(m&&m[1]==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}})();</script>
-		<?php
+		$cookie = wp_json_encode( self::COOKIE );
+		wp_print_inline_script_tag(
+			"window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){var m=document.cookie.match(new RegExp('(?:^|; )'+" . $cookie . "+'=(granted|denied)'));if(m&&m[1]==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}})();"
+		);
 	}
 
 	public static function banner(): void {
@@ -51,12 +75,8 @@ final class Consent {
 		$text    = (string) feelo_setting( 'consent_text', __( 'Usamos cookies para entender cómo se usa el sitio y mejorarlo. Podés aceptarlas o rechazarlas: el sitio funciona igual.', 'feelolab-core' ) );
 		$privacy = get_privacy_policy_url();
 
-		if ( ! current_theme_supports( 'feelolab-core' ) ) {
-			// Estilos mínimos si el tema activo no es FeeloLab.
-			echo '<style>.feelo-consent{position:fixed;left:1rem;right:1rem;bottom:1rem;z-index:100;max-width:34rem;padding:1rem 1.25rem;border-radius:12px;background:#111;color:#fff;box-shadow:0 10px 30px rgb(0 0 0/.25)}.feelo-consent a{color:inherit}.feelo-consent__actions{display:flex;gap:.5rem;margin-top:.75rem}.feelo-consent button{min-height:44px;padding:.5rem 1rem;border:2px solid #fff;border-radius:8px;background:#fff;color:#111;font:inherit;font-weight:700;cursor:pointer}.feelo-consent button+button{background:transparent;color:#fff}</style>';
-		}
 		?>
-		<section class="feelo-consent" id="feelo-consent" aria-label="<?php esc_attr_e( 'Aviso de cookies', 'feelolab-core' ); ?>" hidden>
+		<section class="feelo-consent" id="feelo-consent" data-cookie="<?php echo esc_attr( self::COOKIE ); ?>" aria-label="<?php esc_attr_e( 'Aviso de cookies', 'feelolab-core' ); ?>" hidden>
 			<p class="feelo-consent__text">
 				<?php echo esc_html( $text ); ?>
 				<?php if ( $privacy ) : ?>
@@ -68,39 +88,6 @@ final class Consent {
 				<button type="button" class="feelo-consent__btn" data-feelo-consent="denied"><?php esc_html_e( 'Rechazar', 'feelolab-core' ); ?></button>
 			</div>
 		</section>
-		<script>
-		(function () {
-			var box = document.getElementById('feelo-consent');
-			if (!box) { return; }
-			var name = '<?php echo esc_js( self::COOKIE ); ?>';
-			function saved() { var m = document.cookie.match(new RegExp('(?:^|; )' + name + '=(granted|denied)')); return m ? m[1] : ''; }
-			function show() { box.hidden = false; var h = document.documentElement; h.classList.add('feelo-consent-open'); h.style.setProperty('--feelo-consent-h', box.offsetHeight + 'px'); }
-			function hide() { box.hidden = true; document.documentElement.classList.remove('feelo-consent-open'); }
-			function choose(value, opener) {
-				document.cookie = name + '=' + value + '; max-age=15552000; path=/; SameSite=Lax' + (location.protocol === 'https:' ? '; Secure' : '');
-				if (typeof window.gtag === 'function') {
-					var s = value === 'granted' ? 'granted' : 'denied';
-					window.gtag('consent', 'update', { ad_storage: s, ad_user_data: s, ad_personalization: s, analytics_storage: s });
-				}
-				hide();
-				if (opener) { opener.focus(); }
-			}
-			var lastOpener = null;
-			box.addEventListener('click', function (e) {
-				var b = e.target.closest('[data-feelo-consent]');
-				if (b) { choose(b.getAttribute('data-feelo-consent'), lastOpener); lastOpener = null; }
-			});
-			document.addEventListener('click', function (e) {
-				var link = e.target.closest('[data-feelo-consent-open]');
-				if (!link) { return; }
-				e.preventDefault();
-				lastOpener = link;
-				show();
-				box.querySelector('button').focus();
-			});
-			if (!saved()) { show(); }
-		})();
-		</script>
 		<?php
 	}
 

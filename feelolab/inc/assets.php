@@ -59,7 +59,7 @@ add_action(
 add_action(
 	'wp_head',
 	static function (): void {
-		echo "<script>document.documentElement.classList.replace('no-js','js');</script>\n";
+		wp_print_inline_script_tag( "document.documentElement.classList.replace('no-js','js');" );
 	},
 	0
 );

@@ -57,5 +57,7 @@ $feelolab_nets  = array(
 	</ul>
 	<p class="share__status screen-reader-text" role="status"></p>
 </div>
-<?php // Antes de pintar: si no, los botones aparecen con el JS diferido y empujan el contenido (CLS). ?>
-<script>(function(b){if(navigator.share){b.querySelector('.share__native').hidden=false;}if(navigator.clipboard){b.querySelector('.share__copy').hidden=false;}})(document.currentScript.previousElementSibling);</script>
+<?php
+// Antes de pintar: mostrar los botones que el navegador soporta sin mover el layout (CLS).
+wp_print_inline_script_tag( "(function(b){if(navigator.share){b.querySelector('.share__native').hidden=false;}if(navigator.clipboard){b.querySelector('.share__copy').hidden=false;}})(document.currentScript.previousElementSibling);" );
+?>

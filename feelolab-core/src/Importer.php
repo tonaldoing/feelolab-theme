@@ -72,7 +72,6 @@ final class Importer {
 		return add_query_arg( $args, admin_url( 'admin.php?page=' . self::PAGE ) );
 	}
 
-
 	public static function render(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
@@ -216,7 +215,6 @@ final class Importer {
 			</div>
 		</section>
 		<?php
-		self::script();
 	}
 
 	/** @param array<string, mixed> $job */
@@ -249,85 +247,46 @@ final class Importer {
 		<?php
 	}
 
-	private static function script(): void {
-		$i18n = array(
-			/* translators: 1: procesados, 2: total */
-			'progress' => __( 'Importando: %1$d de %2$d…', 'feelolab-core' ),
-			'error'    => __( 'Se cortó la conexión. Tocá "Seguir importando" para continuar desde donde quedó.', 'feelolab-core' ),
-			'resume'   => __( 'Seguir importando', 'feelolab-core' ),
-		);
-		?>
-		<script>
-		(function () {
-			var box = document.querySelector('[data-feelo-import]');
-			if (!box) { return; }
-			var i18n = <?php echo wp_json_encode( $i18n ); ?>;
-			var start = box.querySelector('.feelo-import-start');
-			var bar = box.querySelector('.feelo-progress');
-			var status = box.querySelector('.feelo-import-status');
-			function paint(done, total) {
-				var pct = total ? Math.round(done * 100 / total) : 100;
-				bar.hidden = false;
-				bar.setAttribute('aria-valuenow', pct);
-				bar.firstElementChild.style.width = pct + '%';
-				status.textContent = i18n.progress.replace('%1$d', done).replace('%2$d', total);
-			}
-			function step() {
-				var body = new FormData();
-				body.append('action', 'feelo_import_batch');
-				body.append('_ajax_nonce', box.getAttribute('data-nonce'));
-				fetch(ajaxurl, { method: 'POST', body: body, credentials: 'same-origin' })
-					.then(function (r) { if (!r.ok) { throw new Error(r.status); } return r.json(); })
-					.then(function (res) {
-						if (!res.success) { throw new Error(res.data || 'error'); }
-						paint(res.data.done, res.data.total);
-						if (res.data.finished) { location.reload(); } else { step(); }
-					})
-					.catch(function (err) {
-						console.error('feelolab import:', err.message);
-						status.textContent = i18n.error;
-						start.disabled = false;
-						start.textContent = i18n.resume;
-					});
-			}
-			start.addEventListener('click', function () {
-				start.disabled = true;
-				paint(0, parseInt(box.getAttribute('data-total'), 10));
-				step();
-			});
-		})();
-		</script>
-		<?php
-	}
-
-
 	public static function upload(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_die( esc_html__( 'No tenés permisos para importar.', 'feelolab-core' ), 403 );
 		}
 		check_admin_referer( 'feelo_import_upload' );
 
-		$file = isset( $_FILES['feelo_csv'] ) && is_array( $_FILES['feelo_csv'] ) ? $_FILES['feelo_csv'] : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- se valida abajo (extensión, subida real).
-		$name = isset( $file['name'] ) ? sanitize_file_name( (string) $file['name'] ) : '';
-		$tmp  = isset( $file['tmp_name'] ) ? (string) $file['tmp_name'] : '';
-		if ( ! $tmp || ! is_uploaded_file( $tmp ) || 'csv' !== strtolower( pathinfo( $name, PATHINFO_EXTENSION ) ) ) {
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- lo valida wp_handle_upload (tipo, extensión, subida real).
+		$file = isset( $_FILES['feelo_csv'] ) && is_array( $_FILES['feelo_csv'] ) ? $_FILES['feelo_csv'] : array();
+		if ( empty( $file['tmp_name'] ) ) {
 			self::back( 'archivo' );
 		}
-
-		// Se guarda con nombre al azar fuera de la vista pública (y sin extensión ejecutable).
-		$dir = trailingslashit( wp_upload_dir()['basedir'] ) . 'feelo-import';
-		wp_mkdir_p( $dir );
-		if ( ! file_exists( $dir . '/index.php' ) ) {
-			file_put_contents( $dir . '/index.php', "<?php\n// Silence is golden.\n" ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents
-			file_put_contents( $dir . '/.htaccess', "Require all denied\nDeny from all\n" ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents
-		}
-		$path = $dir . '/' . wp_generate_password( 20, false ) . '.csv';
-		if ( ! move_uploaded_file( $tmp, $path ) ) {
+		require_once ABSPATH . 'wp-admin/includes/file.php';
+		// Carpeta propia (uploads/feelo-import) y nombre al azar: el CSV no queda en una URL adivinable.
+		$dir_filter   = static function ( array $dirs ): array {
+			$dirs['subdir'] = '/feelo-import';
+			$dirs['path']   = $dirs['basedir'] . '/feelo-import';
+			$dirs['url']    = $dirs['baseurl'] . '/feelo-import';
+			return $dirs;
+		};
+		$file['name'] = wp_generate_password( 20, false ) . '.csv';
+		add_filter( 'upload_dir', $dir_filter );
+		$upload = wp_handle_upload(
+			$file,
+			array(
+				'test_form' => false,
+				'mimes'     => array( 'csv' => 'text/csv' ),
+			)
+		);
+		remove_filter( 'upload_dir', $dir_filter );
+		if ( empty( $upload['file'] ) || ! empty( $upload['error'] ) ) {
+			if ( ! empty( $upload['error'] ) ) {
+				error_log( 'feelolab-core: importación, no se pudo subir el CSV: ' . $upload['error'] ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+			}
 			self::back( 'archivo' );
 		}
+		$path = (string) $upload['file'];
+		self::protect_dir( dirname( $path ) );
 		self::normalize_encoding( $path );
 
-		$handle = fopen( $path, 'r' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
+		$handle = fopen( $path, 'r' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen -- lectura fila por fila con fgetcsv; WP_Filesystem no lee por partes.
 		$first  = (string) fgets( $handle );
 		$delim  = self::detect_delimiter( $first );
 		rewind( $handle );
@@ -397,7 +356,7 @@ final class Importer {
 		nocache_headers();
 		header( 'Content-Type: text/csv; charset=utf-8' );
 		header( 'Content-Disposition: attachment; filename="plantilla-productos.csv"' );
-		$out = fopen( 'php://output', 'w' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
+		$out = fopen( 'php://output', 'w' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen -- descarga de la plantilla con fputcsv.
 		fwrite( $out, "\xEF\xBB\xBF" ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
 		$rows = array(
 			array( 'titulo', 'descripcion', 'resumen', 'precio', 'precio_oferta', 'sku', 'disponible', 'ficha_tecnica', 'opciones', 'categorias', 'marca', 'imagenes' ),
@@ -425,7 +384,7 @@ final class Importer {
 			set_time_limit( 120 ); // phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged -- tanda con descargas de fotos.
 		}
 
-		$handle = fopen( $job['file'], 'r' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
+		$handle = fopen( $job['file'], 'r' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen -- lectura fila por fila con fgetcsv; WP_Filesystem no lee por partes.
 		fseek( $handle, (int) $job['offset'] );
 		$processed = 0;
 		while ( $processed < self::BATCH && false !== ( $line = fgetcsv( $handle, 0, $job['delim'], '"', '' ) ) ) { // phpcs:ignore Generic.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition
@@ -459,7 +418,6 @@ final class Importer {
 			)
 		);
 	}
-
 
 	/**
 	 * @param array<string, string> $row  Campos de la fila.
@@ -686,17 +644,43 @@ final class Importer {
 		return new \WP_Error( 'feelo_no_image', __( 'no está en la Biblioteca de medios', 'feelolab-core' ) );
 	}
 
+	/** API de archivos de WordPress (acceso directo al disco: el CSV lo subió el propio sitio). */
+	private static function filesystem(): ?\WP_Filesystem_Base {
+		global $wp_filesystem;
+		require_once ABSPATH . 'wp-admin/includes/file.php';
+		if ( ! $wp_filesystem && ! WP_Filesystem() ) {
+			return null;
+		}
+		return $wp_filesystem;
+	}
+
+	/** La carpeta de importación no se lista ni se sirve (Apache); los nombres ya son al azar. */
+	private static function protect_dir( string $dir ): void {
+		$fs = self::filesystem();
+		if ( ! $fs || $fs->exists( $dir . '/index.php' ) ) {
+			return;
+		}
+		$fs->put_contents( $dir . '/index.php', "<?php\n// Silence is golden.\n", FS_CHMOD_FILE );
+		$fs->put_contents( $dir . '/.htaccess', "Require all denied\nDeny from all\n", FS_CHMOD_FILE );
+	}
 
 	/** Excel en Windows guarda en Windows-1252: se pasa a UTF-8. También se quita el BOM. */
 	private static function normalize_encoding( string $path ): void {
-		$content = (string) file_get_contents( $path ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- archivo local recién subido.
-		$fixed   = str_starts_with( $content, "\xEF\xBB\xBF" ) ? substr( $content, 3 ) : $content;
-		if ( ! mb_check_encoding( $fixed, 'UTF-8' ) ) {
-			$fixed = mb_convert_encoding( $fixed, 'UTF-8', 'Windows-1252' );
+		$fs = self::filesystem();
+		if ( ! $fs ) {
+			return;
 		}
+		$content = (string) $fs->get_contents( $path );
+		$fixed   = self::to_utf8( $content );
 		if ( $fixed !== $content ) {
-			file_put_contents( $path, $fixed ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents
+			$fs->put_contents( $path, $fixed, FS_CHMOD_FILE );
 		}
+	}
+
+	/** Texto de un CSV a UTF-8 sin BOM (Excel en Windows usa Windows-1252). */
+	public static function to_utf8( string $content ): string {
+		$fixed = str_starts_with( $content, "\xEF\xBB\xBF" ) ? substr( $content, 3 ) : $content;
+		return mb_check_encoding( $fixed, 'UTF-8' ) ? $fixed : (string) mb_convert_encoding( $fixed, 'UTF-8', 'Windows-1252' );
 	}
 
 	/** Coma, punto y coma (Excel en español) o tabulación: la que más aparece en la primera fila. */
@@ -750,7 +734,7 @@ final class Importer {
 	/** @return array<int, array<string, string>> Filas desde el inicio (para la vista previa). */
 	private static function read_rows( array $job, int $skip, int $limit ): array {
 		$rows   = array();
-		$handle = fopen( $job['file'], 'r' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
+		$handle = fopen( $job['file'], 'r' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen -- lectura fila por fila con fgetcsv; WP_Filesystem no lee por partes.
 		if ( ! $handle ) {
 			return $rows;
 		}

@@ -15,6 +15,7 @@ final class Frontend {
 		add_action( 'wp_head', array( self::class, 'head' ), 1 );
 		add_action( 'wp_body_open', array( self::class, 'gtm_noscript' ), 1 );
 		add_action( 'wp_footer', array( self::class, 'whatsapp' ), 20 );
+		add_action( 'wp_enqueue_scripts', array( self::class, 'fallback_styles' ) );
 		add_action( 'wp_footer', array( self::class, 'form_focus' ), 30 );
 		add_filter( 'wp_robots', array( self::class, 'robots' ) );
 	}
@@ -47,6 +48,16 @@ final class Frontend {
 		return $robots;
 	}
 
+	/** Estilos mínimos del botón flotante de WhatsApp si el tema activo no es FeeloLab. */
+	public static function fallback_styles(): void {
+		if ( current_theme_supports( 'feelolab-core' ) || ! feelo_setting( 'whatsapp_flotante' ) ) {
+			return;
+		}
+		wp_register_style( 'feelo-whatsapp', false, array(), FEELO_CORE_VERSION );
+		wp_enqueue_style( 'feelo-whatsapp' );
+		wp_add_inline_style( 'feelo-whatsapp', '.feelo-consent-open .feelo-wa{bottom:calc(var(--feelo-consent-h,11rem) + 1.75rem)}.feelo-wa{position:fixed;right:1rem;bottom:1rem;z-index:50;display:grid;place-items:center;width:3.5rem;height:3.5rem;border-radius:50%;background:#1f7a4d;color:#fff}.feelo-wa svg{width:1.75rem;height:1.75rem}.feelo-wa:focus-visible{outline:3px solid #111;outline-offset:3px}' );
+	}
+
 	/** ¿Medimos esta visita? No a quien edita el sitio: ensucia los datos. */
 	private static function should_track(): bool {
 		return ! is_user_logged_in() || ! current_user_can( 'edit_posts' );
@@ -77,15 +88,17 @@ final class Frontend {
 		}
 
 		if ( preg_match( '/^GTM-[A-Z0-9]+$/', $gtm ) ) {
-			// Snippet oficial de GTM; carga async y no bloquea el render.
-			?>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','<?php echo esc_js( $gtm ); ?>');</script>
-			<?php
+			// Snippet oficial de GTM; carga async y no bloquea el render. Va en el <head>, antes que todo.
+			wp_print_inline_script_tag( "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer'," . wp_json_encode( $gtm ) . ');' );
 		} elseif ( preg_match( '/^G-[A-Z0-9]+$/', $ga4 ) ) {
-			?>
-<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo esc_attr( $ga4 ); ?>"></script><?php // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript -- snippet oficial, debe ir primero en el head. ?>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','<?php echo esc_js( $ga4 ); ?>');</script>
-			<?php
+			// Snippet oficial de GA4 (servicio de Google, declarado en el readme).
+			wp_print_script_tag(
+				array(
+					'src'   => esc_url( 'https://www.googletagmanager.com/gtag/js?id=' . $ga4 ),
+					'async' => true,
+				)
+			);
+			wp_print_inline_script_tag( "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config'," . wp_json_encode( $ga4 ) . ');' );
 		}
 	}
 
@@ -107,9 +120,6 @@ final class Frontend {
 		/**
 		 * El tema lo estiliza (.feelo-wa). Si el tema no lo soporta, se agregan estilos mínimos inline.
 		 */
-		if ( ! current_theme_supports( 'feelolab-core' ) ) {
-			echo '<style>.feelo-consent-open .feelo-wa{bottom:calc(var(--feelo-consent-h,11rem) + 1.75rem)}.feelo-wa{position:fixed;right:1rem;bottom:1rem;z-index:50;display:grid;place-items:center;width:3.5rem;height:3.5rem;border-radius:50%;background:#1f7a4d;color:#fff}.feelo-wa svg{width:1.75rem;height:1.75rem}.feelo-wa:focus-visible{outline:3px solid #111;outline-offset:3px}</style>';
-		}
 		printf(
 			'<aside class="feelo-wa-wrap" aria-label="WhatsApp"><a class="feelo-wa" href="%1$s" target="_blank" rel="noopener"><span class="screen-reader-text">%2$s</span>%3$s</a></aside>',
 			esc_url( $url ),
@@ -125,6 +135,6 @@ final class Frontend {
 			return;
 		}
 		// En "load" y después del salto al ancla: si no, el navegador mueve el foco al ancla y lo pisa.
-		echo '<script>addEventListener("load",function(){setTimeout(function(){var n=document.querySelector("[data-feelo-focus]");if(n){n.focus();}},0);});</script>';
+		wp_print_inline_script_tag( 'addEventListener("load",function(){setTimeout(function(){var n=document.querySelector("[data-feelo-focus]");if(n){n.focus();}},0);});' );
 	}
 }

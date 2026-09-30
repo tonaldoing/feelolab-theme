@@ -124,13 +124,16 @@ final class Schema {
 		if ( ! $graph ) {
 			return;
 		}
-		echo "\n<script type=\"application/ld+json\">" . wp_json_encode(
-			array(
-				'@context' => 'https://schema.org',
-				'@graph'   => $graph,
+		wp_print_inline_script_tag(
+			(string) wp_json_encode(
+				array(
+					'@context' => 'https://schema.org',
+					'@graph'   => $graph,
+				),
+				JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG
 			),
-			JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG
-		) . "</script>\n";
+			array( 'type' => 'application/ld+json' )
+		);
 	}
 
 	/** @return array<string, mixed> */

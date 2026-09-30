@@ -20,7 +20,8 @@ defined( 'ABSPATH' ) || exit;
 final class Plugin {
 
 	public static function boot(): void {
-		load_plugin_textdomain( 'feelolab-core', false, dirname( plugin_basename( FEELO_CORE_FILE ) ) . '/languages' );
+		// Traducciones incluidas en /languages (el plugin se distribuye fuera de wordpress.org).
+		load_plugin_textdomain( 'feelolab-core', false, dirname( plugin_basename( FEELO_CORE_FILE ) ) . '/languages' ); // phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound
 
 		add_action( 'init', array( Registry::class, 'register_all' ) );
 		add_action( 'acf/init', array( FieldGroups::class, 'register' ) );
@@ -33,18 +34,24 @@ final class Plugin {
 		Frontend::init();
 		Gallery::init();
 		LlmsTxt::init();
-		Updater::init();
 		Consent::init();
 		Tracking::init();
 		Privacy::init();
 		Media::init();
+		Performance::init();
+		// El actualizador y Versiones no van en la versión de wordpress.org (ahí actualiza WordPress).
+		if ( class_exists( Updater::class ) ) {
+			Updater::init();
+		}
 
 		if ( is_admin() ) {
 			Admin::init();
 			Branding::init();
 			Launch::init();
 			Importer::init();
-			Versions::init();
+			if ( class_exists( Versions::class ) ) {
+				Versions::init();
+			}
 			Wizard::init();
 		}
 	}

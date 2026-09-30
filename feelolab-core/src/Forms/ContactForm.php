@@ -83,7 +83,8 @@ final class ContactForm {
 		$services      = $args['services'] ? self::services() : array();
 		$turnstile_key = (string) feelo_setting( 'turnstile_site' );
 		if ( $turnstile_key ) {
-			wp_enqueue_script( 'cf-turnstile', 'https://challenges.cloudflare.com/turnstile/v0/api.js', array(), null, array( 'strategy' => 'defer', 'in_footer' => true ) ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- script externo versionado por Cloudflare.
+			// Servicio externo opcional (Cloudflare Turnstile, declarado en el readme): su script solo puede venir de Cloudflare.
+			wp_enqueue_script( 'cf-turnstile', 'https://challenges.cloudflare.com/turnstile/v0/api.js', array(), null, array( 'strategy' => 'defer', 'in_footer' => true ) ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion, PluginCheck.CodeAnalysis.EnqueuedResourceOffloading.OffloadedContent -- script del servicio, versionado por Cloudflare.
 		}
 
 		$privacy = get_privacy_policy_url();
@@ -404,8 +405,9 @@ final class ContactForm {
 		if ( '' === $response ) {
 			return false;
 		}
+		// Verificación del servicio Turnstile (declarado en el readme).
 		$result = wp_remote_post(
-			'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+			'https://challenges.cloudflare.com/turnstile/v0/siteverify', // phpcs:ignore PluginCheck.CodeAnalysis.Offloading.OffloadedContent -- API de verificación, no un recurso.
 			array(
 				'timeout' => 8,
 				'body'    => array(

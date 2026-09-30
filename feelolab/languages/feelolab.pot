@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: FeeloLab 0.7.0\n"
-"Report-Msgid-Bugs-To: https://www.feelolab.com\n"
+"Project-Id-Version: FeeloLab 0.8.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/feelolab\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: FeeloLab\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-30T17:46:53+00:00\n"
+"POT-Creation-Date: 2026-09-30T18:50:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: feelolab\n"
@@ -57,7 +57,7 @@ msgid "Comentarios"
 msgstr ""
 
 #: footer.php:29
-#: inc/customizer.php:202
+#: inc/customizer.php:206
 msgid "Pie de página"
 msgstr ""
 
@@ -111,7 +111,7 @@ msgid "Página no encontrada"
 msgstr ""
 
 #: inc/breadcrumbs.php:103
-#: inc/customizer.php:225
+#: inc/customizer.php:229
 #: index.php:16
 msgid "Blog"
 msgstr ""
@@ -284,222 +284,226 @@ msgstr ""
 msgid "Opcional. Si la fuente de textos es \"variable\" (trae todos los pesos), no hace falta."
 msgstr ""
 
-#: inc/customizer.php:96
-msgid "Fuente propia: estilo"
-msgstr ""
-
-#: inc/customizer.php:99
-msgid "Sin serifa (palo seco)"
+#: inc/customizer.php:73
+msgid "WordPress no deja subir fuentes sin un plugin: activá FeeloLab Core para habilitarlo."
 msgstr ""
 
 #: inc/customizer.php:100
-msgid "Con serifa"
+msgid "Fuente propia: estilo"
 msgstr ""
 
 #: inc/customizer.php:103
+msgid "Sin serifa (palo seco)"
+msgstr ""
+
+#: inc/customizer.php:104
+msgid "Con serifa"
+msgstr ""
+
+#: inc/customizer.php:107
 msgid "Define qué fuente del sistema se ve mientras carga la tuya."
 msgstr ""
 
-#: inc/customizer.php:110
+#: inc/customizer.php:114
 msgid "Tamaño de texto base"
 msgstr ""
 
-#: inc/customizer.php:114
+#: inc/customizer.php:118
 msgid "17 px (recomendado)"
 msgstr ""
 
-#: inc/customizer.php:122
+#: inc/customizer.php:126
 msgid "Esquinas"
 msgstr ""
 
-#: inc/customizer.php:125
+#: inc/customizer.php:129
 msgid "Rectas"
 msgstr ""
 
-#: inc/customizer.php:126
+#: inc/customizer.php:130
 msgid "Apenas redondeadas"
 msgstr ""
 
-#: inc/customizer.php:127
+#: inc/customizer.php:131
 msgid "Redondeadas"
 msgstr ""
 
-#: inc/customizer.php:128
+#: inc/customizer.php:132
 msgid "Muy redondeadas"
 msgstr ""
 
-#: inc/customizer.php:135
+#: inc/customizer.php:139
 msgid "Ancho máximo del contenido"
 msgstr ""
 
-#: inc/customizer.php:149
+#: inc/customizer.php:153
 msgid "Encabezado"
 msgstr ""
 
-#: inc/customizer.php:156
+#: inc/customizer.php:160
 #: inc/home.php:33
 msgid "Diseño"
 msgstr ""
 
-#: inc/customizer.php:159
+#: inc/customizer.php:163
 msgid "Logo a la izquierda, menú a la derecha"
 msgstr ""
 
-#: inc/customizer.php:160
+#: inc/customizer.php:164
 msgid "Logo centrado, menú debajo"
 msgstr ""
 
-#: inc/customizer.php:163
+#: inc/customizer.php:167
 msgid "En el celular los dos se ven igual: logo y botón de menú."
 msgstr ""
 
-#: inc/customizer.php:165
+#: inc/customizer.php:169
 msgid "Encabezado fijo al hacer scroll"
 msgstr ""
 
-#: inc/customizer.php:166
+#: inc/customizer.php:170
 msgid "Mostrar buscador"
 msgstr ""
 
-#: inc/customizer.php:167
+#: inc/customizer.php:171
 msgid "Botón del encabezado: texto"
 msgstr ""
 
-#: inc/customizer.php:168
+#: inc/customizer.php:172
 msgid "Botón del encabezado: link"
 msgstr ""
 
-#: inc/customizer.php:170
+#: inc/customizer.php:174
 msgid "Transparente sobre la portada"
 msgstr ""
 
-#: inc/customizer.php:171
+#: inc/customizer.php:175
 msgid "Solo en la home y cuando la portada usa \"Imagen de fondo a todo el ancho\". Al hacer scroll vuelve a su color."
 msgstr ""
 
-#: inc/customizer.php:184
+#: inc/customizer.php:188
 msgid "Logo claro (para el encabezado transparente)"
 msgstr ""
 
-#: inc/customizer.php:185
+#: inc/customizer.php:189
 msgid "Una versión blanca o clara del logo, que se lea sobre la foto. Si no la cargás, se usa el logo de siempre."
 msgstr ""
 
-#: inc/customizer.php:193
+#: inc/customizer.php:197
 msgid "Barra superior con contacto y redes"
 msgstr ""
 
-#: inc/customizer.php:194
+#: inc/customizer.php:198
 msgid "Muestra el teléfono, WhatsApp, email y redes cargados en Ajustes del sitio."
 msgstr ""
 
-#: inc/customizer.php:195
+#: inc/customizer.php:199
 msgid "Barra superior: texto corto (opcional)"
 msgstr ""
 
-#: inc/customizer.php:206
+#: inc/customizer.php:210
 msgid "Texto breve bajo el logo"
 msgstr ""
 
-#: inc/customizer.php:210
+#: inc/customizer.php:214
 msgid "Estilo"
 msgstr ""
 
-#: inc/customizer.php:213
+#: inc/customizer.php:217
 msgid "Del color secundario de la marca"
 msgstr ""
 
-#: inc/customizer.php:214
+#: inc/customizer.php:218
 msgid "Claro"
 msgstr ""
 
-#: inc/customizer.php:217
+#: inc/customizer.php:221
 msgid "Para sumar columnas (horarios, links, un texto), agregá widgets en Apariencia → Widgets → Pie de página: columnas."
 msgstr ""
 
-#: inc/customizer.php:219
+#: inc/customizer.php:223
 msgid "Mostrar \"Sitio hecho por FeeloLab\" (con link a feelolab.com)"
 msgstr ""
 
-#: inc/customizer.php:229
+#: inc/customizer.php:233
 msgid "Mostrar el tiempo de lectura"
 msgstr ""
 
-#: inc/customizer.php:230
+#: inc/customizer.php:234
 msgid "Mostrar botones para compartir"
 msgstr ""
 
-#: inc/customizer.php:231
+#: inc/customizer.php:235
 msgid "Mostrar el recuadro del autor"
 msgstr ""
 
-#: inc/customizer.php:232
+#: inc/customizer.php:236
 msgid "Aparece solo si el autor completó su biografía en Usuarios → Perfil."
 msgstr ""
 
-#: inc/customizer.php:238
+#: inc/customizer.php:242
 msgid "Secciones de la home"
 msgstr ""
 
-#: inc/customizer.php:240
+#: inc/customizer.php:244
 msgid "Ordená las secciones arrastrándolas en \"Orden de las secciones\" y completá cada una. Los cambios de texto e imágenes se ven al instante."
 msgstr ""
 
-#: inc/customizer.php:253
-#: inc/customizer.php:270
+#: inc/customizer.php:257
+#: inc/customizer.php:274
 msgid "Orden de las secciones"
 msgstr ""
 
-#: inc/customizer.php:271
+#: inc/customizer.php:275
 msgid "Arrastrá cada sección o usá las flechas. Las ocultas no se ven en el sitio; se prenden desde el lápiz de cada una."
 msgstr ""
 
-#: inc/customizer.php:291
+#: inc/customizer.php:295
 msgid "Mostrar esta sección"
 msgstr ""
 
-#: inc/customizer.php:404
+#: inc/customizer.php:414
 msgid "Oculta"
 msgstr ""
 
 #. translators: 1: sección, 2: posición, 3: total
-#: inc/customizer.php:406
+#: inc/customizer.php:416
 #, php-format
 msgid "%1$s, posición %2$d de %3$d"
 msgstr ""
 
 #. translators: %s: relación de contraste, por ejemplo 3.2
-#: inc/customizer.php:444
+#: inc/customizer.php:454
 #, php-format
 msgid "El botón casi no se distingue del fondo de la página (%s:1). Se le agrega un borde para que se vea como botón."
 msgstr ""
 
 #. translators: %s: relación de contraste, por ejemplo 3.2
-#: inc/customizer.php:446
+#: inc/customizer.php:456
 #, php-format
 msgid "Este texto no se lee bien sobre el fondo del botón (%s:1, mínimo 4.5:1). El sitio va a usar blanco o negro, el que mejor se lea."
 msgstr ""
 
 #. translators: %s: relación de contraste, por ejemplo 3.2
-#: inc/customizer.php:448
+#: inc/customizer.php:458
 #, php-format
 msgid "Los links tendrían poco contraste con el fondo (%s:1, mínimo 4.5:1). El sitio va a usar una versión más oscura de este color."
 msgstr ""
 
 #. translators: %s: relación de contraste, por ejemplo 3.2
-#: inc/customizer.php:450
+#: inc/customizer.php:460
 #, php-format
 msgid "Los links usan este color y sobre el fondo no se leerían (%s:1). El sitio va a usar una versión más oscura; si preferís otro, elegilo en \"Links y acentos\"."
 msgstr ""
 
 #. translators: %s: relación de contraste, por ejemplo 1.0
-#: inc/customizer.php:452
+#: inc/customizer.php:462
 #, php-format
 msgid "Este color es muy claro para usarlo en links (%s:1 sobre el fondo), así que los links van a usar el color Secundario (o el de Texto). Si preferís otro, elegilo en \"Links y acentos\"."
 msgstr ""
 
 #. translators: %s: relación de contraste, por ejemplo 3.2
-#: inc/customizer.php:454
+#: inc/customizer.php:464
 #, php-format
 msgid "El texto tiene poco contraste con el fondo (%s:1). El tema lo va a oscurecer para que se lea."
 msgstr ""

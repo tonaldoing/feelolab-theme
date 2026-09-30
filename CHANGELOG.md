@@ -2,6 +2,17 @@
 
 Cada versión publicada acá llega a los sitios como actualización (Escritorio → Actualizaciones).
 
+## 0.9.0 — 2026-09-30
+
+- Listo para el directorio de WordPress: el tema y el plugin cumplen las pautas de wordpress.org (Theme Check y Plugin Check sin errores en la versión para el directorio).
+- El asistente de primeros pasos ya no se abre solo al activar el plugin: lo ofrece un aviso en Plugins y en el Escritorio, con la opción de no mostrarlo más.
+- La limpieza de WordPress (emojis, embeds, enlaces sobrantes del encabezado, jQuery Migrate y límite de revisiones) y el permiso para subir fuentes propias pasan del tema al plugin. Todo sigue funcionando igual con los dos activos.
+- Los scripts del banner de cookies, la medición de eventos y el importador pasan a archivos propios, que el navegador guarda en caché.
+- El importador guarda la planilla con las herramientas de subida de WordPress, en una carpeta protegida.
+- Estilos para el contenido del editor clásico: imágenes alineadas, leyendas y galerías.
+- Al borrar el plugin también se borran los datos del asistente y las cachés de actualizaciones.
+- Tema y plugin traen su readme con licencias, créditos de fuentes e íconos, y el detalle de los servicios externos que usan (Google Maps, Cloudflare Turnstile, Brevo, Mailchimp, Google Analytics y Tag Manager).
+
 ## 0.8.1 — 2026-09-30
 
 - Importar productos reconoce la exportación de WooCommerce tal como sale (Productos → Exportar): ahora también toma las columnas de stock y marcas.

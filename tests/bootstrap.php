@@ -72,6 +72,34 @@ function get_the_ID() {
 	return 1;
 }
 
+// Opciones y permisos (lo usan los ajustes del plugin, Medios y el asistente).
+$GLOBALS['feelo_test_options'] = array();
+$GLOBALS['feelo_test_can']     = true;
+function get_option( $name, $fallback = false ) {
+	return $GLOBALS['feelo_test_options'][ $name ] ?? $fallback;
+}
+function current_user_can() {
+	return $GLOBALS['feelo_test_can'];
+}
+function sanitize_key( $key ) {
+	return preg_replace( '/[^a-z0-9_\-]/', '', strtolower( (string) $key ) );
+}
+function wp_unslash( $value ) {
+	return is_string( $value ) ? stripslashes( $value ) : $value;
+}
+function sanitize_text_field( $text ) {
+	return trim( preg_replace( '/[\r\n\t ]+/', ' ', wp_strip_all_tags( (string) $text ) ) );
+}
+function sanitize_textarea_field( $text ) {
+	return trim( strip_tags( (string) $text ) );
+}
+function sanitize_email( $email ) {
+	return filter_var( trim( (string) $email ), FILTER_VALIDATE_EMAIL ) ? trim( (string) $email ) : '';
+}
+function esc_url_raw( $url ) {
+	return preg_match( '#^https?://#i', (string) $url ) ? (string) $url : '';
+}
+
 require FEELOLAB_DIR . '/inc/fonts.php';
 require FEELOLAB_DIR . '/inc/colors.php';
 require FEELOLAB_DIR . '/inc/home.php';

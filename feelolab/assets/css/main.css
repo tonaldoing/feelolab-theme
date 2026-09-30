@@ -69,6 +69,20 @@ hr { border: 0; border-top: 1px solid var(--c-border); margin: 2rem 0; }
 	white-space: nowrap; border: 0;
 }
 
+/* Clases que WordPress genera en contenido clásico (editor viejo, galerías y comentarios). */
+.alignleft { float: left; margin: .25rem 1.5rem 1rem 0; }
+.alignright { float: right; margin: .25rem 0 1rem 1.5rem; }
+.aligncenter { display: block; margin-left: auto; margin-right: auto; }
+.wp-caption { max-width: 100%; margin-bottom: 1.5rem; }
+.wp-caption img { display: block; }
+.wp-caption-text,
+.gallery-caption { margin-top: .5rem; font-size: .875rem; color: var(--c-muted); }
+.bypostauthor > .comment-body { border-left: 3px solid var(--c-primary); padding-left: 1rem; }
+.sticky { position: relative; }
+@media (max-width: 600px) {
+	.alignleft, .alignright { float: none; margin: 0 0 1rem; }
+}
+
 .skip-link {
 	position: absolute; left: 1rem; top: -100px; z-index: 1000;
 	padding: .75rem 1rem;

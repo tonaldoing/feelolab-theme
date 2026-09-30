@@ -16,6 +16,8 @@ defined( 'ABSPATH' ) || exit;
 
 final class Branding {
 
+	public const HOMEPAGE = 'https://www.feelolab.com';
+
 	/**
 	 * Ícono del menú: la marca de FeeloLab (una J redondeada con su hoja), monocromo para que
 	 * WordPress lo pinte con el color del esquema del admin.
@@ -58,6 +60,17 @@ final class Branding {
 			return;
 		}
 		wp_enqueue_style( 'feelo-admin', FEELO_CORE_URL . 'assets/admin.css', array(), FEELO_CORE_VERSION );
+		wp_enqueue_script( 'feelo-admin', FEELO_CORE_URL . 'assets/js/admin.js', array(), FEELO_CORE_VERSION, array( 'in_footer' => true ) );
+		wp_localize_script(
+			'feelo-admin',
+			'feeloAdmin',
+			array(
+				/* translators: 1: procesados, 2: total */
+				'progress' => __( 'Importando: %1$d de %2$d…', 'feelolab-core' ),
+				'error'    => __( 'Se cortó la conexión. Tocá "Seguir importando" para continuar desde donde quedó.', 'feelolab-core' ),
+				'resume'   => __( 'Seguir importando', 'feelolab-core' ),
+			)
+		);
 		// La ardilla del estado vacío de Mensajes, como variable: el CSS no conoce la URL del plugin.
 		wp_add_inline_style( 'feelo-admin', ':root{--feelo-squirrel-megaphone:url(' . esc_url( self::img( 'ardilla-megafono.webp' ) ) . ')}' );
 	}
@@ -73,7 +86,7 @@ final class Branding {
 		return sprintf(
 			/* translators: %s: link a FeeloLab */
 			esc_html__( 'Tu sitio, hecho por %s.', 'feelolab-core' ),
-			'<a href="' . esc_url( Updater::HOMEPAGE ) . '" target="_blank" rel="noopener">FeeloLab<span class="screen-reader-text"> ' . esc_html__( '(se abre en otra pestaña)', 'feelolab-core' ) . '</span></a>'
+			'<a href="' . esc_url( self::HOMEPAGE ) . '" target="_blank" rel="noopener">FeeloLab<span class="screen-reader-text"> ' . esc_html__( '(se abre en otra pestaña)', 'feelolab-core' ) . '</span></a>'
 		);
 	}
 
@@ -89,8 +102,10 @@ final class Branding {
 	 * @param string $subtitle Una frase de qué se hace acá.
 	 */
 	public static function header( string $title, string $subtitle ): void {
-		$status = Updater::status();
-		$ok     = str_contains( $status, __( 'Al día.', 'feelolab-core' ) );
+		// Sin el actualizador propio (versión de wordpress.org) las actualizaciones las muestra WordPress.
+		$updater = class_exists( Updater::class );
+		$status  = $updater ? Updater::status() : '';
+		$ok      = ! $updater || str_contains( $status, __( 'Al día.', 'feelolab-core' ) );
 		?>
 		<header class="feelo-hero">
 			<div class="feelo-hero__body">
@@ -104,7 +119,9 @@ final class Branding {
 						echo esc_html( sprintf( __( 'Versión %s', 'feelolab-core' ), FEELO_CORE_VERSION ) );
 						?>
 					</li>
-					<?php if ( $ok ) : ?>
+					<?php if ( ! $updater ) : ?>
+						<?php // Nada: el estado de las actualizaciones está en Escritorio → Actualizaciones. ?>
+					<?php elseif ( $ok ) : ?>
 						<li class="feelo-chip feelo-chip--ok"><span class="feelo-chip__dot" aria-hidden="true"></span><?php esc_html_e( 'Actualizaciones al día', 'feelolab-core' ); ?></li>
 					<?php else : ?>
 						<li><a class="feelo-chip feelo-chip--warn feelo-chip--link" href="<?php echo esc_url( admin_url( 'update-core.php' ) ); ?>" aria-describedby="feelo-update-note"><span class="feelo-chip__dot" aria-hidden="true"></span><?php esc_html_e( 'Revisar actualizaciones', 'feelolab-core' ); ?></a></li>
@@ -130,8 +147,10 @@ final class Branding {
 			'mensajes'    => array( __( 'Mensajes', 'feelolab-core' ), admin_url( 'edit.php?post_type=feelo_mensaje' ), 'dashicons-email-alt' ),
 			'lanzamiento' => array( __( 'Lanzamiento', 'feelolab-core' ), admin_url( 'admin.php?page=' . Launch::PAGE ), 'dashicons-flag' ),
 			'importar'    => array( __( 'Importar productos', 'feelolab-core' ), admin_url( 'admin.php?page=' . Importer::PAGE ), 'dashicons-database-import' ),
-			'versiones'   => array( __( 'Versiones', 'feelolab-core' ), admin_url( 'admin.php?page=' . Versions::PAGE ), 'dashicons-backup' ),
 		);
+		if ( class_exists( Versions::class ) ) {
+			$items['versiones'] = array( __( 'Versiones', 'feelolab-core' ), admin_url( 'admin.php?page=' . Versions::PAGE ), 'dashicons-backup' );
+		}
 		echo '<nav class="feelo-sections" aria-label="' . esc_attr__( 'FeeloLab', 'feelolab-core' ) . '"><ul>';
 		foreach ( $items as $key => $item ) {
 			printf(

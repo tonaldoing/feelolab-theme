@@ -27,70 +27,23 @@ defined( 'ABSPATH' ) || exit;
 final class Tracking {
 
 	public static function init(): void {
-		add_action( 'wp_footer', array( self::class, 'script' ), 40 );
+		add_action( 'wp_enqueue_scripts', array( self::class, 'assets' ) );
 	}
 
-	public static function script(): void {
+	/** El JS (assets/js/tracking.js) solo se carga si hay GA4 o GTM y esta visita se mide. */
+	public static function assets(): void {
 		if ( ! Frontend::tracking_active() ) {
 			return;
 		}
-		?>
-<script>
-(function () {
-	function send(name, params) {
-		if (typeof window.gtag === 'function') {
-			window.gtag('event', name, params);
-		} else {
-			(window.dataLayer = window.dataLayer || []).push(Object.assign({ event: name }, params));
-		}
-	}
-	function where(el) {
-		if (el.closest('.feelo-wa-wrap')) { return 'flotante'; }
-		if (el.closest('.topbar')) { return 'barra-superior'; }
-		if (el.closest('.site-header')) { return 'encabezado'; }
-		if (el.closest('.site-footer')) { return 'pie'; }
-		var s = el.closest('section[id], [id].section, main [id]');
-		return s ? s.id : 'contenido';
-	}
-	document.addEventListener('click', function (e) {
-		var share = e.target.closest('[data-feelo-share]');
-		if (share) {
-			send('share', { method: share.getAttribute('data-feelo-share'), content_type: 'article', item_id: location.pathname });
-			return;
-		}
-		var a = e.target.closest('a[href]');
-		if (!a) { return; }
-		var href = a.getAttribute('href') || '';
-		var name = /^https:\/\/(wa\.me|api\.whatsapp\.com)\//.test(href) ? 'click_whatsapp' : (/^tel:/.test(href) ? 'click_phone' : (/^mailto:/.test(href) ? 'click_email' : ''));
-		if (!name) { return; }
-		send(name, { feelo_location: where(a), link_text: (a.textContent || '').trim().slice(0, 80), page_path: location.pathname });
-	}, { capture: true });
-	// Formulario enviado: ?feelo_form=ok. Una vez por envío (el parámetro queda en la URL al recargar).
-	if (/[?&]feelo_form=ok\b/.test(location.search)) {
-		var key = 'feelo_lead_' + location.pathname + location.search;
-		try {
-			if (!sessionStorage.getItem(key)) {
-				sessionStorage.setItem(key, '1');
-				send('generate_lead', { feelo_location: 'formulario', page_path: location.pathname });
-			}
-		} catch (err) {
-			send('generate_lead', { feelo_location: 'formulario', page_path: location.pathname });
-		}
-	}
-	// Suscripción al newsletter: ?feelo_news=ok, también una vez por envío.
-	if (/[?&]feelo_news=ok\b/.test(location.search)) {
-		var nkey = 'feelo_signup_' + location.pathname + location.search;
-		try {
-			if (!sessionStorage.getItem(nkey)) {
-				sessionStorage.setItem(nkey, '1');
-				send('sign_up', { method: 'newsletter', page_path: location.pathname });
-			}
-		} catch (err) {
-			send('sign_up', { method: 'newsletter', page_path: location.pathname });
-		}
-	}
-})();
-</script>
-		<?php
+		wp_enqueue_script(
+			'feelo-tracking',
+			FEELO_CORE_URL . 'assets/js/tracking.js',
+			array(),
+			FEELO_CORE_VERSION,
+			array(
+				'strategy'  => 'defer',
+				'in_footer' => true,
+			)
+		);
 	}
 }

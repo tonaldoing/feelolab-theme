@@ -54,7 +54,7 @@ Reglas para que las actualizaciones no rompan nada:
 
 **Fuente propia de la marca**: se suben los .woff2 desde Personalizar (títulos, textos y negrita) y se sirven desde el propio sitio con precarga.
 
-**Primeros pasos**: al activar el plugin se abre un asistente de cinco pasos (negocio, contacto, marca, contenidos y páginas) que crea Inicio, Contacto y Blog, arma el menú, activa las direcciones amigables y borra el contenido de ejemplo. Los sitios ya configurados no lo ven.
+**Primeros pasos**: al activar el plugin, un aviso en Plugins y en el Escritorio ofrece un asistente de cinco pasos (negocio, contacto, marca, contenidos y páginas) que crea Inicio, Contacto y Blog, arma el menú, activa las direcciones amigables y borra el contenido de ejemplo. Los sitios ya configurados no lo ven.
 
 **Versiones**: pantalla con la versión instalada y el changelog, canal beta opcional para un sitio de pruebas y botón para volver a una versión anterior (tema y plugin juntos).
 
@@ -135,10 +135,14 @@ El CI (`.github/workflows/ci.yml`) corre la sintaxis en PHP 8.1, 8.3 y 8.4, WPCS
 | `feelolab_font_stacks` / `feelolab_web_fonts` | Sumar combinaciones tipográficas o fuentes web propias |
 | `feelo_gallery_modules` | Qué módulos tienen galería |
 | `feelo_llms_txt` / `feelo_llms_txt_enabled` | Ajustar o apagar /llms.txt |
-| `feelolab_cleanup` | Reactivar emojis, embeds, etc. |
+| `feelo_cleanup` (o el viejo `feelolab_cleanup`) | Reactivar emojis, embeds, etc. (lo hace el plugin) |
 | `feelolab_breadcrumb_trail` | Modificar las migas |
 
 Para un cliente con necesidades propias, lo recomendado es un **tema hijo**, no editar el tema.
+
+## Versión para wordpress.org
+
+`npm run build:wporg` arma en `dist/wporg/` el tema y el plugin listos para subir al directorio: el mismo código menos el actualizador propio y la pantalla Versiones (ahí actualiza WordPress), con una captura real del tema. Esa versión pasa Theme Check y Plugin Check sin errores. Los sitios de clientes siguen usando los releases de siempre.
 
 ## Próximas fases
 

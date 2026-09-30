@@ -125,14 +125,19 @@ final class LlmsTxt {
 			$lines[] = '';
 		}
 
-		$pages = get_pages(
-			array(
-				'parent'      => 0,
-				'sort_column' => 'menu_order,post_title',
-				'number'      => 20,
-				'exclude'     => array_filter( array( (int) get_option( 'page_on_front' ) ) ),
-			)
+		// La portada se saltea en PHP (con "exclude" la consulta es más cara en sitios grandes).
+		$front = (int) get_option( 'page_on_front' );
+		$pages = array_filter(
+			get_pages(
+				array(
+					'parent'      => 0,
+					'sort_column' => 'menu_order,post_title',
+					'number'      => 21,
+				)
+			),
+			static fn( $page ) => (int) $page->ID !== $front
 		);
+		$pages = array_slice( $pages, 0, 20 );
 		if ( $pages ) {
 			$lines[] = '## ' . __( 'Páginas', 'feelolab-core' );
 			$lines[] = '';

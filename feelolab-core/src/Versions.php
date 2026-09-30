@@ -207,7 +207,7 @@ final class Versions {
 						<?php foreach ( array_slice( $older, 0, 5 ) as $version ) : ?>
 							<li>
 								<span class="feelo-versions__name"><?php echo esc_html( $version ); ?></span>
-								<form method="post" onsubmit="return confirm(this.getAttribute('data-confirm'));" data-confirm="<?php echo esc_attr( sprintf( /* translators: %s: versión */ __( '¿Volver a la versión %s? El sitio sigue funcionando mientras tanto.', 'feelolab-core' ), $version ) ); ?>">
+								<form method="post" data-feelo-confirm="<?php echo esc_attr( sprintf( /* translators: %s: versión */ __( '¿Volver a la versión %s? El sitio sigue funcionando mientras tanto.', 'feelolab-core' ), $version ) ); ?>">
 									<?php wp_nonce_field( 'feelo_rollback' ); ?>
 									<button type="submit" class="button" name="feelo_rollback" value="<?php echo esc_attr( $version ); ?>">
 										<?php

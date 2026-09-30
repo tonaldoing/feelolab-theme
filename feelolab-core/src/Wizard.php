@@ -9,7 +9,8 @@
  * 5. Páginas: crea Inicio, Contacto y Blog, arma el menú, activa las direcciones amigables, la
  *    zona horaria y la política de privacidad, y borra el contenido de ejemplo de WordPress.
  *
- * Se abre solo al activar el plugin por primera vez. Cada paso guarda al avanzar y se puede
+ * Al activar el plugin se ofrece con un aviso en Plugins y en el Escritorio (no se abre solo:
+ * redirigir al activar es mala práctica y rompe las activaciones en lote). Cada paso guarda al avanzar y se puede
  * saltear; todo lo que hace se puede cambiar después desde su pantalla de siempre. Lo que ya
  * existe (páginas, menú) no se duplica: el asistente se puede volver a correr.
  *
@@ -31,7 +32,7 @@ final class Wizard {
 
 	public static function init(): void {
 		add_action( 'admin_menu', array( self::class, 'menu' ), 15 );
-		add_action( 'admin_init', array( self::class, 'maybe_redirect' ) );
+		add_action( 'admin_init', array( self::class, 'maybe_mark_done' ) );
 		add_action( 'admin_notices', array( self::class, 'notice' ) );
 	}
 
@@ -49,31 +50,25 @@ final class Wizard {
 		}
 	}
 
-	/** Al activar el plugin la primera vez, se abre el asistente (una sola vez). */
-	public static function maybe_redirect(): void {
-		// Sitios que ya estaban configurados antes de que existiera el asistente: no se les ofrece.
-		if ( ! get_option( self::DONE ) ) {
-			$settings = (array) get_option( SiteSettings::OPTION, array() );
-			if ( ! empty( $settings['telefono'] ) || ! empty( $settings['whatsapp'] ) || ! empty( $settings['email'] ) ) {
-				update_option( self::DONE, 1 );
-			}
+	/** Sitios que ya estaban configurados antes de que existiera el asistente: no se les ofrece. */
+	public static function maybe_mark_done(): void {
+		if ( get_option( self::PENDING ) ) {
+			delete_option( self::PENDING ); // Marca de versiones viejas, que redirigían al activar.
 		}
-		if ( ! get_option( self::PENDING ) || wp_doing_ajax() || ! current_user_can( 'manage_options' ) ) {
-			return;
+		if ( ! get_option( self::DONE ) && self::already_configured( (array) get_option( SiteSettings::OPTION, array() ) ) ) {
+			update_option( self::DONE, 1 );
 		}
-		delete_option( self::PENDING );
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- activación masiva: no se redirige.
-		if ( isset( $_GET['activate-multi'] ) || get_option( self::DONE ) ) {
-			return;
-		}
-		wp_safe_redirect( self::url() );
-		exit;
 	}
 
-	/** Aviso en el Escritorio hasta que el asistente se termine o se descarte. */
+	/** ¿Hay datos de contacto cargados? Entonces el sitio ya se configuró a mano. */
+	public static function already_configured( array $settings ): bool {
+		return ! empty( $settings['telefono'] ) || ! empty( $settings['whatsapp'] ) || ! empty( $settings['email'] );
+	}
+
+	/** Aviso en Plugins y en el Escritorio hasta que el asistente se termine o se descarte. */
 	public static function notice(): void {
 		$screen = get_current_screen();
-		if ( get_option( self::DONE ) || ! current_user_can( 'manage_options' ) || ! $screen || 'dashboard' !== $screen->id ) {
+		if ( get_option( self::DONE ) || ! current_user_can( 'manage_options' ) || ! $screen || ! in_array( $screen->id, array( 'dashboard', 'plugins' ), true ) ) {
 			return;
 		}
 		printf(
@@ -118,9 +113,20 @@ final class Wizard {
 	}
 
 	private static function next_step( int $step ): int {
-		$keys = array_keys( self::steps() );
-		$i    = array_search( $step, $keys, true );
-		return $keys[ min( count( $keys ) - 1, (int) $i + 1 ) ];
+		return self::following( $step, array_keys( self::steps() ) );
+	}
+
+	/**
+	 * Paso que sigue a $step en la lista (el último se queda en el último).
+	 *
+	 * @param int[] $keys Pasos disponibles, en orden.
+	 */
+	public static function following( int $step, array $keys ): int {
+		$i = array_search( $step, $keys, true );
+		if ( false === $i ) {
+			return $keys[0];
+		}
+		return $keys[ min( count( $keys ) - 1, $i + 1 ) ];
 	}
 
 	public static function handle(): void {

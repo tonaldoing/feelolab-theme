@@ -68,6 +68,10 @@ add_action(
 			'feelolab_font_own_body'      => array( __( 'Fuente propia: textos (.woff2)', 'feelolab' ), __( 'Opcional: si no la cargás, los textos usan la de títulos.', 'feelolab' ) ),
 			'feelolab_font_own_body_bold' => array( __( 'Fuente propia: textos en negrita (.woff2)', 'feelolab' ), __( 'Opcional. Si la fuente de textos es "variable" (trae todos los pesos), no hace falta.', 'feelolab' ) ),
 		);
+		// Subir fuentes a la Biblioteca lo habilita el plugin FeeloLab Core (o cualquier plugin de fuentes).
+		if ( ! array_key_exists( 'woff2', get_allowed_mime_types() ) ) {
+			$own_files['feelolab_font_own_heading'][1] .= ' ' . __( 'WordPress no deja subir fuentes sin un plugin: activá FeeloLab Core para habilitarlo.', 'feelolab' );
+		}
 		foreach ( $own_files as $id => $texts ) {
 			$wp_customize->add_setting(
 				$id,
@@ -371,7 +375,13 @@ add_action(
  * navegador no aplica. Llega acá y customizer-preview.js lo copia al <style> del tema.
  */
 function feelolab_brand_css_partial(): void {
-	echo '<script type="text/css" id="feelolab-brand-partial">' . feelolab_brand_css() . '</script>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS armado con valores saneados; no es ejecutable.
+	wp_print_inline_script_tag(
+		feelolab_brand_css(),
+		array(
+			'type' => 'text/css',
+			'id'   => 'feelolab-brand-partial',
+		)
+	);
 }
 
 add_action(

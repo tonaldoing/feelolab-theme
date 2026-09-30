@@ -47,3 +47,8 @@ jobs:
         run: npm run a11y
       - name: Lighthouse (performance, accesibilidad, SEO, CLS)
         run: node dev/lighthouse-check.mjs
+      # Después de Lighthouse: los tests cargan productos y mensajes de prueba.
+      - name: Tests e2e (formularios, cookies, eventos, importador, asistente, Personalizar)
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+        run: npm run test:e2e

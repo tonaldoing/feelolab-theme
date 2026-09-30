@@ -166,14 +166,14 @@ final class Newsletter {
 	}
 
 	private static function mailchimp( string $email ): bool {
-		$key  = (string) feelo_setting( 'news_api_key' );
-		$list = sanitize_key( (string) feelo_setting( 'news_lista' ) );
-		if ( ! preg_match( '/-([a-z]+\d+)$/', $key, $dc ) || '' === $list ) {
+		$key = (string) feelo_setting( 'news_api_key' );
+		$url = self::mailchimp_url( $key, (string) feelo_setting( 'news_lista' ), $email );
+		if ( '' === $url ) {
 			return false;
 		}
 		return self::request(
 			'Mailchimp',
-			sprintf( 'https://%s.api.mailchimp.com/3.0/lists/%s/members/%s', $dc[1], $list, md5( strtolower( $email ) ) ),
+			$url,
 			'PUT',
 			array(
 				'Authorization' => 'Basic ' . base64_encode( 'feelo:' . $key ), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode -- autenticación HTTP Basic.
@@ -184,6 +184,19 @@ final class Newsletter {
 				'status_if_new' => feelo_setting( 'news_doble' ) ? 'pending' : 'subscribed',
 			)
 		);
+	}
+
+	/**
+	 * Endpoint de Mailchimp para alta o actualización de un contacto: el centro de datos sale del
+	 * final de la API key ("…-us21") y el contacto se identifica por el md5 del email en minúsculas.
+	 * Vacío si la key no trae centro de datos o falta la audiencia.
+	 */
+	public static function mailchimp_url( string $key, string $audience, string $email ): string {
+		$audience = sanitize_key( $audience );
+		if ( ! preg_match( '/-([a-z]+\d+)$/', trim( $key ), $dc ) || '' === $audience ) {
+			return '';
+		}
+		return sprintf( 'https://%s.api.mailchimp.com/3.0/lists/%s/members/%s', $dc[1], $audience, md5( strtolower( trim( $email ) ) ) );
 	}
 
 	/**
