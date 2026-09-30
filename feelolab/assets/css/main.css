@@ -568,6 +568,38 @@ label { display: block; font-weight: 600; margin-bottom: .35rem; }
 .blog-sidebar { display: grid; gap: 2rem; }
 .blog-sidebar ul { padding-left: 1.1rem; }
 
+/* ---------- Banner de cookies (lo imprime FeeloLab Core) ---------- */
+.feelo-consent {
+	position: fixed; left: 1rem; right: 1rem; bottom: 1rem; z-index: 95;
+	max-width: 34rem;
+	padding: 1.1rem 1.25rem;
+	border: 1px solid var(--c-border);
+	border-radius: var(--radius);
+	background: var(--c-bg); color: var(--c-text);
+	box-shadow: 0 12px 36px rgb(0 0 0 / .18);
+	font-size: .95rem;
+}
+.feelo-consent[hidden] { display: none; }
+.feelo-consent__text { margin: 0; }
+.feelo-consent__text a { color: var(--c-primary-text); }
+.feelo-consent__actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .9rem; }
+.feelo-consent__btn {
+	flex: 1 1 8rem;
+	min-height: 2.75rem; padding: .55rem 1rem;
+	border: 2px solid var(--c-text); border-radius: var(--radius);
+	background: var(--c-text); color: var(--c-bg);
+	font: inherit; font-weight: 700; cursor: pointer;
+}
+/* Rechazar con el mismo tamaño y peso que Aceptar (requisito del RGPD); solo cambia el relleno. */
+.feelo-consent__btn + .feelo-consent__btn { background: transparent; color: var(--c-text); }
+.feelo-consent__btn:hover { background: var(--c-primary-hover); border-color: var(--c-primary-hover); color: var(--c-on-primary); }
+.feelo-consent-open .feelo-wa { bottom: calc(var(--feelo-consent-h, 11rem) + 1.75rem); }
+@media (min-width: 640px) { .feelo-consent-open .feelo-wa { bottom: 1rem; } }
+.feelo-consent-link {
+	padding: 0; border: 0; background: none; color: inherit;
+	font: inherit; text-decoration: underline; cursor: pointer;
+}
+
 /* ---------- Widgets ---------- */
 .widget { margin-bottom: 2rem; }
 .widget__title { font-size: 1.1rem; }

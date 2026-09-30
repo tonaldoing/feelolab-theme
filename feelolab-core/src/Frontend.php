@@ -52,6 +52,13 @@ final class Frontend {
 		return ! is_user_logged_in() || ! current_user_can( 'edit_posts' );
 	}
 
+	/** ¿Hay GA4 o GTM cargados y esta visita se mide? */
+	public static function tracking_active(): bool {
+		$gtm = strtoupper( (string) feelo_setting( 'gtm_id' ) );
+		$ga4 = strtoupper( (string) feelo_setting( 'ga4_id' ) );
+		return self::should_track() && ( preg_match( '/^GTM-[A-Z0-9]+$/', $gtm ) || preg_match( '/^G-[A-Z0-9]+$/', $ga4 ) );
+	}
+
 	public static function head(): void {
 		$gsc = (string) feelo_setting( 'gsc_verificacion' );
 		if ( $gsc && ! feelo_seo_plugin_active() ) {
@@ -63,6 +70,11 @@ final class Frontend {
 
 		$gtm = strtoupper( (string) feelo_setting( 'gtm_id' ) );
 		$ga4 = strtoupper( (string) feelo_setting( 'ga4_id' ) );
+
+		// Consent Mode v2: el "todo denegado" por defecto va antes que cualquier etiqueta de Google.
+		if ( self::tracking_active() ) {
+			Consent::default_script();
+		}
 
 		if ( preg_match( '/^GTM-[A-Z0-9]+$/', $gtm ) ) {
 			// Snippet oficial de GTM; carga async y no bloquea el render.
@@ -96,7 +108,7 @@ final class Frontend {
 		 * El tema lo estiliza (.feelo-wa). Si el tema no lo soporta, se agregan estilos mínimos inline.
 		 */
 		if ( ! current_theme_supports( 'feelolab-core' ) ) {
-			echo '<style>.feelo-wa{position:fixed;right:1rem;bottom:1rem;z-index:50;display:grid;place-items:center;width:3.5rem;height:3.5rem;border-radius:50%;background:#1f7a4d;color:#fff}.feelo-wa svg{width:1.75rem;height:1.75rem}.feelo-wa:focus-visible{outline:3px solid #111;outline-offset:3px}</style>';
+			echo '<style>.feelo-consent-open .feelo-wa{bottom:calc(var(--feelo-consent-h,11rem) + 1.75rem)}.feelo-wa{position:fixed;right:1rem;bottom:1rem;z-index:50;display:grid;place-items:center;width:3.5rem;height:3.5rem;border-radius:50%;background:#1f7a4d;color:#fff}.feelo-wa svg{width:1.75rem;height:1.75rem}.feelo-wa:focus-visible{outline:3px solid #111;outline-offset:3px}</style>';
 		}
 		printf(
 			'<aside class="feelo-wa-wrap" aria-label="WhatsApp"><a class="feelo-wa" href="%1$s" target="_blank" rel="noopener"><span class="screen-reader-text">%2$s</span>%3$s</a></aside>',

@@ -65,6 +65,12 @@ $feelolab_legal = trim( implode( ' · ', array_filter( array( feelolab_setting( 
 			the_privacy_policy_link( '<p>', '</p>' );
 		}
 		?>
+		<?php
+		$feelolab_consent = function_exists( 'feelo_consent_link' ) ? feelo_consent_link() : '';
+		if ( $feelolab_consent ) {
+			echo '<p>' . $feelolab_consent . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- el plugin lo escapa.
+		}
+		?>
 		<?php if ( get_theme_mod( 'feelolab_footer_credit', true ) ) : ?>
 			<p class="site-footer__credit">
 				<?php esc_html_e( 'Sitio hecho por', 'feelolab' ); ?>

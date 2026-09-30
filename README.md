@@ -44,6 +44,10 @@ Reglas para que las actualizaciones no rompan nada:
 
 **/llms.txt**: resumen en markdown del negocio y su contenido para asistentes con IA (ChatGPT, Perplexity, Gemini). Se arma solo con lo cargado y se desactiva en *Ajustes del sitio → Integraciones*.
 
+**Lanzamiento**: checklist de 19 puntos con barra de progreso (Ajustes del sitio → Lanzamiento) y resumen en el Escritorio. Cada punto explica por qué importa y lleva a la pantalla donde se arregla. Se pueden sumar puntos con el filtro `feelo_launch_checks`.
+
+**Cookies y medición**: banner opcional con Google Consent Mode v2 (todo denegado por defecto, Aceptar y Rechazar con el mismo peso, reabrible desde el pie). Con GA4 o GTM cargados se envían solos los eventos `click_whatsapp`, `click_phone`, `click_email` y `generate_lead`, cada uno con `feelo_location`.
+
 **Ajustes del sitio**: una página con la Settings API nativa que reemplaza la Options Page de ACF Pro. Los datos del negocio se cargan una vez y aparecen en el header, el footer, la página de contacto, el botón de WhatsApp y el schema.
 
 **Personalizador**:

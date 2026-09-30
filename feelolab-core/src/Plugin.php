@@ -32,10 +32,13 @@ final class Plugin {
 		Gallery::init();
 		LlmsTxt::init();
 		Updater::init();
+		Consent::init();
+		Tracking::init();
 
 		if ( is_admin() ) {
 			Admin::init();
 			Branding::init();
+			Launch::init();
 		}
 	}
 }

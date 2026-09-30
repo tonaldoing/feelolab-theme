@@ -2,6 +2,13 @@
 
 Cada versión publicada acá llega a los sitios como actualización (Escritorio → Actualizaciones).
 
+## 0.4.0 — 2026-09-30
+
+- Nueva pantalla Lanzamiento (Ajustes del sitio → Lanzamiento): revisa 19 puntos antes de publicar (sitio visible para Google, direcciones amigables, logo, política de privacidad, datos de contacto, menú, portada, zona horaria, envío de emails, contenido de ejemplo borrado y más). Cada punto dice por qué importa y trae un botón Arreglar que lleva a la pantalla indicada.
+- Resumen del lanzamiento en el Escritorio, con barra de progreso y lo más urgente primero.
+- Banner de cookies opcional con el modo de consentimiento de Google (Ajustes del sitio → Integraciones). Aceptar y Rechazar pesan lo mismo, la elección se recuerda 180 días y se vuelve a abrir con Preferencias de cookies en el pie. Sin aceptar, Google mide sin guardar cookies.
+- Medición de conversiones sin configurar nada: con Google Analytics o Tag Manager cargados se registran los clics en WhatsApp, teléfono y email, y cada formulario enviado (generate_lead), con la parte del sitio donde ocurrió.
+
 ## 0.3.1 — 2026-09-30
 
 - La barra lateral del blog ahora se muestra en la portada del blog, en las categorías y etiquetas y en cada nota, cuando tiene widgets cargados (Apariencia → Widgets).

@@ -318,3 +318,25 @@
 .feelo-admin .feelo-card--bar .feelo-savebar { margin-top: 0; border-top: 0; border-radius: var(--feelo-radius); }
 
 .feelo-admin .feelo-hero__note { margin: 10px 0 0; color: var(--feelo-cream); font-size: 12px; line-height: 1.45; overflow-wrap: anywhere; }
+
+/* Lanzamiento: barra de progreso y checklist. */
+.feelo-admin .feelo-progress { height: 10px; margin: 12px 0 20px; border-radius: 99px; background: var(--feelo-green-soft); overflow: hidden; }
+.feelo-admin .feelo-progress span { display: block; height: 100%; border-radius: inherit; background: var(--feelo-green); }
+.feelo-admin .feelo-checks { margin: 0; padding: 0; list-style: none; }
+.feelo-admin .feelo-check { display: flex; align-items: flex-start; gap: 12px; margin: 0; padding: 14px 0; border-top: 1px solid var(--feelo-line); }
+.feelo-admin .feelo-check__icon { flex: none; margin-top: 2px; font-size: 22px; width: 22px; height: 22px; }
+.feelo-admin .feelo-check.is-ok .feelo-check__icon { color: var(--feelo-green); }
+.feelo-admin .feelo-check.is-critical .feelo-check__icon { color: #b32d2e; }
+.feelo-admin .feelo-check.is-pending .feelo-check__icon { color: #8a6100; }
+.feelo-admin .feelo-check__body { flex: 1; min-width: 0; }
+.feelo-admin .feelo-check__title { margin: 0; font-weight: 600; font-size: 14px; }
+.feelo-admin .feelo-check.is-ok .feelo-check__title { font-weight: 400; color: #50575e; }
+.feelo-admin .feelo-check__badge { display: inline-block; margin-right: 6px; padding: 1px 8px; border-radius: 99px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; vertical-align: 1px; background: var(--feelo-green-soft); color: var(--feelo-green); }
+.feelo-admin .feelo-check.is-critical .feelo-check__badge { background: #fcf0f1; color: #b32d2e; }
+.feelo-admin .feelo-check.is-pending .feelo-check__badge { background: #fcf9e8; color: #6e4e00; }
+.feelo-admin .feelo-check__why { margin: 4px 0 0; color: #50575e; }
+.feelo-admin .feelo-check__fix { flex: none; }
+@media (max-width: 600px) {
+	.feelo-admin .feelo-check { flex-wrap: wrap; }
+	.feelo-admin .feelo-check__fix { margin-left: 34px; }
+}

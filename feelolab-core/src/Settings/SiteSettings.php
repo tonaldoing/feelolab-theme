@@ -188,6 +188,16 @@ final class SiteSettings {
 						'label' => __( 'Google Tag Manager (GTM-XXXXXX)', 'feelolab-core' ),
 						'type'  => 'text',
 					),
+					'consent_banner'   => array(
+						'label' => __( 'Banner de cookies (Consent Mode v2)', 'feelolab-core' ),
+						'type'  => 'checkbox',
+						'help'  => __( 'Hasta que la persona acepta, Google mide sin cookies. Obligatorio si el sitio recibe visitas de Europa o usa Google Ads. El banner se vuelve a abrir desde "Preferencias de cookies" en el pie.', 'feelolab-core' ),
+					),
+					'consent_text'     => array(
+						'label' => __( 'Texto del banner de cookies', 'feelolab-core' ),
+						'type'  => 'textarea',
+						'help'  => __( 'Opcional. Si queda vacío: "Usamos cookies para entender cómo se usa el sitio y mejorarlo. Podés aceptarlas o rechazarlas: el sitio funciona igual."', 'feelolab-core' ),
+					),
 					'llms_txt_off'     => array(
 						'label' => __( 'Desactivar /llms.txt', 'feelolab-core' ),
 						'type'  => 'checkbox',

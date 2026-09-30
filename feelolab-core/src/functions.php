@@ -183,6 +183,11 @@ function feelo_gallery_ids( ?int $post_id = null ): array {
 	return $post_id ? Feelo\Core\Gallery::ids( (int) $post_id ) : array();
 }
 
+/** Botón "Preferencias de cookies" para el pie; vacío si el banner está apagado. */
+function feelo_consent_link(): string {
+	return Feelo\Core\Consent::link();
+}
+
 /**
  * Formulario de contacto. También disponible como shortcode [feelo_formulario].
  *

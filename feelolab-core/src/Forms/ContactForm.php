@@ -311,7 +311,16 @@ final class ContactForm {
 		}
 
 		self::store_and_mail( $data, $ref );
-		self::redirect( add_query_arg( 'feelo_form', 'ok', $ref ) );
+		// Identificador por envío: la medición cuenta cada envío una vez, aunque se recargue la página.
+		self::redirect(
+			add_query_arg(
+				array(
+					'feelo_form' => 'ok',
+					'feelo_t'    => strtolower( wp_generate_password( 8, false ) ),
+				),
+				$ref
+			)
+		);
 	}
 
 	/** @param array<string, mixed> $data Datos saneados. */
