@@ -515,6 +515,16 @@ label { display: block; font-weight: 600; margin-bottom: .35rem; }
 .comment-body { padding: 1rem 0; border-bottom: 1px solid var(--c-border); }
 .comment-author img { border-radius: 50%; float: left; margin-right: .75rem; }
 .comment-form { display: grid; gap: 1rem; }
+.comment-form .submit {
+	min-height: 2.75rem; padding: .7rem 1.35rem;
+	border: 2px solid var(--c-btn-border); border-radius: var(--radius);
+	background: var(--c-primary); color: var(--c-on-primary);
+	font: inherit; font-weight: 700; cursor: pointer;
+}
+.comment-form .submit:hover { background: var(--c-primary-hover); }
+.comment-form-cookies-consent { display: flex; gap: .6rem; align-items: flex-start; }
+.comment-form-cookies-consent input { width: 1.25rem; height: 1.25rem; margin-top: .2rem; flex-shrink: 0; accent-color: var(--c-primary-text); }
+.comment-form-cookies-consent label { font-weight: 400; margin: 0; }
 
 /* ---------- Footer ---------- */
 .site-footer { background: var(--c-secondary); color: var(--c-on-secondary); padding-top: 3.5rem; font-size: .95rem; }
@@ -547,6 +557,16 @@ label { display: block; font-weight: 600; margin-bottom: .35rem; }
 }
 .feelo-wa svg { width: 1.75rem; height: 1.75rem; }
 .feelo-wa:hover { background: #17603c; }
+
+/* ---------- Barra lateral del blog ---------- */
+.with-sidebar { display: grid; gap: 3rem; }
+@media (min-width: 960px) {
+	.with-sidebar { grid-template-columns: minmax(0, 1fr) 18rem; align-items: start; }
+	.grid--2 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 640px) { .grid--2 { grid-template-columns: repeat(2, 1fr); } }
+.blog-sidebar { display: grid; gap: 2rem; }
+.blog-sidebar ul { padding-left: 1.1rem; }
 
 /* ---------- Widgets ---------- */
 .widget { margin-bottom: 2rem; }

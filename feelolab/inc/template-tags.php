@@ -28,18 +28,21 @@ function feelolab_icon( string $name, string $extra_class = '' ): string {
 		'instagram'    => '<rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>',
 		'facebook'     => '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',
 		'linkedin'     => '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/>',
-		'tiktok'       => '<path d="M9 12a4 4 0 1 0 4 4V2c.5 2.5 2.5 4.5 5 5"/>',
+		'tiktok'       => 'fill:<path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>',
 		'youtube'      => '<path d="M2.5 17a24 24 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24 24 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17z"/><path d="m10 15 5-3-5-3z"/>',
-		'x'            => '<path d="M4 4l16 16M20 4 4 20"/>',
+		'x'            => 'fill:<path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93zm-1.29 19.5h2.04L6.49 3.24H4.3z"/>',
 	);
 	if ( ! isset( $paths[ $name ] ) ) {
 		return '';
 	}
+	// Los logos de marcas (X, TikTok) van con relleno y en su forma oficial; el resto, de trazo.
+	$filled = str_starts_with( $paths[ $name ], 'fill:' );
 	return sprintf(
-		'<svg class="icon icon-%1$s %2$s" aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">%3$s</svg>',
+		'<svg class="icon icon-%1$s %2$s" aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" %3$s>%4$s</svg>',
 		esc_attr( $name ),
 		esc_attr( $extra_class ),
-		$paths[ $name ]
+		$filled ? 'fill="currentColor"' : 'fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"',
+		$filled ? substr( $paths[ $name ], 5 ) : $paths[ $name ]
 	);
 }
 
@@ -82,6 +85,15 @@ function feelolab_type_slug( ?string $post_type = null ): string {
  * de contacto (la que usa la plantilla "Contacto"), si no el ancla #contacto de la home.
  */
 function feelolab_contact_url(): string {
+	static $url = null;
+	if ( null !== $url ) {
+		return $url;
+	}
+	$url = feelolab_contact_url_uncached();
+	return $url;
+}
+
+function feelolab_contact_url_uncached(): string {
 	if ( function_exists( 'feelo_whatsapp_url' ) ) {
 		$wa = feelo_whatsapp_url();
 		if ( $wa ) {

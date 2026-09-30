@@ -9,10 +9,12 @@
 defined( 'ABSPATH' ) || exit;
 
 $feelolab_is_post = 'post' === get_post_type();
+// Con barra lateral, todo (título, imagen, texto) va al ancho completo para quedar alineado.
+$feelolab_wrap = $feelolab_is_post && is_active_sidebar( 'blog' ) ? 'container' : 'container container--narrow';
 ?>
 <article <?php post_class( 'entry' ); ?>>
 	<header class="page-header page-header--entry">
-		<div class="container container--narrow">
+		<div class="<?php echo esc_attr( $feelolab_wrap ); ?>">
 			<?php feelolab_breadcrumbs(); ?>
 			<h1 class="page-header__title"><?php the_title(); ?></h1>
 			<?php
@@ -24,7 +26,7 @@ $feelolab_is_post = 'post' === get_post_type();
 	</header>
 
 	<?php if ( has_post_thumbnail() ) : ?>
-		<figure class="entry__hero container container--narrow">
+		<figure class="entry__hero <?php echo esc_attr( $feelolab_wrap ); ?>">
 			<?php the_post_thumbnail( 'large', array( 'loading' => 'eager', 'fetchpriority' => 'high' ) ); ?>
 			<?php if ( get_the_post_thumbnail_caption() ) : ?>
 				<figcaption><?php the_post_thumbnail_caption(); ?></figcaption>
@@ -32,7 +34,8 @@ $feelolab_is_post = 'post' === get_post_type();
 		</figure>
 	<?php endif; ?>
 
-	<div class="container container--narrow section section--tight">
+	<div class="<?php echo esc_attr( $feelolab_wrap ); ?><?php echo $feelolab_is_post && is_active_sidebar( 'blog' ) ? ' with-sidebar' : ''; ?> section section--tight">
+		<div class="with-sidebar__main">
 		<div class="entry-content prose">
 			<?php
 			the_content();
@@ -54,5 +57,15 @@ $feelolab_is_post = 'post' === get_post_type();
 			}
 			?>
 		<?php endif; ?>
+		</div>
+		<?php
+		if ( $feelolab_is_post ) {
+			get_template_part( 'template-parts/sidebar-blog' );
+		}
+		?>
 	</div>
 </article>
+<?php
+if ( $feelolab_is_post ) {
+	get_template_part( 'template-parts/related' );
+}

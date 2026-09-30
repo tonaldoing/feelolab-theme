@@ -25,10 +25,15 @@ get_template_part(
 	)
 );
 
-$feelolab_type = feelolab_type_slug( (string) ( get_query_var( 'post_type' ) ?: get_post_type() ) );
-$feelolab_cols = in_array( $feelolab_type, array( 'producto', 'miembro' ), true ) ? 'grid--4' : 'grid--3';
+$feelolab_type    = feelolab_type_slug( (string) ( get_query_var( 'post_type' ) ?: get_post_type() ) );
+$feelolab_cols    = in_array( $feelolab_type, array( 'producto', 'miembro' ), true ) ? 'grid--4' : 'grid--3';
+$feelolab_sidebar = 'post' === $feelolab_type && is_active_sidebar( 'blog' );
+if ( $feelolab_sidebar ) {
+	$feelolab_cols = 'grid--2';
+}
 ?>
-<div class="container section">
+<div class="container section<?php echo $feelolab_sidebar ? ' with-sidebar' : ''; ?>">
+	<div class="with-sidebar__main">
 	<?php get_template_part( 'template-parts/term-filter' ); ?>
 	<?php if ( have_posts() ) : ?>
 		<div class="grid <?php echo esc_attr( $feelolab_cols ); ?>">
@@ -43,6 +48,12 @@ $feelolab_cols = in_array( $feelolab_type, array( 'producto', 'miembro' ), true 
 	<?php else : ?>
 		<?php get_template_part( 'template-parts/none' ); ?>
 	<?php endif; ?>
+	</div>
+	<?php
+	if ( $feelolab_sidebar ) {
+		get_template_part( 'template-parts/sidebar-blog' );
+	}
+	?>
 </div>
 <?php
 get_footer();

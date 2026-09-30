@@ -16,6 +16,35 @@ final class Frontend {
 		add_action( 'wp_body_open', array( self::class, 'gtm_noscript' ), 1 );
 		add_action( 'wp_footer', array( self::class, 'whatsapp' ), 20 );
 		add_action( 'wp_footer', array( self::class, 'form_focus' ), 30 );
+		add_filter( 'wp_robots', array( self::class, 'robots' ) );
+	}
+
+	/**
+	 * noindex (con follow) donde no hay nada que ofrecerle a Google: resultados de búsqueda y
+	 * archivos de categoría, etiqueta o taxonomía con menos de 2 contenidos (contenido flaco).
+	 * Si hay un plugin de SEO, él decide.
+	 *
+	 * @param array<string, bool|string> $robots Directivas.
+	 * @return array<string, bool|string>
+	 */
+	public static function robots( array $robots ): array {
+		if ( feelo_seo_plugin_active() ) {
+			return $robots;
+		}
+		$thin = false;
+		if ( is_search() ) {
+			$thin = true;
+		} elseif ( is_category() || is_tag() || is_tax() ) {
+			$term = get_queried_object();
+			$min  = (int) apply_filters( 'feelo_noindex_min_posts', 2 );
+			$thin = $term instanceof \WP_Term && (int) $term->count < $min;
+		}
+		if ( $thin ) {
+			$robots['noindex'] = true;
+			$robots['follow']  = true;
+			unset( $robots['max-image-preview'] );
+		}
+		return $robots;
 	}
 
 	/** ¿Medimos esta visita? No a quien edita el sitio: ensucia los datos. */

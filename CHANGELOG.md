@@ -2,6 +2,15 @@
 
 Cada versión publicada acá llega a los sitios como actualización (Escritorio → Actualizaciones).
 
+## 0.3.1 — 2026-09-30
+
+- La barra lateral del blog ahora se muestra en la portada del blog, en las categorías y etiquetas y en cada nota, cuando tiene widgets cargados (Apariencia → Widgets).
+- Las notas del blog muestran notas relacionadas al final, como los servicios y los productos.
+- Los resultados de búsqueda y los archivos con menos de dos contenidos le piden a Google que no los indexe (noindex, follow). Si hay un plugin de SEO instalado, decide él.
+- Íconos de X y TikTok con los logos oficiales.
+- El link de contacto se calcula una sola vez por página: menos consultas a la base.
+- El botón "Publicar comentario" y el tilde de cookies de los comentarios usan el diseño del tema.
+
 ## 0.3.0 — 2026-09-30
 
 - Nueva identidad de FeeloLab en las pantallas propias del panel (Ajustes del sitio, Módulos y Mensajes): cabecera con el degradado de la marca, el logotipo, la ardilla y accesos rápidos a Personalizar marca y Ver sitio.
