@@ -35,6 +35,7 @@ final class Plugin {
 
 		if ( is_admin() ) {
 			Admin::init();
+			Branding::init();
 		}
 	}
 }

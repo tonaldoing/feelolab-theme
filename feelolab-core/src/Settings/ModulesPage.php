@@ -67,39 +67,46 @@ final class ModulesPage {
 		$enabled = Registry::enabled();
 		?>
 		<div class="wrap">
-			<h1><?php esc_html_e( 'Módulos de contenido', 'feelolab-core' ); ?></h1>
-			<p><?php esc_html_e( 'Apagar un módulo lo oculta del admin y del sitio, pero no borra su contenido: al volver a prenderlo aparece tal cual.', 'feelolab-core' ); ?></p>
+			<?php
+			\Feelo\Core\Branding::header(
+				__( 'Módulos de contenido', 'feelolab-core' ),
+				__( 'Prendé solo lo que el cliente usa: el panel queda más simple y el sitio no muestra secciones vacías. Apagar un módulo no borra su contenido.', 'feelolab-core' )
+			);
+			\Feelo\Core\Branding::nav( 'modulos' );
+			?>
 			<form method="post" action="options.php">
 				<?php settings_fields( 'feelo_modules_group' ); ?>
 				<input type="hidden" name="<?php echo esc_attr( Registry::OPTION ); ?>[]" value="">
-				<fieldset>
+				<fieldset class="feelo-modules">
 					<legend class="screen-reader-text"><?php esc_html_e( 'Módulos activos', 'feelolab-core' ); ?></legend>
-					<table class="widefat striped" role="presentation">
-						<tbody>
-						<?php foreach ( Registry::definitions() as $key => $def ) : ?>
-							<tr>
-								<td style="width:2.5em">
-									<input type="checkbox" id="feelo-mod-<?php echo esc_attr( $key ); ?>"
-										name="<?php echo esc_attr( Registry::OPTION ); ?>[]"
-										value="<?php echo esc_attr( $key ); ?>"
-										aria-describedby="feelo-mod-<?php echo esc_attr( $key ); ?>-desc"
-										<?php checked( in_array( $key, $enabled, true ) ); ?>>
-								</td>
-								<td>
-									<label for="feelo-mod-<?php echo esc_attr( $key ); ?>"><strong><?php echo esc_html( $def['plural'] ); ?></strong></label>
-									<p class="description" id="feelo-mod-<?php echo esc_attr( $key ); ?>-desc">
-										<?php echo esc_html( $def['description'] ); ?>
-										<?php if ( ! empty( $def['public'] ) ) : ?>
-											<br><code>/<?php echo esc_html( $def['slug'] ); ?>/</code>
-										<?php endif; ?>
-									</p>
-								</td>
-							</tr>
-						<?php endforeach; ?>
-						</tbody>
-					</table>
+					<?php foreach ( Registry::definitions() as $key => $def ) : ?>
+						<?php $id = 'feelo-mod-' . $key; ?>
+						<label class="feelo-module" for="<?php echo esc_attr( $id ); ?>">
+							<span class="feelo-module__head">
+								<span class="feelo-module__icon dashicons <?php echo esc_attr( $def['icon'] ); ?>" aria-hidden="true"></span>
+								<span class="feelo-module__name" id="<?php echo esc_attr( $id ); ?>-name"><?php echo esc_html( $def['plural'] ); ?></span>
+								<input type="checkbox" class="feelo-switch" id="<?php echo esc_attr( $id ); ?>"
+									name="<?php echo esc_attr( Registry::OPTION ); ?>[]"
+									value="<?php echo esc_attr( $key ); ?>"
+									aria-labelledby="<?php echo esc_attr( $id ); ?>-name"
+									aria-describedby="<?php echo esc_attr( $id ); ?>-desc"
+									<?php checked( in_array( $key, $enabled, true ) ); ?>>
+							</span>
+							<span class="feelo-module__desc" id="<?php echo esc_attr( $id ); ?>-desc"><?php echo esc_html( $def['description'] ); ?></span>
+							<?php if ( ! empty( $def['public'] ) ) : ?>
+								<code class="feelo-module__slug">/<?php echo esc_html( $def['slug'] ); ?>/</code>
+							<?php else : ?>
+								<span class="feelo-module__slug"><?php esc_html_e( 'Se muestra dentro de otras páginas', 'feelolab-core' ); ?></span>
+							<?php endif; ?>
+						</label>
+					<?php endforeach; ?>
 				</fieldset>
-				<?php submit_button(); ?>
+				<div class="feelo-card feelo-card--bar">
+					<div class="feelo-savebar">
+						<p><?php esc_html_e( 'Los cambios se aplican al guardar.', 'feelolab-core' ); ?></p>
+						<?php submit_button( __( 'Guardar módulos', 'feelolab-core' ), 'primary', 'submit', false ); ?>
+					</div>
+				</div>
 			</form>
 		</div>
 		<?php

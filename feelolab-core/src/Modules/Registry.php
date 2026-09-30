@@ -255,7 +255,10 @@ final class Registry {
 		register_post_type(
 			'feelo_mensaje',
 			array(
-				'labels'          => self::labels( __( 'Mensaje', 'feelolab-core' ), __( 'Mensajes', 'feelolab-core' ) ),
+				'labels'          => array_merge(
+					self::labels( __( 'Mensaje', 'feelolab-core' ), __( 'Mensajes', 'feelolab-core' ) ),
+					array( 'not_found' => __( 'Todavía no llegaron mensajes. Cuando alguien complete el formulario de contacto, lo vas a ver acá.', 'feelolab-core' ) )
+				),
 				'public'          => false,
 				'show_ui'         => true,
 				'show_in_menu'    => true,

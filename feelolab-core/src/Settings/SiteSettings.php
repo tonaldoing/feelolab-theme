@@ -218,7 +218,7 @@ final class SiteSettings {
 			'manage_options',
 			self::PAGE,
 			array( self::class, 'render' ),
-			'dashicons-store',
+			\Feelo\Core\Branding::MENU_ICON,
 			3
 		);
 	}
@@ -297,30 +297,43 @@ final class SiteSettings {
 		$active = isset( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : 'negocio';
 		$active = isset( $tabs[ $active ] ) ? $active : 'negocio';
 		$values = get_option( self::OPTION, array() );
+		$meta   = array(
+			'negocio'       => array( 'dashicons-store', __( 'Cómo se presenta el negocio en el sitio y en Google.', 'feelolab-core' ) ),
+			'contacto'      => array( 'dashicons-phone', __( 'Aparecen en el encabezado, el pie, la página de contacto y el botón de WhatsApp.', 'feelolab-core' ) ),
+			'redes'         => array( 'dashicons-share', __( 'Links completos, con https:// adelante. Las vacías no se muestran.', 'feelolab-core' ) ),
+			'legal'         => array( 'dashicons-media-document', __( 'Se muestran en la última línea del pie.', 'feelolab-core' ) ),
+			'formulario'    => array( 'dashicons-email-alt', __( 'A dónde llegan los mensajes y cómo se protege el formulario del spam.', 'feelolab-core' ) ),
+			'integraciones' => array( 'dashicons-chart-area', __( 'Medición y verificación de Google, y el resumen para asistentes con IA.', 'feelolab-core' ) ),
+		);
 		?>
 		<div class="wrap">
-			<h1><?php esc_html_e( 'Ajustes del sitio', 'feelolab-core' ); ?></h1>
-			<p><?php esc_html_e( 'Datos del negocio: se cargan una vez y aparecen en el header, el footer, la página de contacto y el schema para Google. Colores, logo y tipografía se editan en Apariencia → Personalizar.', 'feelolab-core' ); ?></p>
+			<?php
+			\Feelo\Core\Branding::header(
+				__( 'Ajustes del sitio', 'feelolab-core' ),
+				__( 'Los datos del negocio se cargan una sola vez y aparecen solos en todo el sitio. Colores, logo y tipografía van en Personalizar marca.', 'feelolab-core' )
+			);
+			\Feelo\Core\Branding::nav( 'ajustes' );
+			?>
 
-			<p>
-				<strong><?php esc_html_e( 'Actualizaciones:', 'feelolab-core' ); ?></strong>
-				<?php
-				/* translators: %s: versión instalada */
-				echo esc_html( sprintf( __( 'versión %s.', 'feelolab-core' ), FEELO_CORE_VERSION ) . ' ' . \Feelo\Core\Updater::status() );
-				?>
-			</p>
-
-			<nav class="nav-tab-wrapper" aria-label="<?php esc_attr_e( 'Secciones de ajustes', 'feelolab-core' ); ?>">
+			<nav class="nav-tab-wrapper feelo-tabs" aria-label="<?php esc_attr_e( 'Secciones de ajustes', 'feelolab-core' ); ?>">
 				<?php foreach ( $tabs as $key => $tab ) : ?>
 					<a href="<?php echo esc_url( add_query_arg( array( 'page' => self::PAGE, 'tab' => $key ), admin_url( 'admin.php' ) ) ); ?>"
 						class="nav-tab<?php echo $key === $active ? ' nav-tab-active' : ''; ?>"
 						<?php echo $key === $active ? 'aria-current="page"' : ''; ?>>
+						<span class="dashicons <?php echo esc_attr( $meta[ $key ][0] ?? 'dashicons-admin-generic' ); ?>" aria-hidden="true"></span>
 						<?php echo esc_html( $tab['label'] ); ?>
 					</a>
 				<?php endforeach; ?>
 			</nav>
 
-			<form method="post" action="options.php">
+			<form method="post" action="options.php" class="feelo-card">
+				<h2 class="feelo-card__title">
+					<span class="dashicons <?php echo esc_attr( $meta[ $active ][0] ?? 'dashicons-admin-generic' ); ?>" aria-hidden="true"></span>
+					<?php echo esc_html( $tabs[ $active ]['label'] ); ?>
+				</h2>
+				<?php if ( ! empty( $meta[ $active ][1] ) ) : ?>
+					<p class="feelo-card__intro"><?php echo esc_html( $meta[ $active ][1] ); ?></p>
+				<?php endif; ?>
 				<?php settings_fields( 'feelo_settings_group' ); ?>
 				<input type="hidden" name="feelo_tab" value="<?php echo esc_attr( $active ); ?>">
 				<table class="form-table" role="presentation">
@@ -336,7 +349,15 @@ final class SiteSettings {
 						</tr>
 					<?php endforeach; ?>
 				</table>
-				<?php submit_button(); ?>
+				<div class="feelo-savebar">
+					<p>
+						<?php
+						/* translators: %s: nombre de la pestaña */
+						echo esc_html( sprintf( __( 'Se guarda solo la pestaña "%s".', 'feelolab-core' ), $tabs[ $active ]['label'] ) );
+						?>
+					</p>
+					<?php submit_button( __( 'Guardar cambios', 'feelolab-core' ), 'primary', 'submit', false ); ?>
+				</div>
 			</form>
 		</div>
 		<?php

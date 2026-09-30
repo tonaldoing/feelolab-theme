@@ -181,6 +181,23 @@ add_action(
 	'customize_controls_enqueue_scripts',
 	static function (): void {
 		wp_enqueue_script( 'feelolab-customizer-controls', FEELOLAB_URI . '/assets/js/customizer-controls.js', array( 'customize-controls' ), FEELOLAB_VERSION, true );
+
+		// Paneles propios de FeeloLab: barra y etiqueta de marca en la lista, cabecera con degradado al abrirlos.
+		$row   = static fn( string $suffix = '' ) => '#accordion-panel-feelolab_brand > .accordion-section-title' . $suffix . ',#accordion-panel-feelolab_home > .accordion-section-title' . $suffix;
+		$metas = '#sub-accordion-panel-feelolab_brand .panel-meta,#sub-accordion-panel-feelolab_home .panel-meta';
+		$meta  = static fn( string $sel ) => '#sub-accordion-panel-feelolab_brand .panel-meta ' . $sel . ',#sub-accordion-panel-feelolab_home .panel-meta ' . $sel;
+		wp_add_inline_style(
+			'customize-controls',
+			$row() . '{position:relative;box-shadow:inset 4px 0 0 #4a6400}'
+			. $row( '::before' ) . '{content:"FeeloLab";position:absolute;top:50%;right:44px;z-index:1;transform:translateY(-50%);padding:1px 8px;border-radius:999px;background:#10130a;color:#b9d101;font-size:11px;font-weight:700;line-height:18px;pointer-events:none}'
+			. $metas . '{background:radial-gradient(circle at 85% 20%,rgb(185 209 1/.35),transparent 45%),linear-gradient(135deg,#0e1108,#1b240a 55%,#34470a)}'
+			. $meta( '.accordion-section-title' ) . '{background:transparent;border:0}'
+			. $meta( '.preview-notice' ) . '{color:#ece7e2}'
+			. $meta( '.panel-title' ) . '{color:#fff}'
+			. $meta( '.customize-panel-back' ) . '{background:transparent;color:#ece7e2;border-right-color:rgb(255 255 255/.2)}'
+			. $meta( '.customize-panel-back:hover' ) . ',' . $meta( '.customize-panel-back:focus' ) . '{background:rgb(255 255 255/.1);color:#b9d101}'
+		);
+
 		wp_localize_script(
 			'feelolab-customizer-controls',
 			'feelolabContrast',

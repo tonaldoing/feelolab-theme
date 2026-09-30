@@ -1,0 +1,320 @@
+/*
+ * FeeloLab: identidad en las pantallas propias del admin (Ajustes del sitio, Módulos, Mensajes).
+ * Solo se carga en esas pantallas (src/Branding.php); el resto del panel queda como siempre.
+ *
+ * Paleta de feelolab.com. Contraste AA en todo: el lima solo va sobre fondos oscuros; sobre
+ * blanco, los acentos usan --feelo-green (6,4:1).
+ */
+.feelo-admin {
+	--feelo-night: #10130a;
+	--feelo-olive: #2b3a0a;
+	--feelo-lime: #b9d101;
+	--feelo-cream: #ece7e2;
+	--feelo-green: #4a6400;
+	--feelo-green-soft: #f2f6e1;
+	--feelo-line: #dcdcde;
+	--feelo-radius: 14px;
+}
+
+/* ---------- Cabecera de marca ---------- */
+.feelo-admin .feelo-hero {
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 24px;
+	min-height: 176px;
+	margin: 20px 0 16px;
+	padding: 26px 32px 24px;
+	overflow: hidden;
+	border-radius: 18px;
+	color: var(--feelo-cream);
+	background:
+		radial-gradient(circle at 82% 28%, rgb(185 209 1 / 0.38), transparent 42%),
+		radial-gradient(circle at 12% 110%, rgb(185 209 1 / 0.16), transparent 40%),
+		linear-gradient(135deg, #0e1108 0%, #1b240a 52%, #34470a 100%);
+}
+.feelo-admin .feelo-hero__body { position: relative; z-index: 1; max-width: 640px; }
+.feelo-admin .feelo-hero__brand {
+	margin: 0 0 10px;
+	font-size: 20px;
+	font-weight: 800;
+	letter-spacing: -0.01em;
+	line-height: 1;
+}
+.feelo-admin .feelo-hero__brand-a { color: var(--feelo-lime); }
+.feelo-admin .feelo-hero__brand-b { color: var(--feelo-cream); }
+.feelo-admin .feelo-hero__title {
+	margin: 0 0 6px;
+	padding: 0;
+	color: #fff;
+	font-size: 30px;
+	font-weight: 700;
+	line-height: 1.15;
+}
+.feelo-admin .feelo-hero__subtitle { margin: 0 0 16px; color: var(--feelo-cream); font-size: 14px; line-height: 1.5; }
+.feelo-admin .feelo-hero__squirrel {
+	position: relative;
+	z-index: 1;
+	flex-shrink: 0;
+	width: 160px;
+	height: auto;
+	margin: -8px -6px -24px 0;
+	filter: drop-shadow(0 10px 24px rgb(0 0 0 / 0.35));
+}
+@media (max-width: 782px) {
+	.feelo-admin .feelo-hero { padding: 22px 20px; margin-right: 10px; }
+	.feelo-admin .feelo-hero__squirrel { width: 96px; margin-bottom: -22px; }
+	.feelo-admin .feelo-hero__title { font-size: 24px; }
+}
+@media (max-width: 480px) {
+	.feelo-admin .feelo-hero__squirrel { display: none; }
+}
+
+/* Chips de estado y accesos rápidos */
+.feelo-admin .feelo-hero__chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.feelo-admin .feelo-hero__chips li { margin: 0; }
+.feelo-admin .feelo-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	min-height: 30px;
+	padding: 0 12px;
+	border: 1px solid rgb(255 255 255 / 0.22);
+	border-radius: 999px;
+	background: rgb(255 255 255 / 0.08);
+	color: var(--feelo-cream);
+	font-size: 12.5px;
+	font-weight: 600;
+	text-decoration: none;
+}
+.feelo-admin .feelo-chip__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--feelo-lime); }
+.feelo-admin .feelo-chip--warn .feelo-chip__dot { background: #f0b849; }
+.feelo-admin a.feelo-chip--link:hover { background: rgb(255 255 255 / 0.16); color: #fff; }
+.feelo-admin a.feelo-chip--link:focus-visible,
+.feelo-admin .feelo-hero a:focus-visible {
+	outline: 2px solid var(--feelo-lime);
+	outline-offset: 2px;
+	box-shadow: none;
+}
+
+/* ---------- Navegación entre pantallas FeeloLab ---------- */
+.feelo-admin .feelo-sections ul { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 18px; padding: 0; list-style: none; }
+.feelo-admin .feelo-sections li { margin: 0; }
+.feelo-admin .feelo-sections a {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	min-height: 36px;
+	padding: 0 14px;
+	border: 1px solid var(--feelo-line);
+	border-radius: 999px;
+	background: #fff;
+	color: #1d2327;
+	font-weight: 600;
+	text-decoration: none;
+}
+.feelo-admin .feelo-sections a:hover { border-color: var(--feelo-green); color: var(--feelo-green); }
+.feelo-admin .feelo-sections a.is-current { border-color: var(--feelo-night); background: var(--feelo-night); color: var(--feelo-lime); }
+.feelo-admin .feelo-sections .dashicons { font-size: 17px; width: 17px; height: 17px; }
+.feelo-admin .feelo-sections a:focus-visible { outline: 2px solid var(--feelo-green); outline-offset: 2px; box-shadow: none; }
+
+/* ---------- Pestañas de Ajustes como control segmentado ---------- */
+.feelo-admin .feelo-tabs.nav-tab-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	margin: 0 0 16px;
+	padding: 4px;
+	border: 1px solid var(--feelo-line);
+	border-radius: 999px;
+	background: #f6f7f7;
+	width: fit-content;
+	max-width: 100%;
+}
+.feelo-admin .feelo-tabs .nav-tab {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	margin: 0;
+	padding: 7px 14px;
+	border: 0;
+	border-radius: 999px;
+	background: transparent;
+	color: #3c434a;
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 1.4;
+}
+.feelo-admin .feelo-tabs .nav-tab:hover { background: #fff; color: var(--feelo-green); }
+.feelo-admin .feelo-tabs .nav-tab-active,
+.feelo-admin .feelo-tabs .nav-tab-active:hover {
+	background: var(--feelo-night);
+	color: var(--feelo-lime);
+}
+.feelo-admin .feelo-tabs .dashicons { font-size: 16px; width: 16px; height: 16px; }
+.feelo-admin .feelo-tabs .nav-tab:focus-visible { outline: 2px solid var(--feelo-green); outline-offset: 2px; box-shadow: none; }
+
+/* ---------- Tarjetas y formulario ---------- */
+.feelo-admin .feelo-card {
+	max-width: 980px;
+	margin: 0 0 20px;
+	padding: 20px 24px 0;
+	border: 1px solid var(--feelo-line);
+	border-radius: var(--feelo-radius);
+	background: #fff;
+}
+.feelo-admin .feelo-card__title { display: flex; align-items: center; gap: 8px; margin: 0 0 4px; font-size: 18px; }
+.feelo-admin .feelo-card__title .dashicons { color: var(--feelo-green); }
+.feelo-admin .feelo-card__intro { margin: 0 0 8px; color: #50575e; }
+.feelo-admin .feelo-card .form-table th { padding-left: 0; }
+.feelo-admin .feelo-card input[type="text"],
+.feelo-admin .feelo-card input[type="email"],
+.feelo-admin .feelo-card input[type="tel"],
+.feelo-admin .feelo-card input[type="url"],
+.feelo-admin .feelo-card input[type="password"],
+.feelo-admin .feelo-card select,
+.feelo-admin .feelo-card textarea {
+	border-radius: 8px;
+	border-color: #8c8f94;
+}
+.feelo-admin .feelo-card input:focus,
+.feelo-admin .feelo-card select:focus,
+.feelo-admin .feelo-card textarea:focus {
+	border-color: var(--feelo-green);
+	box-shadow: 0 0 0 1px var(--feelo-green);
+}
+
+/* Barra de guardado fija: el botón siempre a mano, aunque la pestaña sea larga */
+.feelo-admin .feelo-savebar {
+	position: sticky;
+	bottom: 0;
+	z-index: 5;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin: 8px -24px 0;
+	padding: 12px 24px;
+	border-top: 1px solid var(--feelo-line);
+	border-radius: 0 0 var(--feelo-radius) var(--feelo-radius);
+	background: rgb(255 255 255 / 0.94);
+	backdrop-filter: blur(6px);
+}
+.feelo-admin .feelo-savebar p { margin: 0; color: #50575e; font-size: 12.5px; }
+.feelo-admin .feelo-savebar .submit { margin: 0; padding: 0; }
+
+.feelo-admin .button-primary {
+	border-color: var(--feelo-night);
+	background: var(--feelo-night);
+	color: var(--feelo-cream);
+	border-radius: 8px;
+	min-height: 36px;
+	padding: 0 18px;
+	font-weight: 600;
+}
+.feelo-admin .button-primary:hover,
+.feelo-admin .button-primary:focus {
+	border-color: var(--feelo-olive);
+	background: var(--feelo-olive);
+	color: #fff;
+}
+.feelo-admin .button-primary:focus-visible { outline: 2px solid var(--feelo-green); outline-offset: 2px; box-shadow: none; }
+
+/* ---------- Módulos: tarjetas con interruptor ---------- */
+.feelo-admin .feelo-modules {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+	gap: 14px;
+	max-width: 1100px;
+	margin: 0 0 20px;
+	padding: 0;
+	border: 0;
+}
+.feelo-admin .feelo-module {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 16px 18px;
+	border: 1px solid var(--feelo-line);
+	border-radius: var(--feelo-radius);
+	background: #fff;
+	cursor: pointer;
+	transition: border-color 0.15s, background-color 0.15s;
+}
+.feelo-admin .feelo-module:hover { border-color: #8c8f94; }
+.feelo-admin .feelo-module:has(.feelo-switch:checked) { border-color: var(--feelo-green); background: var(--feelo-green-soft); }
+.feelo-admin .feelo-module__head { display: flex; align-items: center; gap: 12px; }
+.feelo-admin .feelo-module__icon {
+	display: grid;
+	place-items: center;
+	flex-shrink: 0;
+	width: 38px;
+	height: 38px;
+	border-radius: 10px;
+	background: var(--feelo-night);
+	color: var(--feelo-lime);
+}
+.feelo-admin .feelo-module__name { flex: 1; font-size: 15px; font-weight: 700; color: #1d2327; }
+.feelo-admin .feelo-module__desc { margin: 0; color: #50575e; line-height: 1.5; }
+.feelo-admin .feelo-module__slug { align-self: flex-start; padding: 2px 8px; border-radius: 6px; background: #f0f0f1; color: #3c434a; font-size: 12px; }
+.feelo-admin .feelo-module__state { font-size: 12px; font-weight: 600; color: #50575e; }
+.feelo-admin .feelo-module:has(.feelo-switch:checked) .feelo-module__state { color: var(--feelo-green); }
+
+/* Interruptor: un checkbox nativo con otro look (teclado, lectores de pantalla y formularios intactos) */
+.feelo-admin input[type="checkbox"].feelo-switch {
+	appearance: none;
+	position: relative;
+	flex-shrink: 0;
+	width: 44px;
+	height: 26px;
+	margin: 0;
+	border: 0;
+	border-radius: 999px;
+	background: #8c8f94;
+	box-shadow: none;
+	cursor: pointer;
+	transition: background-color 0.15s;
+}
+.feelo-admin input[type="checkbox"].feelo-switch::before {
+	content: "";
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 20px;
+	height: 20px;
+	margin: 0;
+	border-radius: 50%;
+	background: #fff;
+	transition: transform 0.15s;
+}
+.feelo-admin input[type="checkbox"].feelo-switch:checked { background: var(--feelo-green); }
+.feelo-admin input[type="checkbox"].feelo-switch:checked::before { transform: translateX(18px); }
+.feelo-admin input[type="checkbox"].feelo-switch:focus-visible { outline: 2px solid var(--feelo-night); outline-offset: 2px; }
+@media (forced-colors: active) {
+	.feelo-admin input[type="checkbox"].feelo-switch { appearance: auto; width: auto; height: auto; }
+	.feelo-admin input[type="checkbox"].feelo-switch::before { display: none; }
+}
+
+/* ---------- Mensajes ---------- */
+.feelo-admin.post-type-feelo_mensaje .wrap > .wp-heading-inline { display: none; }
+.feelo-admin.post-type-feelo_mensaje .wrap > .feelo-hero,
+.feelo-admin.post-type-feelo_mensaje .wrap > .feelo-sections { margin-right: 0; }
+.feelo-admin.post-type-feelo_mensaje .no-items td {
+	padding: 200px 16px 32px;
+	background: var(--feelo-squirrel-megaphone) no-repeat center 24px / 190px auto;
+	text-align: center;
+	font-size: 15px;
+	color: #3c434a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.feelo-admin .feelo-module,
+	.feelo-admin input[type="checkbox"].feelo-switch,
+	.feelo-admin input[type="checkbox"].feelo-switch::before { transition: none; }
+}
+
+.feelo-admin .feelo-card--bar { padding-top: 0; }
+.feelo-admin .feelo-card--bar .feelo-savebar { margin-top: 0; border-top: 0; border-radius: var(--feelo-radius); }
+
+.feelo-admin .feelo-hero__note { margin: 10px 0 0; color: var(--feelo-cream); font-size: 12px; line-height: 1.45; overflow-wrap: anywhere; }

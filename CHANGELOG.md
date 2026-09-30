@@ -2,6 +2,17 @@
 
 Cada versión publicada acá llega a los sitios como actualización (Escritorio → Actualizaciones).
 
+## 0.3.0 — 2026-09-30
+
+- Nueva identidad de FeeloLab en las pantallas propias del panel (Ajustes del sitio, Módulos y Mensajes): cabecera con el degradado de la marca, el logotipo, la ardilla y accesos rápidos a Personalizar marca y Ver sitio.
+- Estado de las actualizaciones siempre visible en la cabecera. Si algo falla, un botón lleva a Actualizaciones y el detalle queda debajo.
+- Navegación entre Ajustes, Módulos y Mensajes con botones grandes.
+- Ajustes del sitio: pestañas con íconos, el formulario en una tarjeta y la barra de guardado fija abajo, siempre a mano.
+- Módulos: tarjetas con interruptores en lugar de una tabla.
+- Mensajes: cuando todavía no llegó ninguno, lo avisa la ardilla del megáfono.
+- Ícono propio de FeeloLab en el menú del panel y pie "Tu sitio, hecho por FeeloLab" en esas pantallas.
+- Personalizar: los paneles Marca y Secciones de la home llevan la marca de FeeloLab.
+
 ## 0.2.7 — 2026-09-24
 
 - El crédito del pie dice "Sitio hecho por FeeloLab" y enlaza a feelolab.com. Se sigue pudiendo ocultar desde Personalizar → Marca → Pie de página.
