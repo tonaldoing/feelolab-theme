@@ -101,15 +101,20 @@
 
 		// Los controles de la fuente propia aparecen solo con "Fuente propia". La combinación se
 		// previsualiza en vivo (sin recargar), así que WordPress no recalcula esto solo.
-		api( 'feelolab_font_pair', function ( setting ) {
+		api( 'feelolab_font_pair', 'feelolab_font_heading', 'feelolab_font_body', function ( pair, heading, body ) {
 			function toggle() {
+				var own = [ pair, heading, body ].some( function ( setting ) {
+					return setting.get() === 'propia';
+				} );
 				[ 'feelolab_font_own_heading', 'feelolab_font_own_body', 'feelolab_font_own_body_bold', 'feelolab_font_own_generic' ].forEach( function ( id ) {
 					api.control( id, function ( control ) {
-						control.active.set( setting.get() === 'propia' );
+						control.active.set( own );
 					} );
 				} );
 			}
-			setting.bind( toggle );
+			[ pair, heading, body ].forEach( function ( setting ) {
+				setting.bind( toggle );
+			} );
 			toggle();
 		} );
 	} );

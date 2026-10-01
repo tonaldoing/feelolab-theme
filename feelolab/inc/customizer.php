@@ -61,8 +61,12 @@ add_action(
 		);
 		$choices = wp_list_pluck( feelolab_font_stacks(), 'label' );
 		feelolab_customizer_select( $wp_customize, 'feelolab_font_pair', __( 'Combinación tipográfica', 'feelolab' ), 'feelolab_type', $choices, 'sistema', __( 'Las de sistema no descargan nada. Las "Web" se sirven desde el propio sitio, con métricas ajustadas para que el texto no salte al cargar.', 'feelolab' ) );
-		// Fuente propia: aparece al elegir "Fuente propia de la marca".
-		$own_active = static fn() => 'propia' === get_theme_mod( 'feelolab_font_pair', 'sistema' );
+		// Títulos y textos por separado: arrancan en "la de la combinación".
+		$singles = array( '' => __( 'La de la combinación', 'feelolab' ) ) + wp_list_pluck( feelolab_font_singles(), 'label' );
+		feelolab_customizer_select( $wp_customize, 'feelolab_font_heading', __( 'Fuente de los títulos', 'feelolab' ), 'feelolab_type', $singles, '', __( 'Opcional: cambia solo los títulos.', 'feelolab' ) );
+		feelolab_customizer_select( $wp_customize, 'feelolab_font_body', __( 'Fuente de los textos', 'feelolab' ), 'feelolab_type', $singles, '', __( 'Opcional: cambia el texto de párrafos, menús y botones.', 'feelolab' ) );
+		// Fuente propia: aparece al elegir "Fuente propia de la marca" en cualquiera de las tres.
+		$own_active = 'feelolab_own_font_chosen';
 		$own_files  = array(
 			'feelolab_font_own_heading'   => array( __( 'Fuente propia: títulos (.woff2)', 'feelolab' ), __( 'Subí el archivo .woff2 (si tenés .ttf u .otf, convertilo gratis en transfonter.org). Revisá que la licencia permita usarla en la web.', 'feelolab' ) ),
 			'feelolab_font_own_body'      => array( __( 'Fuente propia: textos (.woff2)', 'feelolab' ), __( 'Opcional: si no la cargás, los textos usan la de títulos.', 'feelolab' ) ),
@@ -287,9 +291,10 @@ add_action(
 			$wp_customize->add_section(
 				$section_id,
 				array(
-					'title'    => $section['label'],
-					'panel'    => 'feelolab_home',
-					'priority' => 10 + (int) array_search( $key, array_keys( $items ), true ),
+					'title'       => $section['label'],
+					'panel'       => 'feelolab_home',
+					'priority'    => 10 + (int) array_search( $key, array_keys( $items ), true ),
+					'description' => feelolab_home_section_description( $key, $section ),
 				)
 			);
 			feelolab_customizer_checkbox( $wp_customize, "feelolab_home_{$key}_show", __( 'Mostrar esta sección', 'feelolab' ), $section_id, $section['show'] );
@@ -317,7 +322,10 @@ add_action(
 						)
 					);
 				} elseif ( 'select' === $def['type'] ) {
-					feelolab_customizer_select( $wp_customize, $id, $def['label'], $section_id, $def['choices'], $def['default'] );
+					$choices = is_callable( $def['choices'] ) ? call_user_func( $def['choices'] ) : $def['choices'];
+					feelolab_customizer_select( $wp_customize, $id, $def['label'], $section_id, $choices, (string) $def['default'] );
+				} elseif ( 'checkbox' === $def['type'] ) {
+					feelolab_customizer_checkbox( $wp_customize, $id, $def['label'], $section_id, (bool) $def['default'] );
 				} else {
 					feelolab_customizer_text( $wp_customize, $id, $def['label'], $section_id, $def['default'] ?? '', $def['type'] );
 				}
@@ -347,7 +355,7 @@ add_action(
 		}
 
 		// Colores, tipografía y forma: se recalcula solo el CSS de marca (con el ajuste de contraste en PHP).
-		$brand = array( 'feelolab_font_pair', 'feelolab_font_size', 'feelolab_radius', 'feelolab_container', 'feelolab_font_own_heading', 'feelolab_font_own_body', 'feelolab_font_own_body_bold', 'feelolab_font_own_generic' );
+		$brand = array( 'feelolab_font_pair', 'feelolab_font_heading', 'feelolab_font_body', 'feelolab_font_size', 'feelolab_radius', 'feelolab_container', 'feelolab_font_own_heading', 'feelolab_font_own_body', 'feelolab_font_own_body_bold', 'feelolab_font_own_generic' );
 		foreach ( array_keys( feelolab_color_settings() ) as $color ) {
 			$brand[] = 'feelolab_color_' . $color;
 		}
@@ -368,6 +376,39 @@ add_action(
 		}
 	}
 );
+
+/**
+ * Texto de ayuda de una sección de la home: en las que listan contenido, dónde se carga ese
+ * contenido (el Personalizador solo elige cómo se muestra) y cuánto hay.
+ *
+ * @param array<string, mixed> $section Definición de la sección.
+ */
+function feelolab_home_section_description( string $key, array $section ): string {
+	if ( empty( $section['list'] ) ) {
+		return '';
+	}
+	$type = (string) ( $section['list']['post_type'] ?? ( ! empty( $section['module'] ) && function_exists( 'feelo_module_post_type' ) ? feelo_module_post_type( (string) $section['module'] ) : '' ) );
+	if ( ! $type || ! post_type_exists( $type ) ) {
+		return '';
+	}
+	$object = get_post_type_object( $type );
+	$count  = (int) ( wp_count_posts( $type )->publish ?? 0 );
+	$text   = $count
+		/* translators: 1: cantidad, 2: nombre del tipo de contenido (servicios, productos…) */
+		? sprintf( _n( 'Hay %1$d publicado en %2$s.', 'Hay %1$d publicados en %2$s.', $count, 'feelolab' ), $count, $object->labels->name )
+		/* translators: %s: nombre del tipo de contenido (servicios, productos…) */
+		: sprintf( __( 'Todavía no hay nada publicado en %s: la sección no se muestra hasta que cargues el primero.', 'feelolab' ), $object->labels->name );
+	return sprintf(
+		'%1$s %2$s <a href="%3$s" target="_blank">%4$s<span class="screen-reader-text"> %5$s</span></a> · <a href="%6$s" target="_blank">%7$s<span class="screen-reader-text"> %5$s</span></a>',
+		esc_html( $text ),
+		esc_html__( 'Acá elegís cómo se muestran; el contenido se edita en el panel.', 'feelolab' ),
+		esc_url( admin_url( 'post-new.php?post_type=' . $type ) ),
+		esc_html( $object->labels->add_new_item ),
+		esc_html__( '(se abre en otra pestaña)', 'feelolab' ),
+		esc_url( admin_url( 'edit.php?post_type=' . $type ) ),
+		esc_html( $object->labels->all_items )
+	);
+}
 
 /**
  * Contenedor del CSS de marca para la vista previa en vivo. No se refresca el <style> mismo: el

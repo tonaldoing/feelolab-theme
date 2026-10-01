@@ -2,6 +2,15 @@
 
 Cada versión publicada acá llega a los sitios como actualización (Escritorio → Actualizaciones).
 
+## 0.10.0 — 2026-10-01
+
+- Secciones de la home con más opciones. Servicios, productos, proyectos, equipo, testimonios, preguntas frecuentes, notas del blog y logos tienen ahora bajada, cantidad, columnas, una sola categoría, orden, texto del botón "ver todos" y fondo (el del sitio, suave o contrastado). Servicios suma qué muestra cada tarjeta: ícono, descripción y precio.
+- Nuevas secciones para la home: productos destacados y equipo.
+- Fondo elegible también en Sobre nosotros, Cifras, Newsletter y Contacto, siempre con el contraste de texto asegurado.
+- Si una sección no tiene contenido, la vista previa del Personalizador lo avisa y dice dónde cargarlo (antes simplemente no aparecía). El panel de cada sección muestra cuántos hay publicados y un acceso para agregar uno nuevo.
+- Tipografía: la fuente de los títulos y la de los textos se eligen por separado. La combinación sigue siendo el punto de partida.
+- Menú: sin un menú asignado, el encabezado muestra Inicio, los contenidos con publicaciones (Servicios, Productos…), el blog, las páginas propias y Contacto al final, en lugar de la página de ejemplo de WordPress.
+
 ## 0.9.0 — 2026-09-30
 
 - Listo para el directorio de WordPress: el tema y el plugin cumplen las pautas de wordpress.org (Theme Check y Plugin Check sin errores en la versión para el directorio).

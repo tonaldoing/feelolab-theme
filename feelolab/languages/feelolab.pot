@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: FeeloLab 0.8.1\n"
+"Project-Id-Version: FeeloLab 0.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/feelolab\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-30T18:50:29+00:00\n"
+"POT-Creation-Date: 2026-10-01T17:49:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: feelolab\n"
@@ -57,7 +57,7 @@ msgid "Comentarios"
 msgstr ""
 
 #: footer.php:29
-#: inc/customizer.php:206
+#: inc/customizer.php:210
 msgid "Pie de página"
 msgstr ""
 
@@ -70,6 +70,7 @@ msgid "Sitio hecho por"
 msgstr ""
 
 #: footer.php:85
+#: inc/customizer.php:407
 #: inc/template-tags.php:139
 #: inc/template-tags.php:342
 #: template-parts/cards/card-sede.php:42
@@ -96,6 +97,7 @@ msgid "Menú"
 msgstr ""
 
 #: inc/breadcrumbs.php:15
+#: inc/nav.php:52
 msgid "Inicio"
 msgstr ""
 
@@ -111,7 +113,7 @@ msgid "Página no encontrada"
 msgstr ""
 
 #: inc/breadcrumbs.php:103
-#: inc/customizer.php:229
+#: inc/customizer.php:233
 #: index.php:16
 msgid "Blog"
 msgstr ""
@@ -165,7 +167,8 @@ msgid "Secundario (bloques oscuros, footer)"
 msgstr ""
 
 #: inc/colors.php:40
-#: inc/colors.php:292
+#: inc/colors.php:371
+#: inc/home.php:400
 msgid "Fondo"
 msgstr ""
 
@@ -174,25 +177,28 @@ msgid "Superficie (secciones alternas, tarjetas)"
 msgstr ""
 
 #: inc/colors.php:48
-#: inc/colors.php:291
-#: inc/home.php:67
-#: inc/home.php:81
-#: inc/home.php:148
-#: inc/home.php:170
-#: inc/home.php:181
-#: inc/home.php:190
+#: inc/colors.php:370
+#: inc/home.php:104
+#: inc/home.php:119
+#: inc/home.php:247
+#: inc/home.php:284
+#: inc/home.php:295
+#: inc/home.php:305
 msgid "Texto"
 msgstr ""
 
 #: inc/colors.php:165
+#: inc/colors.php:233
 msgid "Sistema (neutra, la más rápida)"
 msgstr ""
 
 #: inc/colors.php:170
+#: inc/colors.php:237
 msgid "Humanista (cercana)"
 msgstr ""
 
 #: inc/colors.php:175
+#: inc/colors.php:241
 msgid "Geométrica (moderna)"
 msgstr ""
 
@@ -221,18 +227,33 @@ msgid "Web: Source Serif + Figtree (editorial) · 71 KB"
 msgstr ""
 
 #: inc/colors.php:214
+#: inc/colors.php:263
 msgid "Fuente propia de la marca (subila abajo)"
 msgstr ""
 
-#: inc/colors.php:288
+#: inc/colors.php:245
+msgid "Serif de lectura (Charter, Cambria)"
+msgstr ""
+
+#: inc/colors.php:249
+msgid "Serif clásica (Palatino)"
+msgstr ""
+
+#. translators: %s: nombre de la fuente
+#: inc/colors.php:256
+#, php-format
+msgid "Web: %s"
+msgstr ""
+
+#: inc/colors.php:367
 msgid "Botones"
 msgstr ""
 
-#: inc/colors.php:289
+#: inc/colors.php:368
 msgid "Secundario"
 msgstr ""
 
-#: inc/colors.php:290
+#: inc/colors.php:369
 msgid "Superficie"
 msgstr ""
 
@@ -260,250 +281,288 @@ msgstr ""
 msgid "Las de sistema no descargan nada. Las \"Web\" se sirven desde el propio sitio, con métricas ajustadas para que el texto no salte al cargar."
 msgstr ""
 
+#: inc/customizer.php:65
+msgid "La de la combinación"
+msgstr ""
+
+#: inc/customizer.php:66
+msgid "Fuente de los títulos"
+msgstr ""
+
+#: inc/customizer.php:66
+msgid "Opcional: cambia solo los títulos."
+msgstr ""
+
 #: inc/customizer.php:67
+msgid "Fuente de los textos"
+msgstr ""
+
+#: inc/customizer.php:67
+msgid "Opcional: cambia el texto de párrafos, menús y botones."
+msgstr ""
+
+#: inc/customizer.php:71
 msgid "Fuente propia: títulos (.woff2)"
 msgstr ""
 
-#: inc/customizer.php:67
+#: inc/customizer.php:71
 msgid "Subí el archivo .woff2 (si tenés .ttf u .otf, convertilo gratis en transfonter.org). Revisá que la licencia permita usarla en la web."
 msgstr ""
 
-#: inc/customizer.php:68
+#: inc/customizer.php:72
 msgid "Fuente propia: textos (.woff2)"
 msgstr ""
 
-#: inc/customizer.php:68
+#: inc/customizer.php:72
 msgid "Opcional: si no la cargás, los textos usan la de títulos."
 msgstr ""
 
-#: inc/customizer.php:69
+#: inc/customizer.php:73
 msgid "Fuente propia: textos en negrita (.woff2)"
 msgstr ""
 
-#: inc/customizer.php:69
+#: inc/customizer.php:73
 msgid "Opcional. Si la fuente de textos es \"variable\" (trae todos los pesos), no hace falta."
 msgstr ""
 
-#: inc/customizer.php:73
+#: inc/customizer.php:77
 msgid "WordPress no deja subir fuentes sin un plugin: activá FeeloLab Core para habilitarlo."
 msgstr ""
 
-#: inc/customizer.php:100
+#: inc/customizer.php:104
 msgid "Fuente propia: estilo"
 msgstr ""
 
-#: inc/customizer.php:103
+#: inc/customizer.php:107
 msgid "Sin serifa (palo seco)"
 msgstr ""
 
-#: inc/customizer.php:104
+#: inc/customizer.php:108
 msgid "Con serifa"
 msgstr ""
 
-#: inc/customizer.php:107
+#: inc/customizer.php:111
 msgid "Define qué fuente del sistema se ve mientras carga la tuya."
 msgstr ""
 
-#: inc/customizer.php:114
+#: inc/customizer.php:118
 msgid "Tamaño de texto base"
 msgstr ""
 
-#: inc/customizer.php:118
+#: inc/customizer.php:122
 msgid "17 px (recomendado)"
 msgstr ""
 
-#: inc/customizer.php:126
+#: inc/customizer.php:130
 msgid "Esquinas"
 msgstr ""
 
-#: inc/customizer.php:129
+#: inc/customizer.php:133
 msgid "Rectas"
 msgstr ""
 
-#: inc/customizer.php:130
+#: inc/customizer.php:134
 msgid "Apenas redondeadas"
 msgstr ""
 
-#: inc/customizer.php:131
+#: inc/customizer.php:135
 msgid "Redondeadas"
 msgstr ""
 
-#: inc/customizer.php:132
+#: inc/customizer.php:136
 msgid "Muy redondeadas"
 msgstr ""
 
-#: inc/customizer.php:139
+#: inc/customizer.php:143
 msgid "Ancho máximo del contenido"
 msgstr ""
 
-#: inc/customizer.php:153
+#: inc/customizer.php:157
 msgid "Encabezado"
 msgstr ""
 
-#: inc/customizer.php:160
+#: inc/customizer.php:164
 #: inc/home.php:33
 msgid "Diseño"
 msgstr ""
 
-#: inc/customizer.php:163
+#: inc/customizer.php:167
 msgid "Logo a la izquierda, menú a la derecha"
 msgstr ""
 
-#: inc/customizer.php:164
+#: inc/customizer.php:168
 msgid "Logo centrado, menú debajo"
 msgstr ""
 
-#: inc/customizer.php:167
+#: inc/customizer.php:171
 msgid "En el celular los dos se ven igual: logo y botón de menú."
 msgstr ""
 
-#: inc/customizer.php:169
+#: inc/customizer.php:173
 msgid "Encabezado fijo al hacer scroll"
 msgstr ""
 
-#: inc/customizer.php:170
+#: inc/customizer.php:174
 msgid "Mostrar buscador"
 msgstr ""
 
-#: inc/customizer.php:171
+#: inc/customizer.php:175
 msgid "Botón del encabezado: texto"
 msgstr ""
 
-#: inc/customizer.php:172
+#: inc/customizer.php:176
 msgid "Botón del encabezado: link"
 msgstr ""
 
-#: inc/customizer.php:174
+#: inc/customizer.php:178
 msgid "Transparente sobre la portada"
 msgstr ""
 
-#: inc/customizer.php:175
+#: inc/customizer.php:179
 msgid "Solo en la home y cuando la portada usa \"Imagen de fondo a todo el ancho\". Al hacer scroll vuelve a su color."
 msgstr ""
 
-#: inc/customizer.php:188
+#: inc/customizer.php:192
 msgid "Logo claro (para el encabezado transparente)"
 msgstr ""
 
-#: inc/customizer.php:189
+#: inc/customizer.php:193
 msgid "Una versión blanca o clara del logo, que se lea sobre la foto. Si no la cargás, se usa el logo de siempre."
 msgstr ""
 
-#: inc/customizer.php:197
+#: inc/customizer.php:201
 msgid "Barra superior con contacto y redes"
 msgstr ""
 
-#: inc/customizer.php:198
+#: inc/customizer.php:202
 msgid "Muestra el teléfono, WhatsApp, email y redes cargados en Ajustes del sitio."
 msgstr ""
 
-#: inc/customizer.php:199
+#: inc/customizer.php:203
 msgid "Barra superior: texto corto (opcional)"
 msgstr ""
 
-#: inc/customizer.php:210
+#: inc/customizer.php:214
 msgid "Texto breve bajo el logo"
 msgstr ""
 
-#: inc/customizer.php:214
+#: inc/customizer.php:218
 msgid "Estilo"
 msgstr ""
 
-#: inc/customizer.php:217
+#: inc/customizer.php:221
 msgid "Del color secundario de la marca"
 msgstr ""
 
-#: inc/customizer.php:218
+#: inc/customizer.php:222
 msgid "Claro"
 msgstr ""
 
-#: inc/customizer.php:221
+#: inc/customizer.php:225
 msgid "Para sumar columnas (horarios, links, un texto), agregá widgets en Apariencia → Widgets → Pie de página: columnas."
 msgstr ""
 
-#: inc/customizer.php:223
+#: inc/customizer.php:227
 msgid "Mostrar \"Sitio hecho por FeeloLab\" (con link a feelolab.com)"
 msgstr ""
 
-#: inc/customizer.php:233
+#: inc/customizer.php:237
 msgid "Mostrar el tiempo de lectura"
 msgstr ""
 
-#: inc/customizer.php:234
+#: inc/customizer.php:238
 msgid "Mostrar botones para compartir"
 msgstr ""
 
-#: inc/customizer.php:235
+#: inc/customizer.php:239
 msgid "Mostrar el recuadro del autor"
 msgstr ""
 
-#: inc/customizer.php:236
+#: inc/customizer.php:240
 msgid "Aparece solo si el autor completó su biografía en Usuarios → Perfil."
 msgstr ""
 
-#: inc/customizer.php:242
+#: inc/customizer.php:246
 msgid "Secciones de la home"
 msgstr ""
 
-#: inc/customizer.php:244
+#: inc/customizer.php:248
 msgid "Ordená las secciones arrastrándolas en \"Orden de las secciones\" y completá cada una. Los cambios de texto e imágenes se ven al instante."
 msgstr ""
 
-#: inc/customizer.php:257
-#: inc/customizer.php:274
+#: inc/customizer.php:261
+#: inc/customizer.php:278
 msgid "Orden de las secciones"
 msgstr ""
 
-#: inc/customizer.php:275
+#: inc/customizer.php:279
 msgid "Arrastrá cada sección o usá las flechas. Las ocultas no se ven en el sitio; se prenden desde el lápiz de cada una."
 msgstr ""
 
-#: inc/customizer.php:295
+#: inc/customizer.php:300
 msgid "Mostrar esta sección"
 msgstr ""
 
-#: inc/customizer.php:414
+#. translators: 1: cantidad, 2: nombre del tipo de contenido (servicios, productos…)
+#: inc/customizer.php:398
+#, php-format
+msgid "Hay %1$d publicado en %2$s."
+msgid_plural "Hay %1$d publicados en %2$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: nombre del tipo de contenido (servicios, productos…)
+#: inc/customizer.php:400
+#, php-format
+msgid "Todavía no hay nada publicado en %s: la sección no se muestra hasta que cargues el primero."
+msgstr ""
+
+#: inc/customizer.php:404
+msgid "Acá elegís cómo se muestran; el contenido se edita en el panel."
+msgstr ""
+
+#: inc/customizer.php:455
 msgid "Oculta"
 msgstr ""
 
 #. translators: 1: sección, 2: posición, 3: total
-#: inc/customizer.php:416
+#: inc/customizer.php:457
 #, php-format
 msgid "%1$s, posición %2$d de %3$d"
 msgstr ""
 
 #. translators: %s: relación de contraste, por ejemplo 3.2
-#: inc/customizer.php:454
+#: inc/customizer.php:495
 #, php-format
 msgid "El botón casi no se distingue del fondo de la página (%s:1). Se le agrega un borde para que se vea como botón."
 msgstr ""
 
 #. translators: %s: relación de contraste, por ejemplo 3.2
-#: inc/customizer.php:456
+#: inc/customizer.php:497
 #, php-format
 msgid "Este texto no se lee bien sobre el fondo del botón (%s:1, mínimo 4.5:1). El sitio va a usar blanco o negro, el que mejor se lea."
 msgstr ""
 
 #. translators: %s: relación de contraste, por ejemplo 3.2
-#: inc/customizer.php:458
+#: inc/customizer.php:499
 #, php-format
 msgid "Los links tendrían poco contraste con el fondo (%s:1, mínimo 4.5:1). El sitio va a usar una versión más oscura de este color."
 msgstr ""
 
 #. translators: %s: relación de contraste, por ejemplo 3.2
-#: inc/customizer.php:460
+#: inc/customizer.php:501
 #, php-format
 msgid "Los links usan este color y sobre el fondo no se leerían (%s:1). El sitio va a usar una versión más oscura; si preferís otro, elegilo en \"Links y acentos\"."
 msgstr ""
 
 #. translators: %s: relación de contraste, por ejemplo 1.0
-#: inc/customizer.php:462
+#: inc/customizer.php:503
 #, php-format
 msgid "Este color es muy claro para usarlo en links (%s:1 sobre el fondo), así que los links van a usar el color Secundario (o el de Texto). Si preferís otro, elegilo en \"Links y acentos\"."
 msgstr ""
 
 #. translators: %s: relación de contraste, por ejemplo 3.2
-#: inc/customizer.php:464
+#: inc/customizer.php:505
 #, php-format
 msgid "El texto tiene poco contraste con el fondo (%s:1). El tema lo va a oscurecer para que se lea."
 msgstr ""
@@ -529,7 +588,6 @@ msgid "Título (es el h1 de la home)"
 msgstr ""
 
 #: inc/home.php:42
-#: inc/home.php:57
 #: inc/patterns.php:55
 msgid "Bajada"
 msgstr ""
@@ -560,222 +618,370 @@ msgid "Botón secundario: link"
 msgstr ""
 
 #: inc/home.php:51
-#: inc/home.php:56
+#: inc/home.php:64
 msgid "Servicios"
 msgstr ""
 
-#: inc/home.php:56
-#: inc/home.php:66
-#: inc/home.php:80
-#: inc/home.php:108
-#: inc/home.php:118
-#: inc/home.php:128
-#: inc/home.php:137
-#: inc/home.php:147
-#: inc/home.php:160
-#: inc/home.php:169
-#: inc/home.php:180
-#: inc/home.php:189
-msgid "Título"
-msgstr ""
-
 #: inc/home.php:58
-#: inc/home.php:109
-#: inc/home.php:119
-#: inc/home.php:138
-#: inc/home.php:161
-msgid "Cantidad"
+msgid "Todavía no hay servicios cargados. Se cargan en el panel, en Servicios → Añadir nuevo; acá elegís cómo se muestran."
 msgstr ""
 
-#: inc/home.php:62
+#: inc/home.php:67
+msgid "Ver todos los servicios"
+msgstr ""
+
+#: inc/home.php:70
+msgid "Mostrar ícono o imagen"
+msgstr ""
+
+#: inc/home.php:71
+msgid "Mostrar la descripción corta"
+msgstr ""
+
+#: inc/home.php:72
+msgid "Mostrar el precio \"desde\""
+msgstr ""
+
+#: inc/home.php:76
+#: inc/home.php:89
+msgid "Productos"
+msgstr ""
+
+#: inc/home.php:83
+msgid "Todavía no hay productos cargados. Se cargan en el panel, en Productos → Añadir nuevo (o en lote desde Importar productos)."
+msgstr ""
+
+#: inc/home.php:93
+msgid "Ver todos los productos"
+msgstr ""
+
+#: inc/home.php:98
 msgid "Sobre nosotros"
 msgstr ""
 
-#: inc/home.php:66
+#: inc/home.php:99
+#: inc/home.php:241
+msgid "Escribí el texto o elegí una imagen acá abajo y la sección aparece."
+msgstr ""
+
+#: inc/home.php:103
+#: inc/home.php:118
+#: inc/home.php:246
+#: inc/home.php:283
+#: inc/home.php:294
+#: inc/home.php:304
+#: inc/home.php:335
+msgid "Título"
+msgstr ""
+
+#: inc/home.php:103
 #: patterns/intro-botones.php:16
 msgid "Quiénes somos"
 msgstr ""
 
-#: inc/home.php:68
-#: inc/home.php:149
+#: inc/home.php:105
+#: inc/home.php:248
 msgid "Imagen"
 msgstr ""
 
-#: inc/home.php:69
-#: inc/home.php:150
+#: inc/home.php:106
+#: inc/home.php:249
 msgid "Link: texto"
 msgstr ""
 
-#: inc/home.php:69
+#: inc/home.php:106
 msgid "Conocenos"
 msgstr ""
 
-#: inc/home.php:70
-#: inc/home.php:151
+#: inc/home.php:107
+#: inc/home.php:250
 msgid "Link: URL"
 msgstr ""
 
-#: inc/home.php:75
+#: inc/home.php:113
 msgid "Llamada a la acción (segunda)"
 msgstr ""
 
-#: inc/home.php:80
+#: inc/home.php:118
 msgid "¿Necesitás una mano?"
 msgstr ""
 
-#: inc/home.php:82
-#: inc/home.php:171
+#: inc/home.php:120
+#: inc/home.php:285
 msgid "Botón: texto"
 msgstr ""
 
-#: inc/home.php:82
+#: inc/home.php:120
 msgid "Consultanos"
 msgstr ""
 
-#: inc/home.php:83
-#: inc/home.php:172
+#: inc/home.php:121
+#: inc/home.php:286
 msgid "Botón: link (vacío = WhatsApp o contacto)"
 msgstr ""
 
-#: inc/home.php:87
+#: inc/home.php:125
 #: template-parts/home/cifras.php:22
 msgid "Cifras"
 msgstr ""
 
-#: inc/home.php:91
+#: inc/home.php:129
 msgid "Título (opcional)"
 msgstr ""
 
-#: inc/home.php:92
+#: inc/home.php:130
 msgid "Cifra 1"
 msgstr ""
 
-#: inc/home.php:93
+#: inc/home.php:131
 msgid "Texto 1"
 msgstr ""
 
-#: inc/home.php:93
+#: inc/home.php:131
 #: patterns/cifras.php:16
 msgid "años de experiencia"
 msgstr ""
 
-#: inc/home.php:94
+#: inc/home.php:132
 msgid "Cifra 2"
 msgstr ""
 
-#: inc/home.php:95
+#: inc/home.php:133
 msgid "Texto 2"
 msgstr ""
 
-#: inc/home.php:96
+#: inc/home.php:134
 msgid "Cifra 3"
 msgstr ""
 
-#: inc/home.php:97
+#: inc/home.php:135
 msgid "Texto 3"
 msgstr ""
 
-#: inc/home.php:98
+#: inc/home.php:136
 msgid "Cifra 4"
 msgstr ""
 
-#: inc/home.php:99
+#: inc/home.php:137
 msgid "Texto 4"
 msgstr ""
 
-#: inc/home.php:103
-#: inc/home.php:108
+#: inc/home.php:142
+#: inc/home.php:155
 msgid "Proyectos"
 msgstr ""
 
-#: inc/home.php:113
+#: inc/home.php:149
+msgid "Todavía no hay proyectos cargados. Se cargan en el panel, en Proyectos → Añadir nuevo."
+msgstr ""
+
+#: inc/home.php:158
+msgid "Ver todos los proyectos"
+msgstr ""
+
+#: inc/home.php:163
+msgid "Equipo"
+msgstr ""
+
+#: inc/home.php:170
+msgid "Todavía no hay personas cargadas. Se cargan en el panel, en Equipo → Añadir nuevo."
+msgstr ""
+
+#: inc/home.php:176
+#: patterns/equipo.php:23
+msgid "Nuestro equipo"
+msgstr ""
+
+#: inc/home.php:180
+msgid "Conocé al equipo"
+msgstr ""
+
+#: inc/home.php:185
 msgid "Testimonios"
 msgstr ""
 
-#: inc/home.php:118
+#: inc/home.php:190
+msgid "Todavía no hay testimonios cargados. Se cargan en el panel, en Testimonios → Añadir nuevo."
+msgstr ""
+
+#: inc/home.php:194
 msgid "Lo que dicen nuestros clientes"
 msgstr ""
 
-#: inc/home.php:123
+#: inc/home.php:202
 msgid "Logos de clientes"
 msgstr ""
 
-#: inc/home.php:128
+#: inc/home.php:207
+msgid "Todavía no hay logos cargados. Se cargan en el panel, en Clientes → Añadir nuevo (el logo va como imagen destacada)."
+msgstr ""
+
+#: inc/home.php:211
 msgid "Confían en nosotros"
 msgstr ""
 
-#: inc/home.php:132
-#: inc/home.php:137
+#: inc/home.php:217
+msgid "Logos en color (si no, en gris y a color al pasar el mouse)"
+msgstr ""
+
+#: inc/home.php:221
+#: inc/home.php:231
 #: patterns/preguntas.php:22
 #: template-parts/single/content-servicio.php:30
 msgid "Preguntas frecuentes"
 msgstr ""
 
-#: inc/home.php:142
+#: inc/home.php:227
+msgid "Todavía no hay preguntas cargadas. Se cargan en el panel, en Preguntas frecuentes → Añadir nueva."
+msgstr ""
+
+#: inc/home.php:240
 msgid "Texto con imagen (segundo bloque)"
 msgstr ""
 
-#: inc/home.php:147
+#: inc/home.php:246
 #: patterns/pasos.php:24
 msgid "Cómo trabajamos"
 msgstr ""
 
-#: inc/home.php:156
+#: inc/home.php:256
 msgid "Últimas notas del blog"
 msgstr ""
 
-#: inc/home.php:160
+#: inc/home.php:263
+msgid "Todavía no hay notas publicadas. Se escriben en el panel, en Entradas → Añadir nueva."
+msgstr ""
+
+#: inc/home.php:269
 msgid "Novedades"
 msgstr ""
 
-#: inc/home.php:165
+#: inc/home.php:273
+msgid "Ver todas las notas"
+msgstr ""
+
+#: inc/home.php:279
 msgid "Llamada a la acción"
 msgstr ""
 
-#: inc/home.php:169
+#: inc/home.php:283
 #: patterns/llamada.php:17
 #: template-parts/cta-band.php:12
 msgid "¿Hablamos?"
 msgstr ""
 
-#: inc/home.php:171
+#: inc/home.php:285
 #: patterns/llamada.php:26
 #: template-parts/cta-band.php:14
 msgid "Escribinos"
 msgstr ""
 
-#: inc/home.php:176
+#: inc/home.php:290
 msgid "Newsletter"
 msgstr ""
 
-#: inc/home.php:180
+#: inc/home.php:294
 #: patterns/newsletter.php:17
 msgid "Recibí nuestras novedades"
 msgstr ""
 
-#: inc/home.php:181
+#: inc/home.php:295
 msgid "Un email al mes con lo que te sirve. Sin spam."
 msgstr ""
 
-#: inc/home.php:185
+#: inc/home.php:300
 msgid "Contacto con formulario"
 msgstr ""
 
 #. Template Name of the theme
-#: inc/home.php:189
+#: inc/home.php:304
 #: template-parts/topbar.php:28
 msgid "Contacto"
 msgstr ""
 
-#: inc/home.php:217
+#: inc/home.php:336
+msgid "Bajada (opcional)"
+msgstr ""
+
+#: inc/home.php:337
+msgid "Cuántos mostrar"
+msgstr ""
+
+#: inc/home.php:342
+msgid "Columnas (en pantallas grandes)"
+msgstr ""
+
+#: inc/home.php:345
+msgid "Dos"
+msgstr ""
+
+#: inc/home.php:346
+msgid "Tres"
+msgstr ""
+
+#: inc/home.php:347
+msgid "Cuatro"
+msgstr ""
+
+#: inc/home.php:355
+msgid "Mostrar"
+msgstr ""
+
+#: inc/home.php:364
+msgid "Orden"
+msgstr ""
+
+#: inc/home.php:367
+msgid "Manual (campo \"Orden\" de cada uno)"
+msgstr ""
+
+#: inc/home.php:368
+msgid "Los más nuevos primero"
+msgstr ""
+
+#: inc/home.php:369
+msgid "Alfabético"
+msgstr ""
+
+#: inc/home.php:374
+msgid "Botón \"ver todos\": texto (vacío = sin botón)"
+msgstr ""
+
+#: inc/home.php:382
+msgid "Todas las categorías"
+msgstr ""
+
+#. translators: %s: nombre de la categoría
+#: inc/home.php:391
+#, php-format
+msgid "Solo \"%s\""
+msgstr ""
+
+#: inc/home.php:403
+msgid "Color de fondo del sitio"
+msgstr ""
+
+#: inc/home.php:404
+msgid "Color de superficie (suave)"
+msgstr ""
+
+#: inc/home.php:405
+msgid "Color secundario (contrastado)"
+msgstr ""
+
+#: inc/home.php:477
+msgid "Esta sección todavía no tiene contenido: no se muestra en el sitio."
+msgstr ""
+
+#: inc/home.php:500
 msgid "Imagen a la"
 msgstr ""
 
-#: inc/home.php:220
+#: inc/home.php:503
 msgid "Derecha"
 msgstr ""
 
-#: inc/home.php:221
+#: inc/home.php:504
 msgid "Izquierda"
 msgstr ""
 
@@ -979,10 +1185,6 @@ msgstr ""
 
 #: patterns/equipo.php:18
 msgid "Atención a clientes"
-msgstr ""
-
-#: patterns/equipo.php:23
-msgid "Nuestro equipo"
 msgstr ""
 
 #: patterns/intro-botones.php
@@ -1301,12 +1503,12 @@ msgstr ""
 msgid "Cómo llegar a %s"
 msgstr ""
 
-#: template-parts/cards/card-servicio.php:24
+#: template-parts/cards/card-servicio.php:34
 #: template-parts/single/content-servicio.php:38
 msgid "Desde"
 msgstr ""
 
-#: template-parts/cards/card-servicio.php:26
+#: template-parts/cards/card-servicio.php:36
 msgid "Ver más"
 msgstr ""
 
@@ -1326,18 +1528,6 @@ msgstr ""
 #: template-parts/gallery.php:50
 #, php-format
 msgid "Imagen %1$d de %2$d de %3$s"
-msgstr ""
-
-#: template-parts/home/blog.php:36
-msgid "Ver todas las notas"
-msgstr ""
-
-#: template-parts/home/proyectos.php:34
-msgid "Ver todos los proyectos"
-msgstr ""
-
-#: template-parts/home/servicios.php:34
-msgid "Ver todos los servicios"
 msgstr ""
 
 #: template-parts/none.php:11

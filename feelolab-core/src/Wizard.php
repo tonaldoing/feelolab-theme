@@ -207,8 +207,11 @@ final class Wizard {
 			}
 		}
 		$pair = isset( $_POST['feelo_font_pair'] ) ? sanitize_key( wp_unslash( $_POST['feelo_font_pair'] ) ) : '';
-		if ( $pair && isset( feelolab_font_stacks()[ $pair ] ) && 'propia' !== $pair ) {
+		if ( $pair && isset( feelolab_font_stacks()[ $pair ] ) && 'propia' !== $pair && get_theme_mod( 'feelolab_font_pair', 'sistema' ) !== $pair ) {
 			set_theme_mod( 'feelolab_font_pair', $pair );
+			// Una combinación nueva manda: se sueltan los cambios sueltos de títulos y textos.
+			remove_theme_mod( 'feelolab_font_heading' );
+			remove_theme_mod( 'feelolab_font_body' );
 		}
 		if ( ! empty( $_FILES['feelo_logo']['name'] ) ) {
 			require_once ABSPATH . 'wp-admin/includes/file.php';

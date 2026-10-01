@@ -7,22 +7,16 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$feelolab_q = new WP_Query(
-	array(
-		'post_type'      => feelo_module_post_type( 'testimonios' ),
-		'posts_per_page' => max( 1, (int) feelolab_home( 'testimonios', 'count' ) ),
-		'orderby'        => array( 'menu_order' => 'ASC', 'date' => 'DESC' ),
-		'no_found_rows'  => true,
-	)
-);
+$feelolab_q = new WP_Query( feelolab_home_query_args( 'testimonios', (string) feelo_module_post_type( 'testimonios' ) ) );
 if ( ! $feelolab_q->have_posts() ) {
+	feelolab_home_placeholder( 'testimonios' );
 	return;
 }
 ?>
-<section class="section section--surface" id="testimonios" aria-labelledby="testimonios-title">
+<section class="<?php echo esc_attr( feelolab_home_section_class( 'testimonios' ) ); ?>" id="testimonios" aria-labelledby="testimonios-title">
 	<div class="container">
-		<?php feelolab_section_header( (string) feelolab_home( 'testimonios', 'title' ), '', 'testimonios-title' ); ?>
-		<div class="grid grid--3">
+		<?php feelolab_section_header( (string) feelolab_home( 'testimonios', 'title' ), (string) feelolab_home( 'testimonios', 'text' ), 'testimonios-title' ); ?>
+		<div class="<?php echo esc_attr( feelolab_home_grid_class( 'testimonios' ) ); ?>">
 			<?php
 			while ( $feelolab_q->have_posts() ) :
 				$feelolab_q->the_post();

@@ -19,7 +19,7 @@ if ( ! $feelolab_stats ) {
 }
 $feelolab_title = (string) feelolab_home( 'cifras', 'title' );
 ?>
-<section class="section section--dark" <?php echo $feelolab_title ? 'aria-labelledby="cifras-title"' : 'aria-label="' . esc_attr__( 'Cifras', 'feelolab' ) . '"'; ?>>
+<section class="<?php echo esc_attr( feelolab_home_section_class( 'cifras' ) ); ?>" <?php echo $feelolab_title ? 'aria-labelledby="cifras-title"' : 'aria-label="' . esc_attr__( 'Cifras', 'feelolab' ) . '"'; ?>>
 	<div class="container">
 		<?php feelolab_section_header( $feelolab_title, '', 'cifras-title' ); ?>
 		<dl class="stats">

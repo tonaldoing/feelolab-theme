@@ -67,9 +67,7 @@ function feelolab_web_font_stack( string $key ): string {
 
 /** @return string[] Claves de web fonts que usa la combinación elegida. */
 function feelolab_active_web_fonts(): array {
-	$stacks = feelolab_font_stacks();
-	$pair   = (string) get_theme_mod( 'feelolab_font_pair', 'sistema' );
-	return isset( $stacks[ $pair ]['webfonts'] ) ? array_values( array_unique( $stacks[ $pair ]['webfonts'] ) ) : array();
+	return array_values( array_unique( array_merge( feelolab_font_for( 'heading' )['webfonts'], feelolab_font_for( 'body' )['webfonts'] ) ) );
 }
 
 function feelolab_font_url( string $key ): string {
@@ -123,9 +121,14 @@ function feelolab_own_fonts(): array {
 	);
 }
 
+/** ¿Está elegida la fuente propia (como combinación, para títulos o para textos)? */
+function feelolab_own_font_chosen(): bool {
+	return in_array( 'propia', array( get_theme_mod( 'feelolab_font_pair', 'sistema' ), get_theme_mod( 'feelolab_font_heading', '' ), get_theme_mod( 'feelolab_font_body', '' ) ), true );
+}
+
 /** ¿Está elegida la fuente propia y hay al menos un archivo? */
 function feelolab_own_fonts_active(): bool {
-	if ( 'propia' !== get_theme_mod( 'feelolab_font_pair', 'sistema' ) ) {
+	if ( ! feelolab_own_font_chosen() ) {
 		return false;
 	}
 	$own = feelolab_own_fonts();

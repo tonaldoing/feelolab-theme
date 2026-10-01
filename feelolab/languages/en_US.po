@@ -56,7 +56,7 @@ msgid "Comentarios"
 msgstr "Comments"
 
 #: footer.php:29
-#: inc/customizer.php:206
+#: inc/customizer.php:210
 msgid "Pie de página"
 msgstr "Footer"
 
@@ -69,6 +69,7 @@ msgid "Sitio hecho por"
 msgstr "Site by"
 
 #: footer.php:85
+#: inc/customizer.php:407
 #: inc/template-tags.php:139
 #: inc/template-tags.php:342
 #: template-parts/cards/card-sede.php:42
@@ -95,6 +96,7 @@ msgid "Menú"
 msgstr "Menu"
 
 #: inc/breadcrumbs.php:15
+#: inc/nav.php:52
 msgid "Inicio"
 msgstr "Home"
 
@@ -110,7 +112,7 @@ msgid "Página no encontrada"
 msgstr "Page not found"
 
 #: inc/breadcrumbs.php:103
-#: inc/customizer.php:229
+#: inc/customizer.php:233
 #: index.php:16
 msgid "Blog"
 msgstr "Blog"
@@ -164,7 +166,8 @@ msgid "Secundario (bloques oscuros, footer)"
 msgstr "Secondary (dark blocks, footer)"
 
 #: inc/colors.php:40
-#: inc/colors.php:292
+#: inc/colors.php:371
+#: inc/home.php:400
 msgid "Fondo"
 msgstr "Background"
 
@@ -173,25 +176,28 @@ msgid "Superficie (secciones alternas, tarjetas)"
 msgstr "Surface (alternate sections, cards)"
 
 #: inc/colors.php:48
-#: inc/colors.php:291
-#: inc/home.php:67
-#: inc/home.php:81
-#: inc/home.php:148
-#: inc/home.php:170
-#: inc/home.php:181
-#: inc/home.php:190
+#: inc/colors.php:370
+#: inc/home.php:104
+#: inc/home.php:119
+#: inc/home.php:247
+#: inc/home.php:284
+#: inc/home.php:295
+#: inc/home.php:305
 msgid "Texto"
 msgstr "Text"
 
 #: inc/colors.php:165
+#: inc/colors.php:233
 msgid "Sistema (neutra, la más rápida)"
 msgstr "System (neutral, the fastest)"
 
 #: inc/colors.php:170
+#: inc/colors.php:237
 msgid "Humanista (cercana)"
 msgstr "Humanist (friendly)"
 
 #: inc/colors.php:175
+#: inc/colors.php:241
 msgid "Geométrica (moderna)"
 msgstr "Geometric (modern)"
 
@@ -220,18 +226,19 @@ msgid "Web: Source Serif + Figtree (editorial) · 71 KB"
 msgstr "Web: Source Serif + Figtree (editorial) · 71 KB"
 
 #: inc/colors.php:214
+#: inc/colors.php:263
 msgid "Fuente propia de la marca (subila abajo)"
 msgstr "Brand's own font (upload it below)"
 
-#: inc/colors.php:288
+#: inc/colors.php:367
 msgid "Botones"
 msgstr "Buttons"
 
-#: inc/colors.php:289
+#: inc/colors.php:368
 msgid "Secundario"
 msgstr "Secondary"
 
-#: inc/colors.php:290
+#: inc/colors.php:369
 msgid "Superficie"
 msgstr "Surface"
 
@@ -259,246 +266,246 @@ msgstr "Font pairing"
 msgid "Las de sistema no descargan nada. Las \"Web\" se sirven desde el propio sitio, con métricas ajustadas para que el texto no salte al cargar."
 msgstr "System fonts download nothing. \"Web\" fonts are served from the site itself, with adjusted metrics so text doesn't jump while loading."
 
-#: inc/customizer.php:67
+#: inc/customizer.php:71
 msgid "Fuente propia: títulos (.woff2)"
 msgstr "Own font: headings (.woff2)"
 
-#: inc/customizer.php:67
+#: inc/customizer.php:71
 msgid "Subí el archivo .woff2 (si tenés .ttf u .otf, convertilo gratis en transfonter.org). Revisá que la licencia permita usarla en la web."
 msgstr "Upload the .woff2 file (if you have .ttf or .otf, convert it for free at transfonter.org). Check that the license allows web use."
 
-#: inc/customizer.php:68
+#: inc/customizer.php:72
 msgid "Fuente propia: textos (.woff2)"
 msgstr "Own font: body text (.woff2)"
 
-#: inc/customizer.php:68
+#: inc/customizer.php:72
 msgid "Opcional: si no la cargás, los textos usan la de títulos."
 msgstr "Optional: if you don't upload it, body text uses the heading font."
 
-#: inc/customizer.php:69
+#: inc/customizer.php:73
 msgid "Fuente propia: textos en negrita (.woff2)"
 msgstr "Own font: bold body text (.woff2)"
 
-#: inc/customizer.php:69
+#: inc/customizer.php:73
 msgid "Opcional. Si la fuente de textos es \"variable\" (trae todos los pesos), no hace falta."
 msgstr "Optional. Not needed if the body font is \"variable\" (includes every weight)."
 
-#: inc/customizer.php:100
+#: inc/customizer.php:104
 msgid "Fuente propia: estilo"
 msgstr "Own font: style"
 
-#: inc/customizer.php:103
+#: inc/customizer.php:107
 msgid "Sin serifa (palo seco)"
 msgstr "Sans serif"
 
-#: inc/customizer.php:104
+#: inc/customizer.php:108
 msgid "Con serifa"
 msgstr "Serif"
 
-#: inc/customizer.php:107
+#: inc/customizer.php:111
 msgid "Define qué fuente del sistema se ve mientras carga la tuya."
 msgstr "Sets which system font shows while yours loads."
 
-#: inc/customizer.php:114
+#: inc/customizer.php:118
 msgid "Tamaño de texto base"
 msgstr "Base text size"
 
-#: inc/customizer.php:118
+#: inc/customizer.php:122
 msgid "17 px (recomendado)"
 msgstr "17 px (recommended)"
 
-#: inc/customizer.php:126
+#: inc/customizer.php:130
 msgid "Esquinas"
 msgstr "Corners"
 
-#: inc/customizer.php:129
+#: inc/customizer.php:133
 msgid "Rectas"
 msgstr "Square"
 
-#: inc/customizer.php:130
+#: inc/customizer.php:134
 msgid "Apenas redondeadas"
 msgstr "Slightly rounded"
 
-#: inc/customizer.php:131
+#: inc/customizer.php:135
 msgid "Redondeadas"
 msgstr "Rounded"
 
-#: inc/customizer.php:132
+#: inc/customizer.php:136
 msgid "Muy redondeadas"
 msgstr "Very rounded"
 
-#: inc/customizer.php:139
+#: inc/customizer.php:143
 msgid "Ancho máximo del contenido"
 msgstr "Maximum content width"
 
-#: inc/customizer.php:153
+#: inc/customizer.php:157
 msgid "Encabezado"
 msgstr "Header"
 
-#: inc/customizer.php:160
+#: inc/customizer.php:164
 #: inc/home.php:33
 msgid "Diseño"
 msgstr "Layout"
 
-#: inc/customizer.php:163
+#: inc/customizer.php:167
 msgid "Logo a la izquierda, menú a la derecha"
 msgstr "Logo on the left, menu on the right"
 
-#: inc/customizer.php:164
+#: inc/customizer.php:168
 msgid "Logo centrado, menú debajo"
 msgstr "Centered logo, menu below"
 
-#: inc/customizer.php:167
+#: inc/customizer.php:171
 msgid "En el celular los dos se ven igual: logo y botón de menú."
 msgstr "On phones both look the same: logo and menu button."
 
-#: inc/customizer.php:169
+#: inc/customizer.php:173
 msgid "Encabezado fijo al hacer scroll"
 msgstr "Sticky header on scroll"
 
-#: inc/customizer.php:170
+#: inc/customizer.php:174
 msgid "Mostrar buscador"
 msgstr "Show search"
 
-#: inc/customizer.php:171
+#: inc/customizer.php:175
 msgid "Botón del encabezado: texto"
 msgstr "Header button: text"
 
-#: inc/customizer.php:172
+#: inc/customizer.php:176
 msgid "Botón del encabezado: link"
 msgstr "Header button: link"
 
-#: inc/customizer.php:174
+#: inc/customizer.php:178
 msgid "Transparente sobre la portada"
 msgstr "Transparent over the hero"
 
-#: inc/customizer.php:175
+#: inc/customizer.php:179
 msgid "Solo en la home y cuando la portada usa \"Imagen de fondo a todo el ancho\". Al hacer scroll vuelve a su color."
 msgstr "Only on the home page and when the hero uses \"Full-width background image\". It turns solid when scrolling."
 
-#: inc/customizer.php:188
+#: inc/customizer.php:192
 msgid "Logo claro (para el encabezado transparente)"
 msgstr "Light logo (for the transparent header)"
 
-#: inc/customizer.php:189
+#: inc/customizer.php:193
 msgid "Una versión blanca o clara del logo, que se lea sobre la foto. Si no la cargás, se usa el logo de siempre."
 msgstr "A white or light version of the logo that reads over the photo. If you don't upload one, the regular logo is used."
 
-#: inc/customizer.php:197
+#: inc/customizer.php:201
 msgid "Barra superior con contacto y redes"
 msgstr "Top bar with contact and social links"
 
-#: inc/customizer.php:198
+#: inc/customizer.php:202
 msgid "Muestra el teléfono, WhatsApp, email y redes cargados en Ajustes del sitio."
 msgstr "Shows the phone, WhatsApp, email and social links set in Site settings."
 
-#: inc/customizer.php:199
+#: inc/customizer.php:203
 msgid "Barra superior: texto corto (opcional)"
 msgstr "Top bar: short text (optional)"
 
-#: inc/customizer.php:210
+#: inc/customizer.php:214
 msgid "Texto breve bajo el logo"
 msgstr "Short text under the logo"
 
-#: inc/customizer.php:214
+#: inc/customizer.php:218
 msgid "Estilo"
 msgstr "Style"
 
-#: inc/customizer.php:217
+#: inc/customizer.php:221
 msgid "Del color secundario de la marca"
 msgstr "Brand secondary color"
 
-#: inc/customizer.php:218
+#: inc/customizer.php:222
 msgid "Claro"
 msgstr "Light"
 
-#: inc/customizer.php:221
+#: inc/customizer.php:225
 msgid "Para sumar columnas (horarios, links, un texto), agregá widgets en Apariencia → Widgets → Pie de página: columnas."
 msgstr "To add columns (hours, links, some text), add widgets in Appearance → Widgets → Footer: columns."
 
-#: inc/customizer.php:223
+#: inc/customizer.php:227
 msgid "Mostrar \"Sitio hecho por FeeloLab\" (con link a feelolab.com)"
 msgstr "Show \"Site by FeeloLab\" (linking to feelolab.com)"
 
-#: inc/customizer.php:233
+#: inc/customizer.php:237
 msgid "Mostrar el tiempo de lectura"
 msgstr "Show reading time"
 
-#: inc/customizer.php:234
+#: inc/customizer.php:238
 msgid "Mostrar botones para compartir"
 msgstr "Show share buttons"
 
-#: inc/customizer.php:235
+#: inc/customizer.php:239
 msgid "Mostrar el recuadro del autor"
 msgstr "Show the author box"
 
-#: inc/customizer.php:236
+#: inc/customizer.php:240
 msgid "Aparece solo si el autor completó su biografía en Usuarios → Perfil."
 msgstr "Only appears if the author filled in their bio in Users → Profile."
 
-#: inc/customizer.php:242
+#: inc/customizer.php:246
 msgid "Secciones de la home"
 msgstr "Home sections"
 
-#: inc/customizer.php:244
+#: inc/customizer.php:248
 msgid "Ordená las secciones arrastrándolas en \"Orden de las secciones\" y completá cada una. Los cambios de texto e imágenes se ven al instante."
 msgstr "Reorder the sections by dragging them in \"Section order\" and fill in each one. Text and image changes show instantly."
 
-#: inc/customizer.php:257
-#: inc/customizer.php:274
+#: inc/customizer.php:261
+#: inc/customizer.php:278
 msgid "Orden de las secciones"
 msgstr "Section order"
 
-#: inc/customizer.php:275
+#: inc/customizer.php:279
 msgid "Arrastrá cada sección o usá las flechas. Las ocultas no se ven en el sitio; se prenden desde el lápiz de cada una."
 msgstr "Drag each section or use the arrows. Hidden sections don't show on the site; turn them on from each one's pencil."
 
-#: inc/customizer.php:295
+#: inc/customizer.php:300
 msgid "Mostrar esta sección"
 msgstr "Show this section"
 
-#: inc/customizer.php:414
+#: inc/customizer.php:455
 msgid "Oculta"
 msgstr "Hidden"
 
 #. translators: 1: sección, 2: posición, 3: total
-#: inc/customizer.php:416
+#: inc/customizer.php:457
 #, php-format
 msgid "%1$s, posición %2$d de %3$d"
 msgstr "%1$s, position %2$d of %3$d"
 
 #. translators: %s: relación de contraste, por ejemplo 3.2
-#: inc/customizer.php:454
+#: inc/customizer.php:495
 #, php-format
 msgid "El botón casi no se distingue del fondo de la página (%s:1). Se le agrega un borde para que se vea como botón."
 msgstr "The button barely stands out from the page background (%s:1). A border is added so it still looks like a button."
 
 #. translators: %s: relación de contraste, por ejemplo 3.2
-#: inc/customizer.php:456
+#: inc/customizer.php:497
 #, php-format
 msgid "Este texto no se lee bien sobre el fondo del botón (%s:1, mínimo 4.5:1). El sitio va a usar blanco o negro, el que mejor se lea."
 msgstr "This text isn't readable on the button background (%s:1, minimum 4.5:1). The site will use white or black, whichever reads better."
 
 #. translators: %s: relación de contraste, por ejemplo 3.2
-#: inc/customizer.php:458
+#: inc/customizer.php:499
 #, php-format
 msgid "Los links tendrían poco contraste con el fondo (%s:1, mínimo 4.5:1). El sitio va a usar una versión más oscura de este color."
 msgstr "Links would have low contrast with the background (%s:1, minimum 4.5:1). The site will use a darker version of this color."
 
 #. translators: %s: relación de contraste, por ejemplo 3.2
-#: inc/customizer.php:460
+#: inc/customizer.php:501
 #, php-format
 msgid "Los links usan este color y sobre el fondo no se leerían (%s:1). El sitio va a usar una versión más oscura; si preferís otro, elegilo en \"Links y acentos\"."
 msgstr "Links use this color and wouldn't be readable on the background (%s:1). The site will use a darker version; if you prefer another, choose it in \"Links and accents\"."
 
 #. translators: %s: relación de contraste, por ejemplo 1.0
-#: inc/customizer.php:462
+#: inc/customizer.php:503
 #, php-format
 msgid "Este color es muy claro para usarlo en links (%s:1 sobre el fondo), así que los links van a usar el color Secundario (o el de Texto). Si preferís otro, elegilo en \"Links y acentos\"."
 msgstr "This color is too light for links (%s:1 on the background), so links will use the Secondary color (or the Text color). If you prefer another, choose it in \"Links and accents\"."
 
 #. translators: %s: relación de contraste, por ejemplo 3.2
-#: inc/customizer.php:464
+#: inc/customizer.php:505
 #, php-format
 msgid "El texto tiene poco contraste con el fondo (%s:1). El tema lo va a oscurecer para que se lea."
 msgstr "The text has low contrast with the background (%s:1). The theme will darken it so it reads well."
@@ -524,7 +531,6 @@ msgid "Título (es el h1 de la home)"
 msgstr "Title (the home page h1)"
 
 #: inc/home.php:42
-#: inc/home.php:57
 #: inc/patterns.php:55
 msgid "Bajada"
 msgstr "Subtitle"
@@ -555,222 +561,209 @@ msgid "Botón secundario: link"
 msgstr "Secondary button: link"
 
 #: inc/home.php:51
-#: inc/home.php:56
+#: inc/home.php:64
 msgid "Servicios"
 msgstr "Services"
 
-#: inc/home.php:56
-#: inc/home.php:66
-#: inc/home.php:80
-#: inc/home.php:108
+#: inc/home.php:103
 #: inc/home.php:118
-#: inc/home.php:128
-#: inc/home.php:137
-#: inc/home.php:147
-#: inc/home.php:160
-#: inc/home.php:169
-#: inc/home.php:180
-#: inc/home.php:189
+#: inc/home.php:246
+#: inc/home.php:283
+#: inc/home.php:294
+#: inc/home.php:304
+#: inc/home.php:335
 msgid "Título"
 msgstr "Title"
 
-#: inc/home.php:58
-#: inc/home.php:109
-#: inc/home.php:119
-#: inc/home.php:138
-#: inc/home.php:161
-msgid "Cantidad"
-msgstr "Number of items"
-
-#: inc/home.php:62
+#: inc/home.php:98
 msgid "Sobre nosotros"
 msgstr "About us"
 
-#: inc/home.php:66
+#: inc/home.php:103
 #: patterns/intro-botones.php:16
 msgid "Quiénes somos"
 msgstr "Who we are"
 
-#: inc/home.php:68
-#: inc/home.php:149
+#: inc/home.php:105
+#: inc/home.php:248
 msgid "Imagen"
 msgstr "Image"
 
-#: inc/home.php:69
-#: inc/home.php:150
+#: inc/home.php:106
+#: inc/home.php:249
 msgid "Link: texto"
 msgstr "Link: text"
 
-#: inc/home.php:69
+#: inc/home.php:106
 msgid "Conocenos"
 msgstr "Meet us"
 
-#: inc/home.php:70
-#: inc/home.php:151
+#: inc/home.php:107
+#: inc/home.php:250
 msgid "Link: URL"
 msgstr "Link: URL"
 
-#: inc/home.php:75
+#: inc/home.php:113
 msgid "Llamada a la acción (segunda)"
 msgstr "Call to action (second)"
 
-#: inc/home.php:80
+#: inc/home.php:118
 msgid "¿Necesitás una mano?"
 msgstr "Need a hand?"
 
-#: inc/home.php:82
-#: inc/home.php:171
+#: inc/home.php:120
+#: inc/home.php:285
 msgid "Botón: texto"
 msgstr "Button: text"
 
-#: inc/home.php:82
+#: inc/home.php:120
 msgid "Consultanos"
 msgstr "Ask us"
 
-#: inc/home.php:83
-#: inc/home.php:172
+#: inc/home.php:121
+#: inc/home.php:286
 msgid "Botón: link (vacío = WhatsApp o contacto)"
 msgstr "Button: link (empty = WhatsApp or contact)"
 
-#: inc/home.php:87
+#: inc/home.php:125
 #: template-parts/home/cifras.php:22
 msgid "Cifras"
 msgstr "Stats"
 
-#: inc/home.php:91
+#: inc/home.php:129
 msgid "Título (opcional)"
 msgstr "Title (optional)"
 
-#: inc/home.php:92
+#: inc/home.php:130
 msgid "Cifra 1"
 msgstr "Stat 1"
 
-#: inc/home.php:93
+#: inc/home.php:131
 msgid "Texto 1"
 msgstr "Text 1"
 
-#: inc/home.php:93
+#: inc/home.php:131
 #: patterns/cifras.php:16
 msgid "años de experiencia"
 msgstr "years of experience"
 
-#: inc/home.php:94
+#: inc/home.php:132
 msgid "Cifra 2"
 msgstr "Stat 2"
 
-#: inc/home.php:95
+#: inc/home.php:133
 msgid "Texto 2"
 msgstr "Text 2"
 
-#: inc/home.php:96
+#: inc/home.php:134
 msgid "Cifra 3"
 msgstr "Stat 3"
 
-#: inc/home.php:97
+#: inc/home.php:135
 msgid "Texto 3"
 msgstr "Text 3"
 
-#: inc/home.php:98
+#: inc/home.php:136
 msgid "Cifra 4"
 msgstr "Stat 4"
 
-#: inc/home.php:99
+#: inc/home.php:137
 msgid "Texto 4"
 msgstr "Text 4"
 
-#: inc/home.php:103
-#: inc/home.php:108
+#: inc/home.php:142
+#: inc/home.php:155
 msgid "Proyectos"
 msgstr "Projects"
 
-#: inc/home.php:113
+#: inc/home.php:185
 msgid "Testimonios"
 msgstr "Testimonials"
 
-#: inc/home.php:118
+#: inc/home.php:194
 msgid "Lo que dicen nuestros clientes"
 msgstr "What our clients say"
 
-#: inc/home.php:123
+#: inc/home.php:202
 msgid "Logos de clientes"
 msgstr "Client logos"
 
-#: inc/home.php:128
+#: inc/home.php:211
 msgid "Confían en nosotros"
 msgstr "They trust us"
 
-#: inc/home.php:132
-#: inc/home.php:137
+#: inc/home.php:221
+#: inc/home.php:231
 #: patterns/preguntas.php:22
 #: template-parts/single/content-servicio.php:30
 msgid "Preguntas frecuentes"
 msgstr "Frequently asked questions"
 
-#: inc/home.php:142
+#: inc/home.php:240
 msgid "Texto con imagen (segundo bloque)"
 msgstr "Text with image (second block)"
 
-#: inc/home.php:147
+#: inc/home.php:246
 #: patterns/pasos.php:24
 msgid "Cómo trabajamos"
 msgstr "How we work"
 
-#: inc/home.php:156
+#: inc/home.php:256
 msgid "Últimas notas del blog"
 msgstr "Latest blog posts"
 
-#: inc/home.php:160
+#: inc/home.php:269
 msgid "Novedades"
 msgstr "News"
 
-#: inc/home.php:165
+#: inc/home.php:279
 msgid "Llamada a la acción"
 msgstr "Call to action"
 
-#: inc/home.php:169
+#: inc/home.php:283
 #: patterns/llamada.php:17
 #: template-parts/cta-band.php:12
 msgid "¿Hablamos?"
 msgstr "Let's talk?"
 
-#: inc/home.php:171
+#: inc/home.php:285
 #: patterns/llamada.php:26
 #: template-parts/cta-band.php:14
 msgid "Escribinos"
 msgstr "Write to us"
 
-#: inc/home.php:176
+#: inc/home.php:290
 msgid "Newsletter"
 msgstr "Newsletter"
 
-#: inc/home.php:180
+#: inc/home.php:294
 #: patterns/newsletter.php:17
 msgid "Recibí nuestras novedades"
 msgstr "Get our news"
 
-#: inc/home.php:181
+#: inc/home.php:295
 msgid "Un email al mes con lo que te sirve. Sin spam."
 msgstr "One email a month with useful stuff. No spam."
 
-#: inc/home.php:185
+#: inc/home.php:300
 msgid "Contacto con formulario"
 msgstr "Contact with form"
 
 #. Template Name of the theme
-#: inc/home.php:189
+#: inc/home.php:304
 #: template-parts/topbar.php:28
 msgid "Contacto"
 msgstr "Contact"
 
-#: inc/home.php:217
+#: inc/home.php:500
 msgid "Imagen a la"
 msgstr "Image on the"
 
-#: inc/home.php:220
+#: inc/home.php:503
 msgid "Derecha"
 msgstr "Right"
 
-#: inc/home.php:221
+#: inc/home.php:504
 msgid "Izquierda"
 msgstr "Left"
 
@@ -968,6 +961,7 @@ msgstr "Accountant"
 msgid "Atención a clientes"
 msgstr "Customer service"
 
+#: inc/home.php:176
 #: patterns/equipo.php:23
 msgid "Nuestro equipo"
 msgstr "Our team"
@@ -1288,12 +1282,12 @@ msgstr "Sale"
 msgid "Cómo llegar a %s"
 msgstr "How to get to %s"
 
-#: template-parts/cards/card-servicio.php:24
+#: template-parts/cards/card-servicio.php:34
 #: template-parts/single/content-servicio.php:38
 msgid "Desde"
 msgstr "From"
 
-#: template-parts/cards/card-servicio.php:26
+#: template-parts/cards/card-servicio.php:36
 msgid "Ver más"
 msgstr "Read more"
 
@@ -1315,15 +1309,15 @@ msgstr "Product images"
 msgid "Imagen %1$d de %2$d de %3$s"
 msgstr "Image %1$d of %2$d of %3$s"
 
-#: template-parts/home/blog.php:36
+#: inc/home.php:273
 msgid "Ver todas las notas"
 msgstr "See all posts"
 
-#: template-parts/home/proyectos.php:34
+#: inc/home.php:158
 msgid "Ver todos los proyectos"
 msgstr "See all projects"
 
-#: template-parts/home/servicios.php:34
+#: inc/home.php:67
 msgid "Ver todos los servicios"
 msgstr "See all services"
 
@@ -1486,6 +1480,202 @@ msgid_plural "Carrito: %d productos"
 msgstr[0] "Cart: %d item"
 msgstr[1] "Cart: %d items"
 
-#: inc/customizer.php:73
+#: inc/customizer.php:77
 msgid "WordPress no deja subir fuentes sin un plugin: activá FeeloLab Core para habilitarlo."
 msgstr "WordPress does not allow font uploads without a plugin: activate FeeloLab Core to enable them."
+
+#: inc/colors.php:245
+msgid "Serif de lectura (Charter, Cambria)"
+msgstr "Reading serif (Charter, Cambria)"
+
+#: inc/colors.php:249
+msgid "Serif clásica (Palatino)"
+msgstr "Classic serif (Palatino)"
+
+#. translators: %s: nombre de la fuente
+#: inc/colors.php:256
+#, php-format
+msgid "Web: %s"
+msgstr "Web: %s"
+
+#: inc/customizer.php:65
+msgid "La de la combinación"
+msgstr "Same as the pairing"
+
+#: inc/customizer.php:66
+msgid "Fuente de los títulos"
+msgstr "Heading font"
+
+#: inc/customizer.php:66
+msgid "Opcional: cambia solo los títulos."
+msgstr "Optional: changes headings only."
+
+#: inc/customizer.php:67
+msgid "Fuente de los textos"
+msgstr "Body font"
+
+#: inc/customizer.php:67
+msgid "Opcional: cambia el texto de párrafos, menús y botones."
+msgstr "Optional: changes paragraphs, menus and buttons."
+
+#. translators: 1: cantidad, 2: nombre del tipo de contenido (servicios, productos…)
+#: inc/customizer.php:398
+#, php-format
+msgid "Hay %1$d publicado en %2$s."
+msgid_plural "Hay %1$d publicados en %2$s."
+msgstr[0] "%1$d published in %2$s."
+msgstr[1] "%1$d published in %2$s."
+
+#. translators: %s: nombre del tipo de contenido (servicios, productos…)
+#: inc/customizer.php:400
+#, php-format
+msgid "Todavía no hay nada publicado en %s: la sección no se muestra hasta que cargues el primero."
+msgstr "Nothing published in %s yet: the section stays hidden until you add the first one."
+
+#: inc/customizer.php:404
+msgid "Acá elegís cómo se muestran; el contenido se edita en el panel."
+msgstr "Here you choose how they look; the content itself is edited in the dashboard."
+
+#: inc/home.php:58
+msgid "Todavía no hay servicios cargados. Se cargan en el panel, en Servicios → Añadir nuevo; acá elegís cómo se muestran."
+msgstr "No services yet. Add them in the dashboard under Services → Add New; here you choose how they look."
+
+#: inc/home.php:70
+msgid "Mostrar ícono o imagen"
+msgstr "Show icon or image"
+
+#: inc/home.php:71
+msgid "Mostrar la descripción corta"
+msgstr "Show the short description"
+
+#: inc/home.php:72
+msgid "Mostrar el precio \"desde\""
+msgstr "Show the \"from\" price"
+
+#: inc/home.php:76
+#: inc/home.php:89
+msgid "Productos"
+msgstr "Products"
+
+#: inc/home.php:83
+msgid "Todavía no hay productos cargados. Se cargan en el panel, en Productos → Añadir nuevo (o en lote desde Importar productos)."
+msgstr "No products yet. Add them in the dashboard under Products → Add New (or in bulk from Import products)."
+
+#: inc/home.php:93
+msgid "Ver todos los productos"
+msgstr "See all products"
+
+#: inc/home.php:99
+#: inc/home.php:241
+msgid "Escribí el texto o elegí una imagen acá abajo y la sección aparece."
+msgstr "Write the text or pick an image below and the section appears."
+
+#: inc/home.php:149
+msgid "Todavía no hay proyectos cargados. Se cargan en el panel, en Proyectos → Añadir nuevo."
+msgstr "No projects yet. Add them in the dashboard under Projects → Add New."
+
+#: inc/home.php:163
+msgid "Equipo"
+msgstr "Team"
+
+#: inc/home.php:170
+msgid "Todavía no hay personas cargadas. Se cargan en el panel, en Equipo → Añadir nuevo."
+msgstr "No team members yet. Add them in the dashboard under Team → Add New."
+
+#: inc/home.php:180
+msgid "Conocé al equipo"
+msgstr "Meet the team"
+
+#: inc/home.php:190
+msgid "Todavía no hay testimonios cargados. Se cargan en el panel, en Testimonios → Añadir nuevo."
+msgstr "No testimonials yet. Add them in the dashboard under Testimonials → Add New."
+
+#: inc/home.php:207
+msgid "Todavía no hay logos cargados. Se cargan en el panel, en Clientes → Añadir nuevo (el logo va como imagen destacada)."
+msgstr "No logos yet. Add them in the dashboard under Clients → Add New (the logo goes in the featured image)."
+
+#: inc/home.php:217
+msgid "Logos en color (si no, en gris y a color al pasar el mouse)"
+msgstr "Logos in color (otherwise gray, in color on hover)"
+
+#: inc/home.php:227
+msgid "Todavía no hay preguntas cargadas. Se cargan en el panel, en Preguntas frecuentes → Añadir nueva."
+msgstr "No questions yet. Add them in the dashboard under FAQ → Add New."
+
+#: inc/home.php:263
+msgid "Todavía no hay notas publicadas. Se escriben en el panel, en Entradas → Añadir nueva."
+msgstr "No posts yet. Write them in the dashboard under Posts → Add New."
+
+#: inc/home.php:336
+msgid "Bajada (opcional)"
+msgstr "Intro text (optional)"
+
+#: inc/home.php:337
+msgid "Cuántos mostrar"
+msgstr "How many to show"
+
+#: inc/home.php:342
+msgid "Columnas (en pantallas grandes)"
+msgstr "Columns (on large screens)"
+
+#: inc/home.php:345
+msgid "Dos"
+msgstr "Two"
+
+#: inc/home.php:346
+msgid "Tres"
+msgstr "Three"
+
+#: inc/home.php:347
+msgid "Cuatro"
+msgstr "Four"
+
+#: inc/home.php:355
+msgid "Mostrar"
+msgstr "Show"
+
+#: inc/home.php:364
+msgid "Orden"
+msgstr "Order"
+
+#: inc/home.php:367
+msgid "Manual (campo \"Orden\" de cada uno)"
+msgstr "Manual (each item's \"Order\" field)"
+
+#: inc/home.php:368
+msgid "Los más nuevos primero"
+msgstr "Newest first"
+
+#: inc/home.php:369
+msgid "Alfabético"
+msgstr "Alphabetical"
+
+#: inc/home.php:374
+msgid "Botón \"ver todos\": texto (vacío = sin botón)"
+msgstr "\"See all\" button: text (empty = no button)"
+
+#: inc/home.php:382
+msgid "Todas las categorías"
+msgstr "All categories"
+
+#. translators: %s: nombre de la categoría
+#: inc/home.php:391
+#, php-format
+msgid "Solo \"%s\""
+msgstr "Only \"%s\""
+
+#: inc/home.php:403
+msgid "Color de fondo del sitio"
+msgstr "Site background color"
+
+#: inc/home.php:404
+msgid "Color de superficie (suave)"
+msgstr "Surface color (soft)"
+
+#: inc/home.php:405
+msgid "Color secundario (contrastado)"
+msgstr "Secondary color (high contrast)"
+
+#: inc/home.php:477
+msgid "Esta sección todavía no tiene contenido: no se muestra en el sitio."
+msgstr "This section has no content yet: it is hidden on the site."

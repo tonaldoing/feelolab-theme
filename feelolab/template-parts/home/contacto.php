@@ -11,7 +11,7 @@ if ( ! function_exists( 'feelo_contact_form' ) ) {
 	return;
 }
 ?>
-<section class="section" id="contacto" aria-labelledby="contacto-title">
+<section class="<?php echo esc_attr( feelolab_home_section_class( 'contacto' ) ); ?>" id="contacto" aria-labelledby="contacto-title">
 	<div class="container split split--contact">
 		<div>
 			<?php feelolab_section_header( (string) feelolab_home( 'contacto', 'title' ), (string) feelolab_home( 'contacto', 'text' ), 'contacto-title' ); ?>

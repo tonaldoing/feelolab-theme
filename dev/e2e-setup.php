@@ -40,4 +40,38 @@ if ( 'pendiente' === $wizard ) {
 	delete_option( 'feelo_e2e_contacto' );
 	update_option( 'feelo_wizard_done', 1 );
 }
+// ?menu=sin saca el menú principal (para probar el de respaldo); ?menu=con lo vuelve a poner.
+$menu = sanitize_key( $_GET['menu'] ?? '' ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+if ( 'sin' === $menu ) {
+	$locations = get_theme_mod( 'nav_menu_locations', array() );
+	update_option( 'feelo_e2e_menu', (int) ( $locations['primary'] ?? 0 ), false );
+	unset( $locations['primary'] );
+	set_theme_mod( 'nav_menu_locations', $locations );
+} elseif ( 'con' === $menu && get_option( 'feelo_e2e_menu' ) ) {
+	$locations            = get_theme_mod( 'nav_menu_locations', array() );
+	$locations['primary'] = (int) get_option( 'feelo_e2e_menu' );
+	set_theme_mod( 'nav_menu_locations', $locations );
+	delete_option( 'feelo_e2e_menu' );
+}
+
+// ?fondos=oscuro|gris|blanco prende todas las secciones de la home con ese fondo; ?fondos=normal deshace.
+$bgs = sanitize_key( $_GET['fondos'] ?? '' ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+if ( in_array( $bgs, array( 'oscuro', 'gris', 'blanco' ), true ) && function_exists( 'feelolab_home_sections' ) && ! get_option( 'feelo_e2e_home' ) ) {
+	// Se guarda cómo estaba la home para dejarla igual después.
+	$backup = array();
+	foreach ( feelolab_home_sections() as $key => $section ) {
+		foreach ( array( 'bg', 'show' ) as $field ) {
+			$backup[ "feelolab_home_{$key}_{$field}" ] = get_theme_mod( "feelolab_home_{$key}_{$field}", null );
+			if ( 'show' === $field || isset( $section['fields']['bg'] ) ) {
+				set_theme_mod( "feelolab_home_{$key}_{$field}", 'show' === $field ? true : $bgs );
+			}
+		}
+	}
+	update_option( 'feelo_e2e_home', $backup, false );
+} elseif ( 'normal' === $bgs && get_option( 'feelo_e2e_home' ) ) {
+	foreach ( (array) get_option( 'feelo_e2e_home' ) as $mod => $value ) {
+		null === $value ? remove_theme_mod( $mod ) : set_theme_mod( $mod, $value );
+	}
+	delete_option( 'feelo_e2e_home' );
+}
 echo "ok\n";

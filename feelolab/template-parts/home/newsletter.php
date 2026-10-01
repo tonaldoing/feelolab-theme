@@ -11,7 +11,7 @@ if ( ! function_exists( 'feelo_newsletter_form' ) ) {
 	return;
 }
 ?>
-<section class="section section--surface" id="newsletter" aria-labelledby="newsletter-title">
+<section class="<?php echo esc_attr( feelolab_home_section_class( 'newsletter' ) ); ?>" id="newsletter" aria-labelledby="newsletter-title">
 	<div class="container newsletter-band">
 		<div>
 			<h2 class="section__title" id="newsletter-title"><?php echo esc_html( feelolab_home( 'newsletter', 'title' ) ); ?></h2>

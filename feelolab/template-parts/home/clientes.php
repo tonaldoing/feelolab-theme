@@ -7,22 +7,16 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$feelolab_q = new WP_Query(
-	array(
-		'post_type'      => feelo_module_post_type( 'clientes' ),
-		'posts_per_page' => 24,
-		'orderby'        => array( 'menu_order' => 'ASC', 'title' => 'ASC' ),
-		'no_found_rows'  => true,
-	)
-);
+$feelolab_q = new WP_Query( feelolab_home_query_args( 'clientes', (string) feelo_module_post_type( 'clientes' ) ) );
 if ( ! $feelolab_q->have_posts() ) {
+	feelolab_home_placeholder( 'clientes' );
 	return;
 }
 ?>
-<section class="section" id="clientes" aria-labelledby="clientes-title">
+<section class="<?php echo esc_attr( feelolab_home_section_class( 'clientes' ) ); ?>" id="clientes" aria-labelledby="clientes-title">
 	<div class="container">
-		<?php feelolab_section_header( (string) feelolab_home( 'clientes', 'title' ), '', 'clientes-title' ); ?>
-		<ul class="logos">
+		<?php feelolab_section_header( (string) feelolab_home( 'clientes', 'title' ), (string) feelolab_home( 'clientes', 'text' ), 'clientes-title' ); ?>
+		<ul class="<?php echo esc_attr( feelolab_home( 'clientes', 'color' ) ? 'logos logos--color' : 'logos' ); ?>">
 			<?php
 			while ( $feelolab_q->have_posts() ) :
 				$feelolab_q->the_post();

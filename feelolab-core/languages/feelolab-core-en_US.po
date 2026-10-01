@@ -1066,7 +1066,7 @@ msgid "Preguntas frecuentes"
 msgstr "FAQ"
 
 #: src/LlmsTxt.php:158
-#: src/Wizard.php:254
+#: src/Wizard.php:257
 msgid "Blog"
 msgstr "Blog"
 
@@ -1477,7 +1477,7 @@ msgstr "Optional, for local businesses: $, $$, $$$."
 
 #: src/Settings/SiteSettings.php:71
 #: src/Wizard.php:93
-#: src/Wizard.php:253
+#: src/Wizard.php:256
 msgid "Contacto"
 msgstr "Contact"
 
@@ -1768,7 +1768,7 @@ msgid "Guardar cambios"
 msgstr "Save changes"
 
 #: src/Settings/SiteSettings.php:472
-#: src/Wizard.php:467
+#: src/Wizard.php:470
 msgid "— Elegir —"
 msgstr "— Choose —"
 
@@ -1915,7 +1915,7 @@ msgstr "There are no previous versions to go back to yet."
 
 #: src/Wizard.php:42
 #: src/Wizard.php:43
-#: src/Wizard.php:395
+#: src/Wizard.php:398
 msgid "Primeros pasos"
 msgstr "Getting started"
 
@@ -1939,155 +1939,155 @@ msgstr "It's already set up, don't show again"
 msgid "Contenidos"
 msgstr "Content"
 
-#: src/Wizard.php:241
+#: src/Wizard.php:244
 msgid "Direcciones amigables activadas."
 msgstr "Pretty permalinks turned on."
 
 #. translators: %s: zona horaria
-#: src/Wizard.php:247
+#: src/Wizard.php:250
 #, php-format
 msgid "Zona horaria: %s."
 msgstr "Time zone: %s."
 
-#: src/Wizard.php:252
+#: src/Wizard.php:255
 msgid "Inicio"
 msgstr "Home"
 
-#: src/Wizard.php:258
+#: src/Wizard.php:261
 msgid "La portada es la página Inicio, con las secciones de la home."
 msgstr "The front page is the Home page, with the home sections."
 
-#: src/Wizard.php:270
+#: src/Wizard.php:273
 msgid "Política de privacidad publicada (revisala y completala en Ajustes → Privacidad)."
 msgstr "Privacy policy published (review and complete it in Settings → Privacy)."
 
-#: src/Wizard.php:294
+#: src/Wizard.php:297
 msgid "Contenido de ejemplo de WordPress enviado a la papelera."
 msgstr "WordPress sample content moved to the trash."
 
 #. translators: %s: título de la página
-#: src/Wizard.php:330
+#: src/Wizard.php:333
 #, php-format
 msgid "Página \"%s\" creada."
 msgstr "Page \"%s\" created."
 
-#: src/Wizard.php:340
+#: src/Wizard.php:343
 msgid "Menú principal"
 msgstr "Main menu"
 
-#: src/Wizard.php:347
+#: src/Wizard.php:350
 msgid "No se pudo crear el menú."
 msgstr "Couldn't create the menu."
 
-#: src/Wizard.php:382
+#: src/Wizard.php:385
 msgid "Menú principal armado y asignado al encabezado."
 msgstr "Main menu built and assigned to the header."
 
-#: src/Wizard.php:396
+#: src/Wizard.php:399
 msgid "Cinco pasos para dejar el sitio listo. Todo se puede cambiar después, y cualquier paso se puede saltear."
 msgstr "Five steps to get the site ready. Everything can be changed later, and any step can be skipped."
 
-#: src/Wizard.php:427
+#: src/Wizard.php:430
 msgid "Cómo se presenta el negocio. Esto lo usa Google para armar su ficha."
 msgstr "How the business presents itself. Google uses this to build its listing."
 
-#: src/Wizard.php:428
+#: src/Wizard.php:431
 msgid "Aparece en el encabezado, el pie, la página de contacto y el botón de WhatsApp. Completá solo lo que tengas."
 msgstr "Shown in the header, footer, contact page and WhatsApp button. Fill in only what you have."
 
-#: src/Wizard.php:429
+#: src/Wizard.php:432
 msgid "El logo y dos colores alcanzan para que el sitio se vea de la marca. El tema cuida solo que todo se lea bien."
 msgstr "A logo and two colors are enough for the site to look on brand. The theme makes sure everything stays readable."
 
-#: src/Wizard.php:430
+#: src/Wizard.php:433
 msgid "Prendé solo lo que el negocio va a usar: el panel queda más simple. Se puede cambiar cuando quieras en Módulos."
 msgstr "Turn on only what the business will use: the dashboard stays simpler. You can change it anytime in Modules."
 
-#: src/Wizard.php:431
+#: src/Wizard.php:434
 msgid "Lo que casi todos los sitios necesitan. Destildá lo que no quieras; nada de lo que ya existe se duplica."
 msgstr "What almost every site needs. Uncheck what you don't want; nothing that already exists gets duplicated."
 
-#: src/Wizard.php:453
+#: src/Wizard.php:456
 msgid "Armar el sitio"
 msgstr "Build the site"
 
-#: src/Wizard.php:453
+#: src/Wizard.php:456
 msgid "Guardar y seguir"
 msgstr "Save and continue"
 
-#: src/Wizard.php:454
+#: src/Wizard.php:457
 msgid "Saltear este paso"
 msgstr "Skip this step"
 
-#: src/Wizard.php:505
+#: src/Wizard.php:508
 msgid "Logo"
 msgstr "Logo"
 
-#: src/Wizard.php:510
+#: src/Wizard.php:513
 msgid "Ya hay un logo cargado. Subí otro solo si querés reemplazarlo."
 msgstr "A logo is already uploaded. Upload another only if you want to replace it."
 
-#: src/Wizard.php:510
+#: src/Wizard.php:513
 msgid "PNG o WebP con fondo transparente, idealmente horizontal."
 msgstr "PNG or WebP with a transparent background, ideally horizontal."
 
-#: src/Wizard.php:521
+#: src/Wizard.php:524
 msgid "Tipografía"
 msgstr "Typography"
 
-#: src/Wizard.php:533
+#: src/Wizard.php:536
 msgid "Más opciones (colores de texto y fondo, encabezado, portada, fuente propia) en Apariencia → Personalizar, con vista previa en vivo."
 msgstr "More options (text and background colors, header, hero, own font) in Appearance → Customize, with live preview."
 
-#: src/Wizard.php:539
+#: src/Wizard.php:542
 msgid "Contenidos del sitio"
 msgstr "Site content"
 
-#: src/Wizard.php:554
+#: src/Wizard.php:557
 msgid "Crear las páginas Inicio, Contacto (con el formulario) y Blog, y usar Inicio como portada"
 msgstr "Create the Home, Contact (with the form) and Blog pages, and use Home as the front page"
 
-#: src/Wizard.php:555
+#: src/Wizard.php:558
 msgid "Armar el menú principal con esas páginas y los contenidos activos"
 msgstr "Build the main menu with those pages and the active content"
 
-#: src/Wizard.php:556
+#: src/Wizard.php:559
 msgid "Activar las direcciones amigables (/servicios/nombre en lugar de ?p=123)"
 msgstr "Turn on pretty permalinks (/services/name instead of ?p=123)"
 
-#: src/Wizard.php:557
+#: src/Wizard.php:560
 msgid "Publicar la política de privacidad que trae WordPress (después hay que revisarla)"
 msgstr "Publish WordPress's privacy policy (it needs reviewing afterwards)"
 
-#: src/Wizard.php:558
+#: src/Wizard.php:561
 msgid "Mandar a la papelera el contenido de ejemplo (\"Hello world!\", \"Sample Page\")"
 msgstr "Move the sample content to the trash (\"Hello world!\", \"Sample Page\")"
 
-#: src/Wizard.php:560
+#: src/Wizard.php:563
 msgid "Qué armar"
 msgstr "What to build"
 
-#: src/Wizard.php:572
+#: src/Wizard.php:575
 msgid "Zona horaria del negocio"
 msgstr "Business time zone"
 
-#: src/Wizard.php:583
+#: src/Wizard.php:586
 msgid "¡Listo! El sitio ya tiene lo básico. Siguientes pasos:"
 msgstr "Done! The site has the basics. Next steps:"
 
-#: src/Wizard.php:592
+#: src/Wizard.php:595
 msgid "Completar las secciones de la home"
 msgstr "Fill in the home sections"
 
-#: src/Wizard.php:594
+#: src/Wizard.php:597
 msgid "Importar productos desde una planilla"
 msgstr "Import products from a spreadsheet"
 
-#: src/Wizard.php:596
+#: src/Wizard.php:599
 msgid "Revisar el checklist de lanzamiento"
 msgstr "Review the launch checklist"
 
-#: src/Wizard.php:597
+#: src/Wizard.php:600
 msgid "Ver el sitio"
 msgstr "View the site"
 

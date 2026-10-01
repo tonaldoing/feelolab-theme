@@ -13,12 +13,13 @@ $feelolab_key   = $args['key'] ?? 'nosotros';
 $feelolab_text  = (string) feelolab_home( $feelolab_key, 'text' );
 $feelolab_image = (int) feelolab_home( $feelolab_key, 'image' );
 if ( ! $feelolab_text && ! $feelolab_image ) {
+	feelolab_home_placeholder( $feelolab_key );
 	return;
 }
 $feelolab_id    = str_replace( '_', '-', $feelolab_key );
 $feelolab_class = 'izquierda' === feelolab_home( $feelolab_key, 'side' ) ? 'container split split--reverse' : 'container split';
 ?>
-<section class="section section--surface" id="<?php echo esc_attr( $feelolab_id ); ?>" aria-labelledby="<?php echo esc_attr( $feelolab_id ); ?>-title">
+<section class="<?php echo esc_attr( feelolab_home_section_class( $feelolab_key ) ); ?>" id="<?php echo esc_attr( $feelolab_id ); ?>" aria-labelledby="<?php echo esc_attr( $feelolab_id ); ?>-title">
 	<div class="<?php echo esc_attr( $feelolab_class ); ?>">
 		<div>
 			<h2 class="section__title" id="<?php echo esc_attr( $feelolab_id ); ?>-title"><?php echo esc_html( feelolab_home( $feelolab_key, 'title' ) ); ?></h2>

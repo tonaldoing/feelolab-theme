@@ -221,6 +221,89 @@ function feelolab_font_stacks(): array {
 	);
 }
 
+/**
+ * Fuentes sueltas, para cambiar los títulos o los textos sin cambiar la combinación entera.
+ *
+ * @return array<string, array{label: string, stack: string, webfont?: string}>
+ */
+function feelolab_font_singles(): array {
+	$pairs = feelolab_font_stacks();
+	$fonts = array(
+		'sistema'    => array(
+			'label' => __( 'Sistema (neutra, la más rápida)', 'feelolab' ),
+			'stack' => $pairs['sistema']['body'],
+		),
+		'humanista'  => array(
+			'label' => __( 'Humanista (cercana)', 'feelolab' ),
+			'stack' => $pairs['humanista']['body'],
+		),
+		'geometrica' => array(
+			'label' => __( 'Geométrica (moderna)', 'feelolab' ),
+			'stack' => $pairs['geometrica']['heading'],
+		),
+		'serif'      => array(
+			'label' => __( 'Serif de lectura (Charter, Cambria)', 'feelolab' ),
+			'stack' => $pairs['clasica']['body'],
+		),
+		'antigua'    => array(
+			'label' => __( 'Serif clásica (Palatino)', 'feelolab' ),
+			'stack' => $pairs['clasica']['heading'],
+		),
+	);
+	foreach ( feelolab_web_fonts() as $key => $font ) {
+		$fonts[ $key ] = array(
+			/* translators: %s: nombre de la fuente */
+			'label'   => sprintf( __( 'Web: %s', 'feelolab' ), $font['family'] ),
+			'stack'   => feelolab_web_font_stack( $key ),
+			'webfont' => $key,
+		);
+	}
+	$own             = feelolab_own_fonts_active() ? feelolab_own_font_stacks() : array();
+	$fonts['propia'] = array(
+		'label' => __( 'Fuente propia de la marca (subila abajo)', 'feelolab' ),
+		'stack' => $own ? $own['heading'] : $pairs['sistema']['body'],
+	);
+	return $fonts;
+}
+
+/**
+ * Fuente efectiva de títulos o de textos: la elegida aparte o, si no, la de la combinación.
+ *
+ * @param string $role 'heading' o 'body'.
+ * @return array{stack: string, webfonts: string[]}
+ */
+function feelolab_font_for( string $role ): array {
+	$role     = 'heading' === $role ? 'heading' : 'body';
+	$override = (string) get_theme_mod( 'feelolab_font_' . $role, '' );
+	if ( '' !== $override ) {
+		$singles = feelolab_font_singles();
+		if ( isset( $singles[ $override ] ) ) {
+			$stack = $singles[ $override ]['stack'];
+			if ( 'propia' === $override && feelolab_own_fonts_active() ) {
+				$stack = feelolab_own_font_stacks()[ $role ];
+			}
+			return array(
+				'stack'    => $stack,
+				'webfonts' => isset( $singles[ $override ]['webfont'] ) ? array( $singles[ $override ]['webfont'] ) : array(),
+			);
+		}
+	}
+	$pairs = feelolab_font_stacks();
+	$pair  = (string) get_theme_mod( 'feelolab_font_pair', 'sistema' );
+	$pair  = isset( $pairs[ $pair ] ) ? $pairs[ $pair ] : $pairs['sistema'];
+	$used  = array();
+	foreach ( (array) ( $pair['webfonts'] ?? array() ) as $key ) {
+		// De las web fonts de la combinación, solo las que usa este rol.
+		if ( str_contains( $pair[ $role ], '"' . feelolab_web_fonts()[ $key ]['family'] . '"' ) ) {
+			$used[] = $key;
+		}
+	}
+	return array(
+		'stack'    => $pair[ $role ],
+		'webfonts' => $used,
+	);
+}
+
 /** Variables CSS de marca (y @font-face si hay web fonts). Inline en el <head>: ~600 bytes, evitan un parpadeo de color. */
 function feelolab_brand_css(): string {
 	$primary   = feelolab_color( 'primary' );
@@ -241,10 +324,6 @@ function feelolab_brand_css(): string {
 	// Botón que casi no se distingue del fondo (un botón blanco sobre blanco): borde a 3:1.
 	$btn_border = feelolab_contrast( $primary, $bg ) < 3 ? feelolab_ensure_contrast( $primary, $bg, 3 ) : 'transparent';
 
-	$fonts = feelolab_font_stacks();
-	$pair  = (string) get_theme_mod( 'feelolab_font_pair', 'sistema' );
-	$pair  = isset( $fonts[ $pair ] ) ? $fonts[ $pair ] : $fonts['sistema'];
-
 	$vars = array(
 		'--c-primary'             => $primary,
 		'--c-primary-hover'       => $hover,
@@ -262,8 +341,8 @@ function feelolab_brand_css(): string {
 		'--c-muted'               => feelolab_ensure_contrast( feelolab_shade( $text, -0.35 ), $bg, 5 ),
 		'--c-muted-on-surface'    => feelolab_ensure_contrast( feelolab_shade( $text, -0.35 ), $surface, 5 ),
 		'--c-border'              => feelolab_shade( $bg, feelolab_luminance( $bg ) > 0.4 ? 0.14 : -0.2 ),
-		'--f-body'                => $pair['body'],
-		'--f-heading'             => $pair['heading'],
+		'--f-body'                => feelolab_font_for( 'body' )['stack'],
+		'--f-heading'             => feelolab_font_for( 'heading' )['stack'],
 		'--radius'                => absint( get_theme_mod( 'feelolab_radius', 8 ) ) . 'px',
 		'--container'             => absint( get_theme_mod( 'feelolab_container', 1200 ) ) . 'px',
 		'--fs-base'               => ( absint( get_theme_mod( 'feelolab_font_size', 17 ) ) / 16 ) . 'rem',

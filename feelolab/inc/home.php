@@ -48,18 +48,55 @@ function feelolab_home_sections(): array {
 			),
 		),
 		'servicios'   => array(
-			'label'  => __( 'Servicios', 'feelolab' ),
-			'module' => 'servicios',
-			'show'   => true,
-			'order'  => 20,
-			'fields' => array(
-				'title' => array( 'type' => 'text', 'label' => __( 'Título', 'feelolab' ), 'default' => __( 'Servicios', 'feelolab' ) ),
-				'text'  => array( 'type' => 'textarea', 'label' => __( 'Bajada', 'feelolab' ) ),
-				'count' => array( 'type' => 'number', 'label' => __( 'Cantidad', 'feelolab' ), 'default' => 6 ),
+			'label'    => __( 'Servicios', 'feelolab' ),
+			'module'   => 'servicios',
+			'template' => 'coleccion',
+			'list'     => array(
+				'card'     => 'servicio',
+				'taxonomy' => 'feelo_servicio_cat',
+				'id'       => 'servicios',
+				'empty'    => __( 'Todavía no hay servicios cargados. Se cargan en el panel, en Servicios → Añadir nuevo; acá elegís cómo se muestran.', 'feelolab' ),
+			),
+			'show'     => true,
+			'order'    => 20,
+			'fields'   => feelolab_home_list_fields(
+				array(
+					'title'    => __( 'Servicios', 'feelolab' ),
+					'count'    => 6,
+					'taxonomy' => 'feelo_servicio_cat',
+					'more'     => __( 'Ver todos los servicios', 'feelolab' ),
+				)
+			) + array(
+				'show_media' => array( 'type' => 'checkbox', 'label' => __( 'Mostrar ícono o imagen', 'feelolab' ), 'default' => true ),
+				'show_text'  => array( 'type' => 'checkbox', 'label' => __( 'Mostrar la descripción corta', 'feelolab' ), 'default' => true ),
+				'show_price' => array( 'type' => 'checkbox', 'label' => __( 'Mostrar el precio "desde"', 'feelolab' ), 'default' => true ),
+			),
+		),
+		'productos'   => array(
+			'label'    => __( 'Productos', 'feelolab' ),
+			'module'   => 'productos',
+			'template' => 'coleccion',
+			'list'     => array(
+				'card'     => 'producto',
+				'taxonomy' => 'feelo_producto_cat',
+				'id'       => 'productos',
+				'empty'    => __( 'Todavía no hay productos cargados. Se cargan en el panel, en Productos → Añadir nuevo (o en lote desde Importar productos).', 'feelolab' ),
+			),
+			'show'     => false,
+			'order'    => 25,
+			'fields'   => feelolab_home_list_fields(
+				array(
+					'title'    => __( 'Productos', 'feelolab' ),
+					'count'    => 8,
+					'taxonomy' => 'feelo_producto_cat',
+					'columns'  => '4',
+					'more'     => __( 'Ver todos los productos', 'feelolab' ),
+				)
 			),
 		),
 		'nosotros'    => array(
 			'label'  => __( 'Sobre nosotros', 'feelolab' ),
+			'empty'  => __( 'Escribí el texto o elegí una imagen acá abajo y la sección aparece.', 'feelolab' ),
 			'show'   => true,
 			'order'  => 30,
 			'fields' => array(
@@ -69,6 +106,7 @@ function feelolab_home_sections(): array {
 				'link_text' => array( 'type' => 'text', 'label' => __( 'Link: texto', 'feelolab' ), 'default' => __( 'Conocenos', 'feelolab' ) ),
 				'link_url'  => array( 'type' => 'url', 'label' => __( 'Link: URL', 'feelolab' ) ),
 				'side'      => feelolab_home_side_field( 'derecha' ),
+				'bg'        => feelolab_home_bg_field( 'gris' ),
 			),
 		),
 		'cta_2'       => array(
@@ -97,16 +135,50 @@ function feelolab_home_sections(): array {
 				'label_3' => array( 'type' => 'text', 'label' => __( 'Texto 3', 'feelolab' ) ),
 				'value_4' => array( 'type' => 'text', 'label' => __( 'Cifra 4', 'feelolab' ) ),
 				'label_4' => array( 'type' => 'text', 'label' => __( 'Texto 4', 'feelolab' ) ),
+				'bg'      => feelolab_home_bg_field( 'oscuro' ),
 			),
 		),
 		'proyectos'   => array(
-			'label'  => __( 'Proyectos', 'feelolab' ),
-			'module' => 'proyectos',
-			'show'   => true,
-			'order'  => 45,
-			'fields' => array(
-				'title' => array( 'type' => 'text', 'label' => __( 'Título', 'feelolab' ), 'default' => __( 'Proyectos', 'feelolab' ) ),
-				'count' => array( 'type' => 'number', 'label' => __( 'Cantidad', 'feelolab' ), 'default' => 3 ),
+			'label'    => __( 'Proyectos', 'feelolab' ),
+			'module'   => 'proyectos',
+			'template' => 'coleccion',
+			'list'     => array(
+				'card'     => 'proyecto',
+				'taxonomy' => 'feelo_proyecto_tipo',
+				'id'       => 'proyectos',
+				'empty'    => __( 'Todavía no hay proyectos cargados. Se cargan en el panel, en Proyectos → Añadir nuevo.', 'feelolab' ),
+			),
+			'show'     => true,
+			'order'    => 45,
+			'fields'   => feelolab_home_list_fields(
+				array(
+					'title'    => __( 'Proyectos', 'feelolab' ),
+					'count'    => 3,
+					'taxonomy' => 'feelo_proyecto_tipo',
+					'more'     => __( 'Ver todos los proyectos', 'feelolab' ),
+				)
+			),
+		),
+		'equipo'      => array(
+			'label'    => __( 'Equipo', 'feelolab' ),
+			'module'   => 'equipo',
+			'template' => 'coleccion',
+			'list'     => array(
+				'card'     => 'miembro',
+				'taxonomy' => 'feelo_area',
+				'id'       => 'equipo',
+				'empty'    => __( 'Todavía no hay personas cargadas. Se cargan en el panel, en Equipo → Añadir nuevo.', 'feelolab' ),
+			),
+			'show'     => false,
+			'order'    => 47,
+			'fields'   => feelolab_home_list_fields(
+				array(
+					'title'    => __( 'Nuestro equipo', 'feelolab' ),
+					'count'    => 4,
+					'taxonomy' => 'feelo_area',
+					'columns'  => '4',
+					'more'     => __( 'Conocé al equipo', 'feelolab' ),
+				)
 			),
 		),
 		'testimonios' => array(
@@ -114,9 +186,16 @@ function feelolab_home_sections(): array {
 			'module' => 'testimonios',
 			'show'   => true,
 			'order'  => 50,
-			'fields' => array(
-				'title' => array( 'type' => 'text', 'label' => __( 'Título', 'feelolab' ), 'default' => __( 'Lo que dicen nuestros clientes', 'feelolab' ) ),
-				'count' => array( 'type' => 'number', 'label' => __( 'Cantidad', 'feelolab' ), 'default' => 3 ),
+			'list'   => array(
+				'empty' => __( 'Todavía no hay testimonios cargados. Se cargan en el panel, en Testimonios → Añadir nuevo.', 'feelolab' ),
+			),
+			'fields' => feelolab_home_list_fields(
+				array(
+					'title' => __( 'Lo que dicen nuestros clientes', 'feelolab' ),
+					'count' => 3,
+					'more'  => false,
+					'bg'    => 'gris',
+				)
 			),
 		),
 		'clientes'    => array(
@@ -124,8 +203,18 @@ function feelolab_home_sections(): array {
 			'module' => 'clientes',
 			'show'   => true,
 			'order'  => 55,
-			'fields' => array(
-				'title' => array( 'type' => 'text', 'label' => __( 'Título', 'feelolab' ), 'default' => __( 'Confían en nosotros', 'feelolab' ) ),
+			'list'   => array(
+				'empty' => __( 'Todavía no hay logos cargados. Se cargan en el panel, en Clientes → Añadir nuevo (el logo va como imagen destacada).', 'feelolab' ),
+			),
+			'fields' => feelolab_home_list_fields(
+				array(
+					'title'   => __( 'Confían en nosotros', 'feelolab' ),
+					'count'   => 24,
+					'columns' => false,
+					'more'    => false,
+				)
+			) + array(
+				'color' => array( 'type' => 'checkbox', 'label' => __( 'Logos en color (si no, en gris y a color al pasar el mouse)', 'feelolab' ), 'default' => false ),
 			),
 		),
 		'faq'         => array(
@@ -133,13 +222,23 @@ function feelolab_home_sections(): array {
 			'module' => 'faq',
 			'show'   => true,
 			'order'  => 60,
-			'fields' => array(
-				'title' => array( 'type' => 'text', 'label' => __( 'Título', 'feelolab' ), 'default' => __( 'Preguntas frecuentes', 'feelolab' ) ),
-				'count' => array( 'type' => 'number', 'label' => __( 'Cantidad', 'feelolab' ), 'default' => 6 ),
+			'list'   => array(
+				'taxonomy' => 'feelo_faq_tema',
+				'empty'    => __( 'Todavía no hay preguntas cargadas. Se cargan en el panel, en Preguntas frecuentes → Añadir nueva.', 'feelolab' ),
+			),
+			'fields' => feelolab_home_list_fields(
+				array(
+					'title'    => __( 'Preguntas frecuentes', 'feelolab' ),
+					'count'    => 6,
+					'columns'  => false,
+					'taxonomy' => 'feelo_faq_tema',
+					'more'     => false,
+				)
 			),
 		),
 		'nosotros_2'  => array(
 			'label'    => __( 'Texto con imagen (segundo bloque)', 'feelolab' ),
+			'empty'    => __( 'Escribí el texto o elegí una imagen acá abajo y la sección aparece.', 'feelolab' ),
 			'template' => 'nosotros',
 			'show'     => false,
 			'order'    => 65,
@@ -150,15 +249,30 @@ function feelolab_home_sections(): array {
 				'link_text' => array( 'type' => 'text', 'label' => __( 'Link: texto', 'feelolab' ) ),
 				'link_url'  => array( 'type' => 'url', 'label' => __( 'Link: URL', 'feelolab' ) ),
 				'side'      => feelolab_home_side_field( 'izquierda' ),
+				'bg'        => feelolab_home_bg_field( 'gris' ),
 			),
 		),
 		'blog'        => array(
-			'label'  => __( 'Últimas notas del blog', 'feelolab' ),
-			'show'   => false,
-			'order'  => 70,
-			'fields' => array(
-				'title' => array( 'type' => 'text', 'label' => __( 'Título', 'feelolab' ), 'default' => __( 'Novedades', 'feelolab' ) ),
-				'count' => array( 'type' => 'number', 'label' => __( 'Cantidad', 'feelolab' ), 'default' => 3 ),
+			'label'    => __( 'Últimas notas del blog', 'feelolab' ),
+			'template' => 'coleccion',
+			'list'     => array(
+				'post_type' => 'post',
+				'card'      => '',
+				'taxonomy'  => 'category',
+				'id'        => 'novedades',
+				'empty'     => __( 'Todavía no hay notas publicadas. Se escriben en el panel, en Entradas → Añadir nueva.', 'feelolab' ),
+			),
+			'show'     => false,
+			'order'    => 70,
+			'fields'   => feelolab_home_list_fields(
+				array(
+					'title'    => __( 'Novedades', 'feelolab' ),
+					'count'    => 3,
+					'taxonomy' => 'category',
+					'orderby'  => false,
+					'more'     => __( 'Ver todas las notas', 'feelolab' ),
+					'bg'       => 'gris',
+				)
 			),
 		),
 		'cta'         => array(
@@ -179,6 +293,7 @@ function feelolab_home_sections(): array {
 			'fields' => array(
 				'title' => array( 'type' => 'text', 'label' => __( 'Título', 'feelolab' ), 'default' => __( 'Recibí nuestras novedades', 'feelolab' ) ),
 				'text'  => array( 'type' => 'textarea', 'label' => __( 'Texto', 'feelolab' ), 'default' => __( 'Un email al mes con lo que te sirve. Sin spam.', 'feelolab' ) ),
+				'bg'    => feelolab_home_bg_field( 'gris' ),
 			),
 		),
 		'contacto'    => array(
@@ -188,11 +303,179 @@ function feelolab_home_sections(): array {
 			'fields' => array(
 				'title' => array( 'type' => 'text', 'label' => __( 'Título', 'feelolab' ), 'default' => __( 'Contacto', 'feelolab' ) ),
 				'text'  => array( 'type' => 'textarea', 'label' => __( 'Texto', 'feelolab' ) ),
+				'bg'    => feelolab_home_bg_field( 'blanco' ),
 			),
 		),
 	);
 
 	return apply_filters( 'feelolab_home_sections', $sections );
+}
+
+/**
+ * Campos comunes de las secciones que listan contenido (servicios, productos, notas…).
+ *
+ * @param array<string, mixed> $o title, count, columns ('2'|'3'|'4'|false), taxonomy, orderby (false = sin
+ *                                elegir orden), more (texto del botón "ver todos", false = sin botón), bg.
+ * @return array<string, array<string, mixed>>
+ */
+function feelolab_home_list_fields( array $o ): array {
+	$o      = array_merge(
+		array(
+			'title'    => '',
+			'count'    => 6,
+			'columns'  => '3',
+			'taxonomy' => '',
+			'orderby'  => true,
+			'more'     => '',
+			'bg'       => 'blanco',
+		),
+		$o
+	);
+	$fields = array(
+		'title' => array( 'type' => 'text', 'label' => __( 'Título', 'feelolab' ), 'default' => $o['title'] ),
+		'text'  => array( 'type' => 'textarea', 'label' => __( 'Bajada (opcional)', 'feelolab' ) ),
+		'count' => array( 'type' => 'number', 'label' => __( 'Cuántos mostrar', 'feelolab' ), 'default' => $o['count'] ),
+	);
+	if ( $o['columns'] ) {
+		$fields['columns'] = array(
+			'type'    => 'select',
+			'label'   => __( 'Columnas (en pantallas grandes)', 'feelolab' ),
+			'default' => (string) $o['columns'],
+			'choices' => array(
+				'2' => __( 'Dos', 'feelolab' ),
+				'3' => __( 'Tres', 'feelolab' ),
+				'4' => __( 'Cuatro', 'feelolab' ),
+			),
+		);
+	}
+	if ( $o['taxonomy'] ) {
+		$taxonomy           = (string) $o['taxonomy'];
+		$fields['category'] = array(
+			'type'    => 'select',
+			'label'   => __( 'Mostrar', 'feelolab' ),
+			'default' => '',
+			// Se arma solo en el Personalizador: en el sitio no hace falta la lista de categorías.
+			'choices' => static fn() => feelolab_home_term_choices( $taxonomy ),
+		);
+	}
+	if ( $o['orderby'] ) {
+		$fields['orderby'] = array(
+			'type'    => 'select',
+			'label'   => __( 'Orden', 'feelolab' ),
+			'default' => 'manual',
+			'choices' => array(
+				'manual' => __( 'Manual (campo "Orden" de cada uno)', 'feelolab' ),
+				'fecha'  => __( 'Los más nuevos primero', 'feelolab' ),
+				'titulo' => __( 'Alfabético', 'feelolab' ),
+			),
+		);
+	}
+	if ( false !== $o['more'] ) {
+		$fields['more_text'] = array( 'type' => 'text', 'label' => __( 'Botón "ver todos": texto (vacío = sin botón)', 'feelolab' ), 'default' => $o['more'] );
+	}
+	$fields['bg'] = feelolab_home_bg_field( (string) $o['bg'] );
+	return $fields;
+}
+
+/** @return array<string, string> "Todas" + las categorías con contenido de una taxonomía. */
+function feelolab_home_term_choices( string $taxonomy ): array {
+	$choices = array( '' => __( 'Todas las categorías', 'feelolab' ) );
+	$terms   = taxonomy_exists( $taxonomy ) ? get_terms(
+		array(
+			'taxonomy'   => $taxonomy,
+			'hide_empty' => true,
+		)
+	) : array();
+	foreach ( is_array( $terms ) ? $terms : array() as $term ) {
+		/* translators: %s: nombre de la categoría */
+		$choices[ $term->slug ] = sprintf( __( 'Solo "%s"', 'feelolab' ), $term->name );
+	}
+	return $choices;
+}
+
+/** Campo "fondo" de una sección. */
+function feelolab_home_bg_field( string $fallback ): array {
+	return array(
+		'type'    => 'select',
+		'label'   => __( 'Fondo', 'feelolab' ),
+		'default' => $fallback,
+		'choices' => array(
+			'blanco' => __( 'Color de fondo del sitio', 'feelolab' ),
+			'gris'   => __( 'Color de superficie (suave)', 'feelolab' ),
+			'oscuro' => __( 'Color secundario (contrastado)', 'feelolab' ),
+		),
+	);
+}
+
+/** Clases del <section> según el fondo elegido. */
+function feelolab_home_section_class( string $key ): string {
+	$classes = array(
+		'gris'   => 'section section--surface',
+		'oscuro' => 'section section--dark',
+	);
+	return $classes[ (string) feelolab_home( $key, 'bg' ) ] ?? 'section';
+}
+
+/** Clase de la grilla según las columnas elegidas. */
+function feelolab_home_grid_class( string $key ): string {
+	$columns = (string) feelolab_home( $key, 'columns' );
+	return 'grid grid--' . ( in_array( $columns, array( '2', '3', '4' ), true ) ? $columns : '3' );
+}
+
+/**
+ * Argumentos de WP_Query de una sección que lista contenido: cantidad, categoría y orden elegidos.
+ *
+ * @return array<string, mixed>
+ */
+function feelolab_home_query_args( string $key, string $post_type ): array {
+	$sections = feelolab_home_sections();
+	$list     = $sections[ $key ]['list'] ?? array();
+	$orders   = array(
+		'manual' => array(
+			'menu_order' => 'ASC',
+			'date'       => 'DESC',
+		),
+		'fecha'  => array( 'date' => 'DESC' ),
+		'titulo' => array( 'title' => 'ASC' ),
+	);
+	$orderby  = isset( $sections[ $key ]['fields']['orderby'] ) ? (string) feelolab_home( $key, 'orderby' ) : 'fecha';
+	$args     = array(
+		'post_type'           => $post_type,
+		'posts_per_page'      => min( 48, max( 1, (int) feelolab_home( $key, 'count' ) ) ),
+		'orderby'             => $orders[ $orderby ] ?? $orders['manual'],
+		'ignore_sticky_posts' => true,
+		'no_found_rows'       => true,
+	);
+	$term     = isset( $sections[ $key ]['fields']['category'] ) ? (string) feelolab_home( $key, 'category' ) : '';
+	if ( '' !== $term && ! empty( $list['taxonomy'] ) ) {
+		// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- una sola categoría, con caché de objetos.
+		$args['tax_query'] = array(
+			array(
+				'taxonomy' => $list['taxonomy'],
+				'field'    => 'slug',
+				'terms'    => $term,
+			),
+		);
+	}
+	return $args;
+}
+
+/**
+ * Sección sin contenido: en el sitio no se muestra; en la vista previa del Personalizador, un aviso
+ * que dice por qué no aparece y dónde se carga (si no, parece que la opción no anda).
+ */
+function feelolab_home_placeholder( string $key ): void {
+	if ( ! is_customize_preview() ) {
+		return;
+	}
+	$sections = feelolab_home_sections();
+	$message  = (string) ( $sections[ $key ]['list']['empty'] ?? $sections[ $key ]['empty'] ?? '' );
+	printf(
+		'<section class="section home-placeholder" aria-label="%1$s"><div class="container"><p class="home-placeholder__box"><strong>%2$s</strong> %3$s</p></div></section>',
+		esc_attr( $sections[ $key ]['label'] ?? $key ),
+		esc_html( $sections[ $key ]['label'] ?? $key ),
+		esc_html( $message ? $message : __( 'Esta sección todavía no tiene contenido: no se muestra en el sitio.', 'feelolab' ) )
+	);
 }
 
 /** ¿La sección está disponible (su módulo, si tiene, está activo)? */

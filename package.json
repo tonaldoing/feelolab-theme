@@ -13,6 +13,7 @@
     "i18n": "bash dev/i18n.sh"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@wp-playground/cli": "^3.0.0",
     "lighthouse": "^13.5.0",
     "pa11y-ci": "^3.1.0",

@@ -3,7 +3,7 @@ Contributors: feelolab
 Requires at least: 6.8
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.9.0
+Stable tag: 0.10.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,7 +46,7 @@ Google Maps: when the map section is on and there is an address, the theme embed
 
 == Changelog ==
 
-= 0.9.0 =
+= 0.10.0 =
 * See CHANGELOG.md in the repository for the full history.
 
 == Copyright ==
