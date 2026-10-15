@@ -240,7 +240,7 @@
 			} );
 			var url = new URL( button.href );
 			var param = /(^|\.)wa\.me$|whatsapp\.com$/.test( url.hostname ) ? 'text' : 'consulta';
-			var text = chosen.length ? base + ' — ' + chosen.join( ', ' ) : base;
+			var text = chosen.length ? base + ' (' + chosen.join( ', ' ) + ')' : base;
 			// Espacios como %20 (no "+", que URLSearchParams usa y no todas las apps de WhatsApp entienden).
 			url.searchParams.delete( param );
 			url.search += ( url.search ? '&' : '?' ) + param + '=' + encodeURIComponent( text );
